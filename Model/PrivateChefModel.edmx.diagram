@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cb5ce0f467e34d5988e19d4b9205299b" Name="Diagram1" ZoomLevel="93" >
+        <EntityTypeShape EntityType="PrivateChefModel.Client" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.ClientSubscription" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.CookerCoupon" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.CookerCuisine" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.CookerDeliveryZone" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.CookerGeoIP" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.CookerHoursofOperation" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.CookerMenuPrice" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.CookerMenu" Width="1.5" PointX="6.75" PointY="4.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.CookerPaymentMethod" Width="1.5" PointX="6.75" PointY="7.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.CookerPlan" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.CookerPromotion" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.Cooker" Width="1.5" PointX="8.75" PointY="3.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.CookerSpokenLanguage" Width="1.5" PointX="8.75" PointY="7.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.Coupon" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.CuisineType" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.Currency" Width="1.5" PointX="4.75" PointY="10.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.DeliveryZone" Width="1.5" PointX="6.75" PointY="10.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.Dish" Width="1.5" PointX="10.75" PointY="7.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.FeedBack" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.Invoice" Width="1.5" PointX="8.75" PointY="11.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.Language" Width="1.5" PointX="10.75" PointY="11.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.MenuSection" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.MenuServing" Width="1.5" PointX="12.75" PointY="3.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.OrderDetail" Width="1.5" PointX="12.75" PointY="6.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.Order" Width="1.5" PointX="12.75" PointY="9.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.PaymentMethod" Width="1.5" PointX="2.75" PointY="13.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.Payment" Width="1.5" PointX="4.75" PointY="13.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.Plan" Width="1.5" PointX="12.75" PointY="13.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.Promotion" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.Rating" Width="1.5" PointX="14.75" PointY="3.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.RatingCode" Width="1.5" PointX="14.75" PointY="6.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.RefundReason" Width="1.5" PointX="6.75" PointY="14.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.Refund" Width="1.5" PointX="8.75" PointY="14.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.RefundStatu" Width="1.5" PointX="14.75" PointY="9.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.RefundType" Width="1.5" PointX="14.75" PointY="12.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.Review" Width="1.5" PointX="14.75" PointY="15.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.ServingPricing" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.User" Width="1.5" PointX="0.75" PointY="16.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.UserType" Width="1.5" PointX="2.75" PointY="16.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

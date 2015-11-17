@@ -1,0 +1,1296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PrivateChefModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientSubscription">
+          <Key>
+            <PropertyRef Name="ClientSubscriptionId" />
+          </Key>
+          <Property Name="ClientSubscriptionId" Type="int" Nullable="false" />
+          <Property Name="PlanId" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="ValidUntil" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CookerCoupon">
+          <Key>
+            <PropertyRef Name="CookerCouponId" />
+          </Key>
+          <Property Name="CookerCouponId" Type="int" Nullable="false" />
+          <Property Name="CookerId" Type="int" Nullable="false" />
+          <Property Name="CouponId" Type="int" Nullable="false" />
+          <Property Name="CouponDate" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CookerCuisine">
+          <Key>
+            <PropertyRef Name="CookerCuisineId" />
+          </Key>
+          <Property Name="CookerCuisineId" Type="int" Nullable="false" />
+          <Property Name="CuisineTypeId" Type="int" Nullable="false" />
+          <Property Name="CookerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CookerDeliveryZones">
+          <Key>
+            <PropertyRef Name="CookerId" />
+          </Key>
+          <Property Name="CookerId" Type="int" Nullable="false" />
+          <Property Name="DeliveryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CookerGeoIP">
+          <Key>
+            <PropertyRef Name="CookerId" />
+          </Key>
+          <Property Name="CookerId" Type="int" Nullable="false" />
+          <Property Name="Ip" Type="nvarchar" MaxLength="20" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="CountryName" Type="varchar" MaxLength="200" />
+          <Property Name="RegionCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="RegionName" Type="varchar" MaxLength="200" />
+          <Property Name="City" Type="varchar" MaxLength="200" />
+          <Property Name="Zipcode" Type="varchar" MaxLength="20" />
+          <Property Name="TimeZone" Type="varchar" MaxLength="200" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="Longitude" Type="float" />
+          <Property Name="MetroCode" Type="int" />
+        </EntityType>
+        <EntityType Name="CookerHoursofOperations">
+          <Key>
+            <PropertyRef Name="CookerId" />
+          </Key>
+          <Property Name="CookerId" Type="int" Nullable="false" />
+          <Property Name="OpeningHours" Type="varchar" MaxLength="200" />
+          <Property Name="OpeningDays" Type="varchar" MaxLength="200" />
+          <Property Name="DeliveryHours" Type="varchar" MaxLength="200" />
+          <Property Name="DeliveryDays" Type="varchar" MaxLength="200" />
+          <Property Name="PickUpHours" Type="varchar" MaxLength="200" />
+          <Property Name="PickUpDays" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="CookerMenuPrices">
+          <Key>
+            <PropertyRef Name="PriceId" />
+          </Key>
+          <Property Name="PriceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuId" Type="int" Nullable="false" />
+          <Property Name="ServingId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CookerMenus">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CuisineTypeId" Type="int" Nullable="false" />
+          <Property Name="CookerId" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="350" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CookerPaymentMethod">
+          <Key>
+            <PropertyRef Name="PaymentMethodId" />
+          </Key>
+          <Property Name="PaymentMethodId" Type="int" Nullable="false" />
+          <Property Name="PaymentMethodValue" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CookerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CookerPlan">
+          <Key>
+            <PropertyRef Name="CookerPlanId" />
+          </Key>
+          <Property Name="CookerPlanId" Type="int" Nullable="false" />
+          <Property Name="CookerId" Type="int" Nullable="false" />
+          <Property Name="PlanId" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CookerPromotion">
+          <Key>
+            <PropertyRef Name="CookerPromotionId" />
+          </Key>
+          <Property Name="CookerPromotionId" Type="int" Nullable="false" />
+          <Property Name="CookerId" Type="int" Nullable="false" />
+          <Property Name="PromotionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cookers">
+          <Key>
+            <PropertyRef Name="CookerId" />
+          </Key>
+          <Property Name="CookerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RestaurantPhoto" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="RestaurantName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Cuisines" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Bio" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="TotalRaters" Type="int" Nullable="false" />
+          <Property Name="OfferDelivery" Type="bit" Nullable="false" />
+          <Property Name="OfferPickUp" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CookerSpokenLanguage">
+          <Key>
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+          <Property Name="LanguageValue" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CookerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Coupons">
+          <Key>
+            <PropertyRef Name="CouponId" />
+          </Key>
+          <Property Name="CouponId" Type="int" Nullable="false" />
+          <Property Name="CookerId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="smallmoney" Nullable="false" />
+          <Property Name="Photo" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="CurrencyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CuisineTypes">
+          <Key>
+            <PropertyRef Name="CuisineTypeId" />
+          </Key>
+          <Property Name="CuisineTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CuisineTypeValue" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Currencies">
+          <Key>
+            <PropertyRef Name="CurrencyId" />
+          </Key>
+          <Property Name="CurrencyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CurrencyValue" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DeliveryZones">
+          <Key>
+            <PropertyRef Name="DeliveryId" />
+          </Key>
+          <Property Name="DeliveryId" Type="int" Nullable="false" />
+          <Property Name="DeliveryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MinimumOrder" Type="money" Nullable="false" />
+          <Property Name="CurrencyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dishes">
+          <Key>
+            <PropertyRef Name="DishId" />
+          </Key>
+          <Property Name="DishId" Type="int" Nullable="false" />
+          <Property Name="MenuId" Type="int" Nullable="false" />
+          <Property Name="CookerId" Type="int" Nullable="false" />
+          <Property Name="SectionTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Price" Type="smallmoney" Nullable="false" />
+          <Property Name="Photo" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="ServingId" Type="int" Nullable="false" />
+          <Property Name="SpecialNote" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="CurrencyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FeedBack">
+          <Key>
+            <PropertyRef Name="FeedbackId" />
+          </Key>
+          <Property Name="FeedbackId" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="RatingCodeId" Type="int" Nullable="false" />
+          <Property Name="FeedBackDateTime" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="ReviewId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Invoices">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+          </Key>
+          <Property Name="InvoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Languages">
+          <Key>
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+          <Property Name="LanguageValue" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MenuSection">
+          <Key>
+            <PropertyRef Name="SectionId" />
+          </Key>
+          <Property Name="SectionId" Type="int" Nullable="false" />
+          <Property Name="SectionTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MenuServings">
+          <Key>
+            <PropertyRef Name="MenuServingId" />
+          </Key>
+          <Property Name="MenuServingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuServingValue" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderDetailId" />
+          </Key>
+          <Property Name="OrderDetailId" Type="int" Nullable="false" />
+          <Property Name="DishId" Type="int" Nullable="false" />
+          <Property Name="CookerId" Type="int" Nullable="false" />
+          <Property Name="MenuId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="350" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="DeliveryDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="PromotionId" Type="nchar" MaxLength="10" />
+          <Property Name="CouponId" Type="float" />
+          <Property Name="PlanId" Type="int" />
+          <Property Name="Total" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentMethods">
+          <Key>
+            <PropertyRef Name="PaymentMethodId" />
+          </Key>
+          <Property Name="PaymentMethodId" Type="int" Nullable="false" />
+          <Property Name="PaymentMethodValue" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payments">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="int" Nullable="false" />
+          <Property Name="InvoiceId" Type="int" Nullable="false" />
+          <Property Name="PaymentDate" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Payement_Amount" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plans">
+          <Key>
+            <PropertyRef Name="PlanId" />
+          </Key>
+          <Property Name="PlanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExternalId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Promotions">
+          <Key>
+            <PropertyRef Name="PromotionId" />
+          </Key>
+          <Property Name="PromotionId" Type="int" Nullable="false" />
+          <Property Name="Promotion" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="RatingId" />
+          </Key>
+          <Property Name="RatingId" Type="int" Nullable="false" />
+          <Property Name="ItemAccuracy" Type="int" Nullable="false" />
+          <Property Name="Communication" Type="int" Nullable="false" />
+          <Property Name="DeliveryTime" Type="int" Nullable="false" />
+          <Property Name="Overall" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RatingCode">
+          <Key>
+            <PropertyRef Name="RatingCodeId" />
+          </Key>
+          <Property Name="RatingCodeId" Type="int" Nullable="false" />
+          <Property Name="RatingCodeValue" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="RefundReasons">
+          <Key>
+            <PropertyRef Name="RefundReasonId" />
+          </Key>
+          <Property Name="RefundReasonId" Type="int" Nullable="false" />
+          <Property Name="RefundReasonValue" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Refunds">
+          <Key>
+            <PropertyRef Name="RefundId" />
+          </Key>
+          <Property Name="RefundId" Type="int" Nullable="false" />
+          <Property Name="OrderDetailId" Type="int" Nullable="false" />
+          <Property Name="RefundTypeId" Type="int" Nullable="false" />
+          <Property Name="DisputeDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="RefundAmount" Type="smallmoney" Nullable="false" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="ReasonId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RefundStatus">
+          <Key>
+            <PropertyRef Name="RefundStatusId" />
+          </Key>
+          <Property Name="RefundStatusId" Type="int" Nullable="false" />
+          <Property Name="RefundStatusValue" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RefundType">
+          <Key>
+            <PropertyRef Name="RefundTyped" />
+          </Key>
+          <Property Name="RefundTyped" Type="int" Nullable="false" />
+          <Property Name="RefundTypedValue" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reviews">
+          <Key>
+            <PropertyRef Name="ReviewId" />
+          </Key>
+          <Property Name="ReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CookerId" Type="int" Nullable="false" />
+          <Property Name="MenuId" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="text" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="RatingId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServingPricings">
+          <Key>
+            <PropertyRef Name="ServingPricingId" />
+          </Key>
+          <Property Name="ServingPricingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServingPricingsValue" Type="smallmoney" Nullable="false" />
+          <Property Name="ServingPricingCurrencyId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="text" Nullable="false" />
+          <Property Name="LastName" Type="text" Nullable="false" />
+          <Property Name="EmailAddress" Type="text" Nullable="false" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Bio" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="RegionId" Type="int" Nullable="false" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTypes">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserTypeValue" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="PrivateChefModelStoreContainer">
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientSubscription" EntityType="Self.ClientSubscription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CookerCoupon" EntityType="Self.CookerCoupon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CookerCuisine" EntityType="Self.CookerCuisine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CookerDeliveryZones" EntityType="Self.CookerDeliveryZones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CookerGeoIP" EntityType="Self.CookerGeoIP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CookerHoursofOperations" EntityType="Self.CookerHoursofOperations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CookerMenuPrices" EntityType="Self.CookerMenuPrices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CookerMenus" EntityType="Self.CookerMenus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CookerPaymentMethod" EntityType="Self.CookerPaymentMethod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CookerPlan" EntityType="Self.CookerPlan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CookerPromotion" EntityType="Self.CookerPromotion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cookers" EntityType="Self.Cookers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CookerSpokenLanguage" EntityType="Self.CookerSpokenLanguage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Coupons" EntityType="Self.Coupons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CuisineTypes" EntityType="Self.CuisineTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeliveryZones" EntityType="Self.DeliveryZones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dishes" EntityType="Self.Dishes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FeedBack" EntityType="Self.FeedBack" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoices" EntityType="Self.Invoices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuSection" EntityType="Self.MenuSection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuServings" EntityType="Self.MenuServings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plans" EntityType="Self.Plans" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Promotions" EntityType="Self.Promotions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RatingCode" EntityType="Self.RatingCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefundReasons" EntityType="Self.RefundReasons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Refunds" EntityType="Self.Refunds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefundStatus" EntityType="Self.RefundStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefundType" EntityType="Self.RefundType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServingPricings" EntityType="Self.ServingPricings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserTypes" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="PrivateChefModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="PrivateChefContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clients" EntityType="PrivateChefModel.Client" />
+          <EntitySet Name="ClientSubscriptions" EntityType="PrivateChefModel.ClientSubscription" />
+          <EntitySet Name="CookerCoupons" EntityType="PrivateChefModel.CookerCoupon" />
+          <EntitySet Name="CookerCuisines" EntityType="PrivateChefModel.CookerCuisine" />
+          <EntitySet Name="CookerDeliveryZones" EntityType="PrivateChefModel.CookerDeliveryZone" />
+          <EntitySet Name="CookerGeoIPs" EntityType="PrivateChefModel.CookerGeoIP" />
+          <EntitySet Name="CookerHoursofOperations" EntityType="PrivateChefModel.CookerHoursofOperation" />
+          <EntitySet Name="CookerMenuPrices" EntityType="PrivateChefModel.CookerMenuPrice" />
+          <EntitySet Name="CookerMenus" EntityType="PrivateChefModel.CookerMenu" />
+          <EntitySet Name="CookerPaymentMethods" EntityType="PrivateChefModel.CookerPaymentMethod" />
+          <EntitySet Name="CookerPlans" EntityType="PrivateChefModel.CookerPlan" />
+          <EntitySet Name="CookerPromotions" EntityType="PrivateChefModel.CookerPromotion" />
+          <EntitySet Name="Cookers" EntityType="PrivateChefModel.Cooker" />
+          <EntitySet Name="CookerSpokenLanguages" EntityType="PrivateChefModel.CookerSpokenLanguage" />
+          <EntitySet Name="Coupons" EntityType="PrivateChefModel.Coupon" />
+          <EntitySet Name="CuisineTypes" EntityType="PrivateChefModel.CuisineType" />
+          <EntitySet Name="Currencies" EntityType="PrivateChefModel.Currency" />
+          <EntitySet Name="DeliveryZones" EntityType="PrivateChefModel.DeliveryZone" />
+          <EntitySet Name="Dishes" EntityType="PrivateChefModel.Dish" />
+          <EntitySet Name="FeedBacks" EntityType="PrivateChefModel.FeedBack" />
+          <EntitySet Name="Invoices" EntityType="PrivateChefModel.Invoice" />
+          <EntitySet Name="Languages" EntityType="PrivateChefModel.Language" />
+          <EntitySet Name="MenuSections" EntityType="PrivateChefModel.MenuSection" />
+          <EntitySet Name="MenuServings" EntityType="PrivateChefModel.MenuServing" />
+          <EntitySet Name="OrderDetails" EntityType="PrivateChefModel.OrderDetail" />
+          <EntitySet Name="Orders" EntityType="PrivateChefModel.Order" />
+          <EntitySet Name="PaymentMethods" EntityType="PrivateChefModel.PaymentMethod" />
+          <EntitySet Name="Payments" EntityType="PrivateChefModel.Payment" />
+          <EntitySet Name="Plans" EntityType="PrivateChefModel.Plan" />
+          <EntitySet Name="Promotions" EntityType="PrivateChefModel.Promotion" />
+          <EntitySet Name="Ratings" EntityType="PrivateChefModel.Rating" />
+          <EntitySet Name="RatingCodes" EntityType="PrivateChefModel.RatingCode" />
+          <EntitySet Name="RefundReasons" EntityType="PrivateChefModel.RefundReason" />
+          <EntitySet Name="Refunds" EntityType="PrivateChefModel.Refund" />
+          <EntitySet Name="RefundStatus" EntityType="PrivateChefModel.RefundStatu" />
+          <EntitySet Name="RefundTypes" EntityType="PrivateChefModel.RefundType" />
+          <EntitySet Name="Reviews" EntityType="PrivateChefModel.Review" />
+          <EntitySet Name="ServingPricings" EntityType="PrivateChefModel.ServingPricing" />
+          <EntitySet Name="Users" EntityType="PrivateChefModel.User" />
+          <EntitySet Name="UserTypes" EntityType="PrivateChefModel.UserType" />
+        </EntityContainer>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientId" />
+          </Key>
+          <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientSubscription">
+          <Key>
+            <PropertyRef Name="ClientSubscriptionId" />
+          </Key>
+          <Property Name="ClientSubscriptionId" Type="Int32" Nullable="false" />
+          <Property Name="PlanId" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="ValidUntil" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="CookerCoupon">
+          <Key>
+            <PropertyRef Name="CookerCouponId" />
+          </Key>
+          <Property Name="CookerCouponId" Type="Int32" Nullable="false" />
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+          <Property Name="CouponId" Type="Int32" Nullable="false" />
+          <Property Name="CouponDate" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="CookerCuisine">
+          <Key>
+            <PropertyRef Name="CookerCuisineId" />
+          </Key>
+          <Property Name="CookerCuisineId" Type="Int32" Nullable="false" />
+          <Property Name="CuisineTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CookerDeliveryZone">
+          <Key>
+            <PropertyRef Name="CookerId" />
+          </Key>
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CookerGeoIP">
+          <Key>
+            <PropertyRef Name="CookerId" />
+          </Key>
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+          <Property Name="Ip" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CountryCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CountryName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RegionCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="RegionName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Zipcode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TimeZone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Longitude" Type="Double" />
+          <Property Name="MetroCode" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CookerHoursofOperation">
+          <Key>
+            <PropertyRef Name="CookerId" />
+          </Key>
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+          <Property Name="OpeningHours" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OpeningDays" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryHours" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DeliveryDays" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PickUpHours" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PickUpDays" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CookerMenuPrice">
+          <Key>
+            <PropertyRef Name="PriceId" />
+          </Key>
+          <Property Name="PriceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <Property Name="ServingId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CookerMenu">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CuisineTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CookerPaymentMethod">
+          <Key>
+            <PropertyRef Name="PaymentMethodId" />
+          </Key>
+          <Property Name="PaymentMethodId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentMethodValue" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CookerPlan">
+          <Key>
+            <PropertyRef Name="CookerPlanId" />
+          </Key>
+          <Property Name="CookerPlanId" Type="Int32" Nullable="false" />
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+          <Property Name="PlanId" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CookerPromotion">
+          <Key>
+            <PropertyRef Name="CookerPromotionId" />
+          </Key>
+          <Property Name="CookerPromotionId" Type="Int32" Nullable="false" />
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+          <Property Name="PromotionId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cooker">
+          <Key>
+            <PropertyRef Name="CookerId" />
+          </Key>
+          <Property Name="CookerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RestaurantPhoto" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="RestaurantName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Cuisines" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Bio" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <Property Name="TotalRaters" Type="Int32" Nullable="false" />
+          <Property Name="OfferDelivery" Type="Boolean" Nullable="false" />
+          <Property Name="OfferPickUp" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CookerSpokenLanguage">
+          <Key>
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="LanguageId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageValue" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Coupon">
+          <Key>
+            <PropertyRef Name="CouponId" />
+          </Key>
+          <Property Name="CouponId" Type="Int32" Nullable="false" />
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="Photo" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CuisineType">
+          <Key>
+            <PropertyRef Name="CuisineTypeId" />
+          </Key>
+          <Property Name="CuisineTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CuisineTypeValue" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="CurrencyId" />
+          </Key>
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrencyValue" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DeliveryZone">
+          <Key>
+            <PropertyRef Name="DeliveryId" />
+          </Key>
+          <Property Name="DeliveryId" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MinimumOrder" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dish">
+          <Key>
+            <PropertyRef Name="DishId" />
+          </Key>
+          <Property Name="DishId" Type="Int32" Nullable="false" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+          <Property Name="SectionTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="Photo" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="ServingId" Type="Int32" Nullable="false" />
+          <Property Name="SpecialNote" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FeedBack">
+          <Key>
+            <PropertyRef Name="FeedbackId" />
+          </Key>
+          <Property Name="FeedbackId" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="RatingCodeId" Type="Int32" Nullable="false" />
+          <Property Name="FeedBackDateTime" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="ReviewId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="InvoiceId" />
+          </Key>
+          <Property Name="InvoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="LanguageId" Type="Int32" Nullable="false" />
+          <Property Name="LanguageValue" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MenuSection">
+          <Key>
+            <PropertyRef Name="SectionId" />
+          </Key>
+          <Property Name="SectionId" Type="Int32" Nullable="false" />
+          <Property Name="SectionTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MenuServing">
+          <Key>
+            <PropertyRef Name="MenuServingId" />
+          </Key>
+          <Property Name="MenuServingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuServingValue" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderDetailId" />
+          </Key>
+          <Property Name="OrderDetailId" Type="Int32" Nullable="false" />
+          <Property Name="DishId" Type="Int32" Nullable="false" />
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="PromotionId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CouponId" Type="Double" />
+          <Property Name="PlanId" Type="Int32" />
+          <Property Name="Total" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="PaymentMethodId" />
+          </Key>
+          <Property Name="PaymentMethodId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentMethodValue" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentId" />
+          </Key>
+          <Property Name="PaymentId" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentDate" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Payement_Amount" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="PlanId" />
+          </Key>
+          <Property Name="PlanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExternalId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Promotion">
+          <Key>
+            <PropertyRef Name="PromotionId" />
+          </Key>
+          <Property Name="PromotionId" Type="Int32" Nullable="false" />
+          <Property Name="Promotion1" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="RatingId" />
+          </Key>
+          <Property Name="RatingId" Type="Int32" Nullable="false" />
+          <Property Name="ItemAccuracy" Type="Int32" Nullable="false" />
+          <Property Name="Communication" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryTime" Type="Int32" Nullable="false" />
+          <Property Name="Overall" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RatingCode">
+          <Key>
+            <PropertyRef Name="RatingCodeId" />
+          </Key>
+          <Property Name="RatingCodeId" Type="Int32" Nullable="false" />
+          <Property Name="RatingCodeValue" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RefundReason">
+          <Key>
+            <PropertyRef Name="RefundReasonId" />
+          </Key>
+          <Property Name="RefundReasonId" Type="Int32" Nullable="false" />
+          <Property Name="RefundReasonValue" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Refund">
+          <Key>
+            <PropertyRef Name="RefundId" />
+          </Key>
+          <Property Name="RefundId" Type="Int32" Nullable="false" />
+          <Property Name="OrderDetailId" Type="Int32" Nullable="false" />
+          <Property Name="RefundTypeId" Type="Int32" Nullable="false" />
+          <Property Name="DisputeDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="RefundAmount" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="ReasonId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RefundStatu">
+          <Key>
+            <PropertyRef Name="RefundStatusId" />
+          </Key>
+          <Property Name="RefundStatusId" Type="Int32" Nullable="false" />
+          <Property Name="RefundStatusValue" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RefundType">
+          <Key>
+            <PropertyRef Name="RefundTyped" />
+          </Key>
+          <Property Name="RefundTyped" Type="Int32" Nullable="false" />
+          <Property Name="RefundTypedValue" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="ReviewId" />
+          </Key>
+          <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="RatingId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServingPricing">
+          <Key>
+            <PropertyRef Name="ServingPricingId" />
+          </Key>
+          <Property Name="ServingPricingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServingPricingsValue" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="ServingPricingCurrencyId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Bio" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="RegionId" Type="Int32" Nullable="false" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserTypeValue" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PrivateChefModelStoreContainer" CdmEntityContainer="PrivateChefContext">
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="PrivateChefModel.Client">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientSubscriptions">
+            <EntityTypeMapping TypeName="PrivateChefModel.ClientSubscription">
+              <MappingFragment StoreEntitySet="ClientSubscription">
+                <ScalarProperty Name="ValidUntil" ColumnName="ValidUntil" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+                <ScalarProperty Name="ClientSubscriptionId" ColumnName="ClientSubscriptionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CookerCoupons">
+            <EntityTypeMapping TypeName="PrivateChefModel.CookerCoupon">
+              <MappingFragment StoreEntitySet="CookerCoupon">
+                <ScalarProperty Name="CouponDate" ColumnName="CouponDate" />
+                <ScalarProperty Name="CouponId" ColumnName="CouponId" />
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+                <ScalarProperty Name="CookerCouponId" ColumnName="CookerCouponId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CookerCuisines">
+            <EntityTypeMapping TypeName="PrivateChefModel.CookerCuisine">
+              <MappingFragment StoreEntitySet="CookerCuisine">
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+                <ScalarProperty Name="CuisineTypeId" ColumnName="CuisineTypeId" />
+                <ScalarProperty Name="CookerCuisineId" ColumnName="CookerCuisineId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CookerDeliveryZones">
+            <EntityTypeMapping TypeName="PrivateChefModel.CookerDeliveryZone">
+              <MappingFragment StoreEntitySet="CookerDeliveryZones">
+                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CookerGeoIPs">
+            <EntityTypeMapping TypeName="PrivateChefModel.CookerGeoIP">
+              <MappingFragment StoreEntitySet="CookerGeoIP">
+                <ScalarProperty Name="MetroCode" ColumnName="MetroCode" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+                <ScalarProperty Name="RegionCode" ColumnName="RegionCode" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CookerHoursofOperations">
+            <EntityTypeMapping TypeName="PrivateChefModel.CookerHoursofOperation">
+              <MappingFragment StoreEntitySet="CookerHoursofOperations">
+                <ScalarProperty Name="PickUpDays" ColumnName="PickUpDays" />
+                <ScalarProperty Name="PickUpHours" ColumnName="PickUpHours" />
+                <ScalarProperty Name="DeliveryDays" ColumnName="DeliveryDays" />
+                <ScalarProperty Name="DeliveryHours" ColumnName="DeliveryHours" />
+                <ScalarProperty Name="OpeningDays" ColumnName="OpeningDays" />
+                <ScalarProperty Name="OpeningHours" ColumnName="OpeningHours" />
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CookerMenuPrices">
+            <EntityTypeMapping TypeName="PrivateChefModel.CookerMenuPrice">
+              <MappingFragment StoreEntitySet="CookerMenuPrices">
+                <ScalarProperty Name="ServingId" ColumnName="ServingId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="PriceId" ColumnName="PriceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CookerMenus">
+            <EntityTypeMapping TypeName="PrivateChefModel.CookerMenu">
+              <MappingFragment StoreEntitySet="CookerMenus">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+                <ScalarProperty Name="CuisineTypeId" ColumnName="CuisineTypeId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CookerPaymentMethods">
+            <EntityTypeMapping TypeName="PrivateChefModel.CookerPaymentMethod">
+              <MappingFragment StoreEntitySet="CookerPaymentMethod">
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+                <ScalarProperty Name="PaymentMethodValue" ColumnName="PaymentMethodValue" />
+                <ScalarProperty Name="PaymentMethodId" ColumnName="PaymentMethodId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CookerPlans">
+            <EntityTypeMapping TypeName="PrivateChefModel.CookerPlan">
+              <MappingFragment StoreEntitySet="CookerPlan">
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+                <ScalarProperty Name="CookerPlanId" ColumnName="CookerPlanId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CookerPromotions">
+            <EntityTypeMapping TypeName="PrivateChefModel.CookerPromotion">
+              <MappingFragment StoreEntitySet="CookerPromotion">
+                <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+                <ScalarProperty Name="CookerPromotionId" ColumnName="CookerPromotionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cookers">
+            <EntityTypeMapping TypeName="PrivateChefModel.Cooker">
+              <MappingFragment StoreEntitySet="Cookers">
+                <ScalarProperty Name="OfferPickUp" ColumnName="OfferPickUp" />
+                <ScalarProperty Name="OfferDelivery" ColumnName="OfferDelivery" />
+                <ScalarProperty Name="TotalRaters" ColumnName="TotalRaters" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Bio" ColumnName="Bio" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Cuisines" ColumnName="Cuisines" />
+                <ScalarProperty Name="RestaurantName" ColumnName="RestaurantName" />
+                <ScalarProperty Name="RestaurantPhoto" ColumnName="RestaurantPhoto" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CookerSpokenLanguages">
+            <EntityTypeMapping TypeName="PrivateChefModel.CookerSpokenLanguage">
+              <MappingFragment StoreEntitySet="CookerSpokenLanguage">
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+                <ScalarProperty Name="LanguageValue" ColumnName="LanguageValue" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Coupons">
+            <EntityTypeMapping TypeName="PrivateChefModel.Coupon">
+              <MappingFragment StoreEntitySet="Coupons">
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+                <ScalarProperty Name="CouponId" ColumnName="CouponId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CuisineTypes">
+            <EntityTypeMapping TypeName="PrivateChefModel.CuisineType">
+              <MappingFragment StoreEntitySet="CuisineTypes">
+                <ScalarProperty Name="CuisineTypeValue" ColumnName="CuisineTypeValue" />
+                <ScalarProperty Name="CuisineTypeId" ColumnName="CuisineTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currencies">
+            <EntityTypeMapping TypeName="PrivateChefModel.Currency">
+              <MappingFragment StoreEntitySet="Currencies">
+                <ScalarProperty Name="CurrencyValue" ColumnName="CurrencyValue" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeliveryZones">
+            <EntityTypeMapping TypeName="PrivateChefModel.DeliveryZone">
+              <MappingFragment StoreEntitySet="DeliveryZones">
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="MinimumOrder" ColumnName="MinimumOrder" />
+                <ScalarProperty Name="DeliveryName" ColumnName="DeliveryName" />
+                <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dishes">
+            <EntityTypeMapping TypeName="PrivateChefModel.Dish">
+              <MappingFragment StoreEntitySet="Dishes">
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="SpecialNote" ColumnName="SpecialNote" />
+                <ScalarProperty Name="ServingId" ColumnName="ServingId" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SectionTitle" ColumnName="SectionTitle" />
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="DishId" ColumnName="DishId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FeedBacks">
+            <EntityTypeMapping TypeName="PrivateChefModel.FeedBack">
+              <MappingFragment StoreEntitySet="FeedBack">
+                <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
+                <ScalarProperty Name="FeedBackDateTime" ColumnName="FeedBackDateTime" />
+                <ScalarProperty Name="RatingCodeId" ColumnName="RatingCodeId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoices">
+            <EntityTypeMapping TypeName="PrivateChefModel.Invoice">
+              <MappingFragment StoreEntitySet="Invoices">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="PrivateChefModel.Language">
+              <MappingFragment StoreEntitySet="Languages">
+                <ScalarProperty Name="LanguageValue" ColumnName="LanguageValue" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuSections">
+            <EntityTypeMapping TypeName="PrivateChefModel.MenuSection">
+              <MappingFragment StoreEntitySet="MenuSection">
+                <ScalarProperty Name="SectionTitle" ColumnName="SectionTitle" />
+                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuServings">
+            <EntityTypeMapping TypeName="PrivateChefModel.MenuServing">
+              <MappingFragment StoreEntitySet="MenuServings">
+                <ScalarProperty Name="MenuServingValue" ColumnName="MenuServingValue" />
+                <ScalarProperty Name="MenuServingId" ColumnName="MenuServingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="PrivateChefModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+                <ScalarProperty Name="DishId" ColumnName="DishId" />
+                <ScalarProperty Name="OrderDetailId" ColumnName="OrderDetailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="PrivateChefModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+                <ScalarProperty Name="CouponId" ColumnName="CouponId" />
+                <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMethods">
+            <EntityTypeMapping TypeName="PrivateChefModel.PaymentMethod">
+              <MappingFragment StoreEntitySet="PaymentMethods">
+                <ScalarProperty Name="PaymentMethodValue" ColumnName="PaymentMethodValue" />
+                <ScalarProperty Name="PaymentMethodId" ColumnName="PaymentMethodId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="PrivateChefModel.Payment">
+              <MappingFragment StoreEntitySet="Payments">
+                <ScalarProperty Name="Payement_Amount" ColumnName="Payement_Amount" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plans">
+            <EntityTypeMapping TypeName="PrivateChefModel.Plan">
+              <MappingFragment StoreEntitySet="Plans">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ExternalId" ColumnName="ExternalId" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promotions">
+            <EntityTypeMapping TypeName="PrivateChefModel.Promotion">
+              <MappingFragment StoreEntitySet="Promotions">
+                <ScalarProperty Name="Promotion1" ColumnName="Promotion" />
+                <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ratings">
+            <EntityTypeMapping TypeName="PrivateChefModel.Rating">
+              <MappingFragment StoreEntitySet="Rating">
+                <ScalarProperty Name="Overall" ColumnName="Overall" />
+                <ScalarProperty Name="DeliveryTime" ColumnName="DeliveryTime" />
+                <ScalarProperty Name="Communication" ColumnName="Communication" />
+                <ScalarProperty Name="ItemAccuracy" ColumnName="ItemAccuracy" />
+                <ScalarProperty Name="RatingId" ColumnName="RatingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RatingCodes">
+            <EntityTypeMapping TypeName="PrivateChefModel.RatingCode">
+              <MappingFragment StoreEntitySet="RatingCode">
+                <ScalarProperty Name="RatingCodeValue" ColumnName="RatingCodeValue" />
+                <ScalarProperty Name="RatingCodeId" ColumnName="RatingCodeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefundReasons">
+            <EntityTypeMapping TypeName="PrivateChefModel.RefundReason">
+              <MappingFragment StoreEntitySet="RefundReasons">
+                <ScalarProperty Name="RefundReasonValue" ColumnName="RefundReasonValue" />
+                <ScalarProperty Name="RefundReasonId" ColumnName="RefundReasonId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Refunds">
+            <EntityTypeMapping TypeName="PrivateChefModel.Refund">
+              <MappingFragment StoreEntitySet="Refunds">
+                <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="RefundAmount" ColumnName="RefundAmount" />
+                <ScalarProperty Name="DisputeDate" ColumnName="DisputeDate" />
+                <ScalarProperty Name="RefundTypeId" ColumnName="RefundTypeId" />
+                <ScalarProperty Name="OrderDetailId" ColumnName="OrderDetailId" />
+                <ScalarProperty Name="RefundId" ColumnName="RefundId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefundStatus">
+            <EntityTypeMapping TypeName="PrivateChefModel.RefundStatu">
+              <MappingFragment StoreEntitySet="RefundStatus">
+                <ScalarProperty Name="RefundStatusValue" ColumnName="RefundStatusValue" />
+                <ScalarProperty Name="RefundStatusId" ColumnName="RefundStatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefundTypes">
+            <EntityTypeMapping TypeName="PrivateChefModel.RefundType">
+              <MappingFragment StoreEntitySet="RefundType">
+                <ScalarProperty Name="RefundTypedValue" ColumnName="RefundTypedValue" />
+                <ScalarProperty Name="RefundTyped" ColumnName="RefundTyped" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reviews">
+            <EntityTypeMapping TypeName="PrivateChefModel.Review">
+              <MappingFragment StoreEntitySet="Reviews">
+                <ScalarProperty Name="RatingId" ColumnName="RatingId" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+                <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServingPricings">
+            <EntityTypeMapping TypeName="PrivateChefModel.ServingPricing">
+              <MappingFragment StoreEntitySet="ServingPricings">
+                <ScalarProperty Name="ServingPricingCurrencyId" ColumnName="ServingPricingCurrencyId" />
+                <ScalarProperty Name="ServingPricingsValue" ColumnName="ServingPricingsValue" />
+                <ScalarProperty Name="ServingPricingId" ColumnName="ServingPricingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="PrivateChefModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Bio" ColumnName="Bio" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="PrivateChefModel.UserType">
+              <MappingFragment StoreEntitySet="UserTypes">
+                <ScalarProperty Name="UserTypeValue" ColumnName="UserTypeValue" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
