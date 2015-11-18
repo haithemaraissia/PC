@@ -27,8 +27,12 @@ namespace DAL.Fake.Model
             var firstFakeCookerMenus = new CookerMenu
             {
                 MenuId = 1,
-                CookerId = 1,
                 CuisineTypeId = (int)Cuisines.Types.Italian,
+                CookerId = 1,
+                Photo = "@",
+                Title = "",
+                Description = ""
+                
             };
             return firstFakeCookerMenus;
         }
@@ -37,11 +41,12 @@ namespace DAL.Fake.Model
         {
             var secondFakeCookerMenus = new CookerMenu
             {
-                MenuId = 2,
-                CookerId = 3,
-                CuisineTypeId = 1,
-                Description = "Second Cooker Menu",
-                Photo = "Photo Path 2"
+                MenuId = 1,
+                CuisineTypeId = (int)Cuisines.Types.Italian,
+                CookerId = 1,
+                Photo = "@",
+                Title = "Hot Appetizers",
+                Description = ""
             };
             return secondFakeCookerMenus;
         }

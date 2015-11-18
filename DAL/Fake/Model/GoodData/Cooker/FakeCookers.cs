@@ -34,7 +34,9 @@ namespace DAL.Fake.Model
                 PhoneNumber = "913-524-2544",
                 Bio = "At Big Al`s their reputation has been built on providing great service ranging from small lunches to large corporate catered meetings and events.",
                 Rating = 5,
-                TotalRaters = 12
+                TotalRaters = 12,
+                OfferDelivery = true,
+                OfferPickUp = true
 
             };
             return firstCooker;
@@ -44,8 +46,17 @@ namespace DAL.Fake.Model
         {
             var secondCooker = new Cooker
             {
-                CookerId = 2,
-                UserId = 2
+                CookerId = 1,
+                UserId = 2,
+                RestaurantName = " Mike's Restaurant",
+                RestaurantPhoto = @"C:\Users\haraissia\Documents\Visual Studio 2013\Projects\PrivateChef\Test\Images\Restaurant\Restaurant2.jpg",
+                Cuisines = Cuisines.Types.Japanese + " ," + Cuisines.Types.Filipino + " ," + Cuisines.Types.Jamaican + " ," + Cuisines.Types.Moroccan,
+                PhoneNumber = "202 555 2415",
+                Bio ="One of the best restaurant that offer tentative customer service and great quality.",
+                Rating = 5,
+                TotalRaters = 0,
+                OfferDelivery = false,
+                OfferPickUp = true
             };
             return secondCooker;
         }
@@ -54,8 +65,17 @@ namespace DAL.Fake.Model
         {
             var thirdCooker = new Cooker
             {
-                CookerId = 3,
-                UserId = 5
+                CookerId = 1,
+                UserId = 5,
+                RestaurantName = " Sara Home Food",
+                RestaurantPhoto = @"C:\Users\haraissia\Documents\Visual Studio 2013\Projects\PrivateChef\Test\Images\Restaurant\Restaurant1.jpg",
+                Cuisines = Cuisines.Types.Dominican.ToString(),
+                PhoneNumber = "8164541121",
+                Bio = "Sara's Home Food is the best home made food in the usa",
+                Rating = 3,
+                TotalRaters = 18,
+                OfferDelivery = false,
+                OfferPickUp = false
             };
             return thirdCooker;
         }

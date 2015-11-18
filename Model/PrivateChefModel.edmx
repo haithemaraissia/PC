@@ -107,7 +107,7 @@
           </Key>
           <Property Name="CookerPlanId" Type="int" Nullable="false" />
           <Property Name="CookerId" Type="int" Nullable="false" />
-          <Property Name="PlanId" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="PlanId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CookerPromotion">
           <Key>
@@ -572,7 +572,7 @@
           </Key>
           <Property Name="CookerPlanId" Type="Int32" Nullable="false" />
           <Property Name="CookerId" Type="Int32" Nullable="false" />
-          <Property Name="PlanId" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PlanId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="CookerPromotion">
           <Key>

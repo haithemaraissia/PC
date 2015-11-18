@@ -1,59 +1,69 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Model;
 
 namespace DAL.Fake.Model
 {
-    public class FakeRefundStatus
+    public class FakeFeedBacks
     {
-        public List<Client> MyClients;
+        public List<FeedBack> MyFeedBacks;
 
-        public FakeRefundStatus()
+        public FakeFeedBacks()
         {
-            InitializeClientList();
+            InitializeFeedBackList();
         }
 
-        public void InitializeClientList()
+        public void InitializeFeedBackList()
         {
-            MyClients = new List<Client> {
-                FirstClient(), 
-                SecondClient(),
-                ThirdClient()
+            MyFeedBacks = new List<FeedBack> {
+                FirstFeedBack(), 
+                SecondFeedBack(),
+                ThirdFeedBack()
             };
         }
 
-        public Client FirstClient()
+        public FeedBack FirstFeedBack()
         {
-            var firstClient = new Client
+            var firstFeedBack = new FeedBack
             {
-                ClientId = 1,
-                UserId = 3
+                FeedbackId = 1,
+                OrderId = 1,
+                RatingCodeId = 1,
+                FeedBackDateTime = DateTime.Today.Date,
+                ReviewId = 1
             };
-            return firstClient;
+            return firstFeedBack;
         }
 
-        public Client SecondClient()
+        public FeedBack SecondFeedBack()
         {
-            var secondClient = new Client
+            var secondFeedBack = new FeedBack
             {
-                ClientId = 2,
-                UserId = 4
+                FeedbackId = 2,
+                OrderId = 2,
+                RatingCodeId = 3,
+                FeedBackDateTime = DateTime.Today.Date,
+                ReviewId = 2
             };
-            return secondClient;
+            return secondFeedBack;
         }
 
-        public Client ThirdClient()
+        public FeedBack ThirdFeedBack()
         {
-            var thirdClient = new Client
+            var thirdFeedBack = new FeedBack
             {
-                ClientId = 3,
-                UserId = 6
+                FeedbackId = 3,
+                OrderId = 1,
+                RatingCodeId = 1,
+                FeedBackDateTime = DateTime.Today.Date,
+                ReviewId = 1
             };
-            return thirdClient;
+            return thirdFeedBack;
         }
 
-        ~FakeRefundStatus()
+        ~FakeFeedBacks()
         {
-            MyClients = null;
+            MyFeedBacks = null;
         }
     }
 }

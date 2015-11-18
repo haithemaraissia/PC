@@ -16,6 +16,6 @@ namespace Model
     {
         public int CookerPlanId { get; set; }
         public int CookerId { get; set; }
-        public string PlanId { get; set; }
+        public int PlanId { get; set; }
     }
 }
