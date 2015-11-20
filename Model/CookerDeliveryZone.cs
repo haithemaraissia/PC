@@ -14,7 +14,9 @@ namespace Model
     
     public partial class CookerDeliveryZone
     {
+        public int CookerDeliveryZoneId { get; set; }
         public int CookerId { get; set; }
         public int DeliveryId { get; set; }
+     
     }
 }

@@ -21,5 +21,7 @@ namespace Model
         public decimal RefundAmount { get; set; }
         public int StatusId { get; set; }
         public int ReasonId { get; set; }
+        public string Evidence { get; set; }
+        public string Description { get; set; }
     }
 }

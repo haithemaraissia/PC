@@ -65,5 +65,7 @@ namespace Model
         public virtual DbSet<ServingPricing> ServingPricings { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
+        public virtual DbSet<ServingMeasurement> ServingMeasurements { get; set; }
+        public virtual DbSet<AddressType> AddressTypes { get; set; }
     }
 }

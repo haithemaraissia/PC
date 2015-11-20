@@ -16,5 +16,6 @@ namespace Model
     {
         public int SectionId { get; set; }
         public string SectionTitle { get; set; }
+        public int MenuId { get; set; }
     }
 }

@@ -3,11 +3,11 @@ using Model;
 
 namespace DAL.Fake.Model
 {
-    public class FakeRefundStatus
+    public class FakeClients
     {
         public List<Client> MyClients;
 
-        public FakeRefundStatus()
+        public FakeClients()
         {
             InitializeClientList();
         }
@@ -51,7 +51,7 @@ namespace DAL.Fake.Model
             return thirdClient;
         }
 
-        ~FakeRefundStatus()
+        ~FakeClients()
         {
             MyClients = null;
         }

@@ -108,6 +108,15 @@
     <Content Include="Images\Food\Mexican\mexican-food.jpg" />
     <Content Include="Images\Food\Moroccan\pic8VkVyL.jpg" />
     <Content Include="Images\Food\Moroccan\sfinj-450x299.jpg" />
+    <Content Include="Images\Menu\Dominican.jpg" />
+    <Content Include="Images\Menu\Filipino-Menu.jpg" />
+    <Content Include="Images\Menu\Italien.jpg" />
+    <Content Include="Images\Menu\Jamaican.jpg" />
+    <Content Include="Images\Menu\Japanese.jpg" />
+    <Content Include="Images\Menu\Mexican-Restaurant.jpg" />
+    <Content Include="Images\Menu\Morrocan.jpg" />
+    <Content Include="Images\Refund\BadFood.jpg" />
+    <Content Include="Images\Refund\NeverDelivered.jpg" />
     <Content Include="Images\Restaurant\FiorellaExpress.jpg" />
     <Content Include="Images\Restaurant\Restaurant1.jpg" />
     <Content Include="Images\Restaurant\Restaurant2.jpg" />

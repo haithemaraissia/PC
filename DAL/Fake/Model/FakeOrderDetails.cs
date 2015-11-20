@@ -5,55 +5,59 @@ namespace DAL.Fake.Model
 {
     public class FakeRefundStatus
     {
-        public List<Client> MyClients;
+        public List<OrderDetail> MyOrderDetails;
 
         public FakeRefundStatus()
         {
-            InitializeClientList();
+            InitializeOrderDetailList();
         }
 
-        public void InitializeClientList()
+        public void InitializeOrderDetailList()
         {
-            MyClients = new List<Client> {
-                FirstClient(), 
-                SecondClient(),
-                ThirdClient()
+            MyOrderDetails = new List<OrderDetail> {
+                FirstOrderDetail(), 
+                SecondOrderDetail(),
+                ThirdOrderDetail()
             };
         }
 
-        public Client FirstClient()
+        public OrderDetail FirstOrderDetail()
         {
-            var firstClient = new Client
+            var firstOrderDetail = new OrderDetail
             {
-                ClientId = 1,
-                UserId = 3
+                OrderDetailId = 1,
+                DishId =  1,
+                CookerId = 1,
+                MenuId = 1,
+                Quantity = 1,
+                OrderId = 1
             };
-            return firstClient;
+            return firstOrderDetail;
         }
 
-        public Client SecondClient()
+        public OrderDetail SecondOrderDetail()
         {
-            var secondClient = new Client
+            var secondOrderDetail = new OrderDetail
             {
-                ClientId = 2,
+                OrderDetailId = 2,
                 UserId = 4
             };
-            return secondClient;
+            return secondOrderDetail;
         }
 
-        public Client ThirdClient()
+        public OrderDetail ThirdOrderDetail()
         {
-            var thirdClient = new Client
+            var thirdOrderDetail = new OrderDetail
             {
-                ClientId = 3,
+                OrderDetailId = 3,
                 UserId = 6
             };
-            return thirdClient;
+            return thirdOrderDetail;
         }
 
         ~FakeRefundStatus()
         {
-            MyClients = null;
+            MyOrderDetails = null;
         }
     }
 }

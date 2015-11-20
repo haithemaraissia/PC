@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressType.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ClientSubscription.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
@@ -176,6 +179,9 @@
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Review.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServingMeasurement.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ServingPricing.cs">

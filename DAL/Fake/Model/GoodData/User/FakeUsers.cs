@@ -42,7 +42,10 @@ namespace DAL.Fake.Model
                 CountryId= 1,
                 RegionId =1,
                 CityId = 1,
-                ZipCode ="66216"
+                ZipCode = "66216",
+                Address = "6805 main Street",
+                AddressTypeId = 1,
+                PhoneNumber = "9134513214"
             };
             return firstUser;
         }
@@ -62,7 +65,10 @@ namespace DAL.Fake.Model
                 CountryId= 1,
                 RegionId =1,
                 CityId = 1,
-                ZipCode ="66206"
+                ZipCode ="66206",
+                Address = "11201 South West Boulevard",
+                AddressTypeId = 2,
+                PhoneNumber = "7561023214"
             };
             return secondUser;
         }        
@@ -82,7 +88,11 @@ namespace DAL.Fake.Model
                 CountryId = 1,
                 RegionId = 1,
                 CityId = 1,
-                ZipCode = "66206"
+                ZipCode = "66206",
+                Address = "601 Block Bob",
+                Apt_suite = "301",
+                AddressTypeId = 1,
+                PhoneNumber = "8167561010"
             };
             return fifthUser;
         }
@@ -106,7 +116,11 @@ namespace DAL.Fake.Model
                 CountryId= 1,
                 RegionId =1,
                 CityId = 1,
-                ZipCode ="66216"
+                ZipCode ="66216",
+                Address = "4805 main Street",
+                Apt_suite = "601",
+                AddressTypeId = 2,
+                PhoneNumber = "8167561010"
             };
             return thirdUser;
         }
@@ -126,7 +140,10 @@ namespace DAL.Fake.Model
                 CountryId = 1,
                 RegionId = 1,
                 CityId = 1,
-                ZipCode = "66216"
+                ZipCode = "66216",
+                Address = "6102 Plumb Road",
+                AddressTypeId = 1,
+                PhoneNumber = "9134060298"
             };
             return fourthUser;
         }
@@ -146,7 +163,10 @@ namespace DAL.Fake.Model
                 CountryId = 1,
                 RegionId = 1,
                 CityId = 1,
-                ZipCode = "66216"
+                ZipCode = "66216",
+                Address = "4804 Quivira Road ",
+                Apt_suite = "302",
+                AddressTypeId = 3
             };
             return sixthUser;
         }

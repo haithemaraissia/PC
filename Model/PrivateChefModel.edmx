@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="PrivateChefModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AddressType">
+          <Key>
+            <PropertyRef Name="AddressTypeId" />
+          </Key>
+          <Property Name="AddressTypeId" Type="int" Nullable="false" />
+          <Property Name="AddressTypeValue" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Clients">
           <Key>
             <PropertyRef Name="ClientId" />
@@ -40,8 +47,9 @@
         </EntityType>
         <EntityType Name="CookerDeliveryZones">
           <Key>
-            <PropertyRef Name="CookerId" />
+            <PropertyRef Name="CookerDeliveryZoneId" />
           </Key>
+          <Property Name="CookerDeliveryZoneId" Type="int" Nullable="false" />
           <Property Name="CookerId" Type="int" Nullable="false" />
           <Property Name="DeliveryId" Type="int" Nullable="false" />
         </EntityType>
@@ -95,10 +103,10 @@
         </EntityType>
         <EntityType Name="CookerPaymentMethod">
           <Key>
-            <PropertyRef Name="PaymentMethodId" />
+            <PropertyRef Name="CookerPaymentMethodId" />
           </Key>
+          <Property Name="CookerPaymentMethodId" Type="int" Nullable="false" />
           <Property Name="PaymentMethodId" Type="int" Nullable="false" />
-          <Property Name="PaymentMethodValue" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="CookerId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CookerPlan">
@@ -183,11 +191,11 @@
           <Property Name="DishId" Type="int" Nullable="false" />
           <Property Name="MenuId" Type="int" Nullable="false" />
           <Property Name="CookerId" Type="int" Nullable="false" />
-          <Property Name="SectionTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SectionId" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="300" Nullable="false" />
           <Property Name="Price" Type="smallmoney" Nullable="false" />
-          <Property Name="Photo" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="300" Nullable="false" />
           <Property Name="ServingId" Type="int" Nullable="false" />
           <Property Name="SpecialNote" Type="nvarchar" MaxLength="300" Nullable="false" />
           <Property Name="CurrencyId" Type="int" Nullable="false" />
@@ -223,6 +231,7 @@
           </Key>
           <Property Name="SectionId" Type="int" Nullable="false" />
           <Property Name="SectionTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MenuId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MenuServings">
           <Key>
@@ -285,7 +294,12 @@
             <PropertyRef Name="PromotionId" />
           </Key>
           <Property Name="PromotionId" Type="int" Nullable="false" />
-          <Property Name="Promotion" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Price" Type="smallmoney" Nullable="false" />
+          <Property Name="CurrencyId" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="ServingId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Rating">
           <Key>
@@ -322,6 +336,8 @@
           <Property Name="RefundAmount" Type="smallmoney" Nullable="false" />
           <Property Name="StatusId" Type="int" Nullable="false" />
           <Property Name="ReasonId" Type="int" Nullable="false" />
+          <Property Name="Evidence" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" Nullable="false" />
         </EntityType>
         <EntityType Name="RefundStatus">
           <Key>
@@ -351,6 +367,13 @@
           <Property Name="Photo" Type="nvarchar" MaxLength="300" Nullable="false" />
           <Property Name="RatingId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="ServingMeasurements">
+          <Key>
+            <PropertyRef Name="ServingId" />
+          </Key>
+          <Property Name="ServingId" Type="int" Nullable="false" />
+          <Property Name="ServingValue" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
         <EntityType Name="ServingPricings">
           <Key>
             <PropertyRef Name="ServingPricingId" />
@@ -368,12 +391,16 @@
           <Property Name="LastName" Type="text" Nullable="false" />
           <Property Name="EmailAddress" Type="text" Nullable="false" />
           <Property Name="UserTypeId" Type="int" Nullable="false" />
-          <Property Name="Photo" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Bio" Type="nvarchar" MaxLength="300" Nullable="false" />
-          <Property Name="CountryId" Type="int" Nullable="false" />
-          <Property Name="RegionId" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Apt/suite" Type="nvarchar" MaxLength="300" Nullable="false" />
           <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="RegionId" Type="int" Nullable="false" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
           <Property Name="ZipCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Bio" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="AddressTypeId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="UserTypes">
           <Key>
@@ -383,6 +410,7 @@
           <Property Name="UserTypeValue" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityContainer Name="PrivateChefModelStoreContainer">
+          <EntitySet Name="AddressType" EntityType="Self.AddressType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClientSubscription" EntityType="Self.ClientSubscription" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CookerCoupon" EntityType="Self.CookerCoupon" Schema="dbo" store:Type="Tables" />
@@ -420,6 +448,7 @@
           <EntitySet Name="RefundStatus" EntityType="Self.RefundStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RefundType" EntityType="Self.RefundType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServingMeasurements" EntityType="Self.ServingMeasurements" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServingPricings" EntityType="Self.ServingPricings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserTypes" EntityType="Self.UserTypes" Schema="dbo" store:Type="Tables" />
@@ -469,6 +498,8 @@
           <EntitySet Name="ServingPricings" EntityType="PrivateChefModel.ServingPricing" />
           <EntitySet Name="Users" EntityType="PrivateChefModel.User" />
           <EntitySet Name="UserTypes" EntityType="PrivateChefModel.UserType" />
+          <EntitySet Name="ServingMeasurements" EntityType="PrivateChefModel.ServingMeasurement" />
+          <EntitySet Name="AddressTypes" EntityType="PrivateChefModel.AddressType" />
         </EntityContainer>
         <EntityType Name="Client">
           <Key>
@@ -506,9 +537,11 @@
         <EntityType Name="CookerDeliveryZone">
           <Key>
             <PropertyRef Name="CookerId" />
+            <PropertyRef Name="CookerDeliveryZoneId" />
           </Key>
           <Property Name="CookerId" Type="Int32" Nullable="false" />
           <Property Name="DeliveryId" Type="Int32" Nullable="false" />
+          <Property Name="CookerDeliveryZoneId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="CookerGeoIP">
           <Key>
@@ -561,10 +594,11 @@
         <EntityType Name="CookerPaymentMethod">
           <Key>
             <PropertyRef Name="PaymentMethodId" />
+            <PropertyRef Name="CookerPaymentMethodId" />
           </Key>
           <Property Name="PaymentMethodId" Type="Int32" Nullable="false" />
-          <Property Name="PaymentMethodValue" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CookerId" Type="Int32" Nullable="false" />
+          <Property Name="CookerPaymentMethodId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="CookerPlan">
           <Key>
@@ -648,14 +682,14 @@
           <Property Name="DishId" Type="Int32" Nullable="false" />
           <Property Name="MenuId" Type="Int32" Nullable="false" />
           <Property Name="CookerId" Type="Int32" Nullable="false" />
-          <Property Name="SectionTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="Photo" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Photo" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="ServingId" Type="Int32" Nullable="false" />
           <Property Name="SpecialNote" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="SectionId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="FeedBack">
           <Key>
@@ -688,6 +722,7 @@
           </Key>
           <Property Name="SectionId" Type="Int32" Nullable="false" />
           <Property Name="SectionTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="MenuServing">
           <Key>
@@ -750,7 +785,12 @@
             <PropertyRef Name="PromotionId" />
           </Key>
           <Property Name="PromotionId" Type="Int32" Nullable="false" />
-          <Property Name="Promotion1" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ServingId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Rating">
           <Key>
@@ -787,6 +827,8 @@
           <Property Name="RefundAmount" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="StatusId" Type="Int32" Nullable="false" />
           <Property Name="ReasonId" Type="Int32" Nullable="false" />
+          <Property Name="Evidence" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="RefundStatu">
           <Key>
@@ -833,12 +875,16 @@
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="UserTypeId" Type="Int32" Nullable="false" />
-          <Property Name="Photo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Photo" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="Bio" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="CountryId" Type="Int32" Nullable="false" />
           <Property Name="RegionId" Type="Int32" Nullable="false" />
           <Property Name="CityId" Type="Int32" Nullable="false" />
           <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Apt_suite" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AddressTypeId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="UserType">
           <Key>
@@ -846,6 +892,20 @@
           </Key>
           <Property Name="UserTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserTypeValue" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ServingMeasurement">
+          <Key>
+            <PropertyRef Name="ServingId" />
+          </Key>
+          <Property Name="ServingId" Type="Int32" Nullable="false" />
+          <Property Name="ServingValue" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AddressType">
+          <Key>
+            <PropertyRef Name="AddressTypeId" />
+          </Key>
+          <Property Name="AddressTypeId" Type="Int32" Nullable="false" />
+          <Property Name="AddressTypeValue" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -893,6 +953,7 @@
           <EntitySetMapping Name="CookerDeliveryZones">
             <EntityTypeMapping TypeName="PrivateChefModel.CookerDeliveryZone">
               <MappingFragment StoreEntitySet="CookerDeliveryZones">
+                <ScalarProperty Name="CookerDeliveryZoneId" ColumnName="CookerDeliveryZoneId" />
                 <ScalarProperty Name="DeliveryId" ColumnName="DeliveryId" />
                 <ScalarProperty Name="CookerId" ColumnName="CookerId" />
               </MappingFragment>
@@ -953,8 +1014,8 @@
           <EntitySetMapping Name="CookerPaymentMethods">
             <EntityTypeMapping TypeName="PrivateChefModel.CookerPaymentMethod">
               <MappingFragment StoreEntitySet="CookerPaymentMethod">
+                <ScalarProperty Name="CookerPaymentMethodId" ColumnName="CookerPaymentMethodId" />
                 <ScalarProperty Name="CookerId" ColumnName="CookerId" />
-                <ScalarProperty Name="PaymentMethodValue" ColumnName="PaymentMethodValue" />
                 <ScalarProperty Name="PaymentMethodId" ColumnName="PaymentMethodId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1045,6 +1106,7 @@
           <EntitySetMapping Name="Dishes">
             <EntityTypeMapping TypeName="PrivateChefModel.Dish">
               <MappingFragment StoreEntitySet="Dishes">
+                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
                 <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
                 <ScalarProperty Name="SpecialNote" ColumnName="SpecialNote" />
                 <ScalarProperty Name="ServingId" ColumnName="ServingId" />
@@ -1052,7 +1114,6 @@
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="SectionTitle" ColumnName="SectionTitle" />
                 <ScalarProperty Name="CookerId" ColumnName="CookerId" />
                 <ScalarProperty Name="MenuId" ColumnName="MenuId" />
                 <ScalarProperty Name="DishId" ColumnName="DishId" />
@@ -1090,6 +1151,7 @@
           <EntitySetMapping Name="MenuSections">
             <EntityTypeMapping TypeName="PrivateChefModel.MenuSection">
               <MappingFragment StoreEntitySet="MenuSection">
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
                 <ScalarProperty Name="SectionTitle" ColumnName="SectionTitle" />
                 <ScalarProperty Name="SectionId" ColumnName="SectionId" />
               </MappingFragment>
@@ -1160,7 +1222,12 @@
           <EntitySetMapping Name="Promotions">
             <EntityTypeMapping TypeName="PrivateChefModel.Promotion">
               <MappingFragment StoreEntitySet="Promotions">
-                <ScalarProperty Name="Promotion1" ColumnName="Promotion" />
+                <ScalarProperty Name="ServingId" ColumnName="ServingId" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="PromotionId" ColumnName="PromotionId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1195,6 +1262,8 @@
           <EntitySetMapping Name="Refunds">
             <EntityTypeMapping TypeName="PrivateChefModel.Refund">
               <MappingFragment StoreEntitySet="Refunds">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Evidence" ColumnName="Evidence" />
                 <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="RefundAmount" ColumnName="RefundAmount" />
@@ -1248,6 +1317,10 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="PrivateChefModel.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="AddressTypeId" ColumnName="AddressTypeId" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Apt_suite" ColumnName="Apt/suite" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
                 <ScalarProperty Name="CityId" ColumnName="CityId" />
                 <ScalarProperty Name="RegionId" ColumnName="RegionId" />
@@ -1267,6 +1340,22 @@
               <MappingFragment StoreEntitySet="UserTypes">
                 <ScalarProperty Name="UserTypeValue" ColumnName="UserTypeValue" />
                 <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServingMeasurements">
+            <EntityTypeMapping TypeName="PrivateChefModel.ServingMeasurement">
+              <MappingFragment StoreEntitySet="ServingMeasurements">
+                <ScalarProperty Name="ServingValue" ColumnName="ServingValue" />
+                <ScalarProperty Name="ServingId" ColumnName="ServingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddressTypes">
+            <EntityTypeMapping TypeName="PrivateChefModel.AddressType">
+              <MappingFragment StoreEntitySet="AddressType">
+                <ScalarProperty Name="AddressTypeValue" ColumnName="AddressTypeValue" />
+                <ScalarProperty Name="AddressTypeId" ColumnName="AddressTypeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

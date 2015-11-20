@@ -15,6 +15,11 @@ namespace Model
     public partial class Promotion
     {
         public int PromotionId { get; set; }
-        public string Promotion1 { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+        public int CurrencyId { get; set; }
+        public string Photo { get; set; }
+        public int ServingId { get; set; }
     }
 }

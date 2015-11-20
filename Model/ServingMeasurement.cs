@@ -12,18 +12,9 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Dish
+    public partial class ServingMeasurement
     {
-        public int DishId { get; set; }
-        public int MenuId { get; set; }
-        public int CookerId { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public decimal Price { get; set; }
-        public string Photo { get; set; }
         public int ServingId { get; set; }
-        public string SpecialNote { get; set; }
-        public int CurrencyId { get; set; }
-        public int SectionId { get; set; }
+        public string ServingValue { get; set; }
     }
 }

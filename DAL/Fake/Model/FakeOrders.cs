@@ -28,12 +28,16 @@ namespace DAL.Fake.Model
             {
                 OrderId = 1,
                 ClientId = 1,
-                CookerId = 1,
-                Description = "First Order",
-                MenuId = 1,
-                Quantity=3,
-                OrderDate= DateTime.Today,
-                DeliveryDate = DateTime.Today
+                Description = ",",
+                OrderDate = DateTime.Today.Date,
+                DeliveryDate = DateTime.Today.Date,
+
+
+
+                PromotionId = 1,
+                CouponId = 1,
+                PlanId = 1,
+                Total = 
             };
             return firstOrder;
         }
