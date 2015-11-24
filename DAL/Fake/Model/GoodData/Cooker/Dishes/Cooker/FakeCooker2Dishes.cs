@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Cooker.Dishes
+namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker
 {
     public class FakeCooker2Dishes
     {
@@ -90,7 +90,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 1,
+                DishId = 9,
                 MenuId = 3,
                 CookerId = 2,
                 SectionId = 6,
@@ -109,7 +109,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 2,
+                DishId = 10,
                 MenuId = 3,
                 CookerId = 2,
                 SectionId = 6,
@@ -128,7 +128,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 3,
+                DishId = 11,
                 MenuId = 3,
                 CookerId = 2,
                 SectionId = 6,
@@ -151,7 +151,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 4,
+                DishId = 12,
                 MenuId = 3,
                 CookerId = 2,
                 SectionId = 7,
@@ -170,7 +170,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 5,
+                DishId = 13,
                 MenuId = 3,
                 CookerId = 2,
                 SectionId = 7,
@@ -193,7 +193,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 6,
+                DishId = 14,
                 MenuId = 3,
                 CookerId = 2,
                 SectionId = 8,
@@ -220,7 +220,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 7,
+                DishId = 15,
                 MenuId = 4,
                 CookerId = 2,
                 SectionId = 9,
@@ -247,7 +247,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 8,
+                DishId = 16,
                 MenuId = 5,
                 CookerId = 2,
                 SectionId = 10,
@@ -266,7 +266,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 9,
+                DishId = 17,
                 MenuId = 5,
                 CookerId = 2,
                 SectionId = 10,
@@ -289,7 +289,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 10,
+                DishId = 18,
                 MenuId = 5,
                 CookerId = 2,
                 SectionId = 11,
@@ -308,7 +308,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 12,
+                DishId = 19,
                 MenuId = 5,
                 CookerId = 2,
                 SectionId = 11,
@@ -335,7 +335,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 13,
+                DishId = 20,
                 MenuId = 5,
                 CookerId = 2,
                 SectionId = 12,
@@ -354,7 +354,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 14,
+                DishId =21,
                 MenuId = 5,
                 CookerId = 2,
                 SectionId = 12,
@@ -373,7 +373,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 15,
+                DishId = 22,
                 MenuId = 5,
                 CookerId = 2,
                 SectionId = 12,
@@ -396,7 +396,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 16,
+                DishId = 23,
                 MenuId = 5,
                 CookerId = 2,
                 SectionId = 13,
@@ -415,7 +415,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 17,
+                DishId = 24,
                 MenuId = 5,
                 CookerId = 2,
                 SectionId = 13,
@@ -438,7 +438,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 18,
+                DishId = 25,
                 MenuId = 5,
                 CookerId = 2,
                 SectionId = 14,
@@ -457,7 +457,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 19,
+                DishId = 26,
                 MenuId = 5,
                 CookerId = 2,
                 SectionId = 14,

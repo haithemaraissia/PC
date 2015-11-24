@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using Model;
 
-namespace DAL.Fake.Model
+namespace DAL.Fake.Model.GoodData.Coupon
 {
     public class FakeCoupons
     {
-        public List<Coupon> MyCoupons;
+        public List<global::Model.Coupon> MyCoupons;
 
         public FakeCoupons()
         {
@@ -14,7 +13,7 @@ namespace DAL.Fake.Model
 
         public void InitializeCouponList()
         {
-            MyCoupons = new List<Coupon> {
+            MyCoupons = new List<global::Model.Coupon> {
                 FirstCoupon(), 
                 SecondCoupon(),
                 ThirdCoupon()
@@ -23,9 +22,9 @@ namespace DAL.Fake.Model
 
         #region Cooker1Coupon
         
-        public Coupon FirstCoupon()
+        public global::Model.Coupon FirstCoupon()
         {
-            var firstCoupon = new Coupon
+            var firstCoupon = new global::Model.Coupon
             {
                 CouponId = 1,
                 CookerId = 1,
@@ -38,9 +37,9 @@ namespace DAL.Fake.Model
             return firstCoupon;
         }
 
-        public Coupon SecondCoupon()
+        public global::Model.Coupon SecondCoupon()
         {
-            var secondCoupon = new Coupon
+            var secondCoupon = new global::Model.Coupon
             {
                 CouponId = 2,
                 CookerId = 1,
@@ -57,9 +56,9 @@ namespace DAL.Fake.Model
 
         #region Cooker2Coupon
 
-        public Coupon ThirdCoupon()
+        public global::Model.Coupon ThirdCoupon()
         {
-            var thirdCoupon = new Coupon
+            var thirdCoupon = new global::Model.Coupon
             {
                 CouponId = 3,
                 CookerId = 2,

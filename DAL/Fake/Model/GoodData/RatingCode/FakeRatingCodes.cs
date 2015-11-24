@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using Model;
 
-namespace DAL.Fake.Model
+namespace DAL.Fake.Model.GoodData.RatingCode
 {
     public class FakeRatingCode
     {
-        public List<RatingCode> MyRatingCodes;
+        public List<global::Model.RatingCode> MyRatingCodes;
 
         public FakeRatingCode()
         {
@@ -14,16 +13,16 @@ namespace DAL.Fake.Model
 
         public void InitializeRatingCodeList()
         {
-            MyRatingCodes = new List<RatingCode> {
+            MyRatingCodes = new List<global::Model.RatingCode> {
                 FirstRatingCode(), 
                 SecondRatingCode(),
                 ThirdRatingCode()
             };
         }
 
-        public RatingCode FirstRatingCode()
+        public global::Model.RatingCode FirstRatingCode()
         {
-            var firstRatingCode = new RatingCode
+            var firstRatingCode = new global::Model.RatingCode
             {
                 RatingCodeId = 1,
                 RatingCodeValue = "Positive"
@@ -31,9 +30,9 @@ namespace DAL.Fake.Model
             return firstRatingCode;
         }
 
-        public RatingCode SecondRatingCode()
+        public global::Model.RatingCode SecondRatingCode()
         {
-            var secondRatingCode = new RatingCode
+            var secondRatingCode = new global::Model.RatingCode
             {
                 RatingCodeId = 2,
                 RatingCodeValue = "Negative"
@@ -41,9 +40,9 @@ namespace DAL.Fake.Model
             return secondRatingCode;
         }
 
-        public RatingCode ThirdRatingCode()
+        public global::Model.RatingCode ThirdRatingCode()
         {
-            var thirdRatingCode = new RatingCode
+            var thirdRatingCode = new global::Model.RatingCode
             {
                 RatingCodeId = 3,
                 RatingCodeValue = "Neutral"
@@ -57,3 +56,4 @@ namespace DAL.Fake.Model
         }
     }
 }
+

@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using Model;
 
-namespace DAL.Fake.Model
+namespace DAL.Fake.Model.GoodData.Client
 {
     public class FakeClients
     {
-        public List<Client> MyClients;
+        public List<global::Model.Client> MyClients;
 
         public FakeClients()
         {
@@ -14,16 +13,16 @@ namespace DAL.Fake.Model
 
         public void InitializeClientList()
         {
-            MyClients = new List<Client> {
+            MyClients = new List<global::Model.Client> {
                 FirstClient(), 
                 SecondClient(),
                 ThirdClient()
             };
         }
 
-        public Client FirstClient()
+        public global::Model.Client FirstClient()
         {
-            var firstClient = new Client
+            var firstClient = new global::Model.Client
             {
                 ClientId = 1,
                 UserId = 3
@@ -31,9 +30,9 @@ namespace DAL.Fake.Model
             return firstClient;
         }
 
-        public Client SecondClient()
+        public global::Model.Client SecondClient()
         {
-            var secondClient = new Client
+            var secondClient = new global::Model.Client
             {
                 ClientId = 2,
                 UserId = 4
@@ -41,9 +40,9 @@ namespace DAL.Fake.Model
             return secondClient;
         }
 
-        public Client ThirdClient()
+        public global::Model.Client ThirdClient()
         {
-            var thirdClient = new Client
+            var thirdClient = new global::Model.Client
             {
                 ClientId = 3,
                 UserId = 6

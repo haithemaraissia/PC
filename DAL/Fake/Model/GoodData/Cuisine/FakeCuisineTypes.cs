@@ -2,7 +2,7 @@
 using DAL.Fake.Model.Util;
 using Model;
 
-namespace DAL.Fake.Model
+namespace DAL.Fake.Model.GoodData.Cuisine
 {
     public class FakeCuisineTypes
     {

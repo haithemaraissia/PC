@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Cooker.Dishes
+namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker
 {
     public class FakeCooker1Dishes
     {

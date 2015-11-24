@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using Model;
 
-namespace DAL.Fake.Model
+namespace DAL.Fake.Model.GoodData.Language
 {
     public class FakeLanguage
     {
-        public List<Language> MyLanguages;
+        public List<global::Model.Language> MyLanguages;
 
         public FakeLanguage()
         {
@@ -14,16 +13,16 @@ namespace DAL.Fake.Model
 
         public void InitializeLanguageList()
         {
-            MyLanguages = new List<Language> {
+            MyLanguages = new List<global::Model.Language> {
                 FirstLanguage(), 
                 SecondLanguage(),
                 ThirdLanguage()
             };
         }
 
-        public Language FirstLanguage()
+        public global::Model.Language FirstLanguage()
         {
-            var firstLanguage = new Language
+            var firstLanguage = new global::Model.Language
             {
                 LanguageId = 1,
                 LanguageValue = "EN"
@@ -31,9 +30,9 @@ namespace DAL.Fake.Model
             return firstLanguage;
         }
 
-        public Language SecondLanguage()
+        public global::Model.Language SecondLanguage()
         {
-            var secondLanguage = new Language
+            var secondLanguage = new global::Model.Language
             {
                 LanguageId = 2,
                 LanguageValue = "SP"
@@ -41,9 +40,9 @@ namespace DAL.Fake.Model
             return secondLanguage;
         }
 
-        public Language ThirdLanguage()
+        public global::Model.Language ThirdLanguage()
         {
-            var thirdLanguage = new Language
+            var thirdLanguage = new global::Model.Language
             {
                 LanguageId = 3,
                 LanguageValue = "FR"

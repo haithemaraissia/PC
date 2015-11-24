@@ -26,7 +26,7 @@ namespace DAL.Fake.Model
             var firstServingPricing = new ServingPricing
             {
                 ServingPricingId = 1,
-                ServingPricingsValue = "Value of Serving",
+                ServingPricingsValue = 5,
                 ServingPricingCurrencyId = 1
             };
             return firstServingPricing;
@@ -37,7 +37,7 @@ namespace DAL.Fake.Model
             var secondServingPricing = new ServingPricing
             {
                 ServingPricingId = 2,
-                ServingPricingsValue = "Value of Serving",
+                ServingPricingsValue = 5,
                 ServingPricingCurrencyId = 1
             };
             return secondServingPricing;
@@ -48,7 +48,7 @@ namespace DAL.Fake.Model
             var thirdServingPricing = new ServingPricing
             {
                 ServingPricingId = 3,
-                ServingPricingsValue = "Value of Serving",
+                ServingPricingsValue = 5,
                 ServingPricingCurrencyId = 1
             };
             return thirdServingPricing;

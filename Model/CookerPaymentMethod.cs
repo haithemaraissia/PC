@@ -14,8 +14,8 @@ namespace Model
     
     public partial class CookerPaymentMethod
     {
+        public int CookerPaymentMethodId { get; set; }
         public int PaymentMethodId { get; set; }
         public int CookerId { get; set; }
-        public int CookerPaymentMethodId { get; set; }
     }
 }

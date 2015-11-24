@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Model;
 
-namespace DAL.Fake.Model
+namespace DAL.Fake.Model.GoodData.Refund
 {
     public class FakeRefunds
     {
-        public List<Refund> MyRefunds;
+        public List<global::Model.Refund> MyRefunds;
 
         public FakeRefunds()
         {
@@ -15,16 +14,16 @@ namespace DAL.Fake.Model
 
         public void InitializeRefundList()
         {
-            MyRefunds = new List<Refund> {
+            MyRefunds = new List<global::Model.Refund> {
                 FirstRefund(), 
                 SecondRefund(),
                 ThirdRefund()
             };
         }
 
-        public Refund FirstRefund()
+        public global::Model.Refund FirstRefund()
         {
-            var firstRefund = new Refund
+            var firstRefund = new global::Model.Refund
             {
                 RefundId =  1,
                 OrderDetailId = 5,
@@ -39,9 +38,9 @@ namespace DAL.Fake.Model
             return firstRefund;
         }
 
-        public Refund SecondRefund()
+        public global::Model.Refund SecondRefund()
         {
-            var secondRefund = new Refund
+            var secondRefund = new global::Model.Refund
             {
                 RefundId = 2,
                 OrderDetailId = 2,
@@ -56,9 +55,9 @@ namespace DAL.Fake.Model
             return secondRefund;
         }
 
-        public Refund ThirdRefund()
+        public global::Model.Refund ThirdRefund()
         {
-            var thirdRefund = new Refund
+            var thirdRefund = new global::Model.Refund
             {
                 RefundId = 1,
                 OrderDetailId = 5,

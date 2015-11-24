@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using DAL.Fake.Model.Util;
-using Model;
 
-namespace DAL.Fake.Model
+namespace DAL.Fake.Model.GoodData.Review
 {
     public class FakeReviews
     {
-        public List<Review> MyReviews;
+        public List<global::Model.Review> MyReviews;
 
         public FakeReviews()
         {
@@ -15,16 +14,16 @@ namespace DAL.Fake.Model
 
         public void InitializeReviewList()
         {
-            MyReviews = new List<Review> {
+            MyReviews = new List<global::Model.Review> {
                 FirstReview(), 
                 SecondReview(),
                 ThirdReview()
             };
         }
 
-        public Review FirstReview()
+        public global::Model.Review FirstReview()
         {
-            var firstReview = new Review
+            var firstReview = new global::Model.Review
             {
                 ReviewId = 1,
                 CookerId = 1,
@@ -39,9 +38,9 @@ namespace DAL.Fake.Model
             return firstReview;
         }
 
-        public Review SecondReview()
+        public global::Model.Review SecondReview()
         {
-            var secondReview = new Review
+            var secondReview = new global::Model.Review
             {
                 ReviewId = 2,
                 CookerId = 2,
@@ -56,9 +55,9 @@ namespace DAL.Fake.Model
             return secondReview;
         }
 
-        public Review ThirdReview()
+        public global::Model.Review ThirdReview()
         {
-            var thirdReview = new Review
+            var thirdReview = new global::Model.Review
             {
                 ReviewId = 3,
                 CookerId = 1,

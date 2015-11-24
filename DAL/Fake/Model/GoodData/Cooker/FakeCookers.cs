@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using DAL.Fake.Model.Util;
-using Model;
 
-namespace DAL.Fake.Model
+namespace DAL.Fake.Model.GoodData.Cooker
 {
     public class FakeCookers
     {
-        public List<Cooker> MyCookers;
+        public List<global::Model.Cooker> MyCookers;
 
         public FakeCookers()
         {
@@ -15,16 +14,16 @@ namespace DAL.Fake.Model
 
         public void InitializeCookerList()
         {
-            MyCookers = new List<Cooker> {
+            MyCookers = new List<global::Model.Cooker> {
                 FirstCooker(), 
                 SecondCooker(),
                 ThirdCooker()
             };
         }
 
-        public Cooker FirstCooker()
+        public global::Model.Cooker FirstCooker()
         {
-            var firstCooker = new Cooker
+            var firstCooker = new global::Model.Cooker
             {
                 CookerId = 1,
                 UserId = 1,
@@ -36,15 +35,16 @@ namespace DAL.Fake.Model
                 Rating = 5,
                 TotalRaters = 12,
                 OfferDelivery = true,
-                OfferPickUp = true
+                OfferPickUp = true,
+                TaxPercent = (decimal?) 8.15
 
             };
             return firstCooker;
         }
 
-        public Cooker SecondCooker()
+        public global::Model.Cooker SecondCooker()
         {
-            var secondCooker = new Cooker
+            var secondCooker = new global::Model.Cooker
             {
                 CookerId = 1,
                 UserId = 2,
@@ -56,14 +56,15 @@ namespace DAL.Fake.Model
                 Rating = 5,
                 TotalRaters = 0,
                 OfferDelivery = false,
-                OfferPickUp = true
+                OfferPickUp = true,
+                TaxPercent = (decimal?) 8.47
             };
             return secondCooker;
         }
 
-        public Cooker ThirdCooker()
+        public global::Model.Cooker ThirdCooker()
         {
-            var thirdCooker = new Cooker
+            var thirdCooker = new global::Model.Cooker
             {
                 CookerId = 1,
                 UserId = 5,
@@ -75,7 +76,8 @@ namespace DAL.Fake.Model
                 Rating = 3,
                 TotalRaters = 18,
                 OfferDelivery = false,
-                OfferPickUp = false
+                OfferPickUp = false,
+                TaxPercent = (decimal?) 8.88
             };
             return thirdCooker;
         }

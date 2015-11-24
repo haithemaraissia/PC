@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using Model;
 
-namespace DAL.Fake.Model
+namespace DAL.Fake.Model.GoodData.Promotion
 {
     public class FakePromotions
     {
-        public List<Promotion> MyPromotions;
+        public List<global::Model.Promotion> MyPromotions;
 
         public FakePromotions()
         {
@@ -14,16 +13,16 @@ namespace DAL.Fake.Model
 
         public void InitializePromotionList()
         {
-            MyPromotions = new List<Promotion> {
+            MyPromotions = new List<global::Model.Promotion> {
                 FirstPromotion(), 
                 SecondPromotion(),
                 ThirdPromotion()
             };
         }
 
-        public Promotion FirstPromotion()
+        public global::Model.Promotion FirstPromotion()
         {
-            var firstPromotion = new Promotion
+            var firstPromotion = new global::Model.Promotion
             {
                 PromotionId = 1,
                 Title = "Monday-Friday lunch menu",
@@ -36,9 +35,9 @@ namespace DAL.Fake.Model
             return firstPromotion;
         }
 
-        public Promotion SecondPromotion()
+        public global::Model.Promotion SecondPromotion()
         {
-            var secondPromotion = new Promotion
+            var secondPromotion = new global::Model.Promotion
             {
                 PromotionId = 2,
                 Title = "Dish of the day: Tagliatelle",
@@ -51,9 +50,9 @@ namespace DAL.Fake.Model
             return secondPromotion;
         }
 
-        public Promotion ThirdPromotion()
+        public global::Model.Promotion ThirdPromotion()
         {
-            var thirdPromotion = new Promotion
+            var thirdPromotion = new global::Model.Promotion
             {
                 PromotionId = 3,
                 Title = "Buy 1 Get 1 Free",

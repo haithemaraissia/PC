@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Cooker.Dishes
+namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker
 {
     public class FakeCooker3Dishes
     {
@@ -50,7 +50,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 1,
+                DishId = 27,
                 MenuId = 7,
                 CookerId = 3,
                 SectionId = 15,
@@ -69,7 +69,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 2,
+                DishId = 28,
                 MenuId = 7,
                 CookerId = 3,
                 SectionId = 15,
@@ -88,7 +88,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 3,
+                DishId = 29,
                 MenuId = 7,
                 CookerId = 3,
                 SectionId = 15,
@@ -111,7 +111,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 4,
+                DishId = 30,
                 MenuId = 7,
                 CookerId = 3,
                 SectionId = 16,
@@ -130,7 +130,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 5,
+                DishId = 31,
                 MenuId = 7,
                 CookerId = 3,
                 SectionId = 16,
@@ -153,7 +153,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 6,
+                DishId = 32,
                 MenuId = 7,
                 CookerId = 3,
                 SectionId = 17,
@@ -172,7 +172,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes
         {
             var dish = new Dish
             {
-                DishId = 6,
+                DishId = 33,
                 MenuId = 7,
                 CookerId = 3,
                 SectionId = 17,

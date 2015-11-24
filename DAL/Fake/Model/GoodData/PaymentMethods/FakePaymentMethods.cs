@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Model;
 
-namespace DAL.Fake.Model
+namespace DAL.Fake.Model.GoodData.PaymentMethods
 {
     public class FakePaymentMethods
     {
@@ -25,7 +25,7 @@ namespace DAL.Fake.Model
         {
             var firstPaymentMethod = new PaymentMethod
             {
-                PaymentMethodId = 1,
+                PaymentMethodId = (int)Util.PaymentMethodType.Values.CardOnLine,
                 PaymentMethodValue = "Card on Line"
             };
             return firstPaymentMethod;
@@ -35,7 +35,7 @@ namespace DAL.Fake.Model
         {
             var secondPaymentMethod = new PaymentMethod
             {
-                PaymentMethodId = 2,
+                PaymentMethodId = (int)Util.PaymentMethodType.Values.Cash,
                 PaymentMethodValue = "Cash"
             };
             return secondPaymentMethod;
@@ -45,7 +45,7 @@ namespace DAL.Fake.Model
         {
             var thirdPaymentMethod = new PaymentMethod
             {
-                PaymentMethodId = 1,
+                PaymentMethodId = (int)Util.PaymentMethodType.Values.CardToCounter,
                 PaymentMethodValue = "Card to the counter/rider"
             };
             return thirdPaymentMethod;

@@ -53,7 +53,13 @@
     <Compile Include="AddressType.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Client.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ClientSubscription.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cooker.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CookerCoupon.cs">
@@ -71,6 +77,12 @@
     <Compile Include="CookerHoursofOperation.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CookerMenu.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CookerMenuPrice.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="CookerPaymentMethod.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
@@ -86,40 +98,34 @@
     <Compile Include="Coupon.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DeliveryZone.cs">
-      <DependentUpon>PrivateChefModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Dish.cs">
-      <DependentUpon>PrivateChefModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FeedBack.cs">
-      <DependentUpon>PrivateChefModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Language.cs">
-      <DependentUpon>PrivateChefModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Main.cs" />
-    <Compile Include="Client.cs">
-      <DependentUpon>PrivateChefModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Cooker.cs">
-      <DependentUpon>PrivateChefModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CookerMenu.cs">
-      <DependentUpon>PrivateChefModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CookerMenuPrice.cs">
-      <DependentUpon>PrivateChefModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="CuisineType.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Currency.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DeliveryZone.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dish.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DishOption.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DishOptionsChoice.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FeedBack.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Invoice.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Language.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs" />
     <Compile Include="MenuSection.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
@@ -129,7 +135,13 @@
     <Compile Include="Order.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="OrderDetail.cs">
+    <Compile Include="OrderItem.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderItemDishOption.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderType.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Payment.cs">

@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using Model;
 
-namespace DAL.Fake.Model
+namespace DAL.Fake.Model.GoodData.Currency
 {
     public class FakeCurrencies
     {
-        public List<Currency> MyCurrencies;
+        public List<global::Model.Currency> MyCurrencies;
 
         public FakeCurrencies()
         {
@@ -14,16 +13,16 @@ namespace DAL.Fake.Model
 
         public void InitializeCurrencyList()
         {
-            MyCurrencies = new List<Currency> {
+            MyCurrencies = new List<global::Model.Currency> {
                 FirstCurrency(), 
                 SecondCurrency(),
                 ThirdCurrency()
             };
         }
 
-        public Currency FirstCurrency()
+        public global::Model.Currency FirstCurrency()
         {
-            var firstCurrency = new Currency
+            var firstCurrency = new global::Model.Currency
             {
                 CurrencyId = 1,
                 CurrencyValue = "USD"
@@ -31,9 +30,9 @@ namespace DAL.Fake.Model
             return firstCurrency;
         }
 
-        public Currency SecondCurrency()
+        public global::Model.Currency SecondCurrency()
         {
-            var secondCurrency = new Currency
+            var secondCurrency = new global::Model.Currency
             {
                 CurrencyId = 2,
                 CurrencyValue = "CAD"
@@ -41,9 +40,9 @@ namespace DAL.Fake.Model
             return secondCurrency;
         }
 
-        public Currency ThirdCurrency()
+        public global::Model.Currency ThirdCurrency()
         {
-            var thirdCurrency = new Currency
+            var thirdCurrency = new global::Model.Currency
             {
                 CurrencyId = 3,
                 CurrencyValue = "EUR"

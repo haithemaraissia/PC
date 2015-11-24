@@ -12,13 +12,12 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class OrderDetail
+    public partial class DishOptionsChoice
     {
-        public int OrderDetailId { get; set; }
-        public int DishId { get; set; }
-        public int CookerId { get; set; }
-        public int MenuId { get; set; }
-        public int Quantity { get; set; }
-        public string OrderId { get; set; }
+        public int DishOptionChoiceId { get; set; }
+        public string DishOptionChoiceValue { get; set; }
+        public int DishOptionId { get; set; }
+        public Nullable<decimal> Price { get; set; }
+        public Nullable<int> CurrencyId { get; set; }
     }
 }

@@ -14,14 +14,24 @@ namespace Model
     
     public partial class Order
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Order()
+        {
+            this.OrderItems = new HashSet<OrderItem>();
+        }
+    
         public int OrderId { get; set; }
         public int ClientId { get; set; }
-        public string Description { get; set; }
         public System.DateTime OrderDate { get; set; }
-        public System.DateTime DeliveryDate { get; set; }
-        public string PromotionId { get; set; }
-        public Nullable<double> CouponId { get; set; }
+        public Nullable<System.DateTime> DeliveryDate { get; set; }
+        public int OrderTypeId { get; set; }
+        public int PaymentMethodId { get; set; }
+        public Nullable<int> PromotionId { get; set; }
+        public Nullable<int> CouponId { get; set; }
         public Nullable<int> PlanId { get; set; }
-        public string Total { get; set; }
+        public decimal SubTotal { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
     }
 }

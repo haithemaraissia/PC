@@ -17,14 +17,14 @@ namespace Test
         public void Initialize()
         {
             // Arrange
-            var clientRepo = new FakeClientRepository();
+            //var clientRepo = new FakeClientRepository();
             var cookerRepo = new FakeCookerRepository();
-            var cookerRepo = new FakeCookerRepository();
-            var cookerRepo = new FakeCookerRepository();
-            var cookerRepo = new FakeCookerRepository();
-            var cookerRepo = new FakeCookerRepository();
-            var cookerRepo = new FakeCookerRepository();
-            var cookerRepo = new FakeCookerRepository();
+            //var cookerRepo = new FakeCookerRepository();
+            //var cookerRepo = new FakeCookerRepository();
+            //var cookerRepo = new FakeCookerRepository();
+            //var cookerRepo = new FakeCookerRepository();
+            //var cookerRepo = new FakeCookerRepository();
+            //var cookerRepo = new FakeCookerRepository();
             var uow = new UnitofWork { CookerRepository = cookerRepo };
             // Controller = new OwnersController(uow);//
         }

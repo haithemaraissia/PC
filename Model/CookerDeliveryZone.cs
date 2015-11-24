@@ -17,6 +17,5 @@ namespace Model
         public int CookerDeliveryZoneId { get; set; }
         public int CookerId { get; set; }
         public int DeliveryId { get; set; }
-     
     }
 }

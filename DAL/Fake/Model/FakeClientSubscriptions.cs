@@ -5,55 +5,55 @@ namespace DAL.Fake.Model
 {
     public class FakeClientSubscription
     {
-        public List<Client> MyClients;
+        public List<ClientSubscription> MyClientSubscriptions;
 
-        public FakeClients()
+        public FakeClientSubscription()
         {
-            InitializeClientList();
+            InitializeClientSubscriptionList();
         }
 
-        public void InitializeClientList()
+        public void InitializeClientSubscriptionList()
         {
-            MyClients = new List<Client> {
-                FirstClient(), 
-                SecondClient(),
-                ThirdClient()
+            MyClientSubscriptions = new List<ClientSubscription> {
+                FirstClientSubscription(), 
+                SecondClientSubscription(),
+                ThirdClientSubscription()
             };
         }
 
-        public Client FirstClient()
+        public ClientSubscription FirstClientSubscription()
         {
-            var firstClient = new Client
+            var firstClientSubscription = new ClientSubscription
             {
-                ClientId = 1,
-                UserId = 3
+                ClientSubscriptionId = 1,
+                //UserId = 3
             };
-            return firstClient;
+            return firstClientSubscription;
         }
 
-        public Client SecondClient()
+        public ClientSubscription SecondClientSubscription()
         {
-            var secondClient = new Client
+            var secondClientSubscription = new ClientSubscription
             {
-                ClientId = 2,
-                UserId = 4
+                ClientSubscriptionId = 2,
+                //UserId = 4
             };
-            return secondClient;
+            return secondClientSubscription;
         }
 
-        public Client ThirdClient()
+        public ClientSubscription ThirdClientSubscription()
         {
-            var thirdClient = new Client
+            var thirdClientSubscription = new ClientSubscription
             {
-                ClientId = 3,
-                UserId = 6
+                ClientSubscriptionId = 3,
+                //UserId = 6
             };
-            return thirdClient;
+            return thirdClientSubscription;
         }
 
-        ~FakeClients()
+        ~FakeClientSubscription()
         {
-            MyClients = null;
+            MyClientSubscriptions = null;
         }
     }
 }
