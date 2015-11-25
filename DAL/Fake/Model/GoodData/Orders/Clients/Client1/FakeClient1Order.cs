@@ -53,7 +53,7 @@ namespace DAL.Fake.Model.GoodData.Orders.Clients.Client1
                 SubTotal = (decimal)37.14
             };
             firstOrder.OrderItems.Add(new FakeOrderItems().GetClient1FirstOrderFirstOrderItem());
-            firstOrder.OrderItems.Add(new FakeOrderItems().GetClient1FirstOrderSecondOrderItem());
+            firstOrder.OrderItems.Add(new FakeOrderItems().GetClient1FirstOrderSecondOrderItem()); 
             return firstOrder;
         }
 

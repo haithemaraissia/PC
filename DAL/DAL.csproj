@@ -65,6 +65,10 @@
     <Compile Include="API\APIHelper.cs" />
     <Compile Include="API\FreeGeoIP\GeoIP.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Fake\Model\GoodData\Clients\Address\Client1\FakeClient1Address.cs" />
+    <Compile Include="Fake\Model\GoodData\Clients\Address\Client2\FakeClient2Address.cs" />
+    <Compile Include="Fake\Model\GoodData\Clients\Address\Client3\FakeClient3Address.cs" />
+    <Compile Include="Fake\Model\GoodData\Clients\Address\FakeClientAddress.cs" />
     <Compile Include="Fake\Model\GoodData\Cooker\Dishes\Cooker\DishOptions\FakeDishOptions.cs" />
     <Compile Include="Fake\Model\GoodData\Cooker\Dishes\Cooker\DishOptions\OptionChoices\Optional\FakeOptionalSideThreeOptionChoices.cs" />
     <Compile Include="Fake\Model\GoodData\Cooker\Dishes\Cooker\DishOptions\OptionChoices\Optional\FakeOptionalSideFourOptionChoices .cs" />
@@ -74,6 +78,7 @@
     <Compile Include="Fake\Model\GoodData\Cooker\Dishes\Cooker\FakeCooker1Dishes.cs" />
     <Compile Include="Fake\Model\GoodData\Cooker\Dishes\Cooker\FakeCooker2Dishes.cs" />
     <Compile Include="Fake\Model\GoodData\Cooker\Dishes\Cooker\FakeCooker3Dishes.cs" />
+    <Compile Include="Fake\Model\GoodData\Clients\FakeClients.cs" />
     <Compile Include="Fake\Model\GoodData\Orders\Clients\Client2\FakeClient2Order.cs" />
     <Compile Include="Fake\Model\GoodData\Orders\Clients\Client3\FakeClient3Order.cs" />
     <Compile Include="Fake\Model\GoodData\Orders\Clients\FakeOrderItems.cs" />
@@ -111,13 +116,12 @@
     <Compile Include="Fake\Model\FakeInvoices.cs" />
     <Compile Include="Fake\Model\GoodData\Serving\Measurement\FakeServingMeasurement.cs" />
     <Compile Include="Fake\Model\GoodData\Serving\Subscription\FakeMenuServings.cs" />
-    <Compile Include="Fake\Model\FakeOrders.cs" />
+    <Compile Include="Fake\Model\GoodData\Orders\FakeOrders.cs" />
     <Compile Include="Fake\Model\GoodData\Review\FakeReviews.cs" />
     <Compile Include="Fake\Model\FakeServingPricings.cs" />
     <Compile Include="Fake\Model\GoodData\User\FakeAddressTypes.cs" />
     <Compile Include="Fake\Model\GoodData\User\FakeUsers.cs" />
     <Compile Include="Fake\Model\GoodData\User\FakeUserTypes.cs" />
-    <Compile Include="Fake\Model\GoodData\Client\FakeClients.cs" />
     <Compile Include="Fake\Model\GoodData\Cooker\FakeCookers.cs" />
     <Compile Include="Data\Repo\Repository\CookerRepository.cs" />
     <Compile Include="Data\Repo\IRepository\ICookerRepository.cs" />
@@ -149,6 +153,7 @@
       <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">

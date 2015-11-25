@@ -36,7 +36,6 @@ namespace DAL.Fake.Model
 
         }
 
-
         //ALL 
         #region Client 1 Orders
 
@@ -82,17 +81,11 @@ namespace DAL.Fake.Model
         #endregion
 
 
-
-
-
-
         //$25.62
-//Delivery Fee:
-//$7.64
-//Sales Tax:
-//$3.33
-
-
+        //Delivery Fee:
+        //$7.64
+        //Sales Tax:
+        //$3.33
 
         ~FakeOrders()
         {

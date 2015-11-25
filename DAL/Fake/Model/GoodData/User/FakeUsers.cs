@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using DAL.Fake.Model.Util;
+using Model;
 
-namespace DAL.Fake.Model.GoodData.User
+
+namespace DAL.Fake.Model
 {
     public class FakeUsers
     {
-        public List<global::Model.User> MyUsers;
+        public List<User> MyUsers;
 
         public FakeUsers()
         {
@@ -14,7 +16,7 @@ namespace DAL.Fake.Model.GoodData.User
 
         public void InitializeUserList()
         {
-            MyUsers = new List<global::Model.User> {
+            MyUsers = new List<User> {
                 FirstUser(), 
                 SecondUser(),
                 ThirdUser(),
@@ -27,9 +29,9 @@ namespace DAL.Fake.Model.GoodData.User
         #region Cooker
 
         //Cooker 1
-        public global::Model.User FirstUser()
+        public User FirstUser()
         {
-            var firstUser = new global::Model.User
+            var firstUser = new User
             {
                 UserId = 1,
                 FirstName = "Jon",
@@ -50,9 +52,9 @@ namespace DAL.Fake.Model.GoodData.User
         }
 
         //Cooker 2
-        public global::Model.User SecondUser()
+        public User SecondUser()
         {
-            var secondUser = new global::Model.User
+            var secondUser = new User
             {
                 UserId = 2,
                 FirstName = "Mike",
@@ -73,9 +75,9 @@ namespace DAL.Fake.Model.GoodData.User
         }        
 
         //Cooker 3
-        public global::Model.User FifthUser()
+        public User FifthUser()
         {
-            var fifthUser = new global::Model.User
+            var fifthUser = new User
             {
                 UserId = 5,
                 FirstName = "Sara",
@@ -101,9 +103,9 @@ namespace DAL.Fake.Model.GoodData.User
         #region Client
 
         //Client 1
-        public global::Model.User ThirdUser()
+        public User ThirdUser()
         {
-            var thirdUser = new global::Model.User
+            var thirdUser = new User
             {
                 UserId = 3,
                 FirstName = "Robert",
@@ -125,9 +127,9 @@ namespace DAL.Fake.Model.GoodData.User
         }
 
         //Client 2
-        public global::Model.User FourthUser()
+        public User FourthUser()
         {
-            var fourthUser = new global::Model.User
+            var fourthUser = new User
             {
                 UserId = 4,
                 FirstName = "Robert",
@@ -148,9 +150,9 @@ namespace DAL.Fake.Model.GoodData.User
         }
 
         //Client 3
-        public global::Model.User SixthUser()
+        public User SixthUser()
         {
-            var sixthUser = new global::Model.User
+            var sixthUser = new User
             {
                 UserId = 6,
                 FirstName = "Robert",

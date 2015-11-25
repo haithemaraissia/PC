@@ -36,7 +36,8 @@ namespace DAL.Fake.Model.GoodData.Cooker
                 TotalRaters = 12,
                 OfferDelivery = true,
                 OfferPickUp = true,
-                TaxPercent = (decimal?) 8.15
+                TaxPercent = (decimal?) 8.15,
+                AmountforFreeDelivery = (decimal?) 50.00
 
             };
             return firstCooker;
@@ -75,9 +76,10 @@ namespace DAL.Fake.Model.GoodData.Cooker
                 Bio = "Sara's Home Food is the best home made food in the usa",
                 Rating = 3,
                 TotalRaters = 18,
-                OfferDelivery = false,
+                OfferDelivery = true,
                 OfferPickUp = false,
-                TaxPercent = (decimal?) 8.88
+                TaxPercent = (decimal?) 8.88,
+                AmountforFreeDelivery = (decimal?)30.00
             };
             return thirdCooker;
         }

@@ -29,6 +29,7 @@ namespace DAL.Fake.Model.GoodData.DeliveryZones
                 DeliveryId = 1,
                 DeliveryName = "Region A",
                 MinimumOrder = (decimal) 15.00,
+                DeliveryFees = (decimal) 10.00,
                 CurrencyId = 1
             };
             return firstDeliveryZone;
@@ -41,6 +42,7 @@ namespace DAL.Fake.Model.GoodData.DeliveryZones
                 DeliveryId = 2,
                 DeliveryName = "Region B",
                 MinimumOrder = (decimal)10.00,
+                DeliveryFees = (decimal)7.00,
                 CurrencyId = 1
             };
             return secondDeliveryZone;
@@ -53,6 +55,7 @@ namespace DAL.Fake.Model.GoodData.DeliveryZones
                 DeliveryId = 3,
                 DeliveryName = "Region 1",
                 MinimumOrder = (decimal)20.00,
+                DeliveryFees = (decimal)9.00,
                 CurrencyId = 1
             };
             return thirdDeliveryZone;
@@ -66,6 +69,7 @@ namespace DAL.Fake.Model.GoodData.DeliveryZones
                 DeliveryId = 4,
                 DeliveryName = "Region 2",
                 MinimumOrder = (decimal)9.99,
+                DeliveryFees = (decimal)5.00,
                 CurrencyId = 1
             };
             return fourthDeliveryZone;

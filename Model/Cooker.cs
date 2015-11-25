@@ -26,5 +26,6 @@ namespace Model
         public bool OfferDelivery { get; set; }
         public bool OfferPickUp { get; set; }
         public Nullable<decimal> TaxPercent { get; set; }
+        public Nullable<decimal> AmountforFreeDelivery { get; set; }
     }
 }

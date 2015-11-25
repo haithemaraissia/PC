@@ -18,5 +18,6 @@ namespace Model
         public string DeliveryName { get; set; }
         public decimal MinimumOrder { get; set; }
         public int CurrencyId { get; set; }
+        public decimal DeliveryFees { get; set; }
     }
 }

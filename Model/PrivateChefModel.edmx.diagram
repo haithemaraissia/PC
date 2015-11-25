@@ -53,6 +53,7 @@
         <EntityTypeShape EntityType="PrivateChefModel.CookerPaymentMethod" Width="1.5" PointX="19.375" PointY="4.75" />
         <AssociationConnector Association="PrivateChefModel.OrderItemOrderItemDishOption" />
         <AssociationConnector Association="PrivateChefModel.OrderOrderItem" />
+        <EntityTypeShape EntityType="PrivateChefModel.ClientAddress" Width="1.5" PointX="7.375" PointY="18.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

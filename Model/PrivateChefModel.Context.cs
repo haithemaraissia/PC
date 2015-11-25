@@ -71,5 +71,6 @@ namespace Model
         public virtual DbSet<OrderItemDishOption> OrderItemDishOptions { get; set; }
         public virtual DbSet<CookerDeliveryZone> CookerDeliveryZones { get; set; }
         public virtual DbSet<CookerPaymentMethod> CookerPaymentMethods { get; set; }
+        public virtual DbSet<ClientAddress> ClientAddresses { get; set; }
     }
 }

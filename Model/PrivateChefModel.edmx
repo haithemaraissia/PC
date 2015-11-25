@@ -12,6 +12,34 @@
           <Property Name="AddressTypeId" Type="int" Nullable="false" />
           <Property Name="AddressTypeValue" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ClientAddress">
+          <Key>
+            <PropertyRef Name="AddressId" />
+            <PropertyRef Name="ClientId" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="Apt/suite" />
+            <PropertyRef Name="CityId" />
+            <PropertyRef Name="RegionId" />
+            <PropertyRef Name="CountryId" />
+            <PropertyRef Name="ZipCode" />
+            <PropertyRef Name="Instructions" />
+            <PropertyRef Name="AddressTypeId" />
+          </Key>
+          <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Apt/suite" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="RegionId" Type="int" Nullable="false" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="Cross Stree" Type="nvarchar" MaxLength="100" />
+          <Property Name="Instructions" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="AddressTypeId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Clients">
           <Key>
             <PropertyRef Name="ClientId" />
@@ -141,6 +169,7 @@
           <Property Name="OfferDelivery" Type="bit" Nullable="false" />
           <Property Name="OfferPickUp" Type="bit" Nullable="false" />
           <Property Name="TaxPercent" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AmountforFreeDelivery" Type="money" />
         </EntityType>
         <EntityType Name="CookerSpokenLanguage">
           <Key>
@@ -183,6 +212,7 @@
           <Property Name="DeliveryId" Type="int" Nullable="false" />
           <Property Name="DeliveryName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MinimumOrder" Type="money" Nullable="false" />
+          <Property Name="DeliveryFees" Type="money" Nullable="false" />
           <Property Name="CurrencyId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Dishes">
@@ -500,6 +530,22 @@
           <EntitySet Name="ServingPricings" EntityType="Self.ServingPricings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserTypes" EntityType="Self.UserTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientAddress" EntityType="Self.ClientAddress" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ClientAddress].[AddressId] AS [AddressId], 
+    [ClientAddress].[ClientId] AS [ClientId], 
+    [ClientAddress].[Address] AS [Address], 
+    [ClientAddress].[Apt/suite] AS [Apt/suite], 
+    [ClientAddress].[CityId] AS [CityId], 
+    [ClientAddress].[RegionId] AS [RegionId], 
+    [ClientAddress].[CountryId] AS [CountryId], 
+    [ClientAddress].[ZipCode] AS [ZipCode], 
+    [ClientAddress].[PhoneNumber] AS [PhoneNumber], 
+    [ClientAddress].[Cross Stree] AS [Cross Stree], 
+    [ClientAddress].[Instructions] AS [Instructions], 
+    [ClientAddress].[AddressTypeId] AS [AddressTypeId]
+    FROM [dbo].[ClientAddress] AS [ClientAddress]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -560,6 +606,7 @@
             <End Role="Order" EntitySet="Orders" />
             <End Role="OrderItem" EntitySet="OrderItems" />
           </AssociationSet>
+          <EntitySet Name="ClientAddresses" EntityType="PrivateChefModel.ClientAddress" />
         </EntityContainer>
         <EntityType Name="Client">
           <Key>
@@ -674,6 +721,7 @@
           <Property Name="OfferDelivery" Type="Boolean" Nullable="false" />
           <Property Name="OfferPickUp" Type="Boolean" Nullable="false" />
           <Property Name="TaxPercent" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AmountforFreeDelivery" Type="Decimal" Precision="19" Scale="4" />
         </EntityType>
         <EntityType Name="CookerSpokenLanguage">
           <Key>
@@ -717,6 +765,7 @@
           <Property Name="DeliveryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MinimumOrder" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryFees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
         </EntityType>
         <EntityType Name="Dish">
           <Key>
@@ -1037,6 +1086,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ClientAddress">
+          <Key>
+            <PropertyRef Name="AddressId" />
+            <PropertyRef Name="ClientId" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="Apt_suite" />
+            <PropertyRef Name="CityId" />
+            <PropertyRef Name="RegionId" />
+            <PropertyRef Name="CountryId" />
+            <PropertyRef Name="ZipCode" />
+            <PropertyRef Name="Instructions" />
+            <PropertyRef Name="AddressTypeId" />
+          </Key>
+          <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Apt_suite" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="RegionId" Type="Int32" Nullable="false" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Cross_Stree" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Instructions" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="AddressTypeId" Type="Int32" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1153,6 +1228,7 @@
           <EntitySetMapping Name="Cookers">
             <EntityTypeMapping TypeName="PrivateChefModel.Cooker">
               <MappingFragment StoreEntitySet="Cookers">
+                <ScalarProperty Name="AmountforFreeDelivery" ColumnName="AmountforFreeDelivery" />
                 <ScalarProperty Name="TaxPercent" ColumnName="TaxPercent" />
                 <ScalarProperty Name="OfferPickUp" ColumnName="OfferPickUp" />
                 <ScalarProperty Name="OfferDelivery" ColumnName="OfferDelivery" />
@@ -1209,6 +1285,7 @@
           <EntitySetMapping Name="DeliveryZones">
             <EntityTypeMapping TypeName="PrivateChefModel.DeliveryZone">
               <MappingFragment StoreEntitySet="DeliveryZones">
+                <ScalarProperty Name="DeliveryFees" ColumnName="DeliveryFees" />
                 <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
                 <ScalarProperty Name="MinimumOrder" ColumnName="MinimumOrder" />
                 <ScalarProperty Name="DeliveryName" ColumnName="DeliveryName" />
@@ -1534,6 +1611,24 @@
                 <ScalarProperty Name="CookerId" ColumnName="CookerId" />
                 <ScalarProperty Name="PaymentMethodId" ColumnName="PaymentMethodId" />
                 <ScalarProperty Name="CookerPaymentMethodId" ColumnName="CookerPaymentMethodId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientAddresses">
+            <EntityTypeMapping TypeName="PrivateChefModel.ClientAddress">
+              <MappingFragment StoreEntitySet="ClientAddress">
+                <ScalarProperty Name="AddressTypeId" ColumnName="AddressTypeId" />
+                <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+                <ScalarProperty Name="Cross_Stree" ColumnName="Cross Stree" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Apt_suite" ColumnName="Apt/suite" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

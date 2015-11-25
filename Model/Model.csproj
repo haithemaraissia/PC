@@ -56,6 +56,9 @@
     <Compile Include="Client.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ClientAddress.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ClientSubscription.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
@@ -119,6 +122,7 @@
     <Compile Include="FeedBack.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Helper\OrderChargeModel.cs" />
     <Compile Include="Invoice.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
