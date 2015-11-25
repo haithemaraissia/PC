@@ -4,11 +4,11 @@ using Model;
 
 namespace DAL.Fake.Model
 {
-    public class FakeInvoices
+    public class FakeClientInvoices
     {
         public List<Invoice> MyInvoices;
 
-        public FakeInvoices()
+        public FakeClientInvoices()
         {
             InitializeInvoicesList();
         }
@@ -28,7 +28,8 @@ namespace DAL.Fake.Model
             {
                 InvoiceId = 1,
                 OrderId = 1,
-                Date = DateTime.Today
+                Date = DateTime.Today,
+
             };
             return firstInvoice;
         }
@@ -55,7 +56,7 @@ namespace DAL.Fake.Model
             return thirdInvoice;
         }
 
-        ~FakeInvoices()
+        ~FakeClientInvoices()
         {
             MyInvoices = null;
         }

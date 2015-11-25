@@ -79,6 +79,9 @@
     <Compile Include="Fake\Model\GoodData\Cooker\Dishes\Cooker\FakeCooker2Dishes.cs" />
     <Compile Include="Fake\Model\GoodData\Cooker\Dishes\Cooker\FakeCooker3Dishes.cs" />
     <Compile Include="Fake\Model\GoodData\Clients\FakeClients.cs" />
+    <Compile Include="Fake\Model\GoodData\Invoices\Client\Client1\FakeClientInvoices.cs" />
+    <Compile Include="Fake\Model\GoodData\Invoices\Client\Client2\FakeClientInvoices.cs" />
+    <Compile Include="Fake\Model\GoodData\Invoices\Client\Client3\FakeClientInvoices.cs" />
     <Compile Include="Fake\Model\GoodData\Orders\Clients\Client2\FakeClient2Order.cs" />
     <Compile Include="Fake\Model\GoodData\Orders\Clients\Client3\FakeClient3Order.cs" />
     <Compile Include="Fake\Model\GoodData\Orders\Clients\FakeOrderItems.cs" />
@@ -113,7 +116,7 @@
     <Compile Include="Fake\Model\GoodData\Cooker\Dishes\FakeDishes.cs" />
     <Compile Include="Fake\Model\GoodData\Cuisine\FakeCuisineTypes.cs" />
     <Compile Include="Fake\Model\GoodData\Currency\FakeCurrencies.cs" />
-    <Compile Include="Fake\Model\FakeInvoices.cs" />
+    <Compile Include="Fake\Model\GoodData\Invoices\Client\FakeClientInvoices.cs" />
     <Compile Include="Fake\Model\GoodData\Serving\Measurement\FakeServingMeasurement.cs" />
     <Compile Include="Fake\Model\GoodData\Serving\Subscription\FakeMenuServings.cs" />
     <Compile Include="Fake\Model\GoodData\Orders\FakeOrders.cs" />

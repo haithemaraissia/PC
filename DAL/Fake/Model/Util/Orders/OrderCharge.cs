@@ -83,7 +83,7 @@ namespace DAL.Fake.Model.Util.Orders
                 deliveryFee = 0,
                 salesTaxes = (decimal) (order.SubTotal * taxPercent),
                 Subtotal = order.SubTotal,
-                totalCharges = ((decimal) (order.SubTotal * taxPercent)+ order.SubTotal)
+                totalCharges = ((decimal) (order.SubTotal * taxPercent)+ order.SubTotal )
             };
         }
 

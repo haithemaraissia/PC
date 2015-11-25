@@ -47,8 +47,9 @@ namespace DAL.Fake.Model.GoodData.Orders.Clients.Client1
                 DeliveryDate = null,
                 OrderTypeId = (int)Util.OrderType.Values.PickUp,
                 PaymentMethodId = (int)PaymentMethodType.Values.CardOnLine,
-                PromotionId = null,
-                CouponId = null,
+
+
+
                 PlanId = null,
                 SubTotal = (decimal)37.14
             };
