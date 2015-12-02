@@ -101,6 +101,9 @@
     <Compile Include="Coupon.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CouponType.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="CuisineType.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
@@ -139,6 +142,9 @@
     <Compile Include="Order.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="OrderHistroy.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="OrderItem.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
@@ -173,6 +179,9 @@
       <DependentUpon>PrivateChefModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Promotion.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PromotionType.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

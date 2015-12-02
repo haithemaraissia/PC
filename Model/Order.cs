@@ -30,6 +30,7 @@ namespace Model
         public Nullable<int> CouponId { get; set; }
         public Nullable<int> PlanId { get; set; }
         public decimal SubTotal { get; set; }
+        public int CurrencyId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderItem> OrderItems { get; set; }

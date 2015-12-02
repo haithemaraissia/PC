@@ -28,7 +28,6 @@
         <EntityTypeShape EntityType="PrivateChefModel.MenuSection" Width="1.5" PointX="12.75" PointY="0.75" />
         <EntityTypeShape EntityType="PrivateChefModel.MenuServing" Width="1.5" PointX="12.75" PointY="3.75" />
         <EntityTypeShape EntityType="PrivateChefModel.PaymentMethod" Width="1.5" PointX="2.75" PointY="13.75" />
-        <EntityTypeShape EntityType="PrivateChefModel.Payment" Width="1.5" PointX="4.75" PointY="13.75" />
         <EntityTypeShape EntityType="PrivateChefModel.Plan" Width="1.5" PointX="12.75" PointY="13.75" />
         <EntityTypeShape EntityType="PrivateChefModel.Promotion" Width="1.5" PointX="14.75" PointY="0.75" />
         <EntityTypeShape EntityType="PrivateChefModel.Rating" Width="1.5" PointX="14.75" PointY="3.75" />
@@ -54,6 +53,10 @@
         <AssociationConnector Association="PrivateChefModel.OrderItemOrderItemDishOption" />
         <AssociationConnector Association="PrivateChefModel.OrderOrderItem" />
         <EntityTypeShape EntityType="PrivateChefModel.ClientAddress" Width="1.5" PointX="7.375" PointY="18.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.CouponType" Width="1.5" PointX="17.375" PointY="7.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.PromotionType" Width="1.5" PointX="19.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.OrderHistroy" Width="1.5" PointX="19.375" PointY="7.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.Payment" Width="1.5" PointX="19.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

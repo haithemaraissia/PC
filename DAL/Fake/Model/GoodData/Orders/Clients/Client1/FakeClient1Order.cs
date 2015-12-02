@@ -37,7 +37,7 @@ namespace DAL.Fake.Model.GoodData.Orders.Clients.Client1
         //Dish2 (7.99)
         //OrderItemDishOptionId 3 + 8.97
 
-        private Order FirstOrder()
+        public Order FirstOrder()
         {
             var firstOrder = new Order
             {
@@ -47,10 +47,10 @@ namespace DAL.Fake.Model.GoodData.Orders.Clients.Client1
                 DeliveryDate = null,
                 OrderTypeId = (int)Util.OrderType.Values.PickUp,
                 PaymentMethodId = (int)PaymentMethodType.Values.CardOnLine,
-
-
-
+                CouponId = null,
+                PromotionId = null,
                 PlanId = null,
+                CurrencyId = (int)CurrencyType.Values.Usd,
                 SubTotal = (decimal)37.14
             };
             firstOrder.OrderItems.Add(new FakeOrderItems().GetClient1FirstOrderFirstOrderItem());

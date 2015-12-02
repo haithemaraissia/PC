@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using DAL.Fake.Model.GoodData.Orders.Clients.Client1;
+using DAL.Fake.Model.GoodData.Orders.Clients.Client2;
+using DAL.Fake.Model.GoodData.Orders.Clients.Client3;
 using Model;
 
 namespace DAL.Fake.Model
@@ -15,46 +18,25 @@ namespace DAL.Fake.Model
 
         public void InitializeInvoicesList()
         {
-            MyInvoices = new List<Invoice> {
-                FirstInvoice(), 
-                SecondInvoice(),
-                ThirdInvoices()
-            };
-        }
-
-        public Invoice FirstInvoice()
-        {
-            var firstInvoice = new Invoice
+            MyInvoices = new List<Invoice>();
+            var client1Invoices = new FakeClient1Invoices().MyInvoices;
+            foreach (var invoice in client1Invoices)
             {
-                InvoiceId = 1,
-                OrderId = 1,
-                Date = DateTime.Today,
-
-            };
-            return firstInvoice;
-        }
-
-        public Invoice SecondInvoice()
-        {
-            var secondInvoice = new Invoice
+                MyInvoices.Add(invoice);
+            }
+            var client2Invoices = new FakeClient2Invoices().MyInvoices;
+            foreach (var invoice in client2Invoices)
             {
-                InvoiceId = 2,
-                OrderId = 2,
-                Date = DateTime.Today
-            };
-            return secondInvoice;
+                MyInvoices.Add(invoice);
+            }
+            var client3Invoices = new FakeClient3Invoices().MyInvoices;
+            foreach (var invoice in client3Invoices)
+            {
+                MyInvoices.Add(invoice);
+            }
+
         }
 
-        public Invoice ThirdInvoices()
-        {
-            var thirdInvoice = new Invoice
-            {
-                InvoiceId = 3,
-                OrderId = 3,
-                Date = DateTime.Today
-            };
-            return thirdInvoice;
-        }
 
         ~FakeClientInvoices()
         {

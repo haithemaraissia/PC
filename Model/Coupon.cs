@@ -21,5 +21,6 @@ namespace Model
         public decimal Price { get; set; }
         public string Photo { get; set; }
         public int CurrencyId { get; set; }
+        public int CouponTypeId { get; set; }
     }
 }

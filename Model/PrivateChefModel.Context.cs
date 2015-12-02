@@ -48,7 +48,6 @@ namespace Model
         public virtual DbSet<MenuSection> MenuSections { get; set; }
         public virtual DbSet<MenuServing> MenuServings { get; set; }
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
-        public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<Plan> Plans { get; set; }
         public virtual DbSet<Promotion> Promotions { get; set; }
         public virtual DbSet<Rating> Ratings { get; set; }
@@ -72,5 +71,9 @@ namespace Model
         public virtual DbSet<CookerDeliveryZone> CookerDeliveryZones { get; set; }
         public virtual DbSet<CookerPaymentMethod> CookerPaymentMethods { get; set; }
         public virtual DbSet<ClientAddress> ClientAddresses { get; set; }
+        public virtual DbSet<CouponType> CouponTypes { get; set; }
+        public virtual DbSet<PromotionType> PromotionTypes { get; set; }
+        public virtual DbSet<OrderHistroy> OrderHistroys { get; set; }
+        public virtual DbSet<Payment> Payments { get; set; }
     }
 }

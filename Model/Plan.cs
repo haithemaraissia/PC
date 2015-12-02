@@ -17,5 +17,6 @@ namespace Model
         public int PlanId { get; set; }
         public string ExternalId { get; set; }
         public string Description { get; set; }
+        public string Title { get; set; }
     }
 }

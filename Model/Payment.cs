@@ -16,7 +16,11 @@ namespace Model
     {
         public int PaymentId { get; set; }
         public int InvoiceId { get; set; }
-        public string PaymentDate { get; set; }
-        public double Payement_Amount { get; set; }
+        public int OrderId { get; set; }
+        public int ClientId { get; set; }
+        public int CookerId { get; set; }
+        public string TransactionId { get; set; }
+        public System.DateTime PaymentDate { get; set; }
+        public decimal PaymentAmount { get; set; }
     }
 }

@@ -16,6 +16,23 @@ namespace Model
     {
         public int InvoiceId { get; set; }
         public int OrderId { get; set; }
-        public System.DateTime Date { get; set; }
+        public int ClientId { get; set; }
+        public int CookerId { get; set; }
+        public System.DateTime OrderDate { get; set; }
+        public Nullable<System.DateTime> DeliveryDate { get; set; }
+        public string OrderTypeValue { get; set; }
+        public string PaymentMethodValue { get; set; }
+        public string PromotionTitle { get; set; }
+        public Nullable<decimal> PromotionPrice { get; set; }
+        public Nullable<int> PromotionCurrencyId { get; set; }
+        public string CouponTitle { get; set; }
+        public Nullable<decimal> CouponPrice { get; set; }
+        public Nullable<int> CouponCurrencyId { get; set; }
+        public string PlanTitle { get; set; }
+        public Nullable<decimal> SalesTax { get; set; }
+        public Nullable<decimal> DeliveryFees { get; set; }
+        public decimal SubTotal { get; set; }
+        public decimal Total { get; set; }
+        public int CurrencyId { get; set; }
     }
 }

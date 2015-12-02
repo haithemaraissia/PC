@@ -21,5 +21,6 @@ namespace Model
         public int CurrencyId { get; set; }
         public string Photo { get; set; }
         public int ServingId { get; set; }
+        public int PromotionTypeId { get; set; }
     }
 }
