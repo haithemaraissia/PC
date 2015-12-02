@@ -4,3 +4,14 @@ Complete the refund process
 Complete the missing data
 
 Do the subscription model
+Client choose subscrption and pay it.
+Then , in his menu, he will have subscriptions tab
+	That will have all subscribtion and how many items left on each subscirption
+	A Link to to see history of item delivered ( with the option of confirm or not, review and rate)
+	Cancel subscription
+
+Cookers will offer subscription
+Inventory / Order to cook:
+	Order ID 	Type 
+Also list of all subscribers option
+ 
