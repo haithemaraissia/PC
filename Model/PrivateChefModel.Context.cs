@@ -29,7 +29,6 @@ namespace Model
         public virtual DbSet<ClientAddress> ClientAddresses { get; set; }
         public virtual DbSet<ClientFeedBack> ClientFeedBacks { get; set; }
         public virtual DbSet<ClientOrderReviewReceived> ClientOrderReviewReceiveds { get; set; }
-        public virtual DbSet<ClientOrderReviewSent> ClientOrderReviewSents { get; set; }
         public virtual DbSet<ClientOrderToReview> ClientOrderToReviews { get; set; }
         public virtual DbSet<ClientReviewScore> ClientReviewScores { get; set; }
         public virtual DbSet<Client> Clients { get; set; }
@@ -84,5 +83,7 @@ namespace Model
         public virtual DbSet<ServingPricing> ServingPricings { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
+        public virtual DbSet<ClientAddress1> ClientAddresses1 { get; set; }
+        public virtual DbSet<ClientOrderReviewSent> ClientOrderReviewSents { get; set; }
     }
 }

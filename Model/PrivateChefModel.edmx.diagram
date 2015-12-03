@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="PrivateChefModel.ClientAddress" Width="1.5" PointX="2.75" PointY="5.75" />
         <EntityTypeShape EntityType="PrivateChefModel.ClientFeedBack" Width="1.5" PointX="4.75" PointY="5.75" />
         <EntityTypeShape EntityType="PrivateChefModel.ClientOrderReviewReceived" Width="1.5" PointX="6.75" PointY="5.75" />
-        <EntityTypeShape EntityType="PrivateChefModel.ClientOrderReviewSent" Width="1.5" PointX="7.75" PointY="0.75" />
         <EntityTypeShape EntityType="PrivateChefModel.ClientOrderToReview" Width="1.5" PointX="8.75" PointY="5.75" />
         <EntityTypeShape EntityType="PrivateChefModel.ClientReviewScore" Width="1.5" PointX="9.75" PointY="0.75" />
         <EntityTypeShape EntityType="PrivateChefModel.Client" Width="1.5" PointX="0.75" PointY="10.75" />
@@ -66,6 +65,8 @@
         <EntityTypeShape EntityType="PrivateChefModel.UserType" Width="1.5" PointX="20.75" PointY="20.75" />
         <AssociationConnector Association="PrivateChefModel.FK_OrderItemOrderItemDishOption" />
         <AssociationConnector Association="PrivateChefModel.FK_OrderOrderItem" />
+        <EntityTypeShape EntityType="PrivateChefModel.ClientAddress1" Width="1.5" PointX="11.375" PointY="21.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.ClientOrderReviewSent" Width="1.5" PointX="13.375" PointY="21.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

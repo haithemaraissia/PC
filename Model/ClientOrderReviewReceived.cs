@@ -27,6 +27,5 @@ namespace Model
         public string Comment { get; set; }
         public string Photo { get; set; }
         public System.DateTime OrderDate { get; set; }
-        public List<OrderItem> OrderItems { get; set; }
     }
 }
