@@ -12,12 +12,13 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Rating
+    public partial class ClientFeedBack
     {
-        public int RatingId { get; set; }
-        public int ItemAccuracy { get; set; }
-        public int Communication { get; set; }
-        public int DeliveryTime { get; set; }
-        public int Overall { get; set; }
+        public int ClientFeedBackId { get; set; }
+        public int ClientId { get; set; }
+        public string ClientName { get; set; }
+        public int TransactionsCount { get; set; }
+        public int ReviewScore { get; set; }
+        public decimal PositiveReview { get; set; }
     }
 }

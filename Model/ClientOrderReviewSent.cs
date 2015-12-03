@@ -12,21 +12,21 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class OrderToReview
+    public partial class ClientOrderReviewSent
     {
-        public int ReviewId { get; set; }
+        public int ClientOrderReviewSentId { get; set; }
+        public int ClientId { get; set; }
         public int CookerId { get; set; }
         public int MenuId { get; set; }
-        public string Comment { get; set; }
         public int OrderId { get; set; }
-        public int ClientId { get; set; }
-        public int UserTypeId { get; set; }
-        public string PhotoFeedBack { get; set; }
-        public int RatingId { get; set; }
-        public int OverallRatingId { get; set; }
-        public int ItemAccuracyRatingId { get; set; }
-        public int CommunicationRatingId { get; set; }
-        public int DeliveryTimeRatingId { get; set; }
-        public int OverallFeedBackRatingId { get; set; }
+        public int OverallRating { get; set; }
+        public int ItemAccuracyRating { get; set; }
+        public int CommunicationRating { get; set; }
+        public int DeliveryTimeRating { get; set; }
+        public int OverallFeedBackRating { get; set; }
+        public string Comment { get; set; }
+        public string Photo { get; set; }
+        public System.DateTime OrderDate { get; set; }
+        public string Property1 { get; set; }
     }
 }

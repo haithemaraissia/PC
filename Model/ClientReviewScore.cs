@@ -12,12 +12,13 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class FeedBack
+    public partial class ClientReviewScore
     {
-        public int FeedbackId { get; set; }
-        public int OrderId { get; set; }
-        public int RatingCodeId { get; set; }
-        public System.DateTime FeedBackDateTime { get; set; }
-        public int ReviewId { get; set; }
+        public int ClientReviewScoreId { get; set; }
+        public int ClientId { get; set; }
+        public int PositiveReview { get; set; }
+        public int NegativeReview { get; set; }
+        public int NeutralReview { get; set; }
+        public System.DateTime OrderDate { get; set; }
     }
 }

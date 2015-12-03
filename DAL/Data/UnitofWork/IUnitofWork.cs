@@ -127,15 +127,9 @@ namespace DAL.Data.UnitofWork
         }
         #endregion
 
-        #region ReviewsRepository
 
-        private IGenericRepository<Review> _reviewsRepository;
-        public IGenericRepository<Review> ReviewRepository
-        {
-            get { return _reviewsRepository ?? (_reviewsRepository = new GenericRepository<Review>(_context)); }
-            set { _reviewsRepository = value; }
-        }
-        #endregion
+
+
 
         #region ServingPricingsRepository
 
