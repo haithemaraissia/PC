@@ -56,7 +56,6 @@ namespace Model
         public virtual DbSet<Refund> Refunds { get; set; }
         public virtual DbSet<RefundStatu> RefundStatus { get; set; }
         public virtual DbSet<RefundType> RefundTypes { get; set; }
-        public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<ServingPricing> ServingPricings { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
@@ -75,5 +74,6 @@ namespace Model
         public virtual DbSet<PromotionType> PromotionTypes { get; set; }
         public virtual DbSet<OrderHistroy> OrderHistroys { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
+        public virtual DbSet<OrderToReview> OrderToReviews { get; set; }
     }
 }

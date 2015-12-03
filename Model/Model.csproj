@@ -151,6 +151,9 @@
     <Compile Include="OrderItemDishOption.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="OrderToReview.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="OrderType.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
@@ -201,9 +204,6 @@
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
     <Compile Include="RefundType.cs">
-      <DependentUpon>PrivateChefModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Review.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ServingMeasurement.cs">

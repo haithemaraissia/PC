@@ -36,7 +36,6 @@
         <EntityTypeShape EntityType="PrivateChefModel.Refund" Width="1.5" PointX="8.75" PointY="14.75" />
         <EntityTypeShape EntityType="PrivateChefModel.RefundStatu" Width="1.5" PointX="14.75" PointY="9.75" />
         <EntityTypeShape EntityType="PrivateChefModel.RefundType" Width="1.5" PointX="14.75" PointY="12.75" />
-        <EntityTypeShape EntityType="PrivateChefModel.Review" Width="1.5" PointX="14.75" PointY="15.75" />
         <EntityTypeShape EntityType="PrivateChefModel.ServingPricing" Width="1.5" PointX="16.75" PointY="0.75" />
         <EntityTypeShape EntityType="PrivateChefModel.User" Width="1.5" PointX="0.75" PointY="16.75" />
         <EntityTypeShape EntityType="PrivateChefModel.UserType" Width="1.5" PointX="2.75" PointY="16.75" />
@@ -57,6 +56,7 @@
         <EntityTypeShape EntityType="PrivateChefModel.PromotionType" Width="1.5" PointX="19.375" PointY="0.75" />
         <EntityTypeShape EntityType="PrivateChefModel.OrderHistroy" Width="1.5" PointX="19.375" PointY="7.75" />
         <EntityTypeShape EntityType="PrivateChefModel.Payment" Width="1.5" PointX="19.375" PointY="13.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.OrderToReview" Width="1.5" PointX="13.375" PointY="16.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

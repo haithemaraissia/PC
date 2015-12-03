@@ -12,7 +12,7 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Review
+    public partial class OrderToReview
     {
         public int ReviewId { get; set; }
         public int CookerId { get; set; }
@@ -21,7 +21,12 @@ namespace Model
         public int OrderId { get; set; }
         public int ClientId { get; set; }
         public int UserTypeId { get; set; }
-        public string Photo { get; set; }
+        public string PhotoFeedBack { get; set; }
         public int RatingId { get; set; }
+        public int OverallRatingId { get; set; }
+        public int ItemAccuracyRatingId { get; set; }
+        public int CommunicationRatingId { get; set; }
+        public int DeliveryTimeRatingId { get; set; }
+        public int OverallFeedBackRatingId { get; set; }
     }
 }

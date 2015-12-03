@@ -381,6 +381,25 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="CurrencyId" Type="int" Nullable="false" />
           <Property Name="SubTotal" Type="smallmoney" Nullable="false" />
         </EntityType>
+        <EntityType Name="OrderToReview">
+          <Key>
+            <PropertyRef Name="ReviewId" />
+          </Key>
+          <Property Name="ReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CookerId" Type="int" Nullable="false" />
+          <Property Name="MenuId" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="text" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="PhotoFeedBack" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="RatingId" Type="int" Nullable="false" />
+          <Property Name="OverallRatingId" Type="int" Nullable="false" />
+          <Property Name="ItemAccuracyRatingId" Type="int" Nullable="false" />
+          <Property Name="CommunicationRatingId" Type="int" Nullable="false" />
+          <Property Name="DeliveryTimeRatingId" Type="int" Nullable="false" />
+          <Property Name="OverallFeedBackRatingId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="OrderType">
           <Key>
             <PropertyRef Name="OrderTypeId" />
@@ -489,20 +508,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="RefundTyped" Type="int" Nullable="false" />
           <Property Name="RefundTypedValue" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <EntityType Name="Reviews">
-          <Key>
-            <PropertyRef Name="ReviewId" />
-          </Key>
-          <Property Name="ReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CookerId" Type="int" Nullable="false" />
-          <Property Name="MenuId" Type="int" Nullable="false" />
-          <Property Name="Comment" Type="text" Nullable="false" />
-          <Property Name="OrderId" Type="int" Nullable="false" />
-          <Property Name="ClientId" Type="int" Nullable="false" />
-          <Property Name="UserTypeId" Type="int" Nullable="false" />
-          <Property Name="Photo" Type="nvarchar" MaxLength="300" Nullable="false" />
-          <Property Name="RatingId" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="ServingMeasurements">
           <Key>
             <PropertyRef Name="ServingId" />
@@ -578,6 +583,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderItemDishOptions" EntityType="Self.OrderItemDishOptions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderToReview" EntityType="Self.OrderToReview" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderType" EntityType="Self.OrderType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethods" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
@@ -590,7 +596,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="Refunds" EntityType="Self.Refunds" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RefundStatus" EntityType="Self.RefundStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RefundType" EntityType="Self.RefundType" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServingMeasurements" EntityType="Self.ServingMeasurements" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServingPricings" EntityType="Self.ServingPricings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
@@ -648,7 +653,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="Refunds" EntityType="PrivateChefModel.Refund" />
           <EntitySet Name="RefundStatus" EntityType="PrivateChefModel.RefundStatu" />
           <EntitySet Name="RefundTypes" EntityType="PrivateChefModel.RefundType" />
-          <EntitySet Name="Reviews" EntityType="PrivateChefModel.Review" />
           <EntitySet Name="ServingPricings" EntityType="PrivateChefModel.ServingPricing" />
           <EntitySet Name="Users" EntityType="PrivateChefModel.User" />
           <EntitySet Name="UserTypes" EntityType="PrivateChefModel.UserType" />
@@ -675,6 +679,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="PromotionTypes" EntityType="PrivateChefModel.PromotionType" />
           <EntitySet Name="OrderHistroys" EntityType="PrivateChefModel.OrderHistroy" />
           <EntitySet Name="Payments" EntityType="PrivateChefModel.Payment" />
+          <EntitySet Name="OrderToReviews" EntityType="PrivateChefModel.OrderToReview" />
         </EntityContainer>
         <EntityType Name="Client">
           <Key>
@@ -990,20 +995,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="RefundTyped" Type="Int32" Nullable="false" />
           <Property Name="RefundTypedValue" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Review">
-          <Key>
-            <PropertyRef Name="ReviewId" />
-          </Key>
-          <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CookerId" Type="Int32" Nullable="false" />
-          <Property Name="MenuId" Type="Int32" Nullable="false" />
-          <Property Name="Comment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="OrderId" Type="Int32" Nullable="false" />
-          <Property Name="ClientId" Type="Int32" Nullable="false" />
-          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
-          <Property Name="Photo" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="RatingId" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="ServingPricing">
           <Key>
             <PropertyRef Name="ServingPricingId" />
@@ -1241,6 +1232,25 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="TransactionId" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PaymentAmount" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+        </EntityType>
+        <EntityType Name="OrderToReview">
+          <Key>
+            <PropertyRef Name="ReviewId" />
+          </Key>
+          <Property Name="ReviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+          <Property Name="MenuId" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="PhotoFeedBack" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="RatingId" Type="Int32" Nullable="false" />
+          <Property Name="OverallRatingId" Type="Int32" Nullable="false" />
+          <Property Name="ItemAccuracyRatingId" Type="Int32" Nullable="false" />
+          <Property Name="CommunicationRatingId" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryTimeRatingId" Type="Int32" Nullable="false" />
+          <Property Name="OverallFeedBackRatingId" Type="Int32" Nullable="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1593,21 +1603,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Reviews">
-            <EntityTypeMapping TypeName="PrivateChefModel.Review">
-              <MappingFragment StoreEntitySet="Reviews">
-                <ScalarProperty Name="RatingId" ColumnName="RatingId" />
-                <ScalarProperty Name="Photo" ColumnName="Photo" />
-                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
-                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
-                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
-                <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ServingPricings">
             <EntityTypeMapping TypeName="PrivateChefModel.ServingPricing">
               <MappingFragment StoreEntitySet="ServingPricings">
@@ -1824,6 +1819,26 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
                 <ScalarProperty Name="PaymentId" ColumnName="PaymentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderToReviews">
+            <EntityTypeMapping TypeName="PrivateChefModel.OrderToReview">
+              <MappingFragment StoreEntitySet="OrderToReview">
+                <ScalarProperty Name="OverallFeedBackRatingId" ColumnName="OverallFeedBackRatingId" />
+                <ScalarProperty Name="DeliveryTimeRatingId" ColumnName="DeliveryTimeRatingId" />
+                <ScalarProperty Name="CommunicationRatingId" ColumnName="CommunicationRatingId" />
+                <ScalarProperty Name="ItemAccuracyRatingId" ColumnName="ItemAccuracyRatingId" />
+                <ScalarProperty Name="OverallRatingId" ColumnName="OverallRatingId" />
+                <ScalarProperty Name="RatingId" ColumnName="RatingId" />
+                <ScalarProperty Name="PhotoFeedBack" ColumnName="PhotoFeedBack" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+                <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
