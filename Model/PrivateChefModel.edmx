@@ -450,6 +450,36 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="Price" Type="decimal" Precision="10" Scale="4" />
           <Property Name="CurrencyId" Type="int" />
         </EntityType>
+        <EntityType Name="DisputeReasons">
+          <Key>
+            <PropertyRef Name="DisputeReasonId" />
+          </Key>
+          <Property Name="DisputeReasonId" Type="int" Nullable="false" />
+          <Property Name="DisputeReasonValue" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Disputes">
+          <Key>
+            <PropertyRef Name="DisputeId" />
+          </Key>
+          <Property Name="DisputeId" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="OrderModelTypeId" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="CookerId" Type="int" Nullable="false" />
+          <Property Name="DisputeDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="DisputeAmount" Type="smallmoney" Nullable="false" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="ReasonId" Type="int" Nullable="false" />
+          <Property Name="EvidencePhoto" Type="nvarchar" MaxLength="300" />
+          <Property Name="Description" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="DisputeStatus">
+          <Key>
+            <PropertyRef Name="DisputeStatusId" />
+          </Key>
+          <Property Name="DisputeStatusId" Type="int" Nullable="false" />
+          <Property Name="DisputeStatusValue" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
         <EntityType Name="IndustryAverageRatings">
           <Key>
             <PropertyRef Name="IndustryAverageRatingId" />
@@ -557,6 +587,13 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="OrderId" Type="int" Nullable="false" />
           <Property Name="ClientOrderReviewSentClientOrderReviewSentId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="OrderModelType">
+          <Key>
+            <PropertyRef Name="OrderModelTypeId" />
+          </Key>
+          <Property Name="OrderModelTypeId" Type="int" Nullable="false" />
+          <Property Name="OrderModelTypeValue" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
         <EntityType Name="Orders">
           <Key>
             <PropertyRef Name="OrderId" />
@@ -636,40 +673,22 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="RatingCodeId" Type="int" Nullable="false" />
           <Property Name="RatingCodeValue" Type="nvarchar" MaxLength="20" />
         </EntityType>
-        <EntityType Name="RefundReasons">
-          <Key>
-            <PropertyRef Name="RefundReasonId" />
-          </Key>
-          <Property Name="RefundReasonId" Type="int" Nullable="false" />
-          <Property Name="RefundReasonValue" Type="nvarchar" MaxLength="20" Nullable="false" />
-        </EntityType>
         <EntityType Name="Refunds">
           <Key>
             <PropertyRef Name="RefundId" />
           </Key>
           <Property Name="RefundId" Type="int" Nullable="false" />
-          <Property Name="OrderDetailId" Type="int" Nullable="false" />
-          <Property Name="RefundTypeId" Type="int" Nullable="false" />
-          <Property Name="DisputeDate" Type="datetime" Nullable="false" />
-          <Property Name="RefundAmount" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="TransactionID" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="OrderModelTypeId" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="CookerId" Type="int" Nullable="false" />
+          <Property Name="RefundDate" Type="datetime" Nullable="false" />
+          <Property Name="RefundAmount" Type="smallmoney" Nullable="false" />
           <Property Name="StatusId" Type="int" Nullable="false" />
           <Property Name="ReasonId" Type="int" Nullable="false" />
-          <Property Name="Evidence" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="EvidencePhoto" Type="nvarchar" MaxLength="300" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="300" Nullable="false" />
-        </EntityType>
-        <EntityType Name="RefundStatus">
-          <Key>
-            <PropertyRef Name="RefundStatusId" />
-          </Key>
-          <Property Name="RefundStatusId" Type="int" Nullable="false" />
-          <Property Name="RefundStatusValue" Type="nvarchar" MaxLength="20" Nullable="false" />
-        </EntityType>
-        <EntityType Name="RefundTypes">
-          <Key>
-            <PropertyRef Name="RefundTyped" />
-          </Key>
-          <Property Name="RefundTyped" Type="int" Nullable="false" />
-          <Property Name="RefundTypedValue" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="ServingMeasurements">
           <Key>
@@ -773,6 +792,9 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="Dishes" EntityType="Self.Dishes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DishOptions" EntityType="Self.DishOptions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DishOptionsChoices" EntityType="Self.DishOptionsChoices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DisputeReasons" EntityType="Self.DisputeReasons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Disputes" EntityType="Self.Disputes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DisputeStatus" EntityType="Self.DisputeStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IndustryAverageRatings" EntityType="Self.IndustryAverageRatings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Invoices" EntityType="Self.Invoices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
@@ -781,6 +803,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="OrderHistroys" EntityType="Self.OrderHistroys" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderItemDishOptions" EntityType="Self.OrderItemDishOptions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderItems" EntityType="Self.OrderItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderModelType" EntityType="Self.OrderModelType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderTypes" EntityType="Self.OrderTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethods" Schema="dbo" store:Type="Tables" />
@@ -789,10 +812,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="Promotions" EntityType="Self.Promotions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PromotionTypes" EntityType="Self.PromotionTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RatingCodes" EntityType="Self.RatingCodes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RefundReasons" EntityType="Self.RefundReasons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Refunds" EntityType="Self.Refunds" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RefundStatus" EntityType="Self.RefundStatus" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RefundTypes" EntityType="Self.RefundTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServingMeasurements" EntityType="Self.ServingMeasurements" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServingPricings" EntityType="Self.ServingPricings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
@@ -877,10 +897,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="Promotions" EntityType="PrivateChefModel.Promotion" />
           <EntitySet Name="PromotionTypes" EntityType="PrivateChefModel.PromotionType" />
           <EntitySet Name="RatingCodes" EntityType="PrivateChefModel.RatingCode" />
-          <EntitySet Name="RefundReasons" EntityType="PrivateChefModel.RefundReason" />
-          <EntitySet Name="Refunds" EntityType="PrivateChefModel.Refund" />
-          <EntitySet Name="RefundStatus" EntityType="PrivateChefModel.RefundStatu" />
-          <EntitySet Name="RefundTypes" EntityType="PrivateChefModel.RefundType" />
           <EntitySet Name="ServingMeasurements" EntityType="PrivateChefModel.ServingMeasurement" />
           <EntitySet Name="ServingPricings" EntityType="PrivateChefModel.ServingPricing" />
           <EntitySet Name="Users" EntityType="PrivateChefModel.User" />
@@ -895,6 +911,11 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           </AssociationSet>
           <EntitySet Name="ClientAddresses1" EntityType="PrivateChefModel.ClientAddress1" />
           <EntitySet Name="ClientOrderReviewSents" EntityType="PrivateChefModel.ClientOrderReviewSent" />
+          <EntitySet Name="DisputeReasons" EntityType="PrivateChefModel.DisputeReason" />
+          <EntitySet Name="DisputeStatus" EntityType="PrivateChefModel.DisputeStatu" />
+          <EntitySet Name="OrderModelTypes" EntityType="PrivateChefModel.OrderModelType" />
+          <EntitySet Name="Disputes" EntityType="PrivateChefModel.Dispute" />
+          <EntitySet Name="Refunds" EntityType="PrivateChefModel.Refund" />
         </EntityContainer>
         <EntityType Name="AddressType">
           <Key>
@@ -1484,41 +1505,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="RatingCodeId" Type="Int32" Nullable="false" />
           <Property Name="RatingCodeValue" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="RefundReason">
-          <Key>
-            <PropertyRef Name="RefundReasonId" />
-          </Key>
-          <Property Name="RefundReasonId" Type="Int32" Nullable="false" />
-          <Property Name="RefundReasonValue" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Refund">
-          <Key>
-            <PropertyRef Name="RefundId" />
-          </Key>
-          <Property Name="RefundId" Type="Int32" Nullable="false" />
-          <Property Name="OrderDetailId" Type="Int32" Nullable="false" />
-          <Property Name="RefundTypeId" Type="Int32" Nullable="false" />
-          <Property Name="DisputeDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="RefundAmount" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="StatusId" Type="Int32" Nullable="false" />
-          <Property Name="ReasonId" Type="Int32" Nullable="false" />
-          <Property Name="Evidence" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="RefundStatu">
-          <Key>
-            <PropertyRef Name="RefundStatusId" />
-          </Key>
-          <Property Name="RefundStatusId" Type="Int32" Nullable="false" />
-          <Property Name="RefundStatusValue" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="RefundType">
-          <Key>
-            <PropertyRef Name="RefundTyped" />
-          </Key>
-          <Property Name="RefundTyped" Type="Int32" Nullable="false" />
-          <Property Name="RefundTypedValue" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="ServingMeasurement">
           <Key>
             <PropertyRef Name="ServingId" />
@@ -1629,6 +1615,60 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="Photo" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Property1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DisputeReason">
+          <Key>
+            <PropertyRef Name="DisputeReasonId" />
+          </Key>
+          <Property Name="DisputeReasonId" Type="Int32" Nullable="false" />
+          <Property Name="DisputeReasonValue" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DisputeStatu">
+          <Key>
+            <PropertyRef Name="DisputeStatusId" />
+          </Key>
+          <Property Name="DisputeStatusId" Type="Int32" Nullable="false" />
+          <Property Name="DisputeStatusValue" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="OrderModelType">
+          <Key>
+            <PropertyRef Name="OrderModelTypeId" />
+          </Key>
+          <Property Name="OrderModelTypeId" Type="Int32" Nullable="false" />
+          <Property Name="OrderModelTypeValue" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Dispute">
+          <Key>
+            <PropertyRef Name="DisputeId" />
+          </Key>
+          <Property Name="DisputeId" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="OrderModelTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+          <Property Name="DisputeDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DisputeAmount" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="ReasonId" Type="Int32" Nullable="false" />
+          <Property Name="EvidencePhoto" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Refund">
+          <Key>
+            <PropertyRef Name="RefundId" />
+          </Key>
+          <Property Name="RefundId" Type="Int32" Nullable="false" />
+          <Property Name="TransactionID" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="OrderModelTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+          <Property Name="RefundDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RefundAmount" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="ReasonId" Type="Int32" Nullable="false" />
+          <Property Name="EvidencePhoto" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2261,45 +2301,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RefundReasons">
-            <EntityTypeMapping TypeName="PrivateChefModel.RefundReason">
-              <MappingFragment StoreEntitySet="RefundReasons">
-                <ScalarProperty Name="RefundReasonValue" ColumnName="RefundReasonValue" />
-                <ScalarProperty Name="RefundReasonId" ColumnName="RefundReasonId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Refunds">
-            <EntityTypeMapping TypeName="PrivateChefModel.Refund">
-              <MappingFragment StoreEntitySet="Refunds">
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Evidence" ColumnName="Evidence" />
-                <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
-                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-                <ScalarProperty Name="RefundAmount" ColumnName="RefundAmount" />
-                <ScalarProperty Name="DisputeDate" ColumnName="DisputeDate" />
-                <ScalarProperty Name="RefundTypeId" ColumnName="RefundTypeId" />
-                <ScalarProperty Name="OrderDetailId" ColumnName="OrderDetailId" />
-                <ScalarProperty Name="RefundId" ColumnName="RefundId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RefundStatus">
-            <EntityTypeMapping TypeName="PrivateChefModel.RefundStatu">
-              <MappingFragment StoreEntitySet="RefundStatus">
-                <ScalarProperty Name="RefundStatusValue" ColumnName="RefundStatusValue" />
-                <ScalarProperty Name="RefundStatusId" ColumnName="RefundStatusId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RefundTypes">
-            <EntityTypeMapping TypeName="PrivateChefModel.RefundType">
-              <MappingFragment StoreEntitySet="RefundTypes">
-                <ScalarProperty Name="RefundTypedValue" ColumnName="RefundTypedValue" />
-                <ScalarProperty Name="RefundTyped" ColumnName="RefundTyped" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ServingMeasurements">
             <EntityTypeMapping TypeName="PrivateChefModel.ServingMeasurement">
               <MappingFragment StoreEntitySet="ServingMeasurements">
@@ -2381,6 +2382,65 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
                 <ScalarProperty Name="CookerId" ColumnName="CookerId" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
                 <ScalarProperty Name="ClientOrderReviewSentId" ColumnName="ClientOrderReviewSentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DisputeReasons">
+            <EntityTypeMapping TypeName="PrivateChefModel.DisputeReason">
+              <MappingFragment StoreEntitySet="DisputeReasons">
+              <ScalarProperty Name="DisputeReasonValue" ColumnName="DisputeReasonValue" />
+                <ScalarProperty Name="DisputeReasonId" ColumnName="DisputeReasonId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DisputeStatus">
+            <EntityTypeMapping TypeName="PrivateChefModel.DisputeStatu">
+              <MappingFragment StoreEntitySet="DisputeStatus">
+                <ScalarProperty Name="DisputeStatusValue" ColumnName="DisputeStatusValue" />
+                <ScalarProperty Name="DisputeStatusId" ColumnName="DisputeStatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderModelTypes">
+            <EntityTypeMapping TypeName="PrivateChefModel.OrderModelType">
+              <MappingFragment StoreEntitySet="OrderModelType">
+                <ScalarProperty Name="OrderModelTypeValue" ColumnName="OrderModelTypeValue" />
+                <ScalarProperty Name="OrderModelTypeId" ColumnName="OrderModelTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Disputes">
+            <EntityTypeMapping TypeName="PrivateChefModel.Dispute">
+              <MappingFragment StoreEntitySet="Disputes">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EvidencePhoto" ColumnName="EvidencePhoto" />
+                <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="DisputeAmount" ColumnName="DisputeAmount" />
+                <ScalarProperty Name="DisputeDate" ColumnName="DisputeDate" />
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="OrderModelTypeId" ColumnName="OrderModelTypeId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="DisputeId" ColumnName="DisputeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Refunds">
+            <EntityTypeMapping TypeName="PrivateChefModel.Refund">
+              <MappingFragment StoreEntitySet="Refunds">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="EvidencePhoto" ColumnName="EvidencePhoto" />
+                <ScalarProperty Name="ReasonId" ColumnName="ReasonId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="RefundAmount" ColumnName="RefundAmount" />
+                <ScalarProperty Name="RefundDate" ColumnName="RefundDate" />
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="OrderModelTypeId" ColumnName="OrderModelTypeId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+                <ScalarProperty Name="RefundId" ColumnName="RefundId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -12,16 +12,15 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Refund
+    public partial class Dispute
     {
-        public int RefundId { get; set; }
-        public string TransactionID { get; set; }
+        public int DisputeId { get; set; }
         public int OrderId { get; set; }
         public int OrderModelTypeId { get; set; }
         public int ClientId { get; set; }
         public int CookerId { get; set; }
-        public System.DateTime RefundDate { get; set; }
-        public decimal RefundAmount { get; set; }
+        public System.DateTime DisputeDate { get; set; }
+        public decimal DisputeAmount { get; set; }
         public int StatusId { get; set; }
         public int ReasonId { get; set; }
         public string EvidencePhoto { get; set; }

@@ -55,10 +55,6 @@
         <EntityTypeShape EntityType="PrivateChefModel.Promotion" Width="1.5" PointX="0.75" PointY="19.75" />
         <EntityTypeShape EntityType="PrivateChefModel.PromotionType" Width="1.5" PointX="2.75" PointY="19.75" />
         <EntityTypeShape EntityType="PrivateChefModel.RatingCode" Width="1.5" PointX="4.75" PointY="19.75" />
-        <EntityTypeShape EntityType="PrivateChefModel.RefundReason" Width="1.5" PointX="6.75" PointY="19.75" />
-        <EntityTypeShape EntityType="PrivateChefModel.Refund" Width="1.5" PointX="8.75" PointY="19.75" />
-        <EntityTypeShape EntityType="PrivateChefModel.RefundStatu" Width="1.5" PointX="20.75" PointY="3.75" />
-        <EntityTypeShape EntityType="PrivateChefModel.RefundType" Width="1.5" PointX="20.75" PointY="6.75" />
         <EntityTypeShape EntityType="PrivateChefModel.ServingMeasurement" Width="1.5" PointX="20.75" PointY="9.75" />
         <EntityTypeShape EntityType="PrivateChefModel.ServingPricing" Width="1.5" PointX="20.75" PointY="12.75" />
         <EntityTypeShape EntityType="PrivateChefModel.User" Width="1.5" PointX="20.75" PointY="15.75" />
@@ -67,6 +63,11 @@
         <AssociationConnector Association="PrivateChefModel.FK_OrderOrderItem" />
         <EntityTypeShape EntityType="PrivateChefModel.ClientAddress1" Width="1.5" PointX="11.375" PointY="21.75" />
         <EntityTypeShape EntityType="PrivateChefModel.ClientOrderReviewSent" Width="1.5" PointX="13.375" PointY="21.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.DisputeReason" Width="1.5" PointX="22.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.DisputeStatu" Width="1.5" PointX="5.375" PointY="22.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.OrderModelType" Width="1.5" PointX="21.375" PointY="6.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.Dispute" Width="1.5" PointX="15.375" PointY="22.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.Refund" Width="1.5" PointX="7.375" PointY="19.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

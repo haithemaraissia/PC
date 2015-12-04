@@ -12,9 +12,9 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class RefundReason
+    public partial class DisputeReason
     {
-        public int RefundReasonId { get; set; }
-        public string RefundReasonValue { get; set; }
+        public int DisputeReasonId { get; set; }
+        public string DisputeReasonValue { get; set; }
     }
 }

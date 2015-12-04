@@ -12,9 +12,9 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class RefundStatu
+    public partial class OrderModelType
     {
-        public int RefundStatusId { get; set; }
-        public string RefundStatusValue { get; set; }
+        public int OrderModelTypeId { get; set; }
+        public string OrderModelTypeValue { get; set; }
     }
 }
