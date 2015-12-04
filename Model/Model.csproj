@@ -104,9 +104,6 @@
     <Compile Include="CookerMenu.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="CookerMenuPrice.cs">
-      <DependentUpon>PrivateChefModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="CookerOrderReviewReceived.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
@@ -132,6 +129,9 @@
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CookerSpokenLanguage.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CookerSubscription.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Coupon.cs">
@@ -179,9 +179,6 @@
     </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="MenuSection.cs">
-      <DependentUpon>PrivateChefModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MenuServing.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Order.cs">
@@ -242,7 +239,7 @@
     <Compile Include="ServingMeasurement.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ServingPricing.cs">
+    <Compile Include="ServingPrice.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">

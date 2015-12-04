@@ -12,9 +12,11 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class MenuServing
+    public partial class CookerSubscription
     {
-        public int MenuServingId { get; set; }
-        public string MenuServingValue { get; set; }
+        public int CookerSubscriptionId { get; set; }
+        public int CookerId { get; set; }
+        public int PlanId { get; set; }
+        public int ServingPriceId { get; set; }
     }
 }

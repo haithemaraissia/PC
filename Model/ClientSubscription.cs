@@ -15,7 +15,8 @@ namespace Model
     public partial class ClientSubscription
     {
         public int ClientSubscriptionId { get; set; }
-        public int PlanId { get; set; }
+        public int ClientId { get; set; }
+        public int CookerSubscriptionId { get; set; }
         public bool Active { get; set; }
         public System.DateTime ValidUntil { get; set; }
     }

@@ -14,7 +14,7 @@ namespace Model
     
     public partial class ServingMeasurement
     {
-        public int ServingId { get; set; }
-        public string ServingValue { get; set; }
+        public int ServingMeasurementId { get; set; }
+        public string ServingMeasurementValue { get; set; }
     }
 }

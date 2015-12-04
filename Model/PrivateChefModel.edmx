@@ -155,7 +155,8 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
             <PropertyRef Name="ClientSubscriptionId" />
           </Key>
           <Property Name="ClientSubscriptionId" Type="int" Nullable="false" />
-          <Property Name="PlanId" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="CookerSubscriptionId" Type="int" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
           <Property Name="ValidUntil" Type="datetime" Nullable="false" />
         </EntityType>
@@ -223,14 +224,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="DeliveryDays" Type="varchar" MaxLength="200" />
           <Property Name="PickUpHours" Type="varchar" MaxLength="200" />
           <Property Name="PickUpDays" Type="varchar" MaxLength="200" />
-        </EntityType>
-        <EntityType Name="CookerMenuPrices">
-          <Key>
-            <PropertyRef Name="PriceId" />
-          </Key>
-          <Property Name="PriceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MenuId" Type="int" Nullable="false" />
-          <Property Name="ServingId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CookerMenus">
           <Key>
@@ -369,6 +362,15 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="LanguageId" Type="int" Nullable="false" />
           <Property Name="LanguageValue" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CookerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CookerSubscriptions">
+          <Key>
+            <PropertyRef Name="CookerSubscriptionId" />
+          </Key>
+          <Property Name="CookerSubscriptionId" Type="int" Nullable="false" />
+          <Property Name="CookerId" Type="int" Nullable="false" />
+          <Property Name="PlanId" Type="int" Nullable="false" />
+          <Property Name="ServingPriceId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Coupons">
           <Key>
@@ -530,13 +532,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="SectionTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MenuId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="MenuServings">
-          <Key>
-            <PropertyRef Name="MenuServingId" />
-          </Key>
-          <Property Name="MenuServingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MenuServingValue" Type="nvarchar" MaxLength="200" Nullable="false" />
-        </EntityType>
         <EntityType Name="OrderHistroys">
           <Key>
             <PropertyRef Name="OrderHistoryId" />
@@ -692,18 +687,20 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
         </EntityType>
         <EntityType Name="ServingMeasurements">
           <Key>
-            <PropertyRef Name="ServingId" />
+            <PropertyRef Name="ServingMeasurementId" />
           </Key>
-          <Property Name="ServingId" Type="int" Nullable="false" />
-          <Property Name="ServingValue" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ServingMeasurementId" Type="int" Nullable="false" />
+          <Property Name="ServingMeasurementValue" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <EntityType Name="ServingPricings">
+        <EntityType Name="ServingPrices">
           <Key>
-            <PropertyRef Name="ServingPricingId" />
+            <PropertyRef Name="ServicePriceId" />
           </Key>
-          <Property Name="ServingPricingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ServingPricingsValue" Type="decimal" Precision="10" Scale="4" Nullable="false" />
-          <Property Name="ServingPricingCurrencyId" Type="int" Nullable="false" />
+          <Property Name="ServicePriceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PLanId" Type="int" Nullable="false" />
+          <Property Name="ServingMeasurementId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Price" Type="smallmoney" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -772,7 +769,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="CookerFeedBacks" EntityType="Self.CookerFeedBacks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CookerGeoIPs" EntityType="Self.CookerGeoIPs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CookerHoursofOperations" EntityType="Self.CookerHoursofOperations" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CookerMenuPrices" EntityType="Self.CookerMenuPrices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CookerMenus" EntityType="Self.CookerMenus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CookerOrderReviewReceiveds" EntityType="Self.CookerOrderReviewReceiveds" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CookerOrderReviewSents" EntityType="Self.CookerOrderReviewSents" Schema="dbo" store:Type="Tables" />
@@ -784,6 +780,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="CookerReviewServiceDetails" EntityType="Self.CookerReviewServiceDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cookers" EntityType="Self.Cookers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CookerSpokenLanguages" EntityType="Self.CookerSpokenLanguages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CookerSubscriptions" EntityType="Self.CookerSubscriptions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Coupons" EntityType="Self.Coupons" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CouponTypes" EntityType="Self.CouponTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CuisineTypes" EntityType="Self.CuisineTypes" Schema="dbo" store:Type="Tables" />
@@ -799,7 +796,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="Invoices" EntityType="Self.Invoices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuSections" EntityType="Self.MenuSections" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MenuServings" EntityType="Self.MenuServings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderHistroys" EntityType="Self.OrderHistroys" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderItemDishOptions" EntityType="Self.OrderItemDishOptions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderItems" EntityType="Self.OrderItems" Schema="dbo" store:Type="Tables" />
@@ -814,7 +810,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="RatingCodes" EntityType="Self.RatingCodes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Refunds" EntityType="Self.Refunds" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ServingMeasurements" EntityType="Self.ServingMeasurements" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ServingPricings" EntityType="Self.ServingPricings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServingPrices" EntityType="Self.ServingPrices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserTypes" EntityType="Self.UserTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClientAddress" EntityType="Self.ClientAddress" store:Type="Tables" store:Schema="dbo">
@@ -854,14 +850,12 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="ClientOrderToReviews" EntityType="PrivateChefModel.ClientOrderToReview" />
           <EntitySet Name="ClientReviewScores" EntityType="PrivateChefModel.ClientReviewScore" />
           <EntitySet Name="Clients" EntityType="PrivateChefModel.Client" />
-          <EntitySet Name="ClientSubscriptions" EntityType="PrivateChefModel.ClientSubscription" />
           <EntitySet Name="CookerCoupons" EntityType="PrivateChefModel.CookerCoupon" />
           <EntitySet Name="CookerCuisines" EntityType="PrivateChefModel.CookerCuisine" />
           <EntitySet Name="CookerDeliveryZones" EntityType="PrivateChefModel.CookerDeliveryZone" />
           <EntitySet Name="CookerFeedBacks" EntityType="PrivateChefModel.CookerFeedBack" />
           <EntitySet Name="CookerGeoIPs" EntityType="PrivateChefModel.CookerGeoIP" />
           <EntitySet Name="CookerHoursofOperations" EntityType="PrivateChefModel.CookerHoursofOperation" />
-          <EntitySet Name="CookerMenuPrices" EntityType="PrivateChefModel.CookerMenuPrice" />
           <EntitySet Name="CookerMenus" EntityType="PrivateChefModel.CookerMenu" />
           <EntitySet Name="CookerOrderReviewReceiveds" EntityType="PrivateChefModel.CookerOrderReviewReceived" />
           <EntitySet Name="CookerOrderReviewSents" EntityType="PrivateChefModel.CookerOrderReviewSent" />
@@ -885,7 +879,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="Invoices" EntityType="PrivateChefModel.Invoice" />
           <EntitySet Name="Languages" EntityType="PrivateChefModel.Language" />
           <EntitySet Name="MenuSections" EntityType="PrivateChefModel.MenuSection" />
-          <EntitySet Name="MenuServings" EntityType="PrivateChefModel.MenuServing" />
           <EntitySet Name="OrderHistroys" EntityType="PrivateChefModel.OrderHistroy" />
           <EntitySet Name="OrderItemDishOptions" EntityType="PrivateChefModel.OrderItemDishOption" />
           <EntitySet Name="OrderItems" EntityType="PrivateChefModel.OrderItem" />
@@ -898,7 +891,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="PromotionTypes" EntityType="PrivateChefModel.PromotionType" />
           <EntitySet Name="RatingCodes" EntityType="PrivateChefModel.RatingCode" />
           <EntitySet Name="ServingMeasurements" EntityType="PrivateChefModel.ServingMeasurement" />
-          <EntitySet Name="ServingPricings" EntityType="PrivateChefModel.ServingPricing" />
           <EntitySet Name="Users" EntityType="PrivateChefModel.User" />
           <EntitySet Name="UserTypes" EntityType="PrivateChefModel.UserType" />
           <AssociationSet Name="FK_OrderItemOrderItemDishOption" Association="PrivateChefModel.FK_OrderItemOrderItemDishOption">
@@ -916,6 +908,9 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="OrderModelTypes" EntityType="PrivateChefModel.OrderModelType" />
           <EntitySet Name="Disputes" EntityType="PrivateChefModel.Dispute" />
           <EntitySet Name="Refunds" EntityType="PrivateChefModel.Refund" />
+          <EntitySet Name="CookerSubscriptions" EntityType="PrivateChefModel.CookerSubscription" />
+          <EntitySet Name="ServingPrices" EntityType="PrivateChefModel.ServingPrice" />
+          <EntitySet Name="ClientSubscriptions" EntityType="PrivateChefModel.ClientSubscription" />
         </EntityContainer>
         <EntityType Name="AddressType">
           <Key>
@@ -1015,15 +1010,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="ClientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="ClientSubscription">
-          <Key>
-            <PropertyRef Name="ClientSubscriptionId" />
-          </Key>
-          <Property Name="ClientSubscriptionId" Type="Int32" Nullable="false" />
-          <Property Name="PlanId" Type="Int32" Nullable="false" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-          <Property Name="ValidUntil" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
         <EntityType Name="CookerCoupon">
           <Key>
             <PropertyRef Name="CookerCouponId" />
@@ -1088,14 +1074,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="DeliveryDays" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="PickUpHours" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="PickUpDays" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="CookerMenuPrice">
-          <Key>
-            <PropertyRef Name="PriceId" />
-          </Key>
-          <Property Name="PriceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MenuId" Type="Int32" Nullable="false" />
-          <Property Name="ServingId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="CookerMenu">
           <Key>
@@ -1365,13 +1343,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="SectionTitle" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MenuId" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="MenuServing">
-          <Key>
-            <PropertyRef Name="MenuServingId" />
-          </Key>
-          <Property Name="MenuServingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MenuServingValue" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="OrderHistroy">
           <Key>
             <PropertyRef Name="OrderHistoryId" />
@@ -1507,18 +1478,10 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
         </EntityType>
         <EntityType Name="ServingMeasurement">
           <Key>
-            <PropertyRef Name="ServingId" />
+            <PropertyRef Name="ServingMeasurementId" />
           </Key>
-          <Property Name="ServingId" Type="Int32" Nullable="false" />
-          <Property Name="ServingValue" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="ServingPricing">
-          <Key>
-            <PropertyRef Name="ServingPricingId" />
-          </Key>
-          <Property Name="ServingPricingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ServingPricingsValue" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
-          <Property Name="ServingPricingCurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="ServingMeasurementId" Type="Int32" Nullable="false" />
+          <Property Name="ServingMeasurementValue" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -1670,6 +1633,35 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="EvidencePhoto" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="CookerSubscription">
+          <Key>
+            <PropertyRef Name="CookerSubscriptionId" />
+          </Key>
+          <Property Name="CookerSubscriptionId" Type="Int32" Nullable="false" />
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+          <Property Name="PlanId" Type="Int32" Nullable="false" />
+          <Property Name="ServingPriceId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ServingPrice">
+          <Key>
+            <PropertyRef Name="ServicePriceId" />
+          </Key>
+          <Property Name="ServicePriceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PLanId" Type="Int32" Nullable="false" />
+          <Property Name="ServingMeasurementId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+        </EntityType>
+        <EntityType Name="ClientSubscription">
+          <Key>
+            <PropertyRef Name="ClientSubscriptionId" />
+          </Key>
+          <Property Name="ClientSubscriptionId" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="CookerSubscriptionId" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="ValidUntil" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1772,16 +1764,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ClientSubscriptions">
-            <EntityTypeMapping TypeName="PrivateChefModel.ClientSubscription">
-              <MappingFragment StoreEntitySet="ClientSubscriptions">
-                <ScalarProperty Name="ValidUntil" ColumnName="ValidUntil" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
-                <ScalarProperty Name="ClientSubscriptionId" ColumnName="ClientSubscriptionId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CookerCoupons">
             <EntityTypeMapping TypeName="PrivateChefModel.CookerCoupon">
               <MappingFragment StoreEntitySet="CookerCoupons">
@@ -1850,15 +1832,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
                 <ScalarProperty Name="OpeningDays" ColumnName="OpeningDays" />
                 <ScalarProperty Name="OpeningHours" ColumnName="OpeningHours" />
                 <ScalarProperty Name="CookerId" ColumnName="CookerId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CookerMenuPrices">
-            <EntityTypeMapping TypeName="PrivateChefModel.CookerMenuPrice">
-              <MappingFragment StoreEntitySet="CookerMenuPrices">
-                <ScalarProperty Name="ServingId" ColumnName="ServingId" />
-                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
-                <ScalarProperty Name="PriceId" ColumnName="PriceId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2153,14 +2126,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MenuServings">
-            <EntityTypeMapping TypeName="PrivateChefModel.MenuServing">
-              <MappingFragment StoreEntitySet="MenuServings">
-                <ScalarProperty Name="MenuServingValue" ColumnName="MenuServingValue" />
-                <ScalarProperty Name="MenuServingId" ColumnName="MenuServingId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="OrderHistroys">
             <EntityTypeMapping TypeName="PrivateChefModel.OrderHistroy">
               <MappingFragment StoreEntitySet="OrderHistroys">
@@ -2304,17 +2269,8 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySetMapping Name="ServingMeasurements">
             <EntityTypeMapping TypeName="PrivateChefModel.ServingMeasurement">
               <MappingFragment StoreEntitySet="ServingMeasurements">
-                <ScalarProperty Name="ServingValue" ColumnName="ServingValue" />
-                <ScalarProperty Name="ServingId" ColumnName="ServingId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ServingPricings">
-            <EntityTypeMapping TypeName="PrivateChefModel.ServingPricing">
-              <MappingFragment StoreEntitySet="ServingPricings">
-                <ScalarProperty Name="ServingPricingCurrencyId" ColumnName="ServingPricingCurrencyId" />
-                <ScalarProperty Name="ServingPricingsValue" ColumnName="ServingPricingsValue" />
-                <ScalarProperty Name="ServingPricingId" ColumnName="ServingPricingId" />
+                <ScalarProperty Name="ServingMeasurementValue" ColumnName="ServingMeasurementValue" />
+                <ScalarProperty Name="ServingMeasurementId" ColumnName="ServingMeasurementId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2441,6 +2397,38 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
                 <ScalarProperty Name="RefundId" ColumnName="RefundId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CookerSubscriptions">
+            <EntityTypeMapping TypeName="PrivateChefModel.CookerSubscription">
+              <MappingFragment StoreEntitySet="CookerSubscriptions">
+                <ScalarProperty Name="ServingPriceId" ColumnName="ServingPriceId" />
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+                <ScalarProperty Name="CookerSubscriptionId" ColumnName="CookerSubscriptionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServingPrices">
+            <EntityTypeMapping TypeName="PrivateChefModel.ServingPrice">
+              <MappingFragment StoreEntitySet="ServingPrices">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ServingMeasurementId" ColumnName="ServingMeasurementId" />
+                <ScalarProperty Name="PLanId" ColumnName="PLanId" />
+                <ScalarProperty Name="ServicePriceId" ColumnName="ServicePriceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientSubscriptions">
+            <EntityTypeMapping TypeName="PrivateChefModel.ClientSubscription">
+              <MappingFragment StoreEntitySet="ClientSubscriptions">
+                <ScalarProperty Name="ValidUntil" ColumnName="ValidUntil" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="CookerSubscriptionId" ColumnName="CookerSubscriptionId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="ClientSubscriptionId" ColumnName="ClientSubscriptionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

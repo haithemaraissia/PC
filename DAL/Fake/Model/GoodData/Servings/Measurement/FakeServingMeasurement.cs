@@ -34,8 +34,8 @@ namespace DAL.Fake.Model.GoodData.Serving.Measurement
         {
             var firstServingMeasurement = new ServingMeasurement
             {
-                ServingId = 1,
-                ServingValue = "2 Cup Container"
+                ServingMeasurementId = 1,
+                ServingMeasurementValue = "2 Cup Container"
             };
             return firstServingMeasurement;
         }
@@ -44,8 +44,8 @@ namespace DAL.Fake.Model.GoodData.Serving.Measurement
         {
             var secondServingMeasurement = new ServingMeasurement
             {
-                ServingId = 2,
-                ServingValue = "4 Cup Container"
+                ServingMeasurementId = 2,
+                ServingMeasurementValue = "4 Cup Container"
             };
             return secondServingMeasurement;
         }
@@ -54,8 +54,8 @@ namespace DAL.Fake.Model.GoodData.Serving.Measurement
         {
             var thirdServingMeasurement = new ServingMeasurement
             {
-                ServingId = 3,
-                ServingValue = "7 Cup Container"
+                ServingMeasurementId = 3,
+                ServingMeasurementValue = "7 Cup Container"
             };
             return thirdServingMeasurement;
         }
@@ -104,8 +104,8 @@ namespace DAL.Fake.Model.GoodData.Serving.Measurement
         {
             var seventhServingMeasurement = new ServingMeasurement
             {
-                ServingId = 7,
-                ServingValue = "Bread Plate ( 6 inches)"
+                ServingMeasurementId = 7,
+                ServingMeasurementValue = "Bread Plate ( 6 inches)"
             };
             return seventhServingMeasurement;
         }
@@ -114,8 +114,8 @@ namespace DAL.Fake.Model.GoodData.Serving.Measurement
         {
             var eighthServingMeasurement = new ServingMeasurement
             {
-                ServingId = 8,
-                ServingValue = "Lunch Plate ( 9 inches)"
+                ServingMeasurementId = 8,
+                ServingMeasurementValue = "Lunch Plate ( 9 inches)"
             };
             return eighthServingMeasurement;
         }
@@ -124,8 +124,8 @@ namespace DAL.Fake.Model.GoodData.Serving.Measurement
         {
             var ninethServingMeasurement = new ServingMeasurement
             {
-                ServingId = 9,
-                ServingValue = "Dinner Plates ( 12 inches)"
+                ServingMeasurementId = 9,
+                ServingMeasurementValue = "Dinner Plates ( 12 inches)"
             };
             return ninethServingMeasurement;
         }

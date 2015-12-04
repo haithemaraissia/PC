@@ -26,7 +26,8 @@ namespace DAL.Fake.Model.GoodData.Plan
             {
                 PlanId = 1,
                 ExternalId = "1",
-                Description = "3 meals per week"
+                Description = "3 Meals per week",
+                Title="Mike Weekly Plan"
             };
             return firstPlan;
         }
@@ -37,7 +38,8 @@ namespace DAL.Fake.Model.GoodData.Plan
             {
                 PlanId = 1,
                 ExternalId = "2",
-                Description = "5 meals per week"
+                Description = "5 meals per week",
+                Title = "Mike Weekly Plan2"
             };
             return secondPlan;
         }
@@ -48,7 +50,8 @@ namespace DAL.Fake.Model.GoodData.Plan
             {
                 PlanId = 3,
                 ExternalId = "3",
-                Description = "10 meals per week"
+                Description = "10 meals per week",
+                Title = "Mike Weekly Plan3"
             };
             return thirdPlan;
         }

@@ -32,14 +32,12 @@ namespace Model
         public virtual DbSet<ClientOrderToReview> ClientOrderToReviews { get; set; }
         public virtual DbSet<ClientReviewScore> ClientReviewScores { get; set; }
         public virtual DbSet<Client> Clients { get; set; }
-        public virtual DbSet<ClientSubscription> ClientSubscriptions { get; set; }
         public virtual DbSet<CookerCoupon> CookerCoupons { get; set; }
         public virtual DbSet<CookerCuisine> CookerCuisines { get; set; }
         public virtual DbSet<CookerDeliveryZone> CookerDeliveryZones { get; set; }
         public virtual DbSet<CookerFeedBack> CookerFeedBacks { get; set; }
         public virtual DbSet<CookerGeoIP> CookerGeoIPs { get; set; }
         public virtual DbSet<CookerHoursofOperation> CookerHoursofOperations { get; set; }
-        public virtual DbSet<CookerMenuPrice> CookerMenuPrices { get; set; }
         public virtual DbSet<CookerMenu> CookerMenus { get; set; }
         public virtual DbSet<CookerOrderReviewReceived> CookerOrderReviewReceiveds { get; set; }
         public virtual DbSet<CookerOrderReviewSent> CookerOrderReviewSents { get; set; }
@@ -63,7 +61,6 @@ namespace Model
         public virtual DbSet<Invoice> Invoices { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
         public virtual DbSet<MenuSection> MenuSections { get; set; }
-        public virtual DbSet<MenuServing> MenuServings { get; set; }
         public virtual DbSet<OrderHistroy> OrderHistroys { get; set; }
         public virtual DbSet<OrderItemDishOption> OrderItemDishOptions { get; set; }
         public virtual DbSet<OrderItem> OrderItems { get; set; }
@@ -76,7 +73,6 @@ namespace Model
         public virtual DbSet<PromotionType> PromotionTypes { get; set; }
         public virtual DbSet<RatingCode> RatingCodes { get; set; }
         public virtual DbSet<ServingMeasurement> ServingMeasurements { get; set; }
-        public virtual DbSet<ServingPricing> ServingPricings { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
         public virtual DbSet<ClientAddress1> ClientAddresses1 { get; set; }
@@ -86,5 +82,8 @@ namespace Model
         public virtual DbSet<OrderModelType> OrderModelTypes { get; set; }
         public virtual DbSet<Dispute> Disputes { get; set; }
         public virtual DbSet<Refund> Refunds { get; set; }
+        public virtual DbSet<CookerSubscription> CookerSubscriptions { get; set; }
+        public virtual DbSet<ServingPrice> ServingPrices { get; set; }
+        public virtual DbSet<ClientSubscription> ClientSubscriptions { get; set; }
     }
 }

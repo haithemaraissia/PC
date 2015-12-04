@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Model;
 
 namespace DAL.Fake.Model
@@ -26,7 +27,10 @@ namespace DAL.Fake.Model
             var firstClientSubscription = new ClientSubscription
             {
                 ClientSubscriptionId = 1,
-                //UserId = 3
+                ClientId = 1,
+                CookerSubscriptionId = 1,
+                Active = true,
+                ValidUntil = DateTime.Today.AddMonths(1).Date
             };
             return firstClientSubscription;
         }
@@ -36,7 +40,10 @@ namespace DAL.Fake.Model
             var secondClientSubscription = new ClientSubscription
             {
                 ClientSubscriptionId = 2,
-                //UserId = 4
+                ClientId = 1,
+                CookerSubscriptionId = 3,
+                Active = true,
+                ValidUntil = DateTime.Today.AddMonths(12).Date
             };
             return secondClientSubscription;
         }
@@ -46,7 +53,10 @@ namespace DAL.Fake.Model
             var thirdClientSubscription = new ClientSubscription
             {
                 ClientSubscriptionId = 3,
-                //UserId = 6
+                ClientId = 2,
+                CookerSubscriptionId = 1,
+                Active = false,
+                ValidUntil = DateTime.Today.AddMonths(-1).Date
             };
             return thirdClientSubscription;
         }

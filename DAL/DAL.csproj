@@ -125,8 +125,7 @@
     <Compile Include="Fake\Model\GoodData\Cookers\FakeCookerPaymentMethods.cs" />
     <Compile Include="Fake\Model\GoodData\Cookers\FakeCookerHoursofOperations.cs" />
     <Compile Include="Fake\Model\GoodData\Cookers\FakeCookerCoupons.cs" />
-    <Compile Include="Fake\Model\FakeCookerMenuPrices.cs" />
-    <Compile Include="Fake\Model\FakeClientSubscriptions.cs" />
+    <Compile Include="Fake\Model\GoodData\Subscriptions\Clients\FakeClientSubscriptions.cs" />
     <Compile Include="Fake\Model\GoodData\Cookers\FakeCookerMenus.cs" />
     <Compile Include="Fake\Model\GoodData\Cookers\FakeCookersGeoIp.cs" />
     <Compile Include="Fake\Model\GoodData\Cookers\FakeCookerCuisines.cs" />
@@ -136,9 +135,9 @@
     <Compile Include="Fake\Model\GoodData\Invoices\Client\FakeClientInvoices.cs" />
     <Compile Include="Fake\Model\GoodData\Reviews\Industry\FakeIndustryAverageRatings.cs" />
     <Compile Include="Fake\Model\GoodData\Servings\Measurement\FakeServingMeasurement.cs" />
-    <Compile Include="Fake\Model\GoodData\Servings\Subscription\FakeMenuServings.cs" />
     <Compile Include="Fake\Model\GoodData\Orders\FakeOrders.cs" />
-    <Compile Include="Fake\Model\FakeServingPricings.cs" />
+    <Compile Include="Fake\Model\GoodData\Subscriptions\Cookers\FakeServingPricings.cs" />
+    <Compile Include="Fake\Model\GoodData\Subscriptions\Cookers\FakeCookerSubscriptions.cs" />
     <Compile Include="Fake\Model\GoodData\Users\FakeAddressTypes.cs" />
     <Compile Include="Fake\Model\GoodData\Users\FakeUsers.cs" />
     <Compile Include="Fake\Model\GoodData\Users\FakeUserTypes.cs" />

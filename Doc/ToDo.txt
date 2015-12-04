@@ -1,7 +1,5 @@
 ﻿
-Complete the Feedback, review and rating process
-Complete the refund process
-Complete the missing data
+Complete the missing data in each class
 
 Do the subscription model
 Client choose subscrption and pay it.
