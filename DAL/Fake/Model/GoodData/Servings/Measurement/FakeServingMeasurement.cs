@@ -69,8 +69,8 @@ namespace DAL.Fake.Model.GoodData.Serving.Measurement
         {
             var fourthServingMeasurement = new ServingMeasurement
             {
-                ServingId = 4,
-                ServingValue = "Small Bowl 12oz"
+                ServingMeasurementId = 4,
+                ServingMeasurementValue = "Small Bowl 12oz"
             };
             return fourthServingMeasurement;
         }
@@ -79,8 +79,8 @@ namespace DAL.Fake.Model.GoodData.Serving.Measurement
         {
             var fifthServingMeasurement = new ServingMeasurement
             {
-                ServingId = 5,
-                ServingValue = "Medium Bowl 14 oz"
+                ServingMeasurementId = 5,
+                ServingMeasurementValue = "Medium Bowl 14 oz"
             };
             return fifthServingMeasurement;
         }
@@ -89,8 +89,8 @@ namespace DAL.Fake.Model.GoodData.Serving.Measurement
         {
             var sixthServingMeasurement = new ServingMeasurement
             {
-                ServingId = 6,
-                ServingValue = "Big Bowl 28 oz"
+                ServingMeasurementId = 6,
+                ServingMeasurementValue = "Big Bowl 28 oz"
             };
             return sixthServingMeasurement;
         }

@@ -57,15 +57,10 @@ namespace DAL.Data.UnitofWork
         }
         #endregion
 
-        #region CookerMenuPriceRepository
+        
 
-        private IGenericRepository<CookerMenuPrice> _cookerMenuPriceRepository;
-        public IGenericRepository<CookerMenuPrice> CookerMenuPriceRepository
-        {
-            get { return _cookerMenuPriceRepository ?? (_cookerMenuPriceRepository = new GenericRepository<CookerMenuPrice>(_context)); }
-            set { _cookerMenuPriceRepository = value; }
-        }
-        #endregion
+
+
 
         #region CuisineTypesRepository
 
@@ -107,15 +102,11 @@ namespace DAL.Data.UnitofWork
         }
         #endregion
 
-        #region MenuServingRepository
+        
 
-        private IGenericRepository<MenuServing> _menuServingRepository;
-        public IGenericRepository<MenuServing> MenuServingRepository
-        {
-            get { return _menuServingRepository ?? (_menuServingRepository = new GenericRepository<MenuServing>(_context)); }
-            set { _menuServingRepository = value; }
-        }
-        #endregion
+
+
+
 
         #region OrdersRepository
 
@@ -131,15 +122,9 @@ namespace DAL.Data.UnitofWork
 
 
 
-        #region ServingPricingsRepository
 
-        private IGenericRepository<ServingPricing> _servingPricingRepository;
-        public IGenericRepository<ServingPricing> ServingPricingRepository
-        {
-            get { return _servingPricingRepository ?? (_servingPricingRepository = new GenericRepository<ServingPricing>(_context)); }
-            set { _servingPricingRepository = value; }
-        }
-        #endregion
+
+
 
         #region UsersRepository
 

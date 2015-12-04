@@ -15,7 +15,7 @@ namespace Model
     public partial class Invoice
     {
         public int InvoiceId { get; set; }
-        public int OrderId { get; set; }
+        public Nullable<int> OrderId { get; set; }
         public int ClientId { get; set; }
         public int CookerId { get; set; }
         public System.DateTime OrderDate { get; set; }
@@ -34,5 +34,9 @@ namespace Model
         public decimal SubTotal { get; set; }
         public decimal Total { get; set; }
         public int CurrencyId { get; set; }
+        public int OrderModelTypeId { get; set; }
+        public Nullable<int> CookerSubscriptionId { get; set; }
+        public Nullable<int> ServingPriceId { get; set; }
+        public Nullable<int> PlanId { get; set; }
     }
 }

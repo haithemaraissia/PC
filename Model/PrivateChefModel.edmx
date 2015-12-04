@@ -497,7 +497,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
             <PropertyRef Name="InvoiceId" />
           </Key>
           <Property Name="InvoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="int" />
           <Property Name="ClientId" Type="int" Nullable="false" />
           <Property Name="CookerId" Type="int" Nullable="false" />
           <Property Name="OrderDate" Type="datetime" Nullable="false" />
@@ -510,6 +510,10 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="CouponTitle" Type="nvarchar" MaxLength="50" />
           <Property Name="CouponPrice" Type="decimal" Precision="10" Scale="4" />
           <Property Name="CouponCurrencyId" Type="int" />
+          <Property Name="OrderModelTypeId" Type="int" Nullable="false" />
+          <Property Name="CookerSubscriptionId" Type="int" />
+          <Property Name="ServingPriceId" Type="int" />
+          <Property Name="PlanId" Type="int" />
           <Property Name="PlanTitle" Type="nvarchar" MaxLength="50" />
           <Property Name="SalesTax" Type="decimal" Precision="10" Scale="4" />
           <Property Name="DeliveryFees" Type="decimal" Precision="10" Scale="4" />
@@ -1308,7 +1312,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
             <PropertyRef Name="InvoiceId" />
           </Key>
           <Property Name="InvoiceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" />
           <Property Name="ClientId" Type="Int32" Nullable="false" />
           <Property Name="CookerId" Type="Int32" Nullable="false" />
           <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
@@ -1327,6 +1331,10 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="SubTotal" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="Total" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="OrderModelTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CookerSubscriptionId" Type="Int32" />
+          <Property Name="ServingPriceId" Type="Int32" />
+          <Property Name="PlanId" Type="Int32" />
         </EntityType>
         <EntityType Name="Language">
           <Key>
@@ -2086,6 +2094,10 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySetMapping Name="Invoices">
             <EntityTypeMapping TypeName="PrivateChefModel.Invoice">
               <MappingFragment StoreEntitySet="Invoices">
+                <ScalarProperty Name="PlanId" ColumnName="PlanId" />
+                <ScalarProperty Name="ServingPriceId" ColumnName="ServingPriceId" />
+                <ScalarProperty Name="CookerSubscriptionId" ColumnName="CookerSubscriptionId" />
+                <ScalarProperty Name="OrderModelTypeId" ColumnName="OrderModelTypeId" />
                 <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />

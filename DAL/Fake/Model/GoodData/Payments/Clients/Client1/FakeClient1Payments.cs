@@ -26,20 +26,23 @@ namespace DAL.Fake.Model.GoodData.Clients
         public Payment FirstClient1Payment()
         {
             var FirstInvoice = new FakeClient1Invoices().FirstInvoice();
-            var Payment = new Payment
+            if (FirstInvoice.OrderId != null)
             {
-                PaymentId = 1,
-                InvoiceId = FirstInvoice.InvoiceId,
-                PaymentDate = DateTime.Now.Date,
-                PaymentAmount = FirstInvoice.Total,
-                OrderId = FirstInvoice.OrderId,
-                ClientId = FirstInvoice.ClientId,
-                CookerId = FirstInvoice.CookerId,
-                TransactionId = "G126F85"
-            };
+                var Payment = new Payment
+                {
+                    PaymentId = 1,
+                    InvoiceId = FirstInvoice.InvoiceId,
+                    PaymentDate = DateTime.Now.Date,
+                    PaymentAmount = FirstInvoice.Total,
+                    OrderId = (int) FirstInvoice.OrderId,
+                    ClientId = FirstInvoice.ClientId,
+                    CookerId = FirstInvoice.CookerId,
+                    TransactionId = "G126F85"
+                };
 
 
-            return Payment;
+                return Payment;
+            }
         }
 
         #region TODO

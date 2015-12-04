@@ -40,9 +40,15 @@ namespace DAL.Fake.Model
             var firstOrder = MyOrders.FirstOrDefault();
             if (firstOrder == null) return null;
             var firstOrderCharge = new OrderCharge().Calculate(firstOrder);
+
+            //Add it is is a subscriptions
+
             var firstOrderInvoice = new Invoice
             {
+
+
                 InvoiceId = 1,
+
                 OrderId = firstOrder.OrderId,
                 ClientId = firstOrder.ClientId,
                 OrderDate = firstOrder.OrderDate,
@@ -65,7 +71,13 @@ namespace DAL.Fake.Model
                 SalesTax = firstOrderCharge.SalesTaxes,
                 DeliveryFees = firstOrderCharge.DeliveryFee,
                 SubTotal = firstOrderCharge.Subtotal,
-                Total = firstOrderCharge.TotalCharges
+                Total = firstOrderCharge.TotalCharges,
+
+                OrderModelTypeId = 2,
+                CookerSubscriptionId = null,
+                ServingPriceId = null,
+                PlanId = null
+
             };
             return firstOrderInvoice;
         }
