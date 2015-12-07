@@ -500,7 +500,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="OrderId" Type="int" />
           <Property Name="ClientId" Type="int" Nullable="false" />
           <Property Name="CookerId" Type="int" Nullable="false" />
-          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" />
           <Property Name="DeliveryDate" Type="datetime" />
           <Property Name="OrderTypeValue" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="PaymentMethodValue" Type="varchar" MaxLength="100" Nullable="false" />
@@ -511,7 +511,11 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="CouponPrice" Type="decimal" Precision="10" Scale="4" />
           <Property Name="CouponCurrencyId" Type="int" />
           <Property Name="OrderModelTypeId" Type="int" Nullable="false" />
+          <Property Name="ClientSubscriptionId" Type="int" />
           <Property Name="CookerSubscriptionId" Type="int" />
+          <Property Name="SubscriptionStartDate" Type="smalldatetime" />
+          <Property Name="SubscriptionEndDate" Type="smalldatetime" />
+          <Property Name="SubscriptionInvoiceDate" Type="smalldatetime" />
           <Property Name="ServingPriceId" Type="int" />
           <Property Name="PlanId" Type="int" />
           <Property Name="PlanTitle" Type="nvarchar" MaxLength="50" />
@@ -1315,7 +1319,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="OrderId" Type="Int32" />
           <Property Name="ClientId" Type="Int32" Nullable="false" />
           <Property Name="CookerId" Type="Int32" Nullable="false" />
-          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
           <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
           <Property Name="OrderTypeValue" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="PaymentMethodValue" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -1335,6 +1339,10 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="CookerSubscriptionId" Type="Int32" />
           <Property Name="ServingPriceId" Type="Int32" />
           <Property Name="PlanId" Type="Int32" />
+          <Property Name="ClientSubscriptionId" Type="Int32" />
+          <Property Name="SubscriptionStartDate" Type="DateTime" Precision="0" />
+          <Property Name="SubscriptionEndDate" Type="DateTime" Precision="0" />
+          <Property Name="SubscriptionInvoiceDate" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Language">
           <Key>
@@ -2094,6 +2102,10 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySetMapping Name="Invoices">
             <EntityTypeMapping TypeName="PrivateChefModel.Invoice">
               <MappingFragment StoreEntitySet="Invoices">
+                <ScalarProperty Name="SubscriptionInvoiceDate" ColumnName="SubscriptionInvoiceDate" />
+                <ScalarProperty Name="SubscriptionEndDate" ColumnName="SubscriptionEndDate" />
+                <ScalarProperty Name="SubscriptionStartDate" ColumnName="SubscriptionStartDate" />
+                <ScalarProperty Name="ClientSubscriptionId" ColumnName="ClientSubscriptionId" />
                 <ScalarProperty Name="PlanId" ColumnName="PlanId" />
                 <ScalarProperty Name="ServingPriceId" ColumnName="ServingPriceId" />
                 <ScalarProperty Name="CookerSubscriptionId" ColumnName="CookerSubscriptionId" />

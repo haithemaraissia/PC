@@ -158,6 +158,7 @@
     <Compile Include="Fake\Model\Util\DiscountType.cs" />
     <Compile Include="Fake\Model\Util\OrderType.cs" />
     <Compile Include="Fake\Model\Util\PaymentMethodType.cs" />
+    <Compile Include="Fake\Model\Util\Subscriptions\SubscriptionCharge.cs" />
     <Compile Include="Fake\Model\Util\UserTypes.cs" />
     <Compile Include="Fake\Repo\Repository\FakeCookerRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

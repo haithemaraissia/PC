@@ -21,7 +21,7 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsInvoices
         public void InitializeInvoicesList()
         {
             MyInvoices = new List<Invoice> {
-                FirstInvoice(), 
+                FirstSubscriptionInvoice(), 
                 SecondInvoice(),
                 ThirdInvoices()
             };
@@ -49,18 +49,35 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsInvoices
             var firstOrderInvoice = new Invoice
             {
 
-
                 InvoiceId = 10,
 
-                OrderId = firstOrder.OrderId,
-                ClientId = firstOrder.ClientId,
-                OrderDate = firstOrder.OrderDate,
-                DeliveryDate = firstOrder.DeliveryDate,
-                CurrencyId = firstOrder.CurrencyId,
+                #region Orders Fields
+                OrderId = null,
+                OrderDate = null,
+                DeliveryDate = null,
+                #endregion
 
+                #region Subscription Fields
+
+                SubscriptionStartDate = DateTime.Now.Date,
+                SubscriptionEndDate = DateTime.Now.Date,
+                SubscriptionInvoiceDate = DateTime.Now.Date,
+                ClientSubscriptionId = 1,
+                CookerSubscriptionId = 1,
+                ServingPriceId = 3,
+                PlanId = 1,
+                PlanTitle = firstOrderCharge.PlanTitle,
+
+                #endregion
+               
+                #region Common Fields
+
+                ClientId = firstOrder.ClientId,
                 CookerId = firstOrderCharge.CookerId,
+                OrderModelTypeId = 2,
                 OrderTypeValue = firstOrderCharge.OrderTypeValue,
                 PaymentMethodValue = firstOrderCharge.PaymentMethodValue,
+                CurrencyId = firstOrder.CurrencyId,
 
                 PromotionTitle = firstOrderCharge.PromotionTitle,
                 PromotionPrice = firstOrderCharge.PromotionPrice,
@@ -70,16 +87,14 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsInvoices
                 CouponPrice = firstOrderCharge.CouponPrice,
                 CouponCurrencyId = firstOrderCharge.CouponCurrencyId,
 
-                PlanTitle = firstOrderCharge.PlanTitle,
                 SalesTax = firstOrderCharge.SalesTaxes,
                 DeliveryFees = firstOrderCharge.DeliveryFee,
                 SubTotal = firstOrderCharge.Subtotal,
                 Total = firstOrderCharge.TotalCharges,
 
-                OrderModelTypeId = 2,
-                CookerSubscriptionId = null,
-                ServingPriceId = null,
-                PlanId = null
+                
+                #endregion
+
 
             };
             return firstOrderInvoice;

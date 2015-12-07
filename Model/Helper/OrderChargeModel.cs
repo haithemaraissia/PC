@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +14,15 @@ namespace Model.Helper
         public int CookerId { get; set; }
         public string OrderTypeValue { get; set; }
         public string PaymentMethodValue { get; set; }
-        public string PlanTitle { get; set; }
 
+        public int PlanId { get; set; }
+        public string PlanTitle { get; set; }
+        public int ClientSubscriptionId { get; set; }
+        public int CookerSubscriptionId { get; set; }
+        public int ServingPriceId { get; set; }
+        public DateTime SubscriptionStartDate { get; set; }
+        public DateTime SubscriptionEndDate { get; set; }
+        public DateTime SubscriptionInvoiceDate { get; set; }
 
         public string PromotionTitle { get; set; }
         public decimal PromotionPrice { get; set; }

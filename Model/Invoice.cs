@@ -18,7 +18,7 @@ namespace Model
         public Nullable<int> OrderId { get; set; }
         public int ClientId { get; set; }
         public int CookerId { get; set; }
-        public System.DateTime OrderDate { get; set; }
+        public Nullable<System.DateTime> OrderDate { get; set; }
         public Nullable<System.DateTime> DeliveryDate { get; set; }
         public string OrderTypeValue { get; set; }
         public string PaymentMethodValue { get; set; }
@@ -38,5 +38,9 @@ namespace Model
         public Nullable<int> CookerSubscriptionId { get; set; }
         public Nullable<int> ServingPriceId { get; set; }
         public Nullable<int> PlanId { get; set; }
+        public Nullable<int> ClientSubscriptionId { get; set; }
+        public Nullable<System.DateTime> SubscriptionStartDate { get; set; }
+        public Nullable<System.DateTime> SubscriptionEndDate { get; set; }
+        public Nullable<System.DateTime> SubscriptionInvoiceDate { get; set; }
     }
 }
