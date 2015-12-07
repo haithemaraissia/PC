@@ -35,6 +35,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="OrderModelForDashboard.txt" />
     <Content Include="ToDo.txt" />
   </ItemGroup>
   <ItemGroup>

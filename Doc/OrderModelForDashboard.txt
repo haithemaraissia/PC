@@ -1,0 +1,27 @@
+﻿
+
+Cooker Order
+
+
+Order Location
+ID
+Status ( accepted/ cancelled)
+Create At
+Expected By
+Order Type
+TZ ( PDT, CDT)
+Customer
+Type : Delivery/Pick
+Total
+Ready ( yes. no)
+
+
+
+All
+Items
+Submitted
+Acceptd
+Cancelled
+Completed
+Late
+
