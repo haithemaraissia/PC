@@ -136,6 +136,8 @@
     <Compile Include="Fake\Model\GoodData\Reviews\Industry\FakeIndustryAverageRatings.cs" />
     <Compile Include="Fake\Model\GoodData\Servings\Measurement\FakeServingMeasurement.cs" />
     <Compile Include="Fake\Model\GoodData\Orders\FakeOrders.cs" />
+    <Compile Include="Fake\Model\GoodData\Subscriptions\Clients\SubscriptionsInvoices\FakeSubscriptionsInvoices.cs" />
+    <Compile Include="Fake\Model\GoodData\Subscriptions\Clients\SubscriptionsOrders\FakeClient1SubscriptionsOrder.cs" />
     <Compile Include="Fake\Model\GoodData\Subscriptions\Cookers\FakeServingPricings.cs" />
     <Compile Include="Fake\Model\GoodData\Subscriptions\Cookers\FakeCookerSubscriptions.cs" />
     <Compile Include="Fake\Model\GoodData\Users\FakeAddressTypes.cs" />
