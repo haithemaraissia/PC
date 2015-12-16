@@ -1,7 +1,7 @@
 ﻿
 Complete the missing data in each class
 
-Client choose subscrption and pay it.
+Client choose subscription and pay it.
 Then , in his menu, he will have subscriptions tab
 	That will have all subscribtion and how many items left on each subscirption
 
