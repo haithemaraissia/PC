@@ -27,7 +27,7 @@ namespace DAL.Fake.Model.GoodData.Promotion
             var firstPromotionType = new PromotionType
             {
                 PromotionTypeId = (int)DisountType.Values.PercentageOff,
-                PromotionTypeValue = "Percentage Off"
+                PromotionTypeValue = DisountType.Values.PercentageOff.ToString()
             };
             return firstPromotionType;
         }
@@ -37,7 +37,7 @@ namespace DAL.Fake.Model.GoodData.Promotion
             var secondPromotionType = new PromotionType
             {
                 PromotionTypeId = (int)DisountType.Values.AmountOff,
-                PromotionTypeValue = "Amount Off"
+                PromotionTypeValue = DisountType.Values.AmountOff.ToString()
             };
             return secondPromotionType;
         }
@@ -47,7 +47,7 @@ namespace DAL.Fake.Model.GoodData.Promotion
             var thirdPromotionType = new PromotionType
             {
                 PromotionTypeId = (int)DisountType.Values.FixedAmount,
-                PromotionTypeValue = "Fixed Amount"
+                PromotionTypeValue = DisountType.Values.FixedAmount.ToString()
             };
             return thirdPromotionType;
         }

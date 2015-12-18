@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DAL.Fake.Model.Util;
 using Model;
 
 namespace DAL.Fake.Model
@@ -25,10 +26,10 @@ namespace DAL.Fake.Model
         {
             var firstServingPricing = new ServingPrice
             {
-                ServicePriceId = 1,
-                ServingMeasurementId = 1,
-                PLanId = 1,
-                Price = (decimal) 19.99,
+                ServicePriceId = (int)ServingPriceModel.Values.Ninteen_Dollars_NintyNine,
+                ServingMeasurementId = (int)ServingMeasurementType.Values.TwoCupContainer,
+                PLanId = (int)Plans.Types.ThreeMealsPerWeek,
+                Price = (decimal)(new ServingPriceModel().GetPrice(ServingPriceModel.Values.Ninteen_Dollars_NintyNine)),
                 Quantity = 1
             };
             return firstServingPricing;
@@ -38,10 +39,10 @@ namespace DAL.Fake.Model
         {
             var secondServingPricing = new ServingPrice
             {
-                ServicePriceId = 2,
-                ServingMeasurementId = 7,
-                PLanId = 1,
-                Price = (decimal)14.99,
+                ServicePriceId = (int)ServingPriceModel.Values.Fourteen_Dollars_NintyNine,
+                ServingMeasurementId = (int)ServingMeasurementType.Values.BreadPlate6Inches,
+                PLanId = (int)Plans.Types.FiveMealsPerWeek,
+                Price = (decimal)(new ServingPriceModel().GetPrice(ServingPriceModel.Values.Fourteen_Dollars_NintyNine)),
                 Quantity = 2
             };
             return secondServingPricing;
@@ -51,10 +52,10 @@ namespace DAL.Fake.Model
         {
             var thirdServingPricing = new ServingPrice
             {
-                ServicePriceId = 3,
-                ServingMeasurementId = 8,
-                PLanId = 1,
-                Price = (decimal)9.99,
+                ServicePriceId = (int)ServingPriceModel.Values.Ninteen_Dollars_NintyNine,
+                ServingMeasurementId = (int)ServingMeasurementType.Values.LunchPlate9Inches,
+                PLanId = (int)Plans.Types.TenMealsPerWeek,
+                Price = (decimal)(new ServingPriceModel().GetPrice(ServingPriceModel.Values.Nine_DollarsNintyNine)),
                 Quantity = 1
             };
             return thirdServingPricing;

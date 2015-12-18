@@ -26,7 +26,7 @@ namespace DAL.Fake.Model.GoodData.PaymentMethods
             var firstPaymentMethod = new PaymentMethod
             {
                 PaymentMethodId = (int)Util.PaymentMethodType.Values.CardOnLine,
-                PaymentMethodValue = "Card on Line"
+                PaymentMethodValue = Util.PaymentMethodType.Values.CardOnLine.ToString()
             };
             return firstPaymentMethod;
         }
@@ -36,7 +36,7 @@ namespace DAL.Fake.Model.GoodData.PaymentMethods
             var secondPaymentMethod = new PaymentMethod
             {
                 PaymentMethodId = (int)Util.PaymentMethodType.Values.Cash,
-                PaymentMethodValue = "Cash"
+                PaymentMethodValue = Util.PaymentMethodType.Values.Cash.ToString()
             };
             return secondPaymentMethod;
         }
@@ -46,7 +46,7 @@ namespace DAL.Fake.Model.GoodData.PaymentMethods
             var thirdPaymentMethod = new PaymentMethod
             {
                 PaymentMethodId = (int)Util.PaymentMethodType.Values.CardToCounter,
-                PaymentMethodValue = "Card to the counter/rider"
+                PaymentMethodValue = Util.PaymentMethodType.Values.CardToCounter.ToString()
             };
             return thirdPaymentMethod;
         }

@@ -31,7 +31,7 @@ namespace DAL.Fake.Model.GoodData.Cuisine
         {
             var firstCuisineType = new CuisineType
             {
-                CuisineTypeId = 1,
+                CuisineTypeId = (int)Cuisines.Types.Italian,
                 CuisineTypeValue = Cuisines.Types.Italian.ToString()
             };
             return firstCuisineType;
@@ -41,7 +41,7 @@ namespace DAL.Fake.Model.GoodData.Cuisine
         {
             var secondCuisineType = new CuisineType
             {
-                CuisineTypeId = 2,
+                CuisineTypeId =  (int)Cuisines.Types.Mexican,
                 CuisineTypeValue = Cuisines.Types.Mexican.ToString()
             };
             return secondCuisineType;
@@ -51,7 +51,7 @@ namespace DAL.Fake.Model.GoodData.Cuisine
         {
             var thirdCuisineType = new CuisineType
             {
-                CuisineTypeId = 3,
+                CuisineTypeId =  (int)Cuisines.Types.Japanese,
                 CuisineTypeValue = Cuisines.Types.Japanese.ToString()
             };
             return thirdCuisineType;
@@ -61,7 +61,7 @@ namespace DAL.Fake.Model.GoodData.Cuisine
         {
             var fourCuisineType = new CuisineType
             {
-                CuisineTypeId = 4,
+                CuisineTypeId =  (int)Cuisines.Types.Filipino,
                 CuisineTypeValue = Cuisines.Types.Filipino.ToString()
             };
             return fourCuisineType;
@@ -71,7 +71,7 @@ namespace DAL.Fake.Model.GoodData.Cuisine
         {
             var fiveCuisineType = new CuisineType
             {
-                CuisineTypeId = 5,
+                CuisineTypeId = (int)Cuisines.Types.Jamaican,
                 CuisineTypeValue = Cuisines.Types.Jamaican.ToString()
             };
             return fiveCuisineType;
@@ -81,7 +81,7 @@ namespace DAL.Fake.Model.GoodData.Cuisine
         {
             var sixCuisineType = new CuisineType
             {
-                CuisineTypeId = 6,
+                CuisineTypeId = (int)Cuisines.Types.Moroccan,
                 CuisineTypeValue = Cuisines.Types.Moroccan.ToString()
             };
             return sixCuisineType;
@@ -91,7 +91,7 @@ namespace DAL.Fake.Model.GoodData.Cuisine
         {
             var sevenCuisineType = new CuisineType
             {
-                CuisineTypeId = 7,
+                CuisineTypeId = (int)Cuisines.Types.Dominican,
                 CuisineTypeValue = Cuisines.Types.Dominican.ToString()
             };
             return sevenCuisineType;

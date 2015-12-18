@@ -27,8 +27,8 @@ namespace DAL.Fake.Model.GoodData.CookerSubscriptions
             {
                 CookerSubscriptionId = 1,
                 CookerId = 1,
-                PlanId = 1,
-                ServingPriceId = 1
+                PlanId =  (int)Util.Plans.Types.ThreeMealsPerWeek,
+                ServingPriceId = (int)Util.ServingPriceModel.Values.Nine_DollarsNintyNine
             };
             return firstCookerSubscription;
         }
@@ -39,8 +39,8 @@ namespace DAL.Fake.Model.GoodData.CookerSubscriptions
             {
                 CookerSubscriptionId = 2,
                 CookerId = 1,
-                PlanId = 1,
-                ServingPriceId = 3
+                PlanId =  (int)Util.Plans.Types.FiveMealsPerWeek,
+                ServingPriceId = (int)Util.ServingPriceModel.Values.Fourteen_Dollars_NintyNine
             };
             return secondCookerSubscription;
         }
@@ -51,8 +51,8 @@ namespace DAL.Fake.Model.GoodData.CookerSubscriptions
             {
                 CookerSubscriptionId = 3,
                 CookerId = 1,
-                PlanId = 1,
-                ServingPriceId = 3
+                PlanId =  (int)Util.Plans.Types.TenMealsPerWeek,
+                ServingPriceId = (int)Util.ServingPriceModel.Values.Ninteen_Dollars_NintyNine
             };
             return thirdCookerSubscription;
         }

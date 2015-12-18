@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using DAL.Fake.Model.GoodData.Cooker;
+using DAL.Fake.Model.GoodData.CookerSubscriptions;
 using DAL.Fake.Model.GoodData.Coupon;
 using DAL.Fake.Model.GoodData.DeliveryZones;
 using DAL.Fake.Model.GoodData.Orders.Clients;
@@ -26,7 +27,8 @@ namespace DAL.Fake.Model.Util.Orders
         private readonly List<PaymentMethod> _fakePaymentMethods;
         private readonly List<global::Model.OrderType> _fakeOrderTypes;
         private readonly List<Plan> _fakePlans;
-        private List<ClientSubscription> FakeClientSubscription => new FakeClientSubscription().MyClientSubscriptions;
+        private List<ClientSubscription> FakeClientSubscription = new FakeClientSubscription().MyClientSubscriptions;
+        private List<CookerSubscription> FakeCookerSubscription = new FakeCookerSubscriptions().MyCookerSubscriptions;
         private OrderChargeModel _orderCharge;
 
         public SubscriptionCharge(ClientAddress deliveryAddress = null)
@@ -48,47 +50,59 @@ namespace DAL.Fake.Model.Util.Orders
         public OrderChargeModel Calculate(int clientSubscriptionId)
         {
             var clientSubscription = (from c in FakeClientSubscription where c.ClientSubscriptionId == clientSubscriptionId select c).FirstOrDefault();
-            var orderItems = (from c in _orderItem where c.OrderId == order.OrderId select c).ToList();
-            var cookerId = orderItems.First().CookerId;
+
+            var cookerSubscription =  (from c in FakeCookerSubscription where c.CookerSubscriptionId == clientSubscription.CookerSubscriptionId select c).FirstOrDefault();
+
+#region ToDo Get the subscription Price
+            //            var orderItems = (from c in _orderItem where c.OrderId == order.OrderId select c).ToList();
+            //var cookerId = orderItems.First().CookerId;
+            //var taxPercent = (from c in _cookers where c.CookerId == cookerId select c.TaxPercent).FirstOrDefault() ?? 1;
+            //var paymentMethodValue = (from c in _fakePaymentMethods where c.PaymentMethodId == order.PaymentMethodId select c.PaymentMethodValue).FirstOrDefault();
+            //var orderTypeValue = (from c in _fakeOrderTypes where c.OrderTypeId == order.OrderTypeId select c.OrderTypeValue).FirstOrDefault();
+            //var planTitle = (from c in _fakePlans where c.PlanId == order.PlanId select c.Description).FirstOrDefault();
+
+#endregion
+            var orderItems = (from c in _orderItem select c).ToList().FirstOrDefault();
+            var cookerId = orderItems.CookerId;
             var taxPercent = (from c in _cookers where c.CookerId == cookerId select c.TaxPercent).FirstOrDefault() ?? 1;
-            var paymentMethodValue = (from c in _fakePaymentMethods where c.PaymentMethodId == order.PaymentMethodId select c.PaymentMethodValue).FirstOrDefault();
-            var orderTypeValue = (from c in _fakeOrderTypes where c.OrderTypeId == order.OrderTypeId select c.OrderTypeValue).FirstOrDefault();
-            var planTitle = (from c in _fakePlans where c.PlanId == order.PlanId select c.Description).FirstOrDefault();
+            var paymentMethodValue = (from c in _fakePaymentMethods select c).ToList().FirstOrDefault().PaymentMethodValue;
+            var orderTypeValue = (from c in _fakeOrderTypes select c).ToList().FirstOrDefault().OrderTypeValue;
+            var planTitle = (from c in _fakePlans select c).ToList().FirstOrDefault().Title;
            
 
-            #region PickUpOrderCharge
+            //#region PickUpOrderCharge
 
-            if (order.OrderTypeId == (int)OrderType.Values.PickUp)
-            {
-               _orderCharge = PickUpCharge(order, taxPercent);
-            }
+            //if (order.OrderTypeId == (int)OrderType.Values.PickUp)
+            //{
+            //   _orderCharge = PickUpCharge(order, taxPercent);
+            //}
 
-            #endregion
+            //#endregion
  
-            #region DeliveryOrderCharge
+            //#region DeliveryOrderCharge
 
-            var cookerDelieryZonesId = (from c in _cookerDeliveryZones where c.CookerId == cookerId select c.DeliveryId).ToList();
+            //var cookerDelieryZonesId = (from c in _cookerDeliveryZones where c.CookerId == cookerId select c.DeliveryId).ToList();
 
-            decimal deliveryFees = 0;
-            foreach (var deliveryZoneId in cookerDelieryZonesId)
-            {
-                //Custom KML Function to see if the item is in the zone
-                //Moq for now
-                var deliveryzone = _deliveryZones.FirstOrDefault(c => c.DeliveryId == deliveryZoneId);
+            //decimal deliveryFees = 0;
+            //foreach (var deliveryZoneId in cookerDelieryZonesId)
+            //{
+            //    //Custom KML Function to see if the item is in the zone
+            //    //Moq for now
+            //    var deliveryzone = _deliveryZones.FirstOrDefault(c => c.DeliveryId == deliveryZoneId);
 
-                //KML integration to see if deliveryaddress is Zone
-                if (_deliveryAddress.AddressTypeId == (int) AddressToDeliveryZone.Values.AddressInZone)
-                {
-                    if (deliveryzone != null)
-                    {
-                        deliveryFees = deliveryzone.DeliveryFees;
-                    }
-                }
-            }
+            //    //KML integration to see if deliveryaddress is Zone
+            //    if (_deliveryAddress.AddressTypeId == (int) AddressToDeliveryZone.Values.AddressInZone)
+            //    {
+            //        if (deliveryzone != null)
+            //        {
+            //            deliveryFees = deliveryzone.DeliveryFees;
+            //        }
+            //    }
+            //}
 
-            _orderCharge = DeliveryCharge(order, deliveryFees, taxPercent); 
+            //_orderCharge = DeliveryCharge(order, deliveryFees, taxPercent); 
 
-            #endregion
+            //#endregion
 
 
             #region SubscriptionFields

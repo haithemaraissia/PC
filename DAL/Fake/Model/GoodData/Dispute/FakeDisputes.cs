@@ -27,7 +27,7 @@ namespace DAL.Fake.Model.GoodData.Dispute
             {
                 DisputeId =  1,
                 OrderId = 1,
-                OrderModelTypeId = 1,
+                OrderModelTypeId = (int)Util.OrderModelType.Values.Transaction,
                 CookerId = 1,
                 ClientId = 1,
                 DisputeDate = DateTime.Today.Date,
@@ -45,7 +45,7 @@ namespace DAL.Fake.Model.GoodData.Dispute
             var secondDispute = new global::Model.Dispute();
             secondDispute.DisputeId = 2;
             secondDispute.OrderId = 2;
-            secondDispute.OrderModelTypeId = 2;
+            secondDispute.OrderModelTypeId = (int) Util.OrderModelType.Values.Subscription;
             secondDispute.CookerId = 1;
             secondDispute.ClientId = 1;
             secondDispute.DisputeDate = DateTime.Today.Date;
@@ -63,7 +63,7 @@ namespace DAL.Fake.Model.GoodData.Dispute
             {
                 DisputeId = 3,
                 OrderId = 3,
-                OrderModelTypeId = 1,
+                OrderModelTypeId = (int)Util.OrderModelType.Values.Transaction,
                 CookerId = 1,
                 ClientId = 2,
                 DisputeDate = DateTime.Today.Date,

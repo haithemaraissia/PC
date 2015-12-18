@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Model;
 
 namespace DAL.Fake.Model.GoodData.Orders.Clients.Client1
@@ -23,10 +24,11 @@ namespace DAL.Fake.Model.GoodData.Orders.Clients.Client1
         private OrderHistroy FirstOrderHistory()
         {
             var invoice = new FakeClient1Invoices().FirstInvoice();
+            Debug.Assert(invoice.OrderId != null, "invoice.OrderId != null");
             var orderHistory = new OrderHistroy
             {
                 OrderHistoryId = 1,
-                OrderId = invoice.OrderId,
+                OrderId = (int) invoice.OrderId,
                 ClientId = invoice.ClientId,
                 CookerId = invoice.ClientId,
                 OrderTypeValue = invoice.OrderTypeValue,

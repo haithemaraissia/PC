@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DAL.Fake.Model.Util;
 using Model;
 
 namespace DAL.Fake.Model.GoodData.Serving.Measurement
@@ -34,8 +35,8 @@ namespace DAL.Fake.Model.GoodData.Serving.Measurement
         {
             var firstServingMeasurement = new ServingMeasurement
             {
-                ServingMeasurementId = 1,
-                ServingMeasurementValue = "2 Cup Container"
+                ServingMeasurementId = (int)ServingMeasurementType.Values.TwoCupContainer,
+                ServingMeasurementValue = ServingMeasurementType.Values.TwoCupContainer.ToString()
             };
             return firstServingMeasurement;
         }
@@ -44,8 +45,8 @@ namespace DAL.Fake.Model.GoodData.Serving.Measurement
         {
             var secondServingMeasurement = new ServingMeasurement
             {
-                ServingMeasurementId = 2,
-                ServingMeasurementValue = "4 Cup Container"
+                ServingMeasurementId = (int)ServingMeasurementType.Values.FourCupContainer,
+                ServingMeasurementValue = ServingMeasurementType.Values.FourCupContainer.ToString()
             };
             return secondServingMeasurement;
         }
@@ -54,8 +55,8 @@ namespace DAL.Fake.Model.GoodData.Serving.Measurement
         {
             var thirdServingMeasurement = new ServingMeasurement
             {
-                ServingMeasurementId = 3,
-                ServingMeasurementValue = "7 Cup Container"
+                ServingMeasurementId = (int)ServingMeasurementType.Values.SevenCupContainer,
+                ServingMeasurementValue = ServingMeasurementType.Values.SevenCupContainer.ToString()
             };
             return thirdServingMeasurement;
         }
@@ -69,8 +70,8 @@ namespace DAL.Fake.Model.GoodData.Serving.Measurement
         {
             var fourthServingMeasurement = new ServingMeasurement
             {
-                ServingMeasurementId = 4,
-                ServingMeasurementValue = "Small Bowl 12oz"
+                ServingMeasurementId = (int)ServingMeasurementType.Values.SmallBowl12Oz,
+                ServingMeasurementValue = ServingMeasurementType.Values.SmallBowl12Oz.ToString()
             };
             return fourthServingMeasurement;
         }
@@ -79,8 +80,8 @@ namespace DAL.Fake.Model.GoodData.Serving.Measurement
         {
             var fifthServingMeasurement = new ServingMeasurement
             {
-                ServingMeasurementId = 5,
-                ServingMeasurementValue = "Medium Bowl 14 oz"
+                ServingMeasurementId = (int)ServingMeasurementType.Values.MediumBowl14Oz,
+                ServingMeasurementValue = ServingMeasurementType.Values.MediumBowl14Oz.ToString()
             };
             return fifthServingMeasurement;
         }
@@ -89,8 +90,8 @@ namespace DAL.Fake.Model.GoodData.Serving.Measurement
         {
             var sixthServingMeasurement = new ServingMeasurement
             {
-                ServingMeasurementId = 6,
-                ServingMeasurementValue = "Big Bowl 28 oz"
+                ServingMeasurementId = (int)ServingMeasurementType.Values.BigBowl28Oz,
+                ServingMeasurementValue = ServingMeasurementType.Values.BigBowl28Oz.ToString()
             };
             return sixthServingMeasurement;
         }
@@ -104,8 +105,8 @@ namespace DAL.Fake.Model.GoodData.Serving.Measurement
         {
             var seventhServingMeasurement = new ServingMeasurement
             {
-                ServingMeasurementId = 7,
-                ServingMeasurementValue = "Bread Plate ( 6 inches)"
+                ServingMeasurementId = (int)ServingMeasurementType.Values.BreadPlate6Inches,
+                ServingMeasurementValue = ServingMeasurementType.Values.BreadPlate6Inches.ToString()
             };
             return seventhServingMeasurement;
         }
@@ -114,8 +115,8 @@ namespace DAL.Fake.Model.GoodData.Serving.Measurement
         {
             var eighthServingMeasurement = new ServingMeasurement
             {
-                ServingMeasurementId = 8,
-                ServingMeasurementValue = "Lunch Plate ( 9 inches)"
+                ServingMeasurementId = (int)ServingMeasurementType.Values.LunchPlate9Inches,
+                ServingMeasurementValue = ServingMeasurementType.Values.LunchPlate9Inches.ToString()
             };
             return eighthServingMeasurement;
         }
@@ -124,13 +125,14 @@ namespace DAL.Fake.Model.GoodData.Serving.Measurement
         {
             var ninethServingMeasurement = new ServingMeasurement
             {
-                ServingMeasurementId = 9,
-                ServingMeasurementValue = "Dinner Plates ( 12 inches)"
+                ServingMeasurementId = (int)ServingMeasurementType.Values.DinnerPlate12Inches,
+                ServingMeasurementValue = ServingMeasurementType.Values.DinnerPlate12Inches.ToString()
             };
             return ninethServingMeasurement;
         }
 
         #endregion
+
         ~FakeServingMeasurement()
         {
             MyServingMeasurement = null;

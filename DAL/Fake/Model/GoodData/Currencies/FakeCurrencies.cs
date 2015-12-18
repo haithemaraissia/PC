@@ -26,7 +26,7 @@ namespace DAL.Fake.Model.GoodData.Currency
             var firstCurrency = new global::Model.Currency
             {
                 CurrencyId = (int)CurrencyType.Values.Usd,
-                CurrencyValue = "Usd"
+                CurrencyValue = CurrencyType.Values.Usd.ToString()
             };
             return firstCurrency;
         }
@@ -36,7 +36,7 @@ namespace DAL.Fake.Model.GoodData.Currency
             var secondCurrency = new global::Model.Currency
             {
                 CurrencyId = (int)CurrencyType.Values.Cad,
-                CurrencyValue = "Cad"
+                CurrencyValue = CurrencyType.Values.Cad.ToString()
             };
             return secondCurrency;
         }
@@ -46,7 +46,7 @@ namespace DAL.Fake.Model.GoodData.Currency
             var thirdCurrency = new global::Model.Currency
             {
                 CurrencyId = (int)CurrencyType.Values.Eur,
-                CurrencyValue = "Eur"
+                CurrencyValue = CurrencyType.Values.Eur.ToString()
             };
             return thirdCurrency;
         }

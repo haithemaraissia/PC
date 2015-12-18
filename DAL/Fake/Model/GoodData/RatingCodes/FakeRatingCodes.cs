@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DAL.Fake.Model.Util;
 
 namespace DAL.Fake.Model.GoodData.RatingCode
 {
@@ -24,8 +25,8 @@ namespace DAL.Fake.Model.GoodData.RatingCode
         {
             var firstRatingCode = new global::Model.RatingCode
             {
-                RatingCodeId = 1,
-                RatingCodeValue = "Positive"
+                RatingCodeId = (int)RatingCodeType.Values.Positive,
+                RatingCodeValue = RatingCodeType.Values.Positive.ToString()
             };
             return firstRatingCode;
         }
@@ -34,8 +35,8 @@ namespace DAL.Fake.Model.GoodData.RatingCode
         {
             var secondRatingCode = new global::Model.RatingCode
             {
-                RatingCodeId = 2,
-                RatingCodeValue = "Negative"
+                RatingCodeId = (int)RatingCodeType.Values.Negative,
+                RatingCodeValue = RatingCodeType.Values.Negative.ToString()
             };
             return secondRatingCode;
         }
@@ -44,8 +45,8 @@ namespace DAL.Fake.Model.GoodData.RatingCode
         {
             var thirdRatingCode = new global::Model.RatingCode
             {
-                RatingCodeId = 3,
-                RatingCodeValue = "Neutral"
+                RatingCodeId = (int)RatingCodeType.Values.Neutral,
+                RatingCodeValue = RatingCodeType.Values.Neutral.ToString()
             };
             return thirdRatingCode;
         }

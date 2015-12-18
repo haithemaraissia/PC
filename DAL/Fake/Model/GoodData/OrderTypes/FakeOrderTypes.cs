@@ -24,7 +24,7 @@ namespace DAL.Fake.Model.GoodData.OrderTypes
             var firstOrderType = new global::Model.OrderType
             {
                 OrderTypeId = (int)Util.OrderType.Values.PickUp,
-                OrderTypeValue = "Pick Up"
+                OrderTypeValue = Util.OrderType.Values.PickUp.ToString()
             };
             return firstOrderType;
         }
@@ -34,7 +34,7 @@ namespace DAL.Fake.Model.GoodData.OrderTypes
             var secondOrderType = new global::Model.OrderType
             {
                 OrderTypeId = (int)Util.OrderType.Values.Delivery,
-                OrderTypeValue = "Delivery"
+                OrderTypeValue = Util.OrderType.Values.Delivery.ToString()
             };
             return secondOrderType;
         }

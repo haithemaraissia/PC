@@ -26,7 +26,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             var firstCookerSpokenLanguage = new CookerSpokenLanguage
             {
                 LanguageId = 1,
-                LanguageValue = "EN",
+                LanguageValue = Util.LanguageType.Values.EN.ToString(),
                 CookerId = 1
             };
             return firstCookerSpokenLanguage;
@@ -37,7 +37,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             var secondCookerSpokenLanguage = new CookerSpokenLanguage
             {
                 LanguageId = 2,
-                LanguageValue = "SP",
+                LanguageValue = Util.LanguageType.Values.SP.ToString(),
                 CookerId = 1
             };
             return secondCookerSpokenLanguage;
@@ -48,7 +48,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             var thirdCookerSpokenLanguage = new CookerSpokenLanguage
             {
                 LanguageId = 3,
-                LanguageValue = "EN",
+                LanguageValue = Util.LanguageType.Values.EN.ToString(),
                 CookerId = 2
             };
             return thirdCookerSpokenLanguage;

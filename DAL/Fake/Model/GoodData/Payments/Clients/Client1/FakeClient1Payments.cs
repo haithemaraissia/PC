@@ -43,6 +43,7 @@ namespace DAL.Fake.Model.GoodData.Clients
 
                 return Payment;
             }
+            return null;
         }
 
         #region TODO

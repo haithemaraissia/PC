@@ -1,11 +1,11 @@
 namespace DAL.Fake.Model.Util
 {
-    public class OrderModelType
+    public class OrderType
     {
         public enum Values
         {
-            Transaction = 1,
-            Subscription = 2
+            PickUp = 1,
+            Delivery = 2
         }
     }
 }

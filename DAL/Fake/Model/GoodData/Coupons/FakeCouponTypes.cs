@@ -27,7 +27,7 @@ namespace DAL.Fake.Model.GoodData.Coupon
             var firstCouponType = new CouponType
             {
                 CouponTypeId = (int)DisountType.Values.PercentageOff,
-                CouponTypeValue = "Percentage Off"
+                CouponTypeValue = DisountType.Values.PercentageOff.ToString()
             };
             return firstCouponType;
         }
@@ -37,7 +37,7 @@ namespace DAL.Fake.Model.GoodData.Coupon
             var secondCouponType = new CouponType
             {
                 CouponTypeId = (int)DisountType.Values.AmountOff,
-                CouponTypeValue = "Amount Off"
+                CouponTypeValue = DisountType.Values.AmountOff.ToString()
             };
             return secondCouponType;
         }
@@ -47,7 +47,7 @@ namespace DAL.Fake.Model.GoodData.Coupon
             var thirdCouponType = new CouponType
             {
                 CouponTypeId = (int)DisountType.Values.FixedAmount,
-                CouponTypeValue = "Fixed Amount"
+                CouponTypeValue = DisountType.Values.FixedAmount.ToString()
             };
             return thirdCouponType;
         }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DAL.Fake.Model.Util;
 using Model;
 
 namespace DAL.Fake.Model.GoodData.Dispute
@@ -27,8 +28,8 @@ namespace DAL.Fake.Model.GoodData.Dispute
         {
             var firstDisputeStatu = new DisputeStatu
             {
-                DisputeStatusId = 1,
-                DisputeStatusValue = "Opened"
+                DisputeStatusId = (int)DisputeStatus.Values.Opened,
+                DisputeStatusValue = DisputeStatus.Values.Opened.ToString()
             };
             return firstDisputeStatu;
         }
@@ -37,8 +38,8 @@ namespace DAL.Fake.Model.GoodData.Dispute
         {
             var secondDisputeStatu = new DisputeStatu
             {
-                DisputeStatusId = 2,
-                DisputeStatusValue = "Processing"
+                DisputeStatusId = (int)DisputeStatus.Values.Processing,
+                DisputeStatusValue = DisputeStatus.Values.Processing.ToString()
             };
             return secondDisputeStatu;
         }
@@ -47,8 +48,8 @@ namespace DAL.Fake.Model.GoodData.Dispute
         {
             var thirdDisputeStatu = new DisputeStatu
             {
-                DisputeStatusId = 3,
-                DisputeStatusValue = "Escalated"
+                DisputeStatusId = (int)DisputeStatus.Values.Escalated,
+                DisputeStatusValue = DisputeStatus.Values.Escalated.ToString()
             };
             return thirdDisputeStatu;
         }
@@ -57,8 +58,8 @@ namespace DAL.Fake.Model.GoodData.Dispute
         {
             var fourthDisputeStatu = new DisputeStatu
             {
-                DisputeStatusId = 4,
-                DisputeStatusValue = "Resolved"
+                DisputeStatusId = (int)DisputeStatus.Values.Resolved,
+                DisputeStatusValue = DisputeStatus.Values.Resolved.ToString()
             };
             return fourthDisputeStatu;
         }
@@ -67,8 +68,8 @@ namespace DAL.Fake.Model.GoodData.Dispute
         {
             var fifthDisputeStatu = new DisputeStatu
             {
-                DisputeStatusId = 5,
-                DisputeStatusValue = "UnResolved"
+                DisputeStatusId = (int)DisputeStatus.Values.UnResolved,
+                DisputeStatusValue = DisputeStatus.Values.UnResolved.ToString()
             };
             return fifthDisputeStatu;
         }

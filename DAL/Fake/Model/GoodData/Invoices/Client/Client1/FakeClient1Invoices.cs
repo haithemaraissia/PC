@@ -73,7 +73,7 @@ namespace DAL.Fake.Model
                 SubTotal = firstOrderCharge.Subtotal,
                 Total = firstOrderCharge.TotalCharges,
 
-                OrderModelTypeId = 2,
+                OrderModelTypeId = (int)Util.OrderModelType.Values.Transaction,
                 CookerSubscriptionId = null,
                 ServingPriceId = null,
                 PlanId = null

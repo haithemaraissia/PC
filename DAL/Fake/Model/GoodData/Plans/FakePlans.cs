@@ -24,9 +24,9 @@ namespace DAL.Fake.Model.GoodData.Plan
         {
             var firstPlan = new global::Model.Plan
             {
-                PlanId = 1,
+                PlanId = (int)Util.Plans.Types.ThreeMealsPerWeek,
                 ExternalId = "1",
-                Description = "3 Meals per week",
+                Description = Util.Plans.Types.ThreeMealsPerWeek.ToString(),
                 Title="Mike Weekly Plan"
             };
             return firstPlan;
@@ -36,9 +36,9 @@ namespace DAL.Fake.Model.GoodData.Plan
         {
             var secondPlan = new global::Model.Plan
             {
-                PlanId = 1,
+                PlanId = (int)Util.Plans.Types.FiveMealsPerWeek,
                 ExternalId = "2",
-                Description = "5 meals per week",
+                Description = Util.Plans.Types.FiveMealsPerWeek.ToString(),
                 Title = "Mike Weekly Plan2"
             };
             return secondPlan;
@@ -48,9 +48,9 @@ namespace DAL.Fake.Model.GoodData.Plan
         {
             var thirdPlan = new global::Model.Plan
             {
-                PlanId = 3,
+                PlanId = (int)Util.Plans.Types.TenMealsPerWeek,
                 ExternalId = "3",
-                Description = "10 meals per week",
+                Description = Util.Plans.Types.TenMealsPerWeek.ToString(),
                 Title = "Mike Weekly Plan3"
             };
             return thirdPlan;

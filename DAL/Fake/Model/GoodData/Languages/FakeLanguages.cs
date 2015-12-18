@@ -24,8 +24,8 @@ namespace DAL.Fake.Model.GoodData.Language
         {
             var firstLanguage = new global::Model.Language
             {
-                LanguageId = 1,
-                LanguageValue = "EN"
+                LanguageId = (int)Util.LanguageType.Values.EN,
+                LanguageValue = Util.LanguageType.Values.EN.ToString()
             };
             return firstLanguage;
         }
@@ -34,8 +34,8 @@ namespace DAL.Fake.Model.GoodData.Language
         {
             var secondLanguage = new global::Model.Language
             {
-                LanguageId = 2,
-                LanguageValue = "SP"
+                LanguageId = (int)Util.LanguageType.Values.SP,
+                LanguageValue = Util.LanguageType.Values.SP.ToString()
             };
             return secondLanguage;
         }
@@ -44,8 +44,8 @@ namespace DAL.Fake.Model.GoodData.Language
         {
             var thirdLanguage = new global::Model.Language
             {
-                LanguageId = 3,
-                LanguageValue = "FR"
+                LanguageId = (int)Util.LanguageType.Values.FR,
+                LanguageValue = Util.LanguageType.Values.FR.ToString()
             };
             return thirdLanguage;
         }

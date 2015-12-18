@@ -32,7 +32,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             {
                 CookerPlanId = 1,
                 CookerId = 1,
-                PlanId = 1
+                PlanId = (int)Util.Plans.Types.ThreeMealsPerWeek
             };
             return firstCookerPlan;
         }
@@ -43,7 +43,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             {
                 CookerPlanId = 2,
                 CookerId = 1,
-                PlanId = 2
+                PlanId = (int)Util.Plans.Types.FiveMealsPerWeek
             };
             return secondCookerPlan;
         }
@@ -54,7 +54,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             {
                 CookerPlanId = 3,
                 CookerId = 1,
-                PlanId = 3
+                PlanId = (int)Util.Plans.Types.TenMealsPerWeek
             };
             return thirdCookerPlan;
         }

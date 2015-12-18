@@ -45,7 +45,7 @@ namespace DAL.Fake.Model.GoodData.Orders.Clients
                 DishOptionChoiceId = 3,
                 DishOptionChoiceValue = "Cucumber Salad",
                 Price = (decimal?)2.09,
-                CurrencyId = 1,
+                CurrencyId = (int)CurrencyType.Values.Usd,
                 DishOptionId = (int)DishOptionType.Values.FakeRequiredSideTwelveOptionChoices,
                 Instructions = "no Mayone Please",
                 OrderItemId = 1
@@ -122,7 +122,7 @@ namespace DAL.Fake.Model.GoodData.Orders.Clients
                 DishOptionChoiceId = 20,
                 DishOptionChoiceValue = "Extra Dressing",
                 Price = (decimal?)0.53,
-                CurrencyId = 1,
+                CurrencyId = (int)CurrencyType.Values.Usd,
                 DishOptionId = (int)DishOptionType.Values.FakeOptionalSideFourOptionChoices,
                 Instructions = "no Mayone Please",
                 OrderItemId = 3
