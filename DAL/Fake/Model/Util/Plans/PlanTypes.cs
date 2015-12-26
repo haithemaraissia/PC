@@ -4,9 +4,9 @@ namespace DAL.Fake.Model.Util
     {
         public enum Types
         {
-            ThreeMealsPerWeek = 1,
-            FiveMealsPerWeek = 2,
-            TenMealsPerWeek = 3
+            ThreeMealsPerWeek = 3,
+            FiveMealsPerWeek = 5,
+            TenMealsPerWeek = 10
         }
     }
 }
