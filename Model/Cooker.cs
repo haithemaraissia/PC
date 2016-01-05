@@ -27,5 +27,7 @@ namespace Model
         public bool OfferPickUp { get; set; }
         public Nullable<decimal> TaxPercent { get; set; }
         public Nullable<decimal> AmountforFreeDelivery { get; set; }
+        public Nullable<System.DateTime> WaitingTime { get; set; }
+        public Nullable<int> NumberofSubscription { get; set; }
     }
 }

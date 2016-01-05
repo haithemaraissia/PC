@@ -157,6 +157,9 @@
     <Compile Include="Fake\Model\LookUp\Dispute\DisputeStatusType.cs" />
     <Compile Include="Fake\Model\LookUp\Langauges\LanguageType.cs" />
     <Compile Include="Fake\Model\LookUp\OrderModel\OrderModelType.cs" />
+    <Compile Include="Fake\Model\LookUp\OrderStatu\OrderStatus.cs" />
+    <Compile Include="Fake\Model\LookUp\Week\WeekType.cs" />
+    <Compile Include="Fake\Model\Util\Common\UtilHelper.cs" />
     <Compile Include="Fake\Model\Util\Orders\OrderCharge.cs" />
     <Compile Include="Fake\Model\LookUp\Discount\DiscountType.cs" />
     <Compile Include="Fake\Model\LookUp\OrderType\OrderType.cs" />
@@ -167,6 +170,7 @@
     <Compile Include="Fake\Model\LookUp\ServingMeasurement\ServingMeasurementType.cs" />
     <Compile Include="Fake\Model\LookUp\Subscription\Cookers\ServingPrice\ServingPriceModel.cs" />
     <Compile Include="Fake\Model\LookUp\UserType\UserTypes.cs" />
+    <Compile Include="Fake\Model\Util\Subscriptions\SubscriptionHelper.cs" />
     <Compile Include="Fake\Repo\Repository\FakeCookerRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Fake\Generic\FakeGenericRepository.cs" />

@@ -12,13 +12,15 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ServingPrice
+    public partial class OrderSubscriptionItemDishOption
     {
-        public int ServicePriceId { get; set; }
-        public int PLanId { get; set; }
-        public int ServingMeasurementId { get; set; }
-        public int Quantity { get; set; }
-        public decimal Price { get; set; }
-        public int CookerId { get; set; }
+        public int OrderSubscriptionItemDishOptionId { get; set; }
+        public int DishOptionChoiceId { get; set; }
+        public string DishOptionChoiceValue { get; set; }
+        public int DishOptionId { get; set; }
+        public string Instructions { get; set; }
+        public int OrderSubscriptionItemId { get; set; }
+    
+        public virtual OrderSubscriptionItem OrderSubscriptionItem { get; set; }
     }
 }

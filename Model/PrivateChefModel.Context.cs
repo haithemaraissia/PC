@@ -85,5 +85,10 @@ namespace Model
         public virtual DbSet<CookerSubscription> CookerSubscriptions { get; set; }
         public virtual DbSet<ServingPrice> ServingPrices { get; set; }
         public virtual DbSet<ClientSubscription> ClientSubscriptions { get; set; }
+        public virtual DbSet<OrderStatu> OrderStatus { get; set; }
+        public virtual DbSet<OrderSubscriptionHistroy> OrderSubscriptionHistroys { get; set; }
+        public virtual DbSet<OrderSubscriptionItemDishOption> OrderSubscriptionItemDishOptions { get; set; }
+        public virtual DbSet<OrderSubscriptionItem> OrderSubscriptionItems { get; set; }
+        public virtual DbSet<OrderSubscription> OrderSubscriptions { get; set; }
     }
 }

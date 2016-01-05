@@ -12,13 +12,19 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ClientSubscription
+    public partial class ClientAddress1
     {
-        public int ClientSubscriptionId { get; set; }
+        public int AddressId { get; set; }
         public int ClientId { get; set; }
-        public int CookerSubscriptionId { get; set; }
-        public bool Active { get; set; }
-        public System.DateTime ValidUntil { get; set; }
-        public bool Recurring { get; set; }
+        public string Address { get; set; }
+        public string Apt_suite { get; set; }
+        public int CityId { get; set; }
+        public int RegionId { get; set; }
+        public int CountryId { get; set; }
+        public string ZipCode { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Cross_Stree { get; set; }
+        public string Instructions { get; set; }
+        public int AddressTypeId { get; set; }
     }
 }

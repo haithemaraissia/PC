@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DAL.Fake.Model.GoodData.Orders.Clients.Client1;
 using DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders;
-using DAL.Fake.Model.Util.Orders;
+using DAL.Fake.Model.Util;
+using DAL.Fake.Model.Util.Subscriptions;
 using Model;
 
 namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsInvoices
 {
     public class FakeSubscriptionsInvoices
     {
-        public List<Order> MyOrders;
+        public List<OrderSubscription> MySubscriptionsOrders;
         public List<Invoice> MyInvoices;
 
         public FakeSubscriptionsInvoices()
@@ -21,35 +21,29 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsInvoices
         public void InitializeInvoicesList()
         {
             MyInvoices = new List<Invoice> {
-                FirstSubscriptionInvoice(), 
-                SecondInvoice(),
-                ThirdInvoices()
+                FirstSubscriptionInvoice()
             };
         }
 
-        #region Invoice for First Order 
+        #region Invoice for First Subscription Order 
 
         public Invoice FirstSubscriptionInvoice()
         {
-            //TODO CHANGE IT TO REFLECT THE SUBSCRIPTION
-
-            MyOrders = new List<Order>();
-            var client1Orders = new FakeClient1SubscriptionsOrder().MyOrders;
-            foreach (var order in client1Orders)
+            MySubscriptionsOrders = new List<OrderSubscription>();
+            var client1SubscriptionsOrders = new FakeClient1SubscriptionsOrder().MyOrders;
+            foreach (var order in client1SubscriptionsOrders)
             {
-                MyOrders.Add(order);
+                MySubscriptionsOrders.Add(order);
             }
 
-            var firstOrder = MyOrders.FirstOrDefault();
-            if (firstOrder == null) return null;
-            var firstOrderCharge = new OrderCharge().Calculate(firstOrder);
+            var firstSubscriptionOrder = MySubscriptionsOrders.FirstOrDefault();
+            if (firstSubscriptionOrder == null) return null;
 
-            //Add it is is a subscriptions
-
-            var firstOrderInvoice = new Invoice
+            var firstSubscriptionOrderCharge = new SubscriptionCharge().Calculate(firstSubscriptionOrder.OrderSubscriptionId);
+            var firstSubscriptionOrderInvoice = new Invoice
             {
 
-                InvoiceId = 10,
+                InvoiceId = 20,
 
                 #region Orders Fields
                 OrderId = null,
@@ -60,65 +54,53 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsInvoices
                 #region Subscription Fields
 
                 SubscriptionStartDate = DateTime.Now.Date,
-                SubscriptionEndDate = DateTime.Now.Date,
+                SubscriptionEndDate = DateTime.Now.Date.AddMonths(1),
                 SubscriptionInvoiceDate = DateTime.Now.Date,
-                ClientSubscriptionId = 1,
-                CookerSubscriptionId = 1,
-                ServingPriceId = 3,
-                PlanId = 1,
-                PlanTitle = firstOrderCharge.PlanTitle,
+                ClientSubscriptionId = firstSubscriptionOrder.ClientSubscriptionId,
+                CookerSubscriptionId = new SubscriptionHelper().GetCookerServingPriceModel(firstSubscriptionOrder.ClientSubscriptionId).CookerId,
+                ServingPriceId = new SubscriptionHelper().GetCookerServingPriceModel(firstSubscriptionOrder.ClientSubscriptionId).ServicePriceId,
+                PlanId = firstSubscriptionOrder.PlanId,
+                PlanTitle = Enum.GetName(typeof(Plans), firstSubscriptionOrder.PlanId),
 
                 #endregion
                
                 #region Common Fields
 
-                ClientId = firstOrder.ClientId,
-                CookerId = firstOrderCharge.CookerId,
-                OrderModelTypeId = 2,
-                OrderTypeValue = firstOrderCharge.OrderTypeValue,
-                PaymentMethodValue = firstOrderCharge.PaymentMethodValue,
-                CurrencyId = firstOrder.CurrencyId,
+                ClientId = firstSubscriptionOrder.ClientId,
+                CookerId = new SubscriptionHelper().GetCookerServingPriceModel(firstSubscriptionOrder.ClientSubscriptionId).CookerId,
+                OrderModelTypeId = (int)Util.OrderModelType.Values.Subscription,
+                OrderTypeValue = Util.OrderModelType.Values.Subscription.ToString(),
+                PaymentMethodValue = Enum.GetName(typeof(PaymentMethodType), firstSubscriptionOrder.PaymentMethodId),
+                CurrencyId = firstSubscriptionOrder.CurrencyId,
 
-                PromotionTitle = firstOrderCharge.PromotionTitle,
-                PromotionPrice = firstOrderCharge.PromotionPrice,
-                PromotionCurrencyId = firstOrderCharge.PromotionCurrencyId,
+                PromotionTitle = firstSubscriptionOrderCharge.PromotionTitle,
+                PromotionPrice = firstSubscriptionOrderCharge.PromotionPrice,
+                PromotionCurrencyId = firstSubscriptionOrderCharge.PromotionCurrencyId,
 
-                CouponTitle = firstOrderCharge.CouponTitle,
-                CouponPrice = firstOrderCharge.CouponPrice,
-                CouponCurrencyId = firstOrderCharge.CouponCurrencyId,
+                CouponTitle = firstSubscriptionOrderCharge.CouponTitle,
+                CouponPrice = firstSubscriptionOrderCharge.CouponPrice,
+                CouponCurrencyId = firstSubscriptionOrderCharge.CouponCurrencyId,
 
-                SalesTax = firstOrderCharge.SalesTaxes,
-                DeliveryFees = firstOrderCharge.DeliveryFee,
-                SubTotal = firstOrderCharge.Subtotal,
-                Total = firstOrderCharge.TotalCharges,
+                SalesTax = firstSubscriptionOrderCharge.SalesTaxes,
+                DeliveryFees = firstSubscriptionOrderCharge.DeliveryFee,
+                SubTotal = firstSubscriptionOrderCharge.Subtotal,
+                Total = firstSubscriptionOrderCharge.TotalCharges
 
-                
                 #endregion
 
 
             };
-            return firstOrderInvoice;
+            return firstSubscriptionOrderInvoice;
         }
         #endregion
-
-
-        #region TO DO ANC COMPLETE
-        public Invoice SecondInvoice()
-        {
-            return null;
-        }
-
-        public Invoice ThirdInvoices()
-        {
-            return null;
-        }
 
         ~FakeSubscriptionsInvoices()
         {
             MyInvoices = null;
         }
 
-        #endregion
 
+
+        
     }
 }

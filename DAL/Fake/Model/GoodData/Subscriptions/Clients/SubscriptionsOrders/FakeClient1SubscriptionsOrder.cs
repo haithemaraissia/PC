@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using DAL.Fake.Model.GoodData.Orders.Clients;
+using System.Linq;
+using DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker;
 using DAL.Fake.Model.Util;
+using DAL.Fake.Model.Util.Subscriptions;
 using Model;
+using OrderType = DAL.Fake.Model.Util.OrderType;
 
 namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders
 {
     public class FakeClient1SubscriptionsOrder
     {
-        public List<Order> MyOrders;
+        public List<OrderSubscription> MyOrders;
+
+        private const int ClientSubscriptionId = 1;
 
         public FakeClient1SubscriptionsOrder()
         {
@@ -17,15 +22,16 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders
 
         private void InitializeOrderList()
         {
-            MyOrders = new List<Order> {
-                FirstOrder()
+            MyOrders = new List<OrderSubscription> {
+                FirstSubscriptionOrder()
             };
+
         }
 
         #region From Plan1 subscription
 
         #region 12 Orders Chosen by Client when buying subscription
-
+        
         //Plan
         //PlanId = 1,
         //ExternalId = "1",
@@ -33,123 +39,196 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders
         //Title="Mike Weekly Plan"
 
         // Cooker Subscription
-       // CookerSubscriptionId = 1,
-       //CookerId = 1,
-       //PlanId = 1,
-       // ServingPriceId = 1
+        // CookerSubscriptionId = 1,
+        // CookerId = 1,
+        // PlanId = 1,
+        // ServingPriceId = 1
 
         //SubscriptionServingPrice
 
-       // ServingPrice
-       // {
-       //     ServicePriceId = 1,
-       //     ServingMeasurementId = 1,
-       //     PLanId = 1,
-       //     Price = (decimal)19.99,
-       //     Quantity = 1
-       // }
+        // ServingPrice
+        // {
+        //     ServicePriceId = 1,
+        //     ServingMeasurementId = 1,
+        //     PLanId = 1,
+        //     Price = (decimal)19.99,
+        //     Quantity = 1
+        // }
 
 
-        public Order FirstOrder()
+        public OrderSubscription FirstSubscriptionOrder()
         {
-            var firstOrder = new Order
+
+            var cookerServingPriceModel = new SubscriptionHelper().GetCookerServingPriceModel(ClientSubscriptionId);
+
+            var firstSubscriptionOrder = new OrderSubscription
             {
-                OrderId = 10,
+                OrderSubscriptionId = 1,
                 ClientId = 1,
                 OrderDate = DateTime.Today.Date,
                 DeliveryDate = null,
-                OrderTypeId = (int)Util.OrderType.Values.PickUp,
+                OrderTypeId = (int)OrderType.Values.PickUp,
                 PaymentMethodId = (int)PaymentMethodType.Values.CardOnLine,
                 CouponId = null,
                 PromotionId = null,
-                PlanId = 1,
+                PlanId = cookerServingPriceModel.PLanId,
+                SubTotal = cookerServingPriceModel.Price,
                 CurrencyId = (int)CurrencyType.Values.Usd,
-                SubTotal = (decimal)37.14
+                OrderStatusId = (int)OrderStatus.Values.InProgress,
+                ServingMeasurementId = cookerServingPriceModel.ServingMeasurementId,
+                NumberofServingTotal = 4 * cookerServingPriceModel.Quantity,
+                ClientSubscriptionId = ClientSubscriptionId
             };
-            firstOrder.OrderItems.Add(new FakeOrderItems().GetClient1FirstOrderFirstOrderItem());
-            firstOrder.OrderItems.Add(new FakeOrderItems().GetClient1FirstOrderSecondOrderItem()); 
-            return firstOrder;
+
+            #region Week1
+            firstSubscriptionOrder.OrderSubscriptionItems.Add(GetFirstOrderSubscriptionItem((int)WeekType.Values.Week1));
+            firstSubscriptionOrder.OrderSubscriptionItems.Add(GetSecondOrderSubscriptionItem((int)WeekType.Values.Week1));
+            firstSubscriptionOrder.OrderSubscriptionItems.Add(GetThirdOrderSubscriptionItem((int)WeekType.Values.Week1));
+            #endregion
+
+            #region Week2
+            firstSubscriptionOrder.OrderSubscriptionItems.Add(GetFirstOrderSubscriptionItem((int)WeekType.Values.Week2));
+            firstSubscriptionOrder.OrderSubscriptionItems.Add(GetSecondOrderSubscriptionItem((int)WeekType.Values.Week2));
+            firstSubscriptionOrder.OrderSubscriptionItems.Add(GetFourthOrderSubscriptionItem((int)WeekType.Values.Week2));
+            #endregion
+
+            #region Week3
+            firstSubscriptionOrder.OrderSubscriptionItems.Add(GetFirstOrderSubscriptionItem((int)WeekType.Values.Week3));
+            firstSubscriptionOrder.OrderSubscriptionItems.Add(GetSecondOrderSubscriptionItem((int)WeekType.Values.Week3));
+            firstSubscriptionOrder.OrderSubscriptionItems.Add(GetThirdOrderSubscriptionItem((int)WeekType.Values.Week3));
+            #endregion
+
+            #region Week4
+            firstSubscriptionOrder.OrderSubscriptionItems.Add(GetFirstOrderSubscriptionItem((int)WeekType.Values.Week4));
+            firstSubscriptionOrder.OrderSubscriptionItems.Add(GetFourthOrderSubscriptionItem((int)WeekType.Values.Week4));
+            firstSubscriptionOrder.OrderSubscriptionItems.Add(GetFirstOrderSubscriptionItem((int)WeekType.Values.Week4));
+            #endregion
+
+            return firstSubscriptionOrder;
+
+
         }
 
-        #region OrderItems
+        #region OrderSubscriptionItems
 
-        private OrderItem GetFirstOrderItem()
+        private OrderSubscriptionItem GetFirstOrderSubscriptionItem(int weekId)
         {
-            var firstOrderDetail = new OrderItem
+            var selectedDish = new FakeCooker1Dishes().MostPopularDish1();
+            var firstSubscriptionOrderItemDetail = new OrderSubscriptionItem
             {
-                CookerId = 1,
-                Description = "Chicken sauteed with roasted red peppers in our marinara sauce with provolone cheese. Served on fresh white Italian braided rolls topped with sesame seeds.",
-                DishId = 1,
+                OrderSubscriptionItemId = 1,
+                DishId = selectedDish.DishId,
+                CookerId = selectedDish.CookerId,
+                MenuId = selectedDish.MenuId,
+                Quantity = 1,
+                Description = selectedDish.Description,
                 Instructions = "Put Extra French Fries",
-                MenuId = 1,
-                OrderItemId = 1,
-                Quantity = 2
+                OrderSubscriptionId = MyOrders.Max(x => x.OrderSubscriptionId) + 1,
+                ClientOrderReviewSentClientOrderReviewSentId = new SubscriptionHelper().CreateOrderReview(selectedDish, MyOrders.Max(x => x.OrderSubscriptionId) + 1).ClientOrderToReviewId,
+                WeekId = weekId,
+                ScheduledDate = DateTime.Today.Date
             };
 
             //Required Side
-            var firstOrderDetailOption = new OrderItemDishOption
+            var firstOrderDetailOption = new OrderSubscriptionItemDishOption
             {
-                OrderItemDishOptionId = 1,
+                OrderSubscriptionItemDishOptionId = 1,
                 DishOptionChoiceId = 3,
                 DishOptionChoiceValue = "Cucumber Salad",
-                Price = (decimal?)2.09,
-                CurrencyId = 1,
                 DishOptionId = (int)DishOptionType.Values.FakeRequiredSideTwelveOptionChoices,
                 Instructions = "no Mayone Please",
-                OrderItemId = 1
+                OrderSubscriptionItemId = 1
             };
 
             //Optional Side
-            var secondOrderDetailOption = new OrderItemDishOption
+            var secondOrderDetailOption = new OrderSubscriptionItemDishOption
             {
-                OrderItemDishOptionId = 2,
+                OrderSubscriptionItemDishOptionId = 2,
                 DishOptionChoiceId = 17,
                 DishOptionChoiceValue = "House Salad",
-                Price = null,
-                CurrencyId = null,
                 DishOptionId = (int)DishOptionType.Values.FakeOptionalSideThreeOptionChoices,
                 Instructions = "More Lettuce",
-                OrderItemId = 1
+                OrderSubscriptionItemId = 1
             };
-            firstOrderDetail.OrderItemDishOptions.Add(firstOrderDetailOption);
-            firstOrderDetail.OrderItemDishOptions.Add(secondOrderDetailOption);
-            return firstOrderDetail;
+
+            firstSubscriptionOrderItemDetail.OrderSubscriptionItemDishOptions.Add(firstOrderDetailOption);
+            firstSubscriptionOrderItemDetail.OrderSubscriptionItemDishOptions.Add(secondOrderDetailOption);
+            return firstSubscriptionOrderItemDetail;
         }
 
-        private OrderItem GetSecondOrderItem()
+        private OrderSubscriptionItem GetSecondOrderSubscriptionItem(int weekId)
         {
-            var secondOrderDetail = new OrderItem
+            var selectedDish = new FakeCooker1Dishes().MostPopularDish2();
+            var secondSubscriptionOrderItemDetail = new OrderSubscriptionItem
             {
-                CookerId = 1,
-                Description = "Home made pasta, ground beef, tomato sauce, bechamel sauce and parmesan.",
-                DishId = 3,
+                OrderSubscriptionItemId = 2,
+                DishId = selectedDish.DishId,
+                CookerId = selectedDish.CookerId,
+                MenuId = selectedDish.MenuId,
+                Quantity = 1,
+                Description = selectedDish.Description,
                 Instructions = "Put Extra Spices",
-                MenuId = 1,
-                OrderItemId = 2,
-                Quantity = 1
+                OrderSubscriptionId = MyOrders.Max(x => x.OrderSubscriptionId) + 1,
+                ClientOrderReviewSentClientOrderReviewSentId = new SubscriptionHelper().CreateOrderReview(selectedDish, MyOrders.Max(x => x.OrderSubscriptionId) + 1).ClientOrderToReviewId,
+                WeekId = weekId,
+                ScheduledDate = DateTime.Today.Date.AddDays(2)
             };
 
             //Required Side
-            var firstOrderDetailOption = new OrderItemDishOption
+            var secondOrderDetailOption = new OrderSubscriptionItemDishOption
             {
-                OrderItemDishOptionId = 3,
+                OrderSubscriptionItemDishOptionId = 3,
                 DishOptionChoiceId = 14,
                 DishOptionChoiceValue = "New York Strip Steak",
-                Price = (decimal?)8.97,
-                CurrencyId = 1,
                 DishOptionId = (int)DishOptionType.Values.FakeRequiredSideThreeOptionChoices,
                 Instructions = "no Mayone Please",
-                OrderItemId = 2
+                OrderSubscriptionItemId = 2
             };
-            secondOrderDetail.OrderItemDishOptions.Add(firstOrderDetailOption);
-            return secondOrderDetail;
+            secondSubscriptionOrderItemDetail.OrderSubscriptionItemDishOptions.Add(secondOrderDetailOption);
+            return secondSubscriptionOrderItemDetail;
+        }
+
+        private OrderSubscriptionItem GetThirdOrderSubscriptionItem(int weekId)
+        {
+            var selectedDish = new FakeCooker1Dishes().SoupAndSaladDish1();
+            var thirdSubscriptionOrderItemDetail = new OrderSubscriptionItem
+            {
+                OrderSubscriptionItemId = 3,
+                DishId = selectedDish.DishId,
+                CookerId = selectedDish.CookerId,
+                MenuId = selectedDish.MenuId,
+                Quantity = 1,
+                Description = selectedDish.Description,
+                Instructions = null,
+                OrderSubscriptionId = MyOrders.Max(x => x.OrderSubscriptionId) + 1,
+                ClientOrderReviewSentClientOrderReviewSentId = new SubscriptionHelper().CreateOrderReview(selectedDish, MyOrders.Max(x => x.OrderSubscriptionId) + 1).ClientOrderToReviewId,
+                WeekId = weekId,
+                ScheduledDate = DateTime.Today.Date.AddDays(4)
+            };
+            return thirdSubscriptionOrderItemDetail;
+        }
+
+        private OrderSubscriptionItem GetFourthOrderSubscriptionItem(int weekId)
+        {
+            var selectedDish = new FakeCooker1Dishes().SoupAndSaladDish1();
+            var fourthSubscriptionOrderItemDetail = new OrderSubscriptionItem
+            {
+                OrderSubscriptionItemId = 4,
+                DishId = selectedDish.DishId,
+                CookerId = selectedDish.CookerId,
+                MenuId = selectedDish.MenuId,
+                Quantity = 1,
+                Description = selectedDish.Description,
+                Instructions = null,
+                OrderSubscriptionId = MyOrders.Max(x => x.OrderSubscriptionId) + 1,
+                ClientOrderReviewSentClientOrderReviewSentId =  new SubscriptionHelper().CreateOrderReview(selectedDish, MyOrders.Max(x => x.OrderSubscriptionId) + 1).ClientOrderToReviewId,
+                WeekId = weekId,
+                ScheduledDate = DateTime.Today.Date.AddDays(1)
+            };
+            return fourthSubscriptionOrderItemDetail;
         }
 
         #endregion
-
-
-
-        //From here create the invoice
 
 
         #endregion

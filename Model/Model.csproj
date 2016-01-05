@@ -196,6 +196,21 @@
     <Compile Include="OrderModelType.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="OrderStatu.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderSubscription.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderSubscriptionHistroy.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderSubscriptionItem.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderSubscriptionItemDishOption.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="OrderType.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>

@@ -53,8 +53,8 @@ namespace DAL.Fake.Model.GoodData.Orders.Clients.Client1
                 CurrencyId = (int)CurrencyType.Values.Usd,
                 SubTotal = (decimal)37.14
             };
-            firstOrder.OrderItems.Add(new FakeOrderItems().GetClient1FirstOrderFirstOrderItem());
-            firstOrder.OrderItems.Add(new FakeOrderItems().GetClient1FirstOrderSecondOrderItem()); 
+            firstOrder.OrderItems.Add(GetFirstOrderItem());
+            firstOrder.OrderItems.Add(GetSecondOrderItem()); 
             return firstOrder;
         }
 

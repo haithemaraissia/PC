@@ -27,5 +27,6 @@ namespace Model
         public string Comment { get; set; }
         public string Photo { get; set; }
         public Nullable<System.DateTime> OrderDate { get; set; }
+        public int OrdeModelTypeId { get; set; }
     }
 }

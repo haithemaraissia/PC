@@ -30,7 +30,8 @@ namespace DAL.Fake.Model
                 ClientId = 1,
                 CookerSubscriptionId = 1,
                 Active = true,
-                ValidUntil = DateTime.Today.AddMonths(1).Date
+                ValidUntil = DateTime.Today.AddMonths(1).Date,
+                Recurring = false
             };
             return firstClientSubscription;
         }
@@ -43,7 +44,8 @@ namespace DAL.Fake.Model
                 ClientId = 1,
                 CookerSubscriptionId = 3,
                 Active = true,
-                ValidUntil = DateTime.Today.AddMonths(12).Date
+                ValidUntil = DateTime.Today.AddMonths(12).Date,
+                Recurring = true
             };
             return secondClientSubscription;
         }
@@ -56,7 +58,8 @@ namespace DAL.Fake.Model
                 ClientId = 2,
                 CookerSubscriptionId = 1,
                 Active = false,
-                ValidUntil = DateTime.Today.AddMonths(-1).Date
+                ValidUntil = DateTime.Today.AddMonths(-1).Date,
+                Recurring = false
             };
             return thirdClientSubscription;
         }

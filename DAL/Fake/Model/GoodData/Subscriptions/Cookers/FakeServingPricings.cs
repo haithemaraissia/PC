@@ -22,6 +22,9 @@ namespace DAL.Fake.Model
             };
         }
 
+        #region Cooker1 ServingPrice
+     
+
         public ServingPrice FirstServingPricing()
         {
             var firstServingPricing = new ServingPrice
@@ -30,6 +33,7 @@ namespace DAL.Fake.Model
                 ServingMeasurementId = (int)ServingMeasurementType.Values.TwoCupContainer,
                 PLanId = (int)Plans.Types.ThreeMealsPerWeek,
                 Price = (decimal)(new ServingPriceModel().GetPrice(ServingPriceModel.Values.Ninteen_Dollars_NintyNine)),
+                CookerId = 1,
                 Quantity = 1
             };
             return firstServingPricing;
@@ -43,6 +47,7 @@ namespace DAL.Fake.Model
                 ServingMeasurementId = (int)ServingMeasurementType.Values.BreadPlate6Inches,
                 PLanId = (int)Plans.Types.FiveMealsPerWeek,
                 Price = (decimal)(new ServingPriceModel().GetPrice(ServingPriceModel.Values.Fourteen_Dollars_NintyNine)),
+                CookerId = 1,
                 Quantity = 2
             };
             return secondServingPricing;
@@ -56,10 +61,13 @@ namespace DAL.Fake.Model
                 ServingMeasurementId = (int)ServingMeasurementType.Values.LunchPlate9Inches,
                 PLanId = (int)Plans.Types.TenMealsPerWeek,
                 Price = (decimal)(new ServingPriceModel().GetPrice(ServingPriceModel.Values.Nine_DollarsNintyNine)),
+                CookerId = 1,
                 Quantity = 1
             };
             return thirdServingPricing;
         }
+   #endregion
+
 
         ~FakeServingPrices()
         {

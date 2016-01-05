@@ -1,24 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Linq;
-using DAL.Fake.Model.GoodData.Cooker;
 using DAL.Fake.Model.GoodData.CookerSubscriptions;
 using DAL.Fake.Model.GoodData.Coupon;
-using DAL.Fake.Model.GoodData.DeliveryZones;
-using DAL.Fake.Model.GoodData.Orders.Clients;
-using DAL.Fake.Model.GoodData.OrderTypes;
-using DAL.Fake.Model.GoodData.PaymentMethods;
-using DAL.Fake.Model.GoodData.Plan;
 using DAL.Fake.Model.GoodData.Promotions;
-using DAL.Fake.Model.KMLHelper;
 using Model;
 using Model.Helper;
 
-namespace DAL.Fake.Model.Util.Orders
+namespace DAL.Fake.Model.Util.Subscriptions
 {
     public class SubscriptionCharge
     {
+        #region Fields
+
         private readonly List<Cooker> _cookers;
         private readonly List<OrderItem> _orderItem;
         private readonly List<DeliveryZone> _deliveryZones;
@@ -31,15 +25,10 @@ namespace DAL.Fake.Model.Util.Orders
         private List<CookerSubscription> FakeCookerSubscription = new FakeCookerSubscriptions().MyCookerSubscriptions;
         private OrderChargeModel _orderCharge;
 
+        #endregion
+
         public SubscriptionCharge(ClientAddress deliveryAddress = null)
         {
-            _cookers = new FakeCookers().MyCookers;
-            _orderItem = new FakeOrderItems().MyOrderItems;
-            _deliveryZones = new FakeDeliveryZone().MyDeliveryZones;
-            _cookerDeliveryZones = new FakeCookerDeliveryZone().MyCookerDeliveryZones;
-            _fakePaymentMethods = new FakePaymentMethods().MyPaymentMethods;
-            _fakeOrderTypes = new FakeOrderTypes().MyOrderTypes;
-            _fakePlans = new FakePlans().MyPlans;
 
             if (deliveryAddress != null)
             {
@@ -50,36 +39,36 @@ namespace DAL.Fake.Model.Util.Orders
         public OrderChargeModel Calculate(int clientSubscriptionId)
         {
             var clientSubscription = (from c in FakeClientSubscription where c.ClientSubscriptionId == clientSubscriptionId select c).FirstOrDefault();
+            var cookerSubscription = (from c in FakeCookerSubscription where c.CookerSubscriptionId == clientSubscription.CookerSubscriptionId select c).FirstOrDefault();
 
-            var cookerSubscription =  (from c in FakeCookerSubscription where c.CookerSubscriptionId == clientSubscription.CookerSubscriptionId select c).FirstOrDefault();
-
-#region ToDo Get the subscription Price
-            //            var orderItems = (from c in _orderItem where c.OrderId == order.OrderId select c).ToList();
+            #region ToDo Get the subscription Price
+            // var orderItems = (from c in _orderItem where c.OrderId == order.OrderId select c).ToList();
             //var cookerId = orderItems.First().CookerId;
             //var taxPercent = (from c in _cookers where c.CookerId == cookerId select c.TaxPercent).FirstOrDefault() ?? 1;
             //var paymentMethodValue = (from c in _fakePaymentMethods where c.PaymentMethodId == order.PaymentMethodId select c.PaymentMethodValue).FirstOrDefault();
             //var orderTypeValue = (from c in _fakeOrderTypes where c.OrderTypeId == order.OrderTypeId select c.OrderTypeValue).FirstOrDefault();
             //var planTitle = (from c in _fakePlans where c.PlanId == order.PlanId select c.Description).FirstOrDefault();
 
-#endregion
+            #endregion
+
             var orderItems = (from c in _orderItem select c).ToList().FirstOrDefault();
             var cookerId = orderItems.CookerId;
             var taxPercent = (from c in _cookers where c.CookerId == cookerId select c.TaxPercent).FirstOrDefault() ?? 1;
             var paymentMethodValue = (from c in _fakePaymentMethods select c).ToList().FirstOrDefault().PaymentMethodValue;
             var orderTypeValue = (from c in _fakeOrderTypes select c).ToList().FirstOrDefault().OrderTypeValue;
             var planTitle = (from c in _fakePlans select c).ToList().FirstOrDefault().Title;
-           
 
-            //#region PickUpOrderCharge
+
+            #region PickUpOrderCharge
 
             //if (order.OrderTypeId == (int)OrderType.Values.PickUp)
             //{
             //   _orderCharge = PickUpCharge(order, taxPercent);
             //}
 
-            //#endregion
- 
-            //#region DeliveryOrderCharge
+            #endregion
+
+            #region DeliveryOrderCharge
 
             //var cookerDelieryZonesId = (from c in _cookerDeliveryZones where c.CookerId == cookerId select c.DeliveryId).ToList();
 
@@ -102,27 +91,21 @@ namespace DAL.Fake.Model.Util.Orders
 
             //_orderCharge = DeliveryCharge(order, deliveryFees, taxPercent); 
 
-            //#endregion
-
-
-            #region SubscriptionFields
-
-            _orderCharge.SubscriptionInvoiceDate = DateTime.Today.Date;
-
-
             #endregion
+
+  
 
             _orderCharge.CookerId = cookerId;
             _orderCharge.PaymentMethodValue = paymentMethodValue;
             _orderCharge.OrderTypeValue = orderTypeValue;
             _orderCharge.SalesTaxes = CalculateSalesTax(_orderCharge.TotalCharges, taxPercent);
-            _orderCharge.PlanTitle = planTitle;
+   
             return _orderCharge;
         }
 
         #region Order Charges
 
-        private OrderChargeModel PickUpCharge(Order order, decimal? taxPercent)
+        private OrderChargeModel PickUpCharge(OrderSubscription order, decimal? taxPercent)
         {
             if (taxPercent == null)
             {
@@ -131,13 +114,13 @@ namespace DAL.Fake.Model.Util.Orders
             return new OrderChargeModel
             {
                 DeliveryFee = 0,
-                SalesTaxes = (decimal) (order.SubTotal * taxPercent),
+                SalesTaxes = (decimal)(order.SubTotal * taxPercent),
                 Subtotal = order.SubTotal,
-                TotalCharges = CalculateCharges(order,(decimal) (order.SubTotal * taxPercent)+ order.SubTotal)
+                TotalCharges = CalculateCharges(order, (decimal)(order.SubTotal * taxPercent) + order.SubTotal)
             };
         }
 
-        private OrderChargeModel DeliveryCharge(Order order, decimal deliveryFee, decimal? taxPercent)
+        private OrderChargeModel DeliveryCharge(OrderSubscription order, decimal deliveryFee, decimal? taxPercent)
         {
             if (taxPercent == null)
             {
@@ -146,9 +129,9 @@ namespace DAL.Fake.Model.Util.Orders
             return new OrderChargeModel
             {
                 DeliveryFee = deliveryFee,
-                SalesTaxes = (decimal) ((order.SubTotal + deliveryFee) * taxPercent),
+                SalesTaxes = (decimal)((order.SubTotal + deliveryFee) * taxPercent),
                 Subtotal = order.SubTotal,
-                TotalCharges = CalculateCharges(order,(decimal)(deliveryFee + (order.SubTotal + deliveryFee) * taxPercent) + order.SubTotal)
+                TotalCharges = CalculateCharges(order, (decimal)(deliveryFee + (order.SubTotal + deliveryFee) * taxPercent) + order.SubTotal)
             };
         }
 
@@ -156,13 +139,13 @@ namespace DAL.Fake.Model.Util.Orders
 
         #region Calculate Charges
 
-        private decimal CalculateCharges(Order order, decimal charges)
+        private decimal CalculateCharges(OrderSubscription order, decimal charges)
         {
             return CalulateChargeAfterCoupon(CalulateChargeAfterPromotion(charges, order.PromotionId), order.CouponId);
 
         }
 
-#endregion
+        #endregion
 
         #region Calculate Sales Tax
 
@@ -172,7 +155,7 @@ namespace DAL.Fake.Model.Util.Orders
             {
                 return 0;
             }
-            var salesTaxCharges = charges*taxes;
+            var salesTaxCharges = charges * taxes;
             return salesTaxCharges ?? 0;
         }
 

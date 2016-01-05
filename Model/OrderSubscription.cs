@@ -12,15 +12,15 @@ namespace Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class OrderSubscription
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
+        public OrderSubscription()
         {
-            this.OrderItems = new HashSet<OrderItem>();
+            this.OrderSubscriptionItems = new HashSet<OrderSubscriptionItem>();
         }
     
-        public int OrderId { get; set; }
+        public int OrderSubscriptionId { get; set; }
         public int ClientId { get; set; }
         public System.DateTime OrderDate { get; set; }
         public Nullable<System.DateTime> DeliveryDate { get; set; }
@@ -32,8 +32,11 @@ namespace Model
         public decimal SubTotal { get; set; }
         public int CurrencyId { get; set; }
         public int OrderStatusId { get; set; }
+        public int ServingMeasurementId { get; set; }
+        public int NumberofServingTotal { get; set; }
+        public int ClientSubscriptionId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderItem> OrderItems { get; set; }
+        public virtual ICollection<OrderSubscriptionItem> OrderSubscriptionItems { get; set; }
     }
 }

@@ -27,6 +27,6 @@ namespace Model
         public string Comment { get; set; }
         public string Photo { get; set; }
         public System.DateTime OrderDate { get; set; }
-        public string Property1 { get; set; }
+        public int OrderModelTypeId { get; set; }
     }
 }
