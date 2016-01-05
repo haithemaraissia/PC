@@ -32,5 +32,6 @@ namespace Model
         public decimal SubTotal { get; set; }
         public decimal Total { get; set; }
         public int CurrencyId { get; set; }
+        public int OrderStatusId { get; set; }
     }
 }

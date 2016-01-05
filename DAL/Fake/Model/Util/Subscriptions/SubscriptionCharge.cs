@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DAL.Fake.Model.GoodData.CookerSubscriptions;
 using DAL.Fake.Model.GoodData.Coupon;
 using DAL.Fake.Model.GoodData.Promotions;
 using Model;
@@ -13,57 +12,42 @@ namespace DAL.Fake.Model.Util.Subscriptions
     {
         #region Fields
 
-        private readonly List<Cooker> _cookers;
-        private readonly List<OrderItem> _orderItem;
+        #region Location
         private readonly List<DeliveryZone> _deliveryZones;
         private readonly List<CookerDeliveryZone> _cookerDeliveryZones;
         private readonly ClientAddress _deliveryAddress;
-        private readonly List<PaymentMethod> _fakePaymentMethods;
-        private readonly List<global::Model.OrderType> _fakeOrderTypes;
-        private readonly List<Plan> _fakePlans;
-        private List<ClientSubscription> FakeClientSubscription = new FakeClientSubscription().MyClientSubscriptions;
-        private List<CookerSubscription> FakeCookerSubscription = new FakeCookerSubscriptions().MyCookerSubscriptions;
-        private OrderChargeModel _orderCharge;
+        #endregion
+
+        #region ModelandHelper
+        private readonly OrderChargeModel _orderCharge;
+        private readonly SubscriptionHelper _subscriptionHelper;
+        #endregion
+
 
         #endregion
 
         public SubscriptionCharge(ClientAddress deliveryAddress = null)
         {
-
+            _subscriptionHelper = new SubscriptionHelper();
+            _orderCharge= new OrderChargeModel();
             if (deliveryAddress != null)
             {
                 _deliveryAddress = deliveryAddress;
             }
         }
 
-        public OrderChargeModel Calculate(int clientSubscriptionId)
+        public OrderChargeModel Calculate(int clientSubscriptionId, OrderSubscription orderSubscription)
         {
-            var clientSubscription = (from c in FakeClientSubscription where c.ClientSubscriptionId == clientSubscriptionId select c).FirstOrDefault();
-            var cookerSubscription = (from c in FakeCookerSubscription where c.CookerSubscriptionId == clientSubscription.CookerSubscriptionId select c).FirstOrDefault();
-
-            #region ToDo Get the subscription Price
-            // var orderItems = (from c in _orderItem where c.OrderId == order.OrderId select c).ToList();
-            //var cookerId = orderItems.First().CookerId;
-            //var taxPercent = (from c in _cookers where c.CookerId == cookerId select c.TaxPercent).FirstOrDefault() ?? 1;
-            //var paymentMethodValue = (from c in _fakePaymentMethods where c.PaymentMethodId == order.PaymentMethodId select c.PaymentMethodValue).FirstOrDefault();
-            //var orderTypeValue = (from c in _fakeOrderTypes where c.OrderTypeId == order.OrderTypeId select c.OrderTypeValue).FirstOrDefault();
-            //var planTitle = (from c in _fakePlans where c.PlanId == order.PlanId select c.Description).FirstOrDefault();
-
-            #endregion
-
-            var orderItems = (from c in _orderItem select c).ToList().FirstOrDefault();
-            var cookerId = orderItems.CookerId;
-            var taxPercent = (from c in _cookers where c.CookerId == cookerId select c.TaxPercent).FirstOrDefault() ?? 1;
-            var paymentMethodValue = (from c in _fakePaymentMethods select c).ToList().FirstOrDefault().PaymentMethodValue;
-            var orderTypeValue = (from c in _fakeOrderTypes select c).ToList().FirstOrDefault().OrderTypeValue;
-            var planTitle = (from c in _fakePlans select c).ToList().FirstOrDefault().Title;
-
-
+            _orderCharge.CookerId = _subscriptionHelper.GetCookerServingPriceModel(clientSubscriptionId).CookerId;
+            var taxPercent = _subscriptionHelper.GetTaxPercent(_subscriptionHelper.GetCookerServingPriceModel(clientSubscriptionId).CookerId);
+            _orderCharge.OrderTypeValue = Enum.GetName(typeof(OrderModelType), orderSubscription.OrderTypeId);
+            _orderCharge.PaymentMethodValue = Enum.GetName(typeof(PaymentMethodType), orderSubscription.PaymentMethodId);
+   
             #region PickUpOrderCharge
 
-            //if (order.OrderTypeId == (int)OrderType.Values.PickUp)
+            //if (orderSubscription.OrderTypeId == (int)OrderType.Values.PickUp)
             //{
-            //   _orderCharge = PickUpCharge(order, taxPercent);
+            //   _orderCharge = PickUpCharge(orderSubscription, taxPercent);
             //}
 
             #endregion
@@ -93,12 +77,7 @@ namespace DAL.Fake.Model.Util.Subscriptions
 
             #endregion
 
-  
-
-            _orderCharge.CookerId = cookerId;
-            _orderCharge.PaymentMethodValue = paymentMethodValue;
-            _orderCharge.OrderTypeValue = orderTypeValue;
-            _orderCharge.SalesTaxes = CalculateSalesTax(_orderCharge.TotalCharges, taxPercent);
+           _orderCharge.SalesTaxes = CalculateSalesTax(_orderCharge.TotalCharges, taxPercent);
    
             return _orderCharge;
         }

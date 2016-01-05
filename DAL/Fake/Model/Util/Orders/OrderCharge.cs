@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DAL.Fake.Model.GoodData.Cooker;
 using DAL.Fake.Model.GoodData.Coupon;
 using DAL.Fake.Model.GoodData.DeliveryZones;
 using DAL.Fake.Model.GoodData.Orders.Clients;
-using DAL.Fake.Model.GoodData.OrderTypes;
-using DAL.Fake.Model.GoodData.PaymentMethods;
-using DAL.Fake.Model.GoodData.Plan;
 using DAL.Fake.Model.GoodData.Promotions;
 using DAL.Fake.Model.KMLHelper;
 using Model;
@@ -16,25 +14,27 @@ namespace DAL.Fake.Model.Util.Orders
 {
     public class OrderCharge
     {
-        private readonly List<Cooker> _cookers;
-        private readonly List<OrderItem> _orderItem;
+        #region Fields
+
+        #region Location
         private readonly List<DeliveryZone> _deliveryZones;
         private readonly List<CookerDeliveryZone> _cookerDeliveryZones;
         private readonly ClientAddress _deliveryAddress;
-        private readonly List<PaymentMethod> _fakePaymentMethods;
-        private readonly List<global::Model.OrderType> _fakeOrderTypes;
-        private readonly List<Plan> _fakePlans;
+        #endregion
+
+        #region Model
+        private readonly List<OrderItem> _orderItem;
         private OrderChargeModel _orderCharge;
+        #endregion
+
+        #endregion
 
         public OrderCharge(ClientAddress deliveryAddress = null)
         {
-            _cookers = new FakeCookers().MyCookers;
+
             _orderItem = new FakeOrderItems().MyOrderItems;
             _deliveryZones = new FakeDeliveryZone().MyDeliveryZones;
             _cookerDeliveryZones = new FakeCookerDeliveryZone().MyCookerDeliveryZones;
-            _fakePaymentMethods = new FakePaymentMethods().MyPaymentMethods;
-            _fakeOrderTypes = new FakeOrderTypes().MyOrderTypes;
-            _fakePlans = new FakePlans().MyPlans;
 
             if (deliveryAddress != null)
             {
@@ -45,12 +45,11 @@ namespace DAL.Fake.Model.Util.Orders
         public OrderChargeModel Calculate(Order order)
         {
             var orderItems = (from c in _orderItem where c.OrderId == order.OrderId select c).ToList();
-            var cookerId = orderItems.First().CookerId;
-            var taxPercent = (from c in _cookers where c.CookerId == cookerId select c.TaxPercent).FirstOrDefault() ?? 1;
-            var paymentMethodValue = (from c in _fakePaymentMethods where c.PaymentMethodId == order.PaymentMethodId select c.PaymentMethodValue).FirstOrDefault();
-            var orderTypeValue = (from c in _fakeOrderTypes where c.OrderTypeId == order.OrderTypeId select c.OrderTypeValue).FirstOrDefault();
-            var planTitle = (from c in _fakePlans where c.PlanId == order.PlanId select c.Description).FirstOrDefault();
-           
+            _orderCharge.CookerId = orderItems.First().CookerId;
+            var taxPercent = new Common.Util().GetTaxPercent(_orderCharge.CookerId);
+            _orderCharge.OrderTypeValue = Enum.GetName(typeof(OrderModelType), order.OrderTypeId);
+            _orderCharge.PaymentMethodValue = Enum.GetName(typeof(PaymentMethodType), order.PaymentMethodId);
+  
             #region PickUpOrderCharge
 
             if (order.OrderTypeId == (int)OrderType.Values.PickUp)
@@ -62,7 +61,7 @@ namespace DAL.Fake.Model.Util.Orders
  
             #region DeliveryOrderCharge
 
-            var cookerDelieryZonesId = (from c in _cookerDeliveryZones where c.CookerId == cookerId select c.DeliveryId).ToList();
+            var cookerDelieryZonesId = (from c in _cookerDeliveryZones where c.CookerId == _orderCharge.CookerId select c.DeliveryId).ToList();
 
             decimal deliveryFees = 0;
             foreach (var deliveryZoneId in cookerDelieryZonesId)
@@ -85,12 +84,8 @@ namespace DAL.Fake.Model.Util.Orders
 
             #endregion
 
-
-            _orderCharge.CookerId = cookerId;
-            _orderCharge.PaymentMethodValue = paymentMethodValue;
-            _orderCharge.OrderTypeValue = orderTypeValue;
             _orderCharge.SalesTaxes = CalculateSalesTax(_orderCharge.TotalCharges, taxPercent);
-            _orderCharge.PlanTitle = planTitle;
+            _orderCharge.PlanTitle = null;
             return _orderCharge;
         }
 

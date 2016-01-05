@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders;
-using DAL.Fake.Model.Util;
 using DAL.Fake.Model.Util.Subscriptions;
 using Model;
 
@@ -35,42 +34,46 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsInvoices
             {
                 MySubscriptionsOrders.Add(order);
             }
-
+            
             var firstSubscriptionOrder = MySubscriptionsOrders.FirstOrDefault();
             if (firstSubscriptionOrder == null) return null;
-
-            var firstSubscriptionOrderCharge = new SubscriptionCharge().Calculate(firstSubscriptionOrder.OrderSubscriptionId);
+            var subscriptionHelper = new SubscriptionHelper();
+            var firstSubscriptionOrderCharge = new SubscriptionCharge().Calculate(firstSubscriptionOrder.OrderSubscriptionId, firstSubscriptionOrder);
+               
             var firstSubscriptionOrderInvoice = new Invoice
             {
 
                 InvoiceId = 20,
 
                 #region Orders Fields
-                OrderId = null,
+                //OrderId = null,
                 OrderDate = null,
                 DeliveryDate = null,
                 #endregion
 
                 #region Subscription Fields
-
+                OrderId = firstSubscriptionOrder.OrderSubscriptionId,
                 SubscriptionStartDate = DateTime.Now.Date,
                 SubscriptionEndDate = DateTime.Now.Date.AddMonths(1),
                 SubscriptionInvoiceDate = DateTime.Now.Date,
+
                 ClientSubscriptionId = firstSubscriptionOrder.ClientSubscriptionId,
-                CookerSubscriptionId = new SubscriptionHelper().GetCookerServingPriceModel(firstSubscriptionOrder.ClientSubscriptionId).CookerId,
-                ServingPriceId = new SubscriptionHelper().GetCookerServingPriceModel(firstSubscriptionOrder.ClientSubscriptionId).ServicePriceId,
+                CookerSubscriptionId = subscriptionHelper.GetCookerSubscription(firstSubscriptionOrder.ClientSubscriptionId).CookerSubscriptionId,
+                ServingPriceId = subscriptionHelper.GetCookerServingPriceModel(firstSubscriptionOrder.ClientSubscriptionId).ServicePriceId,
                 PlanId = firstSubscriptionOrder.PlanId,
-                PlanTitle = Enum.GetName(typeof(Plans), firstSubscriptionOrder.PlanId),
+                PlanTitle = subscriptionHelper.GetPlanTitle(firstSubscriptionOrder.PlanId),
 
                 #endregion
                
                 #region Common Fields
 
                 ClientId = firstSubscriptionOrder.ClientId,
-                CookerId = new SubscriptionHelper().GetCookerServingPriceModel(firstSubscriptionOrder.ClientSubscriptionId).CookerId,
-                OrderModelTypeId = (int)Util.OrderModelType.Values.Subscription,
-                OrderTypeValue = Util.OrderModelType.Values.Subscription.ToString(),
-                PaymentMethodValue = Enum.GetName(typeof(PaymentMethodType), firstSubscriptionOrder.PaymentMethodId),
+                CookerId = firstSubscriptionOrderCharge.CookerId,
+
+                OrderModelTypeId = firstSubscriptionOrder.OrderTypeId,
+                OrderTypeValue = firstSubscriptionOrderCharge.OrderTypeValue,
+
+                PaymentMethodValue = firstSubscriptionOrderCharge.PaymentMethodValue,
                 CurrencyId = firstSubscriptionOrder.CurrencyId,
 
                 PromotionTitle = firstSubscriptionOrderCharge.PromotionTitle,
@@ -87,7 +90,6 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsInvoices
                 Total = firstSubscriptionOrderCharge.TotalCharges
 
                 #endregion
-
 
             };
             return firstSubscriptionOrderInvoice;

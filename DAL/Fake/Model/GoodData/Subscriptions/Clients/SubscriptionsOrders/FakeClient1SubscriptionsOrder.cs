@@ -77,7 +77,7 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders
                 OrderStatusId = (int)OrderStatus.Values.InProgress,
                 ServingMeasurementId = cookerServingPriceModel.ServingMeasurementId,
                 NumberofServingTotal = 4 * cookerServingPriceModel.Quantity,
-                ClientSubscriptionId = ClientSubscriptionId
+                ClientSubscriptionId = ClientSubscriptionId,
             };
 
             #region Week1

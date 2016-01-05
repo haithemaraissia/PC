@@ -570,6 +570,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="SubTotal" Type="decimal" Precision="10" Scale="4" Nullable="false" />
           <Property Name="Total" Type="decimal" Precision="10" Scale="4" Nullable="false" />
           <Property Name="CurrencyId" Type="int" Nullable="false" />
+          <Property Name="OrderStatusId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderItemDishOptions">
           <Key>
@@ -1497,6 +1498,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="SubTotal" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="Total" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
           <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="OrderStatusId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderItemDishOption">
           <Key>
@@ -2388,6 +2390,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySetMapping Name="OrderHistroys">
             <EntityTypeMapping TypeName="PrivateChefModel.OrderHistroy">
               <MappingFragment StoreEntitySet="OrderHistroys">
+                <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
                 <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />

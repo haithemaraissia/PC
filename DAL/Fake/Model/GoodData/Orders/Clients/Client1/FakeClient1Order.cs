@@ -51,7 +51,8 @@ namespace DAL.Fake.Model.GoodData.Orders.Clients.Client1
                 PromotionId = null,
                 PlanId = null,
                 CurrencyId = (int)CurrencyType.Values.Usd,
-                SubTotal = (decimal)37.14
+                SubTotal = (decimal)37.14,
+                OrderStatusId = (int)OrderStatus.Values.Submitted,
             };
             firstOrder.OrderItems.Add(GetFirstOrderItem());
             firstOrder.OrderItems.Add(GetSecondOrderItem()); 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using DAL.Fake.Model.Util;
 using Model;
 
 namespace DAL.Fake.Model.GoodData.Orders.Clients.Client1
@@ -44,7 +45,8 @@ namespace DAL.Fake.Model.GoodData.Orders.Clients.Client1
                 DeliveryFees = invoice.DeliveryFees,
                 SubTotal = invoice.SubTotal,
                 Total = invoice.Total,
-                CurrencyId = invoice.CurrencyId
+                CurrencyId = invoice.CurrencyId,
+                OrderStatusId = (int)OrderStatus.Values.History
             };
             return orderHistory;
         }

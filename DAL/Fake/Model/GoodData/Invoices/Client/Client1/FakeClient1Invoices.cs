@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using DAL.Fake.Model.GoodData.Orders.Clients.Client1;
 using DAL.Fake.Model.Util.Orders;
 using Model;
+using OrderModelType = DAL.Fake.Model.Util.OrderModelType;
 
 namespace DAL.Fake.Model
 {
@@ -41,12 +41,8 @@ namespace DAL.Fake.Model
             if (firstOrder == null) return null;
             var firstOrderCharge = new OrderCharge().Calculate(firstOrder);
 
-            //Add it is is a subscriptions
-
             var firstOrderInvoice = new Invoice
             {
-
-
                 InvoiceId = 1,
 
                 OrderId = firstOrder.OrderId,
@@ -73,7 +69,7 @@ namespace DAL.Fake.Model
                 SubTotal = firstOrderCharge.Subtotal,
                 Total = firstOrderCharge.TotalCharges,
 
-                OrderModelTypeId = (int)Util.OrderModelType.Values.Transaction,
+                OrderModelTypeId = (int)OrderModelType.Values.Transaction,
                 CookerSubscriptionId = null,
                 ServingPriceId = null,
                 PlanId = null

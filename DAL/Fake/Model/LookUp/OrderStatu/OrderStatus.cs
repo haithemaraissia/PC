@@ -6,7 +6,8 @@ namespace DAL.Fake.Model.Util
         {
             Submitted = 1,
             InProgress = 2,
-            Done = 3
+            Done = 3,
+            History = 4
         }
     }
 }
