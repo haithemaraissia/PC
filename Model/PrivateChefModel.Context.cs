@@ -90,5 +90,6 @@ namespace Model
         public virtual DbSet<OrderSubscriptionItemDishOption> OrderSubscriptionItemDishOptions { get; set; }
         public virtual DbSet<OrderSubscriptionItem> OrderSubscriptionItems { get; set; }
         public virtual DbSet<OrderSubscription> OrderSubscriptions { get; set; }
+        public virtual DbSet<PaymentsHistory> PaymentsHistories { get; set; }
     }
 }

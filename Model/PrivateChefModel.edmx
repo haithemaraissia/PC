@@ -731,6 +731,19 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="PaymentDate" Type="datetime" Nullable="false" />
           <Property Name="PaymentAmount" Type="decimal" Precision="10" Scale="4" Nullable="false" />
         </EntityType>
+        <EntityType Name="PaymentsHistory">
+          <Key>
+            <PropertyRef Name="PaymentHistoryId" />
+          </Key>
+          <Property Name="PaymentHistoryId" Type="int" Nullable="false" />
+          <Property Name="InvoiceId" Type="int" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+          <Property Name="CookerId" Type="int" Nullable="false" />
+          <Property Name="TransactionId" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="PaymentAmount" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+        </EntityType>
         <EntityType Name="Plans">
           <Key>
             <PropertyRef Name="PlanId" />
@@ -909,6 +922,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="OrderTypes" EntityType="Self.OrderTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethods" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentsHistory" EntityType="Self.PaymentsHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Plans" EntityType="Self.Plans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Promotions" EntityType="Self.Promotions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PromotionTypes" EntityType="Self.PromotionTypes" Schema="dbo" store:Type="Tables" />
@@ -1029,6 +1043,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
             <End Role="OrderSubscriptionItem" EntitySet="OrderSubscriptionItems" />
             <End Role="OrderSubscriptionItemDishOption" EntitySet="OrderSubscriptionItemDishOptions" />
           </AssociationSet>
+          <EntitySet Name="PaymentsHistories" EntityType="PrivateChefModel.PaymentsHistory" />
         </EntityContainer>
         <EntityType Name="AddressType">
           <Key>
@@ -1908,6 +1923,19 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PaymentsHistory">
+          <Key>
+            <PropertyRef Name="PaymentHistoryId" />
+          </Key>
+          <Property Name="PaymentHistoryId" Type="Int32" Nullable="false" />
+          <Property Name="InvoiceId" Type="Int32" Nullable="false" />
+          <Property Name="OrderId" Type="Int32" Nullable="false" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+          <Property Name="TransactionId" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PaymentAmount" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2780,6 +2808,20 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
                 <ScalarProperty Name="OrderSubscriptionId" ColumnName="OrderSubscriptionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentsHistories">
+            <EntityTypeMapping TypeName="PrivateChefModel.PaymentsHistory">
+              <MappingFragment StoreEntitySet="PaymentsHistory">
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
+                <ScalarProperty Name="PaymentHistoryId" ColumnName="PaymentHistoryId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

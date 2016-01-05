@@ -72,6 +72,8 @@
     <Compile Include="Fake\Model\GoodData\OrdersHistory\Clients\Client3\FakeClient3OrderHistory.cs" />
     <Compile Include="Fake\Model\GoodData\OrdersHistory\Clients\FakeClientsOrdersHistory.cs" />
     <Compile Include="Fake\Model\GoodData\OrderTypes\FakeOrderTypes.cs" />
+    <Compile Include="Fake\Model\GoodData\PaymentsHistory\Client1\FakeClient1PaymentsHistory.cs" />
+    <Compile Include="Fake\Model\GoodData\PaymentsHistory\FakeClientPaymentsHistory.cs" />
     <Compile Include="Fake\Model\GoodData\Payments\Clients\Client1\FakeClient1Payments.cs" />
     <Compile Include="Fake\Model\GoodData\Promotions\FakePromotions.cs" />
     <Compile Include="Fake\Model\GoodData\Clients\Address\Client1\FakeClient1Address.cs" />

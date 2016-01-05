@@ -219,6 +219,9 @@
     <Compile Include="PaymentMethod.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="PaymentsHistory.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Plan.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
