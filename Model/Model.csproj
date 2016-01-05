@@ -167,7 +167,6 @@
     <Compile Include="DisputeStatu.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Helper\OrderChargeModel.cs" />
     <Compile Include="IndustryAverageRating.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
