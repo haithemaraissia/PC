@@ -45,7 +45,7 @@ namespace DAL.Fake.Model
                 CityId = 1,
                 ZipCode = "66216",
                 Address = "6805 main Street",
-                AddressTypeId = (int)Util.Address.AddressType.Values.Home,
+                AddressTypeId = (int)Util.Address.AddressType.Values.Restaurant,
                 PhoneNumber = "9134513214"
             };
             return firstUser;
@@ -68,7 +68,7 @@ namespace DAL.Fake.Model
                 CityId = 1,
                 ZipCode ="66206",
                 Address = "11201 South West Boulevard",
-                AddressTypeId =  (int)Util.Address.AddressType.Values.Work,
+                AddressTypeId =  (int)Util.Address.AddressType.Values.Home,
                 PhoneNumber = "7561023214"
             };
             return secondUser;
@@ -92,7 +92,7 @@ namespace DAL.Fake.Model
                 ZipCode = "66206",
                 Address = "601 Block Bob",
                 Apt_suite = "301",
-                AddressTypeId = (int)Util.Address.AddressType.Values.Home,
+                AddressTypeId = (int)Util.Address.AddressType.Values.Work,
                 PhoneNumber = "8167561010"
             };
             return fifthUser;

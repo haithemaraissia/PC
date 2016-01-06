@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DAL.Fake.Model.Util;
 
 namespace DAL.Fake.Model.GoodData.Cooker
@@ -37,8 +38,8 @@ namespace DAL.Fake.Model.GoodData.Cooker
                 OfferDelivery = true,
                 OfferPickUp = true,
                 TaxPercent = (decimal?) 8.15,
-                AmountforFreeDelivery = (decimal?) 50.00
-
+                AmountforFreeDelivery = (decimal?) 50.00,
+                WaitingTime =   new TimeSpan( 0, 15, 0 )
             };
             return firstCooker;
         }

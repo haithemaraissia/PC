@@ -180,6 +180,12 @@
     <Compile Include="MenuSection.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="MostPopularDish.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MostPopularSubscription.cs">
+      <DependentUpon>PrivateChefModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Order.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>

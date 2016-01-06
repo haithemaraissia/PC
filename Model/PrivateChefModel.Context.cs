@@ -47,7 +47,6 @@ namespace Model
         public virtual DbSet<CookerPromotion> CookerPromotions { get; set; }
         public virtual DbSet<CookerReviewScore> CookerReviewScores { get; set; }
         public virtual DbSet<CookerReviewServiceDetail> CookerReviewServiceDetails { get; set; }
-        public virtual DbSet<Cooker> Cookers { get; set; }
         public virtual DbSet<CookerSpokenLanguage> CookerSpokenLanguages { get; set; }
         public virtual DbSet<Coupon> Coupons { get; set; }
         public virtual DbSet<CouponType> CouponTypes { get; set; }
@@ -91,5 +90,8 @@ namespace Model
         public virtual DbSet<OrderSubscriptionItem> OrderSubscriptionItems { get; set; }
         public virtual DbSet<OrderSubscription> OrderSubscriptions { get; set; }
         public virtual DbSet<PaymentsHistory> PaymentsHistories { get; set; }
+        public virtual DbSet<Cooker> Cookers { get; set; }
+        public virtual DbSet<MostPopularDish> MostPopularDishes { get; set; }
+        public virtual DbSet<MostPopularSubscription> MostPopularSubscriptions { get; set; }
     }
 }

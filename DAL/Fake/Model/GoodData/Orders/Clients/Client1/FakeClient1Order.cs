@@ -71,7 +71,8 @@ namespace DAL.Fake.Model.GoodData.Orders.Clients.Client1
                 Instructions = "Put Extra French Fries",
                 MenuId = 1,
                 OrderItemId = 1,
-                Quantity = 2
+                Quantity = 2,
+                OrderId = 1
             };
 
             //Required Side
@@ -84,7 +85,8 @@ namespace DAL.Fake.Model.GoodData.Orders.Clients.Client1
                 CurrencyId = 1,
                 DishOptionId = (int)DishOptionType.Values.FakeRequiredSideTwelveOptionChoices,
                 Instructions = "no Mayone Please",
-                OrderItemId = 1
+                OrderItemId = 1,
+
             };
 
             //Optional Side
@@ -114,7 +116,8 @@ namespace DAL.Fake.Model.GoodData.Orders.Clients.Client1
                 Instructions = "Put Extra Spices",
                 MenuId = 1,
                 OrderItemId = 2,
-                Quantity = 1
+                Quantity = 1,
+                OrderId = 1
             };
 
             //Required Side

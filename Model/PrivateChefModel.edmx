@@ -360,7 +360,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="OfferPickUp" Type="bit" Nullable="false" />
           <Property Name="TaxPercent" Type="decimal" Precision="18" Scale="2" />
           <Property Name="AmountforFreeDelivery" Type="decimal" Precision="19" Scale="4" />
-          <Property Name="WaitingTime" Type="smalldatetime" />
+          <Property Name="WaitingTime" Type="timestamp" StoreGeneratedPattern="Computed" />
           <Property Name="NumberofSubscription" Type="int" />
         </EntityType>
         <EntityType Name="CookerSpokenLanguages">
@@ -547,6 +547,20 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="SectionId" Type="int" Nullable="false" />
           <Property Name="SectionTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MenuId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MostPopularDish">
+          <Key>
+            <PropertyRef Name="DishId" />
+          </Key>
+          <Property Name="DishId" Type="int" Nullable="false" />
+          <Property Name="OrderDishCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MostPopularSubscription">
+          <Key>
+            <PropertyRef Name="CookerSubscriptionId" />
+          </Key>
+          <Property Name="CookerSubscriptionId" Type="int" Nullable="false" />
+          <Property Name="SubscriptionOrderCount" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderHistroys">
           <Key>
@@ -909,6 +923,8 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="Invoices" EntityType="Self.Invoices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MenuSections" EntityType="Self.MenuSections" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MostPopularDish" EntityType="Self.MostPopularDish" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MostPopularSubscription" EntityType="Self.MostPopularSubscription" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderHistroys" EntityType="Self.OrderHistroys" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderItemDishOptions" EntityType="Self.OrderItemDishOptions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderItems" EntityType="Self.OrderItems" Schema="dbo" store:Type="Tables" />
@@ -984,7 +1000,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="CookerPromotions" EntityType="PrivateChefModel.CookerPromotion" />
           <EntitySet Name="CookerReviewScores" EntityType="PrivateChefModel.CookerReviewScore" />
           <EntitySet Name="CookerReviewServiceDetails" EntityType="PrivateChefModel.CookerReviewServiceDetail" />
-          <EntitySet Name="Cookers" EntityType="PrivateChefModel.Cooker" />
           <EntitySet Name="CookerSpokenLanguages" EntityType="PrivateChefModel.CookerSpokenLanguage" />
           <EntitySet Name="Coupons" EntityType="PrivateChefModel.Coupon" />
           <EntitySet Name="CouponTypes" EntityType="PrivateChefModel.CouponType" />
@@ -1044,6 +1059,9 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
             <End Role="OrderSubscriptionItemDishOption" EntitySet="OrderSubscriptionItemDishOptions" />
           </AssociationSet>
           <EntitySet Name="PaymentsHistories" EntityType="PrivateChefModel.PaymentsHistory" />
+          <EntitySet Name="Cookers" EntityType="PrivateChefModel.Cooker" />
+          <EntitySet Name="MostPopularDishes" EntityType="PrivateChefModel.MostPopularDish" />
+          <EntitySet Name="MostPopularSubscriptions" EntityType="PrivateChefModel.MostPopularSubscription" />
         </EntityContainer>
         <EntityType Name="AddressType">
           <Key>
@@ -1324,26 +1342,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="DeliveryTimeRating" Type="Int32" Nullable="false" />
           <Property Name="OverallFeedBackRating" Type="Int32" Nullable="false" />
           <Property Name="NumberofRatings" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Cooker">
-          <Key>
-            <PropertyRef Name="CookerId" />
-          </Key>
-          <Property Name="CookerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="RestaurantPhoto" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="RestaurantName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Cuisines" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Bio" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Rating" Type="Int32" Nullable="false" />
-          <Property Name="TotalRaters" Type="Int32" Nullable="false" />
-          <Property Name="OfferDelivery" Type="Boolean" Nullable="false" />
-          <Property Name="OfferPickUp" Type="Boolean" Nullable="false" />
-          <Property Name="TaxPercent" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="AmountforFreeDelivery" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="WaitingTime" Type="DateTime" Precision="0" />
-          <Property Name="NumberofSubscription" Type="Int32" />
         </EntityType>
         <EntityType Name="CookerSpokenLanguage">
           <Key>
@@ -1936,6 +1934,40 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="PaymentAmount" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
         </EntityType>
+        <EntityType Name="Cooker">
+          <Key>
+            <PropertyRef Name="CookerId" />
+          </Key>
+          <Property Name="CookerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RestaurantPhoto" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="RestaurantName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Cuisines" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Bio" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <Property Name="TotalRaters" Type="Int32" Nullable="false" />
+          <Property Name="OfferDelivery" Type="Boolean" Nullable="false" />
+          <Property Name="OfferPickUp" Type="Boolean" Nullable="false" />
+          <Property Name="TaxPercent" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AmountforFreeDelivery" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="WaitingTime" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="NumberofSubscription" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MostPopularDish">
+          <Key>
+            <PropertyRef Name="DishId" />
+          </Key>
+          <Property Name="DishId" Type="Int32" Nullable="false" />
+          <Property Name="OrderDishCount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MostPopularSubscription">
+          <Key>
+            <PropertyRef Name="CookerSubscriptionId" />
+          </Key>
+          <Property Name="CookerSubscriptionId" Type="Int32" Nullable="false" />
+          <Property Name="SubscriptionOrderCount" Type="Int32" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2232,27 +2264,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
                 <ScalarProperty Name="ItemAccuracyRating" ColumnName="ItemAccuracyRating" />
                 <ScalarProperty Name="CookerId" ColumnName="CookerId" />
                 <ScalarProperty Name="CookerReviewServiceDetailId" ColumnName="CookerReviewServiceDetailId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Cookers">
-            <EntityTypeMapping TypeName="PrivateChefModel.Cooker">
-              <MappingFragment StoreEntitySet="Cookers">
-                <ScalarProperty Name="NumberofSubscription" ColumnName="NumberofSubscription" />
-                <ScalarProperty Name="WaitingTime" ColumnName="WaitingTime" />
-                <ScalarProperty Name="AmountforFreeDelivery" ColumnName="AmountforFreeDelivery" />
-                <ScalarProperty Name="TaxPercent" ColumnName="TaxPercent" />
-                <ScalarProperty Name="OfferPickUp" ColumnName="OfferPickUp" />
-                <ScalarProperty Name="OfferDelivery" ColumnName="OfferDelivery" />
-                <ScalarProperty Name="TotalRaters" ColumnName="TotalRaters" />
-                <ScalarProperty Name="Rating" ColumnName="Rating" />
-                <ScalarProperty Name="Bio" ColumnName="Bio" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Cuisines" ColumnName="Cuisines" />
-                <ScalarProperty Name="RestaurantName" ColumnName="RestaurantName" />
-                <ScalarProperty Name="RestaurantPhoto" ColumnName="RestaurantPhoto" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2822,6 +2833,43 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
                 <ScalarProperty Name="PaymentHistoryId" ColumnName="PaymentHistoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cookers">
+            <EntityTypeMapping TypeName="PrivateChefModel.Cooker">
+              <MappingFragment StoreEntitySet="Cookers">
+                <ScalarProperty Name="NumberofSubscription" ColumnName="NumberofSubscription" />
+                <ScalarProperty Name="WaitingTime" ColumnName="WaitingTime" />
+                <ScalarProperty Name="AmountforFreeDelivery" ColumnName="AmountforFreeDelivery" />
+                <ScalarProperty Name="TaxPercent" ColumnName="TaxPercent" />
+                <ScalarProperty Name="OfferPickUp" ColumnName="OfferPickUp" />
+                <ScalarProperty Name="OfferDelivery" ColumnName="OfferDelivery" />
+                <ScalarProperty Name="TotalRaters" ColumnName="TotalRaters" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Bio" ColumnName="Bio" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Cuisines" ColumnName="Cuisines" />
+                <ScalarProperty Name="RestaurantName" ColumnName="RestaurantName" />
+                <ScalarProperty Name="RestaurantPhoto" ColumnName="RestaurantPhoto" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MostPopularDishes">
+            <EntityTypeMapping TypeName="PrivateChefModel.MostPopularDish">
+              <MappingFragment StoreEntitySet="MostPopularDish">
+                <ScalarProperty Name="OrderDishCount" ColumnName="OrderDishCount" />
+                <ScalarProperty Name="DishId" ColumnName="DishId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MostPopularSubscriptions">
+            <EntityTypeMapping TypeName="PrivateChefModel.MostPopularSubscription">
+              <MappingFragment StoreEntitySet="MostPopularSubscription">
+                <ScalarProperty Name="SubscriptionOrderCount" ColumnName="SubscriptionOrderCount" />
+                <ScalarProperty Name="CookerSubscriptionId" ColumnName="CookerSubscriptionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
