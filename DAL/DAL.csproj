@@ -163,6 +163,7 @@
     <Compile Include="Fake\Model\LookUp\Langauges\LanguageType.cs" />
     <Compile Include="Fake\Model\LookUp\OrderType\OrderType.cs" />
     <Compile Include="Fake\Model\LookUp\OrderStatu\OrderStatus.cs" />
+    <Compile Include="Fake\Model\LookUp\PaymentStatus\PaymentStatusType.cs" />
     <Compile Include="Fake\Model\LookUp\Week\WeekType.cs" />
     <Compile Include="Fake\Model\Util\Common\Util.cs" />
     <Compile Include="Fake\Model\Util\Helper\OrderChargeModel.cs" />

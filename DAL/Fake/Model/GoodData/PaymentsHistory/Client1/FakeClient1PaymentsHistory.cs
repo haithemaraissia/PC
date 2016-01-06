@@ -38,7 +38,10 @@ namespace DAL.Fake.Model.GoodData.PaymentsHistory.Client1
                     OrderId = (int)FirstPayment.OrderId,
                     ClientId = FirstPayment.ClientId,
                     CookerId = FirstPayment.CookerId,
-                    TransactionId = "G126F85"
+                    TransactionId = "G126F85",
+                    OrderModelTypeId = (int)Util.OrderModelType.Values.Transaction,
+                    PaymentStatusId = (int)Util.PaymentStatusType.Values.Completed
+                    
                 };
 
 

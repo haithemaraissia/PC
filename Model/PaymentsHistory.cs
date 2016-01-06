@@ -22,5 +22,7 @@ namespace Model
         public string TransactionId { get; set; }
         public System.DateTime PaymentDate { get; set; }
         public decimal PaymentAmount { get; set; }
+        public int OrderModelTypeId { get; set; }
+        public int PaymentStatusId { get; set; }
     }
 }

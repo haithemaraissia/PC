@@ -744,6 +744,8 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="TransactionId" Type="nvarchar(max)" Nullable="false" />
           <Property Name="PaymentDate" Type="datetime" Nullable="false" />
           <Property Name="PaymentAmount" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="OrderModelTypeId" Type="int" Nullable="false" />
+          <Property Name="PaymentStatusId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PaymentsHistory">
           <Key>
@@ -757,6 +759,8 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="TransactionId" Type="nvarchar(max)" Nullable="false" />
           <Property Name="PaymentDate" Type="datetime" Nullable="false" />
           <Property Name="PaymentAmount" Type="decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="OrderModelTypeId" Type="int" Nullable="false" />
+          <Property Name="PaymentStatusId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Plans">
           <Key>
@@ -1587,6 +1591,8 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="TransactionId" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="PaymentAmount" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="OrderModelTypeId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentStatusId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Plan">
           <Key>
@@ -1933,6 +1939,8 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="TransactionId" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="PaymentAmount" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+          <Property Name="OrderModelTypeId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentStatusId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Cooker">
           <Key>
@@ -2517,6 +2525,8 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySetMapping Name="Payments">
             <EntityTypeMapping TypeName="PrivateChefModel.Payment">
               <MappingFragment StoreEntitySet="Payments">
+                <ScalarProperty Name="PaymentStatusId" ColumnName="PaymentStatusId" />
+                <ScalarProperty Name="OrderModelTypeId" ColumnName="OrderModelTypeId" />
                 <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
                 <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
                 <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
@@ -2825,6 +2835,8 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySetMapping Name="PaymentsHistories">
             <EntityTypeMapping TypeName="PrivateChefModel.PaymentsHistory">
               <MappingFragment StoreEntitySet="PaymentsHistory">
+                <ScalarProperty Name="PaymentStatusId" ColumnName="PaymentStatusId" />
+                <ScalarProperty Name="OrderModelTypeId" ColumnName="OrderModelTypeId" />
                 <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
                 <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
                 <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />

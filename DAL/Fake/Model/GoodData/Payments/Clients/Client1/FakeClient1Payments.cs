@@ -37,7 +37,10 @@ namespace DAL.Fake.Model.GoodData.Clients
                     OrderId = (int) FirstInvoice.OrderId,
                     ClientId = FirstInvoice.ClientId,
                     CookerId = FirstInvoice.CookerId,
-                    TransactionId = "G126F85"
+                    TransactionId = "G126F85",
+                    OrderModelTypeId = (int)Util.OrderModelType.Values.Transaction,
+                    PaymentStatusId = (int)Util.PaymentStatusType.Values.Pending
+                    
                 };
 
 
