@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Model;
 
 namespace DAL.Fake.Model.GoodData.Cooker
@@ -26,12 +27,17 @@ namespace DAL.Fake.Model.GoodData.Cooker
             var firstCookerHoursofOperation = new CookerHoursofOperation
             {
                 CookerId = 1,
-                OpeningHours = "6.00 am",
+                OpeningHours = new TimeSpan(0, 6, 0, 0),
                 OpeningDays = "Monday - Thursday",
+                ClosingHours = new TimeSpan(0, 18, 0, 0),
+
+                DeliveryHours = new TimeSpan(0, 6, 0, 0),
                 DeliveryDays = "Wednesday",
-                DeliveryHours = "Same as opening",
-                PickUpHours = "12:00 am - 12:00 pm",
-                PickUpDays = "Monday - Friday"
+                ClosingDeliveryHours = new TimeSpan(0, 18, 0, 0),
+
+                PickUpHours = new TimeSpan(0, 10, 0, 0),
+                PickUpDays = "Monday - Friday",
+                ClosingPickUpHours = new TimeSpan(0, 22, 0, 0)
             };
             return firstCookerHoursofOperation;
         }
@@ -41,12 +47,17 @@ namespace DAL.Fake.Model.GoodData.Cooker
             var secondCookerHoursofOperation = new CookerHoursofOperation
             {
                 CookerId = 2,
-                OpeningHours = "11.00 am",
-                OpeningDays = "Monday , Tuesday, Thursday, Friday",
+                OpeningHours = new TimeSpan(0, 6, 0, 0),
+                OpeningDays = "Monday - Thursday",
+                ClosingHours = new TimeSpan(0, 18, 0, 0),
+
+                DeliveryHours = new TimeSpan(0, 6, 0, 0),
                 DeliveryDays = "Wednesday",
-                DeliveryHours = "Monday and Tuesday",
-                PickUpHours = "12:00 am - 12:00 pm",
-                PickUpDays = "Monday - Friday"
+                ClosingDeliveryHours = new TimeSpan(0, 18, 0, 0),
+
+                PickUpHours = new TimeSpan(0, 10, 0, 0),
+                PickUpDays = "Monday - Friday",
+                ClosingPickUpHours = new TimeSpan(0, 22, 0, 0)
             };
             return secondCookerHoursofOperation;
         }
@@ -56,12 +67,17 @@ namespace DAL.Fake.Model.GoodData.Cooker
             var thirdCookerHoursofOperation = new CookerHoursofOperation
             {
                 CookerId = 3,
-                OpeningHours = "6.00 am",
+                OpeningHours = new TimeSpan(0, 6, 0, 0),
                 OpeningDays = "Monday - Thursday",
+                ClosingHours = new TimeSpan(0, 18, 0, 0),
+
+                DeliveryHours = new TimeSpan(0, 6, 0, 0),
                 DeliveryDays = "Wednesday",
-                DeliveryHours = "Same as opening",
-                PickUpHours = "12:00 am - 12:00 pm",
-                PickUpDays = "Monday - Friday"
+                ClosingDeliveryHours = new TimeSpan(0, 18, 0, 0),
+
+                PickUpHours = new TimeSpan(0, 10, 0, 0),
+                PickUpDays = "Monday - Friday",
+                ClosingPickUpHours = new TimeSpan(0, 22, 0, 0)
             };
             return thirdCookerHoursofOperation;
         }

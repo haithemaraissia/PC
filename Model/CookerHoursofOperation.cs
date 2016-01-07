@@ -15,11 +15,14 @@ namespace Model
     public partial class CookerHoursofOperation
     {
         public int CookerId { get; set; }
-        public string OpeningHours { get; set; }
+        public Nullable<System.TimeSpan> OpeningHours { get; set; }
+        public Nullable<System.TimeSpan> ClosingHours { get; set; }
         public string OpeningDays { get; set; }
-        public string DeliveryHours { get; set; }
+        public Nullable<System.TimeSpan> DeliveryHours { get; set; }
+        public Nullable<System.TimeSpan> ClosingDeliveryHours { get; set; }
         public string DeliveryDays { get; set; }
-        public string PickUpHours { get; set; }
+        public Nullable<System.TimeSpan> PickUpHours { get; set; }
+        public Nullable<System.TimeSpan> ClosingPickUpHours { get; set; }
         public string PickUpDays { get; set; }
     }
 }

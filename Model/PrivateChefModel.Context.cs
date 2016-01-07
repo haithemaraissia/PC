@@ -37,7 +37,6 @@ namespace Model
         public virtual DbSet<CookerDeliveryZone> CookerDeliveryZones { get; set; }
         public virtual DbSet<CookerFeedBack> CookerFeedBacks { get; set; }
         public virtual DbSet<CookerGeoIP> CookerGeoIPs { get; set; }
-        public virtual DbSet<CookerHoursofOperation> CookerHoursofOperations { get; set; }
         public virtual DbSet<CookerMenu> CookerMenus { get; set; }
         public virtual DbSet<CookerOrderReviewReceived> CookerOrderReviewReceiveds { get; set; }
         public virtual DbSet<CookerOrderReviewSent> CookerOrderReviewSents { get; set; }
@@ -93,5 +92,6 @@ namespace Model
         public virtual DbSet<MostPopularDish> MostPopularDishes { get; set; }
         public virtual DbSet<MostPopularSubscription> MostPopularSubscriptions { get; set; }
         public virtual DbSet<Cooker> Cookers { get; set; }
+        public virtual DbSet<CookerHoursofOperation> CookerHoursofOperations { get; set; }
     }
 }

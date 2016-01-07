@@ -221,12 +221,15 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
             <PropertyRef Name="CookerId" />
           </Key>
           <Property Name="CookerId" Type="int" Nullable="false" />
-          <Property Name="OpeningHours" Type="varchar" MaxLength="200" />
-          <Property Name="OpeningDays" Type="varchar" MaxLength="200" />
-          <Property Name="DeliveryHours" Type="varchar" MaxLength="200" />
-          <Property Name="DeliveryDays" Type="varchar" MaxLength="200" />
-          <Property Name="PickUpHours" Type="varchar" MaxLength="200" />
-          <Property Name="PickUpDays" Type="varchar" MaxLength="200" />
+          <Property Name="OpeningHours" Type="time" Precision="0" />
+          <Property Name="ClosingHours" Type="time" Precision="0" />
+          <Property Name="OpeningDays" Type="nvarchar" MaxLength="20" />
+          <Property Name="DeliveryHours" Type="time" Precision="0" />
+          <Property Name="ClosingDeliveryHours" Type="time" Precision="0" />
+          <Property Name="DeliveryDays" Type="nvarchar" MaxLength="20" />
+          <Property Name="PickUpHours" Type="time" Precision="0" />
+          <Property Name="ClosingPickUpHours" Type="time" Precision="0" />
+          <Property Name="PickUpDays" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="CookerMenus">
           <Key>
@@ -994,7 +997,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="CookerDeliveryZones" EntityType="PrivateChefModel.CookerDeliveryZone" />
           <EntitySet Name="CookerFeedBacks" EntityType="PrivateChefModel.CookerFeedBack" />
           <EntitySet Name="CookerGeoIPs" EntityType="PrivateChefModel.CookerGeoIP" />
-          <EntitySet Name="CookerHoursofOperations" EntityType="PrivateChefModel.CookerHoursofOperation" />
           <EntitySet Name="CookerMenus" EntityType="PrivateChefModel.CookerMenu" />
           <EntitySet Name="CookerOrderReviewReceiveds" EntityType="PrivateChefModel.CookerOrderReviewReceived" />
           <EntitySet Name="CookerOrderReviewSents" EntityType="PrivateChefModel.CookerOrderReviewSent" />
@@ -1066,6 +1068,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="MostPopularDishes" EntityType="PrivateChefModel.MostPopularDish" />
           <EntitySet Name="MostPopularSubscriptions" EntityType="PrivateChefModel.MostPopularSubscription" />
           <EntitySet Name="Cookers" EntityType="PrivateChefModel.Cooker" />
+          <EntitySet Name="CookerHoursofOperations" EntityType="PrivateChefModel.CookerHoursofOperation" />
         </EntityContainer>
         <EntityType Name="AddressType">
           <Key>
@@ -1219,18 +1222,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="Latitude" Type="Double" />
           <Property Name="Longitude" Type="Double" />
           <Property Name="MetroCode" Type="Int32" />
-        </EntityType>
-        <EntityType Name="CookerHoursofOperation">
-          <Key>
-            <PropertyRef Name="CookerId" />
-          </Key>
-          <Property Name="CookerId" Type="Int32" Nullable="false" />
-          <Property Name="OpeningHours" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="OpeningDays" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="DeliveryHours" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="DeliveryDays" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="PickUpHours" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="PickUpDays" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="CookerMenu">
           <Key>
@@ -1976,6 +1967,21 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="WaitingTime" Type="Int32" />
           <Property Name="NumberofSubscription" Type="Int32" />
         </EntityType>
+        <EntityType Name="CookerHoursofOperation">
+          <Key>
+            <PropertyRef Name="CookerId" />
+          </Key>
+          <Property Name="CookerId" Type="Int32" Nullable="false" />
+          <Property Name="OpeningHours" Type="Time" Precision="0" />
+          <Property Name="ClosingHours" Type="Time" Precision="0" />
+          <Property Name="OpeningDays" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryHours" Type="Time" Precision="0" />
+          <Property Name="ClosingDeliveryHours" Type="Time" Precision="0" />
+          <Property Name="DeliveryDays" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PickUpHours" Type="Time" Precision="0" />
+          <Property Name="ClosingPickUpHours" Type="Time" Precision="0" />
+          <Property Name="PickUpDays" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2134,19 +2140,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
                 <ScalarProperty Name="CountryName" ColumnName="CountryName" />
                 <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
                 <ScalarProperty Name="Ip" ColumnName="Ip" />
-                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CookerHoursofOperations">
-            <EntityTypeMapping TypeName="PrivateChefModel.CookerHoursofOperation">
-              <MappingFragment StoreEntitySet="CookerHoursofOperations">
-                <ScalarProperty Name="PickUpDays" ColumnName="PickUpDays" />
-                <ScalarProperty Name="PickUpHours" ColumnName="PickUpHours" />
-                <ScalarProperty Name="DeliveryDays" ColumnName="DeliveryDays" />
-                <ScalarProperty Name="DeliveryHours" ColumnName="DeliveryHours" />
-                <ScalarProperty Name="OpeningDays" ColumnName="OpeningDays" />
-                <ScalarProperty Name="OpeningHours" ColumnName="OpeningHours" />
                 <ScalarProperty Name="CookerId" ColumnName="CookerId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2881,6 +2874,22 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
                 <ScalarProperty Name="RestaurantName" ColumnName="RestaurantName" />
                 <ScalarProperty Name="RestaurantPhoto" ColumnName="RestaurantPhoto" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CookerHoursofOperations">
+            <EntityTypeMapping TypeName="PrivateChefModel.CookerHoursofOperation">
+              <MappingFragment StoreEntitySet="CookerHoursofOperations">
+                <ScalarProperty Name="PickUpDays" ColumnName="PickUpDays" />
+                <ScalarProperty Name="ClosingPickUpHours" ColumnName="ClosingPickUpHours" />
+                <ScalarProperty Name="PickUpHours" ColumnName="PickUpHours" />
+                <ScalarProperty Name="DeliveryDays" ColumnName="DeliveryDays" />
+                <ScalarProperty Name="ClosingDeliveryHours" ColumnName="ClosingDeliveryHours" />
+                <ScalarProperty Name="DeliveryHours" ColumnName="DeliveryHours" />
+                <ScalarProperty Name="OpeningDays" ColumnName="OpeningDays" />
+                <ScalarProperty Name="ClosingHours" ColumnName="ClosingHours" />
+                <ScalarProperty Name="OpeningHours" ColumnName="OpeningHours" />
                 <ScalarProperty Name="CookerId" ColumnName="CookerId" />
               </MappingFragment>
             </EntityTypeMapping>

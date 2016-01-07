@@ -17,7 +17,6 @@
         <EntityTypeShape EntityType="PrivateChefModel.CookerDeliveryZone" Width="1.5" PointX="10.75" PointY="12.125" />
         <EntityTypeShape EntityType="PrivateChefModel.CookerFeedBack" Width="1.5" PointX="6.75" PointY="14.125" />
         <EntityTypeShape EntityType="PrivateChefModel.CookerGeoIP" Width="1.5" PointX="8.75" PointY="14.125" />
-        <EntityTypeShape EntityType="PrivateChefModel.CookerHoursofOperation" Width="1.5" PointX="10.75" PointY="15.125" />
         <EntityTypeShape EntityType="PrivateChefModel.CookerMenu" Width="1.5" PointX="12.75" PointY="9.125" />
         <EntityTypeShape EntityType="PrivateChefModel.CookerOrderReviewReceived" Width="1.5" PointX="12.75" PointY="12.125" />
         <EntityTypeShape EntityType="PrivateChefModel.CookerOrderReviewSent" Width="1.5" PointX="12.75" PointY="17.125" />
@@ -77,6 +76,7 @@
         <EntityTypeShape EntityType="PrivateChefModel.MostPopularDish" Width="1.5" PointX="16.375" PointY="3.75" />
         <EntityTypeShape EntityType="PrivateChefModel.MostPopularSubscription" Width="1.5" PointX="16.375" PointY="6.75" />
         <EntityTypeShape EntityType="PrivateChefModel.Cooker" Width="1.5" PointX="18.375" PointY="3.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.CookerHoursofOperation" Width="1.5" PointX="20.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
