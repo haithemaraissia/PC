@@ -10,7 +10,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Test
 {
     [TestClass]
-    public class TimeSpanTest
+    public class TimeSpan
     {
         //   public OwnersController Controller;
 
