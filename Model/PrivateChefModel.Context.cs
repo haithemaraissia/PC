@@ -90,8 +90,8 @@ namespace Model
         public virtual DbSet<OrderSubscriptionItem> OrderSubscriptionItems { get; set; }
         public virtual DbSet<OrderSubscription> OrderSubscriptions { get; set; }
         public virtual DbSet<PaymentsHistory> PaymentsHistories { get; set; }
-        public virtual DbSet<Cooker> Cookers { get; set; }
         public virtual DbSet<MostPopularDish> MostPopularDishes { get; set; }
         public virtual DbSet<MostPopularSubscription> MostPopularSubscriptions { get; set; }
+        public virtual DbSet<Cooker> Cookers { get; set; }
     }
 }

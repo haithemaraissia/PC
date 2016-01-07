@@ -39,7 +39,8 @@ namespace DAL.Fake.Model.GoodData.Cooker
                 OfferPickUp = true,
                 TaxPercent = (decimal?) 8.15,
                 AmountforFreeDelivery = (decimal?) 50.00,
-                WaitingTime =   new TimeSpan( 0, 15, 0 )
+                WaitingTime =  15,
+                NumberofSubscription = 1
             };
             return firstCooker;
         }
@@ -59,7 +60,9 @@ namespace DAL.Fake.Model.GoodData.Cooker
                 TotalRaters = 0,
                 OfferDelivery = false,
                 OfferPickUp = true,
-                TaxPercent = (decimal?) 8.47
+                TaxPercent = (decimal?) 8.47,
+                WaitingTime = 60,
+                NumberofSubscription = 2
             };
             return secondCooker;
         }
@@ -80,7 +83,9 @@ namespace DAL.Fake.Model.GoodData.Cooker
                 OfferDelivery = true,
                 OfferPickUp = false,
                 TaxPercent = (decimal?) 8.88,
-                AmountforFreeDelivery = (decimal?)30.00
+                AmountforFreeDelivery = (decimal?)30.00,
+                WaitingTime = 80,
+                NumberofSubscription = 0
             };
             return thirdCooker;
         }
