@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Orders.Clients.Client2
+namespace DAL.Fake.Model.GoodData.OrdersHistory.Clients.Client2
 {
     public class FakeClient2OrderHistory
     {

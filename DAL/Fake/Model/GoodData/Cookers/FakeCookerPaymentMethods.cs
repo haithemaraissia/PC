@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Cooker
+namespace DAL.Fake.Model.GoodData.Cookers
 {
     public class FakeCookerPaymentMethods
     {

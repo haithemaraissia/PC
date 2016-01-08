@@ -1,4 +1,4 @@
-namespace DAL.Fake.Model.Util
+namespace DAL.Fake.Model.LookUp.Subscription.Cookers.ServingPrice
 {
     public class ServingPriceModel
     {

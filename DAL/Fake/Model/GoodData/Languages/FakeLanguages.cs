@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using DAL.Fake.Model.LookUp.Langauges;
 
-namespace DAL.Fake.Model.GoodData.Language
+namespace DAL.Fake.Model.GoodData.Languages
 {
     public class FakeLanguage
     {
@@ -24,8 +25,8 @@ namespace DAL.Fake.Model.GoodData.Language
         {
             var firstLanguage = new global::Model.Language
             {
-                LanguageId = (int)Util.LanguageType.Values.EN,
-                LanguageValue = Util.LanguageType.Values.EN.ToString()
+                LanguageId = (int)LanguageType.Values.EN,
+                LanguageValue = LanguageType.Values.EN.ToString()
             };
             return firstLanguage;
         }
@@ -34,8 +35,8 @@ namespace DAL.Fake.Model.GoodData.Language
         {
             var secondLanguage = new global::Model.Language
             {
-                LanguageId = (int)Util.LanguageType.Values.SP,
-                LanguageValue = Util.LanguageType.Values.SP.ToString()
+                LanguageId = (int)LanguageType.Values.SP,
+                LanguageValue = LanguageType.Values.SP.ToString()
             };
             return secondLanguage;
         }
@@ -44,8 +45,8 @@ namespace DAL.Fake.Model.GoodData.Language
         {
             var thirdLanguage = new global::Model.Language
             {
-                LanguageId = (int)Util.LanguageType.Values.FR,
-                LanguageValue = Util.LanguageType.Values.FR.ToString()
+                LanguageId = (int)LanguageType.Values.FR,
+                LanguageValue = LanguageType.Values.FR.ToString()
             };
             return thirdLanguage;
         }

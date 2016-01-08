@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using DAL.Fake.Model.LookUp.Subscription.Cookers.ServingPrice;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.CookerSubscriptions
+namespace DAL.Fake.Model.GoodData.Subscriptions.Cookers
 {
     public class FakeCookerSubscriptions
     {
@@ -27,8 +28,8 @@ namespace DAL.Fake.Model.GoodData.CookerSubscriptions
             {
                 CookerSubscriptionId = 1,
                 CookerId = 1,
-                PlanId =  (int)Util.Plans.Types.ThreeMealsPerWeek,
-                ServingPriceId = (int)Util.ServingPriceModel.Values.Nine_DollarsNintyNine
+                PlanId =  (int)LookUp.Plans.Plans.Types.ThreeMealsPerWeek,
+                ServingPriceId = (int)ServingPriceModel.Values.Nine_DollarsNintyNine
             };
             return firstCookerSubscription;
         }
@@ -39,8 +40,8 @@ namespace DAL.Fake.Model.GoodData.CookerSubscriptions
             {
                 CookerSubscriptionId = 2,
                 CookerId = 1,
-                PlanId =  (int)Util.Plans.Types.FiveMealsPerWeek,
-                ServingPriceId = (int)Util.ServingPriceModel.Values.Fourteen_Dollars_NintyNine
+                PlanId =  (int)LookUp.Plans.Plans.Types.FiveMealsPerWeek,
+                ServingPriceId = (int)ServingPriceModel.Values.Fourteen_Dollars_NintyNine
             };
             return secondCookerSubscription;
         }
@@ -51,8 +52,8 @@ namespace DAL.Fake.Model.GoodData.CookerSubscriptions
             {
                 CookerSubscriptionId = 3,
                 CookerId = 1,
-                PlanId =  (int)Util.Plans.Types.TenMealsPerWeek,
-                ServingPriceId = (int)Util.ServingPriceModel.Values.Ninteen_Dollars_NintyNine
+                PlanId =  (int)LookUp.Plans.Plans.Types.TenMealsPerWeek,
+                ServingPriceId = (int)ServingPriceModel.Values.Ninteen_Dollars_NintyNine
             };
             return thirdCookerSubscription;
         }

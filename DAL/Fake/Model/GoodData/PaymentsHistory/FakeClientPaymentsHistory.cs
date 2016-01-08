@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using DAL.Fake.Model.GoodData.PaymentsHistory.Client1;
-using Model;
 
-namespace DAL.Fake.Model.GoodData
+namespace DAL.Fake.Model.GoodData.PaymentsHistory
 {
     public class FakeClientPaymentsHistory
     {

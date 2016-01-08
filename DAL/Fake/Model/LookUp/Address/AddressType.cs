@@ -1,4 +1,4 @@
-namespace DAL.Fake.Model.Util.Address
+namespace DAL.Fake.Model.LookUp.Address
 {
     public class AddressType
     {

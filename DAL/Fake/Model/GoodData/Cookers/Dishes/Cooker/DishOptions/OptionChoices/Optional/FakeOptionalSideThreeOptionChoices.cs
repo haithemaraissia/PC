@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using DAL.Fake.Model.LookUp.DishOption;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices.Optional
+namespace DAL.Fake.Model.GoodData.Cookers.Dishes.Cooker.DishOptions.OptionChoices.Optional
 {
     public class FakeOptionalSideThreeOptionChoices 
     {
@@ -29,7 +30,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Miso Soup",
                 Price = null,
                 CurrencyId = null,
-                DishOptionId = (int)Util.DishOptionType.Values.FakeOptionalSideThreeOptionChoices
+                DishOptionId = (int)DishOptionType.Values.FakeOptionalSideThreeOptionChoices
             };
             return dishOptionsChoice;
         }
@@ -42,7 +43,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "House Salad",
                 Price = null,
                 CurrencyId = null,
-               DishOptionId = (int)Util.DishOptionType.Values.FakeOptionalSideThreeOptionChoices
+               DishOptionId = (int)DishOptionType.Values.FakeOptionalSideThreeOptionChoices
             };
             return dishOptionsChoice;
         }
@@ -55,7 +56,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Miso Soup and House Salad",
                 Price = null,
                 CurrencyId = null,
-               DishOptionId = (int)Util.DishOptionType.Values.FakeOptionalSideThreeOptionChoices
+               DishOptionId = (int)DishOptionType.Values.FakeOptionalSideThreeOptionChoices
             };
             return dishOptionsChoice;
         }

@@ -176,7 +176,6 @@
     <Compile Include="Language.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Main.cs" />
     <Compile Include="MenuSection.cs">
       <DependentUpon>PrivateChefModel.tt</DependentUpon>
     </Compile>

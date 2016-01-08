@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
-using DAL.Fake.Model.Util;
+using DAL.Fake.Model.LookUp.ServingMeasurement;
+using DAL.Fake.Model.LookUp.Subscription.Cookers.ServingPrice;
 using Model;
 
-namespace DAL.Fake.Model
+namespace DAL.Fake.Model.GoodData.Subscriptions.Cookers
 {
     public class FakeServingPrices
     {
@@ -31,7 +32,7 @@ namespace DAL.Fake.Model
             {
                 ServicePriceId = (int)ServingPriceModel.Values.Ninteen_Dollars_NintyNine,
                 ServingMeasurementId = (int)ServingMeasurementType.Values.TwoCupContainer,
-                PLanId = (int)Plans.Types.ThreeMealsPerWeek,
+                PLanId = (int)LookUp.Plans.Plans.Types.ThreeMealsPerWeek,
                 Price = (decimal)(new ServingPriceModel().GetPrice(ServingPriceModel.Values.Ninteen_Dollars_NintyNine)),
                 CookerId = 1,
                 Quantity = 1
@@ -45,7 +46,7 @@ namespace DAL.Fake.Model
             {
                 ServicePriceId = (int)ServingPriceModel.Values.Fourteen_Dollars_NintyNine,
                 ServingMeasurementId = (int)ServingMeasurementType.Values.BreadPlate6Inches,
-                PLanId = (int)Plans.Types.FiveMealsPerWeek,
+                PLanId = (int)LookUp.Plans.Plans.Types.FiveMealsPerWeek,
                 Price = (decimal)(new ServingPriceModel().GetPrice(ServingPriceModel.Values.Fourteen_Dollars_NintyNine)),
                 CookerId = 1,
                 Quantity = 2
@@ -59,7 +60,7 @@ namespace DAL.Fake.Model
             {
                 ServicePriceId = (int)ServingPriceModel.Values.Ninteen_Dollars_NintyNine,
                 ServingMeasurementId = (int)ServingMeasurementType.Values.LunchPlate9Inches,
-                PLanId = (int)Plans.Types.TenMealsPerWeek,
+                PLanId = (int)LookUp.Plans.Plans.Types.TenMealsPerWeek,
                 Price = (decimal)(new ServingPriceModel().GetPrice(ServingPriceModel.Values.Nine_DollarsNintyNine)),
                 CookerId = 1,
                 Quantity = 1

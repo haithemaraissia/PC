@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using DAL.Fake.Model.GoodData.Invoices.Client.Client1;
+using DAL.Fake.Model.LookUp.PaymentStatus;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Clients
+namespace DAL.Fake.Model.GoodData.Payments.Clients.Client1
 {
     public class FakeClients1Payments
     {
@@ -38,8 +39,8 @@ namespace DAL.Fake.Model.GoodData.Clients
                     ClientId = FirstInvoice.ClientId,
                     CookerId = FirstInvoice.CookerId,
                     TransactionId = "G126F85",
-                    OrderModelTypeId = (int)Util.OrderModelType.Values.Transaction,
-                    PaymentStatusId = (int)Util.PaymentStatusType.Values.Pending
+                    OrderModelTypeId = (int)LookUp.OrderModel.OrderModelType.Values.Transaction,
+                    PaymentStatusId = (int)PaymentStatusType.Values.Pending
                     
                 };
 

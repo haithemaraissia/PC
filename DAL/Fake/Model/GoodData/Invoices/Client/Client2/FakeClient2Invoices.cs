@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using DAL.Fake.Model.GoodData.Orders.Clients.Client2;
 using DAL.Fake.Model.Util.Orders;
 using Model;
 
-namespace DAL.Fake.Model
+namespace DAL.Fake.Model.GoodData.Invoices.Client.Client2
 {
     public class FakeClient2Invoices
     {

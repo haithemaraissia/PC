@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using DAL.Fake.Model.Util;
+using DAL.Fake.Model.LookUp.Currency;
 
-namespace DAL.Fake.Model.GoodData.Currency
+namespace DAL.Fake.Model.GoodData.Currencies
 {
     public class FakeCurrencies
     {

@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using DAL.Fake.Model.Util;
+using DAL.Fake.Model.GoodData.Invoices.Client.Client1;
+using DAL.Fake.Model.LookUp.OrderStatu;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Orders.Clients.Client1
+namespace DAL.Fake.Model.GoodData.OrdersHistory.Clients.Client1
 {
     public class FakeClient1OrderHistory
     {

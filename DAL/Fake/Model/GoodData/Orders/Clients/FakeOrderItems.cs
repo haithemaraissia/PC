@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using DAL.Fake.Model.LookUp.Currency;
+using DAL.Fake.Model.LookUp.DishOption;
 using DAL.Fake.Model.Util;
 using Model;
 

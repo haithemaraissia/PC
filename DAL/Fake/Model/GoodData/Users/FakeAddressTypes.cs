@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.User
+namespace DAL.Fake.Model.GoodData.Users
 {
     public class FakeAddressTypes
     {
@@ -26,7 +26,7 @@ namespace DAL.Fake.Model.GoodData.User
             var firstAddressType = new AddressType
             {
                 AddressTypeId = 1,
-                AddressTypeValue = Util.Address.AddressType.Values.Home.ToString()
+                AddressTypeValue = LookUp.Address.AddressType.Values.Home.ToString()
             };
             return firstAddressType;
         }
@@ -36,7 +36,7 @@ namespace DAL.Fake.Model.GoodData.User
             var secondAddressType = new AddressType
             {
                 AddressTypeId = 2,
-                AddressTypeValue = Util.Address.AddressType.Values.Work.ToString()
+                AddressTypeValue = LookUp.Address.AddressType.Values.Work.ToString()
             };
             return secondAddressType;
         }
@@ -46,7 +46,7 @@ namespace DAL.Fake.Model.GoodData.User
             var thirdAddressType = new AddressType
             {
                 AddressTypeId = 3,
-                AddressTypeValue = Util.Address.AddressType.Values.Other.ToString()
+                AddressTypeValue = LookUp.Address.AddressType.Values.Other.ToString()
             };
             return thirdAddressType;
         }

@@ -4,7 +4,7 @@ using DAL.Fake.Model.GoodData.Orders.Clients.Client2;
 using DAL.Fake.Model.GoodData.Orders.Clients.Client3;
 using Model;
 
-namespace DAL.Fake.Model
+namespace DAL.Fake.Model.GoodData.Orders
 {
     public class FakeOrders
     {

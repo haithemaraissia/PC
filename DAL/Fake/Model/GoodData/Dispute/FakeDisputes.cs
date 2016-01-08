@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DAL.Fake.Model.LookUp.Dispute;
 
 namespace DAL.Fake.Model.GoodData.Dispute
 {
@@ -27,13 +28,13 @@ namespace DAL.Fake.Model.GoodData.Dispute
             {
                 DisputeId =  1,
                 OrderId = 1,
-                OrderModelTypeId = (int)Util.OrderModelType.Values.Transaction,
+                OrderModelTypeId = (int)LookUp.OrderModel.OrderModelType.Values.Transaction,
                 CookerId = 1,
                 ClientId = 1,
                 DisputeDate = DateTime.Today.Date,
                 DisputeAmount = (decimal) 8.50,
-                StatusId = (int)Util.DisputeStatus.Values.Opened,
-                ReasonId = (int)Util.DisputeReason.Values.ItemNotAsDescribed,
+                StatusId = (int)DisputeStatus.Values.Opened,
+                ReasonId = (int)DisputeReason.Values.ItemNotAsDescribed,
                 EvidencePhoto = @"C:\Users\haraissia\Documents\Visual Studio 2013\Projects\PrivateChef\trunk\Test\Images\Dispute\NeverDelivered.jpg",
                 Description = "This item was never delivered"
             };
@@ -45,13 +46,13 @@ namespace DAL.Fake.Model.GoodData.Dispute
             var secondDispute = new global::Model.Dispute();
             secondDispute.DisputeId = 2;
             secondDispute.OrderId = 2;
-            secondDispute.OrderModelTypeId = (int) Util.OrderModelType.Values.Subscription;
+            secondDispute.OrderModelTypeId = (int) LookUp.OrderModel.OrderModelType.Values.Subscription;
             secondDispute.CookerId = 1;
             secondDispute.ClientId = 1;
             secondDispute.DisputeDate = DateTime.Today.Date;
             secondDispute.DisputeAmount = (decimal)6.50;
-            secondDispute.StatusId = (int)Util.DisputeStatus.Values.Opened;
-            secondDispute.ReasonId = (int)Util.DisputeReason.Values.OtherReasons;
+            secondDispute.StatusId = (int)DisputeStatus.Values.Opened;
+            secondDispute.ReasonId = (int)DisputeReason.Values.OtherReasons;
             secondDispute.EvidencePhoto = "";
             secondDispute.Description = "This item was not good";
             return secondDispute;
@@ -63,13 +64,13 @@ namespace DAL.Fake.Model.GoodData.Dispute
             {
                 DisputeId = 3,
                 OrderId = 3,
-                OrderModelTypeId = (int)Util.OrderModelType.Values.Transaction,
+                OrderModelTypeId = (int)LookUp.OrderModel.OrderModelType.Values.Transaction,
                 CookerId = 1,
                 ClientId = 2,
                 DisputeDate = DateTime.Today.Date,
                 DisputeAmount = (decimal)4.50,
-                StatusId = (int)Util.DisputeStatus.Values.Processing,
-                ReasonId = (int)Util.DisputeReason.Values.OtherReasons,
+                StatusId = (int)DisputeStatus.Values.Processing,
+                ReasonId = (int)DisputeReason.Values.OtherReasons,
                 EvidencePhoto = @"C:\Users\haraissia\Documents\Visual Studio 2013\Projects\PrivateChef\trunk\Test\Images\Dispute\BadFood.jpg",
                 Description = "look at the picture and you will understand"
             };

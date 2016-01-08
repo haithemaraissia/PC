@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using DAL.Fake.Model.Util;
+using DAL.Fake.Model.LookUp.RatingCodes;
 
-namespace DAL.Fake.Model.GoodData.RatingCode
+namespace DAL.Fake.Model.GoodData.RatingCodes
 {
     public class FakeRatingCode
     {

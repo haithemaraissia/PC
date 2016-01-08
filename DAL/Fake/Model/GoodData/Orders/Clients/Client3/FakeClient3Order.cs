@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using DAL.Fake.Model.LookUp.PaymentMethod;
 using Model;
+using OrderType = DAL.Fake.Model.LookUp.OrderType.OrderType;
 
 namespace DAL.Fake.Model.GoodData.Orders.Clients.Client3
 {
@@ -38,8 +40,8 @@ namespace DAL.Fake.Model.GoodData.Orders.Clients.Client3
                 ClientId = 3,
                 OrderDate = DateTime.Today.Date,
                 DeliveryDate = null,
-                OrderTypeId = (int)Util.OrderType.Values.Delivery,
-                PaymentMethodId = (int)Util.PaymentMethodType.Values.Cash,
+                OrderTypeId = (int)OrderType.Values.Delivery,
+                PaymentMethodId = (int)PaymentMethodType.Values.Cash,
                 PromotionId = null,
                 CouponId = null,
                 PlanId = null,

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DAL.Fake.Model.LookUp.OrderType;
 
 namespace DAL.Fake.Model.GoodData.OrderTypes
 {
@@ -23,8 +24,8 @@ namespace DAL.Fake.Model.GoodData.OrderTypes
         {
             var firstOrderType = new global::Model.OrderType
             {
-                OrderTypeId = (int)Util.OrderType.Values.PickUp,
-                OrderTypeValue = Util.OrderType.Values.PickUp.ToString()
+                OrderTypeId = (int)OrderType.Values.PickUp,
+                OrderTypeValue = OrderType.Values.PickUp.ToString()
             };
             return firstOrderType;
         }
@@ -33,8 +34,8 @@ namespace DAL.Fake.Model.GoodData.OrderTypes
         {
             var secondOrderType = new global::Model.OrderType
             {
-                OrderTypeId = (int)Util.OrderType.Values.Delivery,
-                OrderTypeValue = Util.OrderType.Values.Delivery.ToString()
+                OrderTypeId = (int)OrderType.Values.Delivery,
+                OrderTypeValue = OrderType.Values.Delivery.ToString()
             };
             return secondOrderType;
         }

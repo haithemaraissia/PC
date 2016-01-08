@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using DAL.Fake.Model.Util;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Cooker
+namespace DAL.Fake.Model.GoodData.Cookers
 {
     public class FakeCookerCuisines
     {
@@ -36,7 +35,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             {
                 CuisineTypeId = 1,
                 CookerId = 1,
-                CookerCuisineId = (int)Cuisines.Types.Italian
+                CookerCuisineId = (int)LookUp.Cuisine.Cuisines.Types.Italian
             };
             return firstCookerCuisine;
         }
@@ -49,7 +48,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             {
                 CuisineTypeId = 2,
                 CookerId = 1,
-                CookerCuisineId = (int)Cuisines.Types.Mexican
+                CookerCuisineId = (int)LookUp.Cuisine.Cuisines.Types.Mexican
             };
             return secondCookerCuisine;
         }
@@ -67,7 +66,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             {
                 CuisineTypeId = 3,
                 CookerId = 2,
-                CookerCuisineId = (int)Cuisines.Types.Japanese
+                CookerCuisineId = (int)LookUp.Cuisine.Cuisines.Types.Japanese
             };
             return thirdCookerCuisine;
         }
@@ -80,7 +79,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             {
                 CuisineTypeId = 4,
                 CookerId = 2,
-                CookerCuisineId = (int)Cuisines.Types.Filipino
+                CookerCuisineId = (int)LookUp.Cuisine.Cuisines.Types.Filipino
             };
             return fourthCookerCuisine;
         }
@@ -94,7 +93,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             {
                 CuisineTypeId = 5,
                 CookerId = 2,
-                CookerCuisineId = (int)Cuisines.Types.Jamaican
+                CookerCuisineId = (int)LookUp.Cuisine.Cuisines.Types.Jamaican
             };
             return fifthCookerCuisine;
         }
@@ -108,7 +107,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             {
                 CuisineTypeId = 6,
                 CookerId = 2,
-                CookerCuisineId = (int)Cuisines.Types.Moroccan
+                CookerCuisineId = (int)LookUp.Cuisine.Cuisines.Types.Moroccan
             };
             return sixthCookerCuisine;
         }
@@ -125,7 +124,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             {
                 CuisineTypeId = 7,
                 CookerId = 3,
-                CookerCuisineId = (int)Cuisines.Types.Dominican
+                CookerCuisineId = (int)LookUp.Cuisine.Cuisines.Types.Dominican
             };
             return seventhCookerCuisine;
         }

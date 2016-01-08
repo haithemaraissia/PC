@@ -5,7 +5,7 @@ using DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders;
 using DAL.Fake.Model.Util.Subscriptions;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsInvoices
+namespace DAL.Fake.Model.GoodData.Invoices.Client.Client1
 {
     public class FakeSubscriptionsInvoices
     {

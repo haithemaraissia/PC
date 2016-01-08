@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using DAL.Fake.Model.LookUp.Langauges;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Cooker
+namespace DAL.Fake.Model.GoodData.Cookers
 {
     public class FakeCookerSpokenLanguage
     {
@@ -26,7 +27,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             var firstCookerSpokenLanguage = new CookerSpokenLanguage
             {
                 LanguageId = 1,
-                LanguageValue = Util.LanguageType.Values.EN.ToString(),
+                LanguageValue = LanguageType.Values.EN.ToString(),
                 CookerId = 1
             };
             return firstCookerSpokenLanguage;
@@ -37,7 +38,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             var secondCookerSpokenLanguage = new CookerSpokenLanguage
             {
                 LanguageId = 2,
-                LanguageValue = Util.LanguageType.Values.SP.ToString(),
+                LanguageValue = LanguageType.Values.SP.ToString(),
                 CookerId = 1
             };
             return secondCookerSpokenLanguage;
@@ -48,7 +49,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             var thirdCookerSpokenLanguage = new CookerSpokenLanguage
             {
                 LanguageId = 3,
-                LanguageValue = Util.LanguageType.Values.EN.ToString(),
+                LanguageValue = LanguageType.Values.EN.ToString(),
                 CookerId = 2
             };
             return thirdCookerSpokenLanguage;

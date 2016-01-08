@@ -1,0 +1,75 @@
+﻿using System;
+using System.Data.Entity;
+using DAL.Data.Generic;
+using Model;
+
+namespace DAL.Generic.UnitofWork
+{
+    public partial class UnitofWork : IGenericUnitofWork
+    {
+        public  DbContext Context;
+
+        public UnitofWork()
+        {
+            Context = new PrivateChefContext();
+        }
+
+        public UnitofWork(DbContext context)
+        {
+            Context = context;
+        }
+
+        //Model
+ <#   foreach ( var FileName in  GetAllFiles())
+    { #>
+
+        private IGenericRepository<<#=FileName#>> _<#=ToLowerFirstChar(FileName)#>Repository;
+        public IGenericRepository<<#=FileName#>> <#=FileName#>Repository
+        {
+            get { return  _<#=ToLowerFirstChar(FileName)#>Repository ?? ( _<#=ToLowerFirstChar(FileName)#>Repository = new GenericRepository<<#=FileName#>>(Context)); }
+            set {  _<#=ToLowerFirstChar(FileName)#>Repository = value; }
+        }
+    <# } #>
+
+
+
+        public void Save()
+        {
+            Context.SaveChanges();
+        }
+
+        private bool _disposed;
+
+
+
+        public void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    Context.Dispose();
+                }
+            }
+            _disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+    }     
+}
+
+<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace=" System.IO" #>
+<#@ assembly name="System" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.Xml.Linq" #>
+<#@ output extension=".cs" #>
+<#@ include file="$(ProjectDir)\Tools\Base\ModelHelper.tt"#>

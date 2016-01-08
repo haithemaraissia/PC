@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using DAL.Fake.Model.LookUp.DishOption;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices.Required
+namespace DAL.Fake.Model.GoodData.Cookers.Dishes.Cooker.DishOptions.OptionChoices.Required
 {
     public class FakeRequiredSideOptionChoices
     {
@@ -40,7 +41,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Hand-Cut French Fries",
                 Price = null,
                 CurrencyId = null,
-               DishOptionId = (int)Util.DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
+               DishOptionId = (int)DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
             };
             return dishOptionsChoice;
         }
@@ -53,7 +54,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Fresh Fruit",
                 Price = null,
                 CurrencyId = null,
-               DishOptionId = (int)Util.DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
+               DishOptionId = (int)DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
             };
             return dishOptionsChoice;
         }
@@ -66,7 +67,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Cucumber Salad",
                 Price = (decimal?) 2.09,
                 CurrencyId = 1,
-               DishOptionId = (int)Util.DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
+               DishOptionId = (int)DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
             };
             return dishOptionsChoice;
         }
@@ -79,7 +80,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Turbo Tots",
                 Price = (decimal?)3.14,
                 CurrencyId = 1,
-               DishOptionId = (int)Util.DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
+               DishOptionId = (int)DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
             };
             return dishOptionsChoice;
         }
@@ -92,7 +93,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Potato Chips",
                 Price = null,
                 CurrencyId = null,
-               DishOptionId = (int)Util.DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
+               DishOptionId = (int)DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
             };
             return dishOptionsChoice;
         }
@@ -105,7 +106,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Cottage Cheese",
                 Price = null,
                 CurrencyId = null,
-               DishOptionId = (int)Util.DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
+               DishOptionId = (int)DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
             };
             return dishOptionsChoice;
         }
@@ -118,7 +119,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Onion Rings",
                 Price = (decimal?)2.09,
                 CurrencyId = 1,
-               DishOptionId = (int)Util.DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
+               DishOptionId = (int)DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
             };
             return dishOptionsChoice;
         }
@@ -131,7 +132,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Mac and Cheese",
                 Price = (decimal?)3.14,
                 CurrencyId = 1,
-               DishOptionId = (int)Util.DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
+               DishOptionId = (int)DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
             };
             return dishOptionsChoice;
         }
@@ -144,7 +145,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Seasonal Vegetables",
                 Price = null,
                 CurrencyId = null,
-               DishOptionId = (int)Util.DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
+               DishOptionId = (int)DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
             };
             return dishOptionsChoice;
         }
@@ -157,7 +158,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Cole Slaw",
                 Price = null,
                 CurrencyId = null,
-               DishOptionId = (int)Util.DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
+               DishOptionId = (int)DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
             };
             return dishOptionsChoice;
         }
@@ -170,7 +171,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Sweet Potato Tots",
                 Price = (decimal?)2.09,
                 CurrencyId = 1,
-               DishOptionId = (int)Util.DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
+               DishOptionId = (int)DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
             };
             return dishOptionsChoice;
         }
@@ -183,7 +184,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Vegetables",
                 Price = (decimal?)2.09,
                 CurrencyId = 1,
-               DishOptionId = (int)Util.DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
+               DishOptionId = (int)DishOptionType.Values.FakeRequiredSideTwelveOptionChoices
             };
             return dishOptionsChoice;
         }

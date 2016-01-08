@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DAL.Fake.Model.GoodData.Cooker;
-using DAL.Fake.Model.GoodData.Coupon;
+using DAL.Fake.Model.GoodData.Cookers;
+using DAL.Fake.Model.GoodData.Coupons;
 using DAL.Fake.Model.GoodData.DeliveryZones;
 using DAL.Fake.Model.GoodData.Orders.Clients;
 using DAL.Fake.Model.GoodData.Promotions;
 using DAL.Fake.Model.KMLHelper;
+using DAL.Fake.Model.LookUp.Discount;
+using DAL.Fake.Model.LookUp.PaymentMethod;
+using DAL.Fake.Model.Util.Helper;
 using Model;
-using Model.Helper;
+using OrderModelType = DAL.Fake.Model.LookUp.OrderModel.OrderModelType;
+using OrderType = DAL.Fake.Model.LookUp.OrderType.OrderType;
 
 namespace DAL.Fake.Model.Util.Orders
 {

@@ -25,8 +25,8 @@ namespace DAL.Fake.Model.GoodData.OrderModelType
         {
             var firstOrderModelTypeType = new global::Model.OrderModelType
             {
-                OrderModelTypeId = (int)Util.OrderModelType.Values.Transaction,
-                OrderModelTypeValue = Util.OrderModelType.Values.Transaction.ToString()
+                OrderModelTypeId = (int)LookUp.OrderModel.OrderModelType.Values.Transaction,
+                OrderModelTypeValue = LookUp.OrderModel.OrderModelType.Values.Transaction.ToString()
             };
             return firstOrderModelTypeType;
         }
@@ -35,8 +35,8 @@ namespace DAL.Fake.Model.GoodData.OrderModelType
         {
             var secondOrderModelTypeType = new global::Model.OrderModelType
             {
-                OrderModelTypeId = (int)Util.OrderModelType.Values.Subscription,
-                OrderModelTypeValue = Util.OrderModelType.Values.Subscription.ToString()
+                OrderModelTypeId = (int)LookUp.OrderModel.OrderModelType.Values.Subscription,
+                OrderModelTypeValue = LookUp.OrderModel.OrderModelType.Values.Subscription.ToString()
             };
             return secondOrderModelTypeType;
         }

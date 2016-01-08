@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DAL.Fake.Model.GoodData.Plan
+namespace DAL.Fake.Model.GoodData.MostPopularSubscription
 {
     public class FakeMostPopularSubscriptions
     {

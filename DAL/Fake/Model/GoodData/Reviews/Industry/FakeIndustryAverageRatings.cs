@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Clients
+namespace DAL.Fake.Model.GoodData.Reviews.Industry
 {
     public class FakeIndustryAverageRatings
     {

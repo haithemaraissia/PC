@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using DAL.Fake.Model.LookUp.Currency;
+using DAL.Fake.Model.LookUp.DishOption;
+using DAL.Fake.Model.LookUp.OrderStatu;
+using DAL.Fake.Model.LookUp.PaymentMethod;
 using DAL.Fake.Model.Util;
 using Model;
+using OrderType = DAL.Fake.Model.LookUp.OrderType.OrderType;
 
 namespace DAL.Fake.Model.GoodData.Orders.Clients.Client1
 {
@@ -45,7 +50,7 @@ namespace DAL.Fake.Model.GoodData.Orders.Clients.Client1
                 ClientId = 1,
                 OrderDate = DateTime.Today.Date,
                 DeliveryDate = null,
-                OrderTypeId = (int)Util.OrderType.Values.PickUp,
+                OrderTypeId = (int)OrderType.Values.PickUp,
                 PaymentMethodId = (int)PaymentMethodType.Values.CardOnLine,
                 CouponId = null,
                 PromotionId = null,

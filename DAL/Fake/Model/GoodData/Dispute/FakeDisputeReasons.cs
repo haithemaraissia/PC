@@ -24,8 +24,8 @@ namespace DAL.Fake.Model.GoodData.Dispute
         {
             var firstDisputeReason = new DisputeReason
             {
-                DisputeReasonId = (int)Util.DisputeReason.Values.ItemNotAsDescribed,
-                DisputeReasonValue =  Util.DisputeReason.Values.ItemNotAsDescribed.ToString()
+                DisputeReasonId = (int)LookUp.Dispute.DisputeReason.Values.ItemNotAsDescribed,
+                DisputeReasonValue =  LookUp.Dispute.DisputeReason.Values.ItemNotAsDescribed.ToString()
             };
             return firstDisputeReason;
         }
@@ -34,8 +34,8 @@ namespace DAL.Fake.Model.GoodData.Dispute
         {
             var secondDisputeReason = new DisputeReason
             {
-                DisputeReasonId = (int)Util.DisputeReason.Values.OtherReasons,
-                DisputeReasonValue = Util.DisputeReason.Values.OtherReasons.ToString()
+                DisputeReasonId = (int)LookUp.Dispute.DisputeReason.Values.OtherReasons,
+                DisputeReasonValue = LookUp.Dispute.DisputeReason.Values.OtherReasons.ToString()
             };
             return secondDisputeReason;
         }

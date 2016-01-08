@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker;
+using DAL.Fake.Model.GoodData.Cookers.Dishes.Cooker;
+using DAL.Fake.Model.LookUp.Currency;
+using DAL.Fake.Model.LookUp.DishOption;
+using DAL.Fake.Model.LookUp.OrderStatu;
+using DAL.Fake.Model.LookUp.PaymentMethod;
+using DAL.Fake.Model.LookUp.Week;
 using DAL.Fake.Model.Util;
 using DAL.Fake.Model.Util.Subscriptions;
 using Model;
-using OrderType = DAL.Fake.Model.Util.OrderType;
+using OrderType = DAL.Fake.Model.LookUp.OrderType.OrderType;
 
 namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders
 {

@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using DAL.Fake.Model.LookUp.DishOption;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions
+namespace DAL.Fake.Model.GoodData.Cookers.Dishes.Cooker.DishOptions
 {
     public class FakeDishOptions
     {
@@ -29,7 +30,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions
         {
             var firstDishOption = new DishOption
             {
-                DishOptionId = (int)Util.DishOptionType.Values.FakeRequiredSideTwelveOptionChoices,
+                DishOptionId = (int)DishOptionType.Values.FakeRequiredSideTwelveOptionChoices,
                 DishId = 1,
                 Title = "Choose a side",
                 Instructions ="Required - Choose 1.",
@@ -43,7 +44,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions
         {
             var thirdDishOption = new DishOption
             {
-                DishOptionId = (int)Util.DishOptionType.Values.FakeOptionalSideThreeOptionChoices,
+                DishOptionId = (int)DishOptionType.Values.FakeOptionalSideThreeOptionChoices,
                 DishId = 1,
                 Title = "Pick a side",
                 Instructions = "Optional - Choose 1.",
@@ -60,7 +61,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions
         {
             var secondDishOption = new DishOption
             {
-                DishOptionId = (int)Util.DishOptionType.Values.FakeRequiredSideThreeOptionChoices,
+                DishOptionId = (int)DishOptionType.Values.FakeRequiredSideThreeOptionChoices,
                 DishId = 3,
                 Title = "Choose a side",
                 Instructions = "Required - Choose 1.",
@@ -77,7 +78,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions
         {
             var fourthDishOption = new DishOption
             {
-                DishOptionId = (int)Util.DishOptionType.Values.FakeOptionalSideFourOptionChoices,
+                DishOptionId = (int)DishOptionType.Values.FakeOptionalSideFourOptionChoices,
                 DishId = 4,
                 Title = "Pick a side",
                 Instructions = "Optional - Choose 1.",

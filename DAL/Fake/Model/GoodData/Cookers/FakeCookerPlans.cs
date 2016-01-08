@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Cooker
+namespace DAL.Fake.Model.GoodData.Cookers
 {
     public class FakeCookerPlans
     {
@@ -32,7 +32,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             {
                 CookerPlanId = 1,
                 CookerId = 1,
-                PlanId = (int)Util.Plans.Types.ThreeMealsPerWeek
+                PlanId = (int)LookUp.Plans.Plans.Types.ThreeMealsPerWeek
             };
             return firstCookerPlan;
         }
@@ -43,7 +43,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             {
                 CookerPlanId = 2,
                 CookerId = 1,
-                PlanId = (int)Util.Plans.Types.FiveMealsPerWeek
+                PlanId = (int)LookUp.Plans.Plans.Types.FiveMealsPerWeek
             };
             return secondCookerPlan;
         }
@@ -54,7 +54,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             {
                 CookerPlanId = 3,
                 CookerId = 1,
-                PlanId = (int)Util.Plans.Types.TenMealsPerWeek
+                PlanId = (int)LookUp.Plans.Plans.Types.TenMealsPerWeek
             };
             return thirdCookerPlan;
         }

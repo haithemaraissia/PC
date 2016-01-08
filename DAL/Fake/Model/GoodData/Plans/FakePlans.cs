@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DAL.Fake.Model.GoodData.Plan
+namespace DAL.Fake.Model.GoodData.Plans
 {
     public class FakePlans
     {
@@ -24,9 +24,9 @@ namespace DAL.Fake.Model.GoodData.Plan
         {
             var firstPlan = new global::Model.Plan
             {
-                PlanId = (int)Util.Plans.Types.ThreeMealsPerWeek,
+                PlanId = (int)LookUp.Plans.Plans.Types.ThreeMealsPerWeek,
                 ExternalId = "1",
-                Description = Util.Plans.Types.ThreeMealsPerWeek.ToString(),
+                Description = LookUp.Plans.Plans.Types.ThreeMealsPerWeek.ToString(),
                 Title="Mike Weekly Plan"
             };
             return firstPlan;
@@ -36,9 +36,9 @@ namespace DAL.Fake.Model.GoodData.Plan
         {
             var secondPlan = new global::Model.Plan
             {
-                PlanId = (int)Util.Plans.Types.FiveMealsPerWeek,
+                PlanId = (int)LookUp.Plans.Plans.Types.FiveMealsPerWeek,
                 ExternalId = "2",
-                Description = Util.Plans.Types.FiveMealsPerWeek.ToString(),
+                Description = LookUp.Plans.Plans.Types.FiveMealsPerWeek.ToString(),
                 Title = "Mike Weekly Plan2"
             };
             return secondPlan;
@@ -48,9 +48,9 @@ namespace DAL.Fake.Model.GoodData.Plan
         {
             var thirdPlan = new global::Model.Plan
             {
-                PlanId = (int)Util.Plans.Types.TenMealsPerWeek,
+                PlanId = (int)LookUp.Plans.Plans.Types.TenMealsPerWeek,
                 ExternalId = "3",
-                Description = Util.Plans.Types.TenMealsPerWeek.ToString(),
+                Description = LookUp.Plans.Plans.Types.TenMealsPerWeek.ToString(),
                 Title = "Mike Weekly Plan3"
             };
             return thirdPlan;

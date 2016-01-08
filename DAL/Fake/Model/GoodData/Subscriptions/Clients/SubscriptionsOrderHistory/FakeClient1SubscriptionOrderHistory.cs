@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsInvoices;
+using DAL.Fake.Model.GoodData.Invoices.Client.Client1;
 using DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders;
+using DAL.Fake.Model.LookUp.OrderStatu;
 using DAL.Fake.Model.Util;
 using Model;
 

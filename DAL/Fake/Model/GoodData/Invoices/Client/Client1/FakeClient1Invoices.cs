@@ -3,9 +3,8 @@ using System.Linq;
 using DAL.Fake.Model.GoodData.Orders.Clients.Client1;
 using DAL.Fake.Model.Util.Orders;
 using Model;
-using OrderModelType = DAL.Fake.Model.Util.OrderModelType;
 
-namespace DAL.Fake.Model
+namespace DAL.Fake.Model.GoodData.Invoices.Client.Client1
 {
     public class FakeClient1Invoices
     {
@@ -69,7 +68,7 @@ namespace DAL.Fake.Model
                 SubTotal = firstOrderCharge.Subtotal,
                 Total = firstOrderCharge.TotalCharges,
 
-                OrderModelTypeId = (int)OrderModelType.Values.Transaction,
+                OrderModelTypeId = (int)LookUp.OrderModel.OrderModelType.Values.Transaction,
                 CookerSubscriptionId = null,
                 ServingPriceId = null,
                 PlanId = null

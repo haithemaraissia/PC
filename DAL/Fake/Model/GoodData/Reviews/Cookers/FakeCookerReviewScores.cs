@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Cookers
+namespace DAL.Fake.Model.GoodData.Reviews.Cookers
 {
     public class FakeCookerReviewScore
     {

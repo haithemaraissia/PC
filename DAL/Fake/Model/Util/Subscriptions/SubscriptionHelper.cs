@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DAL.Fake.Model.GoodData.Cooker;
-using DAL.Fake.Model.GoodData.CookerSubscriptions;
+using DAL.Fake.Model.GoodData.Cookers;
 using DAL.Fake.Model.GoodData.Reviews.Clients;
+using DAL.Fake.Model.GoodData.Subscriptions.Clients;
+using DAL.Fake.Model.GoodData.Subscriptions.Cookers;
 using Model;
+using OrderModelType = DAL.Fake.Model.LookUp.OrderModel.OrderModelType;
 
 namespace DAL.Fake.Model.Util.Subscriptions
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Model;
 
-namespace DAL.Fake.Model
+namespace DAL.Fake.Model.GoodData.Subscriptions.Clients
 {
     public class FakeClientSubscription
     {

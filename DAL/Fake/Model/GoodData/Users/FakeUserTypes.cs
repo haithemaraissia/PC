@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using DAL.Fake.Model.Util;
+using DAL.Fake.Model.LookUp.UserType;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.User
+namespace DAL.Fake.Model.GoodData.Users
 {
     public class FakeUserTypes
     {

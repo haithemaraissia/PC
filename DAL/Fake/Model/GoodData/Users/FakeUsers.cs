@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using DAL.Fake.Model.Util;
+using DAL.Fake.Model.LookUp.UserType;
 using Model;
+using AddressType = DAL.Fake.Model.LookUp.Address.AddressType;
 
-
-namespace DAL.Fake.Model
+namespace DAL.Fake.Model.GoodData.Users
 {
     public class FakeUsers
     {
@@ -45,7 +45,7 @@ namespace DAL.Fake.Model
                 CityId = 1,
                 ZipCode = "66216",
                 Address = "6805 main Street",
-                AddressTypeId = (int)Util.Address.AddressType.Values.Restaurant,
+                AddressTypeId = (int)AddressType.Values.Restaurant,
                 PhoneNumber = "9134513214"
             };
             return firstUser;
@@ -68,7 +68,7 @@ namespace DAL.Fake.Model
                 CityId = 1,
                 ZipCode ="66206",
                 Address = "11201 South West Boulevard",
-                AddressTypeId =  (int)Util.Address.AddressType.Values.Home,
+                AddressTypeId =  (int)AddressType.Values.Home,
                 PhoneNumber = "7561023214"
             };
             return secondUser;
@@ -92,7 +92,7 @@ namespace DAL.Fake.Model
                 ZipCode = "66206",
                 Address = "601 Block Bob",
                 Apt_suite = "301",
-                AddressTypeId = (int)Util.Address.AddressType.Values.Work,
+                AddressTypeId = (int)AddressType.Values.Work,
                 PhoneNumber = "8167561010"
             };
             return fifthUser;
@@ -120,7 +120,7 @@ namespace DAL.Fake.Model
                 ZipCode ="66216",
                 Address = "4805 main Street",
                 Apt_suite = "601",
-                AddressTypeId = (int)Util.Address.AddressType.Values.Home,
+                AddressTypeId = (int)AddressType.Values.Home,
                 PhoneNumber = "8167561010"
             };
             return thirdUser;
@@ -143,7 +143,7 @@ namespace DAL.Fake.Model
                 CityId = 1,
                 ZipCode = "66216",
                 Address = "6102 Plumb Road",
-                AddressTypeId = (int)Util.Address.AddressType.Values.Home,
+                AddressTypeId = (int)AddressType.Values.Home,
                 PhoneNumber = "9134060298"
             };
             return fourthUser;
@@ -167,7 +167,7 @@ namespace DAL.Fake.Model
                 ZipCode = "66216",
                 Address = "4804 Quivira Road ",
                 Apt_suite = "302",
-                AddressTypeId = (int)Util.Address.AddressType.Values.Other
+                AddressTypeId = (int)AddressType.Values.Other
             };
             return sixthUser;
         }

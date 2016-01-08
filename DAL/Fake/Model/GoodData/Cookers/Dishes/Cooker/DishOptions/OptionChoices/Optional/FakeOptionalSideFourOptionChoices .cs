@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using DAL.Fake.Model.LookUp.DishOption;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices.Optional
+namespace DAL.Fake.Model.GoodData.Cookers.Dishes.Cooker.DishOptions.OptionChoices.Optional
 {
     public class FakeOptionalSideFourOptionChoices  
     {
@@ -30,7 +31,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Add French Fries",
                 Price = (decimal?) 2.09,
                 CurrencyId = 1,
-                DishOptionId = (int)Util.DishOptionType.Values.FakeOptionalSideFourOptionChoices
+                DishOptionId = (int)DishOptionType.Values.FakeOptionalSideFourOptionChoices
             };
             return dishOptionsChoice;
         }
@@ -43,7 +44,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Extra Dressing",
                 Price = (decimal?) 0.53,
                 CurrencyId = 1,
-                DishOptionId = (int)Util.DishOptionType.Values.FakeOptionalSideFourOptionChoices
+                DishOptionId = (int)DishOptionType.Values.FakeOptionalSideFourOptionChoices
             };
             return dishOptionsChoice;
         }
@@ -56,7 +57,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Extra BBQ Sauce",
                 Price = (decimal?) 0.53,
                 CurrencyId = 1,
-                DishOptionId = (int)Util.DishOptionType.Values.FakeOptionalSideFourOptionChoices
+                DishOptionId = (int)DishOptionType.Values.FakeOptionalSideFourOptionChoices
             };
             return dishOptionsChoice;
         }
@@ -69,7 +70,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Extra Buffalo Sauce",
                 Price = (decimal?)0.53,
                 CurrencyId = 1,
-                DishOptionId = (int)Util.DishOptionType.Values.FakeOptionalSideFourOptionChoices
+                DishOptionId = (int)DishOptionType.Values.FakeOptionalSideFourOptionChoices
             };
             return dishOptionsChoice;
         }

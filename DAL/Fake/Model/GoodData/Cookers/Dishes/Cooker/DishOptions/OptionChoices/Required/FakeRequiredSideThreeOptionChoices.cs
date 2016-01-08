@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using DAL.Fake.Model.LookUp.DishOption;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices.Required
+namespace DAL.Fake.Model.GoodData.Cookers.Dishes.Cooker.DishOptions.OptionChoices.Required
 {
     public class FakeRequiredSideThreeOptionChoices
     {
@@ -29,7 +30,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Chicken Breast",
                 Price = null,
                 CurrencyId = null,
-                DishOptionId = (int)Util.DishOptionType.Values.FakeRequiredSideThreeOptionChoices
+                DishOptionId = (int)DishOptionType.Values.FakeRequiredSideThreeOptionChoices
             };
             return dishOptionsChoice;
         }
@@ -42,7 +43,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "New York Strip Steak",
                 Price = (decimal?) 8.97,
                 CurrencyId = 1,
-                DishOptionId = (int)Util.DishOptionType.Values.FakeRequiredSideThreeOptionChoices
+                DishOptionId = (int)DishOptionType.Values.FakeRequiredSideThreeOptionChoices
             };
             return dishOptionsChoice;
         }
@@ -55,7 +56,7 @@ namespace DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker.DishOptions.OptionChoices
                 DishOptionChoiceValue = "Atlantic Salmon",
                 Price = (decimal?) 2.05,
                 CurrencyId = 1,
-                DishOptionId = (int)Util.DishOptionType.Values.FakeRequiredSideThreeOptionChoices
+                DishOptionId = (int)DishOptionType.Values.FakeRequiredSideThreeOptionChoices
             };
             return dishOptionsChoice;
         }

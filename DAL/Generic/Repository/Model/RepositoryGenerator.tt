@@ -1,0 +1,37 @@
+﻿<#@ template debug="true"  hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace=" System.IO" #>
+<#@ assembly name="EnvDTE" #>
+<#@ assembly name="System" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.Xml.Linq" #>
+<#@ import namespace="EnvDTE" #>
+<#@ include file="$(ProjectDir)\Tools\Base\MultipleOutputHelper.ttinclude.tt"#>
+<#@ include file="$(ProjectDir)\Tools\Base\ModelHelper.tt"#>
+<#@ output extension=".txt" #>
+
+
+
+<#    
+    var manager = Manager.Create(Host, GenerationEnvironment); 
+    foreach ( var FileName in  GetAllFilesFromModelPath())
+    { 
+        manager.StartNewFile(FileName + "Repository.cs");#>
+using DAL.Generic.Repository.Base;
+using Model;
+
+namespace DAL.Generic.Repository.Model
+{
+    public partial class <#=FileName#>Repository : GenericRepository<<#=FileName#>>, I<#=FileName#>Repository
+    {
+
+    }
+}
+       <#
+    }   
+
+ manager.Process(true, true); #>
+

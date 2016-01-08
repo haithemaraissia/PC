@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using DAL.Fake.Model.Util;
+﻿using System.Collections.Generic;
 
-namespace DAL.Fake.Model.GoodData.Cooker
+namespace DAL.Fake.Model.GoodData.Cookers
 {
     public class FakeCookers
     {
@@ -30,7 +28,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
                 UserId = 1,
                 RestaurantName = " Fiorella's Express",
                 RestaurantPhoto = @"C:\Users\haraissia\Documents\Visual Studio 2013\Projects\PrivateChef\Test\Images\Restaurant\FiorellaExpress.jpg",
-                Cuisines = Cuisines.Types.Italian + " ," + Cuisines.Types.Mexican,
+                Cuisines = LookUp.Cuisine.Cuisines.Types.Italian + " ," + LookUp.Cuisine.Cuisines.Types.Mexican,
                 PhoneNumber = "913-524-2544",
                 Bio = "At Big Al`s their reputation has been built on providing great service ranging from small lunches to large corporate catered meetings and events.",
                 Rating = 5,
@@ -53,7 +51,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
                 UserId = 2,
                 RestaurantName = " Mike's Restaurant",
                 RestaurantPhoto = @"C:\Users\haraissia\Documents\Visual Studio 2013\Projects\PrivateChef\Test\Images\Restaurant\Restaurant2.jpg",
-                Cuisines = Cuisines.Types.Japanese + " ," + Cuisines.Types.Filipino + " ," + Cuisines.Types.Jamaican + " ," + Cuisines.Types.Moroccan,
+                Cuisines = LookUp.Cuisine.Cuisines.Types.Japanese + " ," + LookUp.Cuisine.Cuisines.Types.Filipino + " ," + LookUp.Cuisine.Cuisines.Types.Jamaican + " ," + LookUp.Cuisine.Cuisines.Types.Moroccan,
                 PhoneNumber = "202 555 2415",
                 Bio ="One of the best restaurant that offer tentative customer service and great quality.",
                 Rating = 5,
@@ -75,7 +73,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
                 UserId = 5,
                 RestaurantName = " Sara Home Food",
                 RestaurantPhoto = @"C:\Users\haraissia\Documents\Visual Studio 2013\Projects\PrivateChef\Test\Images\Restaurant\Restaurant1.jpg",
-                Cuisines = Cuisines.Types.Dominican.ToString(),
+                Cuisines = LookUp.Cuisine.Cuisines.Types.Dominican.ToString(),
                 PhoneNumber = "8164541121",
                 Bio = "Sara's Home Food is the best home made food in the usa",
                 Rating = 3,

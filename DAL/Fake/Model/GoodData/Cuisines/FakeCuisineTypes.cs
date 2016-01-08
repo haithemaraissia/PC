@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using DAL.Fake.Model.Util;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Cuisine
+namespace DAL.Fake.Model.GoodData.Cuisines
 {
     public class FakeCuisineTypes
     {
@@ -31,8 +30,8 @@ namespace DAL.Fake.Model.GoodData.Cuisine
         {
             var firstCuisineType = new CuisineType
             {
-                CuisineTypeId = (int)Cuisines.Types.Italian,
-                CuisineTypeValue = Cuisines.Types.Italian.ToString()
+                CuisineTypeId = (int)LookUp.Cuisine.Cuisines.Types.Italian,
+                CuisineTypeValue = LookUp.Cuisine.Cuisines.Types.Italian.ToString()
             };
             return firstCuisineType;
         }
@@ -41,8 +40,8 @@ namespace DAL.Fake.Model.GoodData.Cuisine
         {
             var secondCuisineType = new CuisineType
             {
-                CuisineTypeId =  (int)Cuisines.Types.Mexican,
-                CuisineTypeValue = Cuisines.Types.Mexican.ToString()
+                CuisineTypeId =  (int)LookUp.Cuisine.Cuisines.Types.Mexican,
+                CuisineTypeValue = LookUp.Cuisine.Cuisines.Types.Mexican.ToString()
             };
             return secondCuisineType;
         }
@@ -51,8 +50,8 @@ namespace DAL.Fake.Model.GoodData.Cuisine
         {
             var thirdCuisineType = new CuisineType
             {
-                CuisineTypeId =  (int)Cuisines.Types.Japanese,
-                CuisineTypeValue = Cuisines.Types.Japanese.ToString()
+                CuisineTypeId =  (int)LookUp.Cuisine.Cuisines.Types.Japanese,
+                CuisineTypeValue = LookUp.Cuisine.Cuisines.Types.Japanese.ToString()
             };
             return thirdCuisineType;
         }
@@ -61,8 +60,8 @@ namespace DAL.Fake.Model.GoodData.Cuisine
         {
             var fourCuisineType = new CuisineType
             {
-                CuisineTypeId =  (int)Cuisines.Types.Filipino,
-                CuisineTypeValue = Cuisines.Types.Filipino.ToString()
+                CuisineTypeId =  (int)LookUp.Cuisine.Cuisines.Types.Filipino,
+                CuisineTypeValue = LookUp.Cuisine.Cuisines.Types.Filipino.ToString()
             };
             return fourCuisineType;
         }
@@ -71,8 +70,8 @@ namespace DAL.Fake.Model.GoodData.Cuisine
         {
             var fiveCuisineType = new CuisineType
             {
-                CuisineTypeId = (int)Cuisines.Types.Jamaican,
-                CuisineTypeValue = Cuisines.Types.Jamaican.ToString()
+                CuisineTypeId = (int)LookUp.Cuisine.Cuisines.Types.Jamaican,
+                CuisineTypeValue = LookUp.Cuisine.Cuisines.Types.Jamaican.ToString()
             };
             return fiveCuisineType;
         }
@@ -81,8 +80,8 @@ namespace DAL.Fake.Model.GoodData.Cuisine
         {
             var sixCuisineType = new CuisineType
             {
-                CuisineTypeId = (int)Cuisines.Types.Moroccan,
-                CuisineTypeValue = Cuisines.Types.Moroccan.ToString()
+                CuisineTypeId = (int)LookUp.Cuisine.Cuisines.Types.Moroccan,
+                CuisineTypeValue = LookUp.Cuisine.Cuisines.Types.Moroccan.ToString()
             };
             return sixCuisineType;
         }
@@ -91,8 +90,8 @@ namespace DAL.Fake.Model.GoodData.Cuisine
         {
             var sevenCuisineType = new CuisineType
             {
-                CuisineTypeId = (int)Cuisines.Types.Dominican,
-                CuisineTypeValue = Cuisines.Types.Dominican.ToString()
+                CuisineTypeId = (int)LookUp.Cuisine.Cuisines.Types.Dominican,
+                CuisineTypeValue = LookUp.Cuisine.Cuisines.Types.Dominican.ToString()
             };
             return sevenCuisineType;
         }

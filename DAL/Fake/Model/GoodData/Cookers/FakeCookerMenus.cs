@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using DAL.Fake.Model.Util;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Cooker
+namespace DAL.Fake.Model.GoodData.Cookers
 {
     public class FakeCookerMenus
     {
@@ -35,7 +34,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             var firstFakeCookerMenus = new CookerMenu
             {
                 MenuId = 1,
-                CuisineTypeId = (int)Cuisines.Types.Italian,
+                CuisineTypeId = (int)LookUp.Cuisine.Cuisines.Types.Italian,
                 CookerId = 1,
                 Photo = @"C:\Users\haraissia\Documents\Visual Studio 2013\Projects\PrivateChef\trunk\Test\Images\Menu\Italien.jpg",
                 Title = "Fiorella Italien Menu",
@@ -49,7 +48,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             var secondFakeCookerMenus = new CookerMenu
             {
                 MenuId = 2,
-                CuisineTypeId = (int)Cuisines.Types.Mexican,
+                CuisineTypeId = (int)LookUp.Cuisine.Cuisines.Types.Mexican,
                 CookerId = 1,
                 Photo = @"C:\Users\haraissia\Documents\Visual Studio 2013\Projects\PrivateChef\trunk\Test\Images\Menu\Mexican-Restaurant.jpg",
                 Title = "Fiorella Mexican Menu",
@@ -68,7 +67,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             var thirdFakeCookerMenus = new CookerMenu
             {
                 MenuId = 3,
-                CuisineTypeId = (int)Cuisines.Types.Japanese,
+                CuisineTypeId = (int)LookUp.Cuisine.Cuisines.Types.Japanese,
                 CookerId = 2,
                 Photo = @"C:\Users\haraissia\Documents\Visual Studio 2013\Projects\PrivateChef\trunk\Test\Images\Menu\Japanese.jpg",
                 Title = "Mike Japanese Menu",
@@ -82,7 +81,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             var fourthFakeCookerMenus = new CookerMenu
             {
                 MenuId = 4,
-                CuisineTypeId = (int)Cuisines.Types.Filipino,
+                CuisineTypeId = (int)LookUp.Cuisine.Cuisines.Types.Filipino,
                 CookerId = 2,
                 Photo = @"C:\Users\haraissia\Documents\Visual Studio 2013\Projects\PrivateChef\trunk\Test\Images\Menu\Filipino-Menu.jpg",
                 Title = "Mike Filipino Menu",
@@ -96,7 +95,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             var fifthFakeCookerMenus = new CookerMenu
             {
                 MenuId = 5,
-                CuisineTypeId = (int)Cuisines.Types.Jamaican,
+                CuisineTypeId = (int)LookUp.Cuisine.Cuisines.Types.Jamaican,
                 CookerId = 2,
                 Photo = @"C:\Users\haraissia\Documents\Visual Studio 2013\Projects\PrivateChef\trunk\Test\Images\Menu\Jamaican.jpg",
                 Title = "Mike Jamaican Menu",
@@ -110,7 +109,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             var sixthFakeCookerMenus = new CookerMenu
             {
                 MenuId = 4,
-                CuisineTypeId = (int)Cuisines.Types.Moroccan,
+                CuisineTypeId = (int)LookUp.Cuisine.Cuisines.Types.Moroccan,
                 CookerId = 2,
                 Photo = @"C:\Users\haraissia\Documents\Visual Studio 2013\Projects\PrivateChef\trunk\Test\Images\Menu\Morrocan.jpg",
                 Title = "Mike Morrocan Menu",
@@ -127,7 +126,7 @@ namespace DAL.Fake.Model.GoodData.Cooker
             var seventhFakeCookerMenus = new CookerMenu
             {
                 MenuId = 7,
-                CuisineTypeId = (int)Cuisines.Types.Dominican,
+                CuisineTypeId = (int)LookUp.Cuisine.Cuisines.Types.Dominican,
                 CookerId = 3,
                 Photo = @"C:\Users\haraissia\Documents\Visual Studio 2013\Projects\PrivateChef\trunk\Test\Images\Menu\Dominican.jpg",
                 Title = "Sara Dominican Menu",

@@ -1,0 +1,31 @@
+﻿using System;
+using DAL.Data.Generic;
+using Model;
+
+namespace DAL.Generic.UnitofWork
+{
+    public interface IGenericUnitofWork :IDisposable
+    {
+       //Model
+ <#   foreach ( var FileName in  GetAllFiles())
+    {
+        Write(string.Format("    IGenericRepository<{0}>", FileName));
+        Write(string.Format(@" {0}Repository ", FileName));
+        WriteLine(@"{get;}");
+    }#>
+
+    void Save();
+    }
+}
+
+<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace=" System.IO" #>
+<#@ assembly name="System" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.Xml.Linq" #>
+<#@ output extension=".cs" #>
+<#@ include file="$(ProjectDir)\Tools\Base\ModelHelper.tt"#>

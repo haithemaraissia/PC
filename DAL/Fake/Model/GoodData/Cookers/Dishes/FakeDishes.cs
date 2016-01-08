@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using DAL.Fake.Model.GoodData.Cooker.Dishes.Cooker;
+using DAL.Fake.Model.GoodData.Cookers.Dishes.Cooker;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Cooker.Dishes
+namespace DAL.Fake.Model.GoodData.Cookers.Dishes
 {
     public class FakeDishes
     {

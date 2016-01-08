@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL.Data.UnitofWork;
-using DAL.Fake.Repo.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Test
 {
     [TestClass]
-    public class TimeSpan
+    public class TimeSpanTest
     {
         //   public OwnersController Controller;
 

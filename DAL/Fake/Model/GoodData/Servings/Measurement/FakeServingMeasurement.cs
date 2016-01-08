@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using DAL.Fake.Model.Util;
+using DAL.Fake.Model.LookUp.ServingMeasurement;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Serving.Measurement
+namespace DAL.Fake.Model.GoodData.Servings.Measurement
 {
     public class FakeServingMeasurement
     {

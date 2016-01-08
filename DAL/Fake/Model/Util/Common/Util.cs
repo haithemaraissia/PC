@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DAL.Fake.Model.GoodData.Cooker;
+using DAL.Fake.Model.GoodData.Cookers;
+using DAL.Fake.Model.LookUp.Plans;
 using Model;
 
 namespace DAL.Fake.Model.Util.Common

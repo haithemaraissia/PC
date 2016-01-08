@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using DAL.Fake.Model.Util;
+using DAL.Fake.Model.LookUp.Discount;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Coupon
+namespace DAL.Fake.Model.GoodData.Coupons
 {
     public class FakeCouponTypes
     {

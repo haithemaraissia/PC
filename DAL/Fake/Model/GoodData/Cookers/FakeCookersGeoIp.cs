@@ -4,7 +4,7 @@ using DAL.API.FreeGeoIP;
 using Model;
 using Newtonsoft.Json;
 
-namespace DAL.Fake.Model.GoodData.Cooker
+namespace DAL.Fake.Model.GoodData.Cookers
 {
     public class FakeCookersGeoIps
     {

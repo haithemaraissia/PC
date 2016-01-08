@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using DAL.Fake.Model.LookUp.PaymentMethod;
 using DAL.Fake.Model.Util;
 using Model;
+using OrderType = DAL.Fake.Model.LookUp.OrderType.OrderType;
 
 namespace DAL.Fake.Model.GoodData.Orders.Clients.Client2
 {
@@ -43,7 +45,7 @@ namespace DAL.Fake.Model.GoodData.Orders.Clients.Client2
                 ClientId = 2,
                 OrderDate = DateTime.Today.Date,
                 DeliveryDate = DateTime.Today.Date,
-                OrderTypeId = (int)Util.OrderType.Values.Delivery,
+                OrderTypeId = (int)OrderType.Values.Delivery,
                 PaymentMethodId = (int)PaymentMethodType.Values.CardOnLine,
                 PromotionId = null,
                 CouponId = null,

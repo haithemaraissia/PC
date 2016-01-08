@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL.Fake.Model.GoodData.Orders.Clients.Client1;
-using DAL.Fake.Model.GoodData.Orders.Clients.Client2;
-using DAL.Fake.Model.GoodData.Orders.Clients.Client3;
+﻿using System.Collections.Generic;
+using DAL.Fake.Model.GoodData.OrdersHistory.Clients.Client1;
+using DAL.Fake.Model.GoodData.OrdersHistory.Clients.Client2;
+using DAL.Fake.Model.GoodData.OrdersHistory.Clients.Client3;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.OrderHistory.Clients
+namespace DAL.Fake.Model.GoodData.OrdersHistory.Clients
 {
     public class FakeClientsOrdersHistory
     {

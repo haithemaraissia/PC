@@ -10,7 +10,7 @@ namespace DAL.Data.Generic
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly PrivateChefContext _context;
+        private readonly DbContext _context;
         public DbSet<T> Dbset { get; private set; }
 
         public GenericRepository()
@@ -19,7 +19,7 @@ namespace DAL.Data.Generic
             Dbset = _context.Set<T>();
         }
 
-        public GenericRepository(PrivateChefContext context)
+        public GenericRepository(DbContext context)
         {
             _context = context;
             Dbset = context.Set<T>();
