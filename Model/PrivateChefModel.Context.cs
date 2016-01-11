@@ -7,12 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+
 namespace Model
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
-    
     public partial class PrivateChefContext : DbContext
     {
         public PrivateChefContext()
@@ -73,7 +72,6 @@ namespace Model
         public virtual DbSet<ServingMeasurement> ServingMeasurements { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
-        public virtual DbSet<ClientAddress1> ClientAddresses1 { get; set; }
         public virtual DbSet<ClientOrderReviewSent> ClientOrderReviewSents { get; set; }
         public virtual DbSet<DisputeReason> DisputeReasons { get; set; }
         public virtual DbSet<DisputeStatu> DisputeStatus { get; set; }

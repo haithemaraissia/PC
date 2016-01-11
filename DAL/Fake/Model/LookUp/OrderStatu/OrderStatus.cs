@@ -10,6 +10,7 @@ namespace DAL.Fake.Model.LookUp.OrderStatu
             #endregion
 
             #region Cooker
+
             Incoming = 5,
 
             #endregion
@@ -21,5 +22,6 @@ namespace DAL.Fake.Model.LookUp.OrderStatu
             #endregion
 
         }
+
     }
 }

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using DAL.Fake.Model.GoodData.OrderItems;
 using DAL.Fake.Model.LookUp.Currency;
-using DAL.Fake.Model.LookUp.DishOption;
 using DAL.Fake.Model.LookUp.OrderStatu;
 using DAL.Fake.Model.LookUp.PaymentMethod;
-using DAL.Fake.Model.Util;
 using Model;
 using OrderType = DAL.Fake.Model.LookUp.OrderType.OrderType;
 
@@ -59,87 +58,12 @@ namespace DAL.Fake.Model.GoodData.Orders.Clients.Client1
                 SubTotal = (decimal)37.14,
                 OrderStatusId = (int)OrderStatus.Values.Submitted,
             };
-            firstOrder.OrderItems.Add(GetFirstOrderItem());
-            firstOrder.OrderItems.Add(GetSecondOrderItem()); 
+            firstOrder.OrderItems.Add(new FakeOrderItems().GetClient1FirstOrderFirstOrderItem());
+            firstOrder.OrderItems.Add(new FakeOrderItems().GetClient1FirstOrderSecondOrderItem()); 
             return firstOrder;
         }
 
         #region OrderItems
-
-        private OrderItem GetFirstOrderItem()
-        {
-            var firstOrderDetail = new OrderItem
-            {
-                CookerId = 1,
-                Description = "Chicken sauteed with roasted red peppers in our marinara sauce with provolone cheese. Served on fresh white Italian braided rolls topped with sesame seeds.",
-                DishId = 1,
-                Instructions = "Put Extra French Fries",
-                MenuId = 1,
-                OrderItemId = 1,
-                Quantity = 2,
-                OrderId = 1
-            };
-
-            //Required Side
-            var firstOrderDetailOption = new OrderItemDishOption
-            {
-                OrderItemDishOptionId = 1,
-                DishOptionChoiceId = 3,
-                DishOptionChoiceValue = "Cucumber Salad",
-                Price = (decimal?)2.09,
-                CurrencyId = 1,
-                DishOptionId = (int)DishOptionType.Values.FakeRequiredSideTwelveOptionChoices,
-                Instructions = "no Mayone Please",
-                OrderItemId = 1,
-
-            };
-
-            //Optional Side
-            var secondOrderDetailOption = new OrderItemDishOption
-            {
-                OrderItemDishOptionId = 2,
-                DishOptionChoiceId = 17,
-                DishOptionChoiceValue = "House Salad",
-                Price = null,
-                CurrencyId = null,
-                DishOptionId = (int)DishOptionType.Values.FakeOptionalSideThreeOptionChoices,
-                Instructions = "More Lettuce",
-                OrderItemId = 1
-            };
-            firstOrderDetail.OrderItemDishOptions.Add(firstOrderDetailOption);
-            firstOrderDetail.OrderItemDishOptions.Add(secondOrderDetailOption);
-            return firstOrderDetail;
-        }
-
-        private OrderItem GetSecondOrderItem()
-        {
-            var secondOrderDetail = new OrderItem
-            {
-                CookerId = 1,
-                Description = "Home made pasta, ground beef, tomato sauce, bechamel sauce and parmesan.",
-                DishId = 3,
-                Instructions = "Put Extra Spices",
-                MenuId = 1,
-                OrderItemId = 2,
-                Quantity = 1,
-                OrderId = 1
-            };
-
-            //Required Side
-            var firstOrderDetailOption = new OrderItemDishOption
-            {
-                OrderItemDishOptionId = 3,
-                DishOptionChoiceId = 14,
-                DishOptionChoiceValue = "New York Strip Steak",
-                Price = (decimal?)8.97,
-                CurrencyId = 1,
-                DishOptionId = (int)DishOptionType.Values.FakeRequiredSideThreeOptionChoices,
-                Instructions = "no Mayone Please",
-                OrderItemId = 2
-            };
-            secondOrderDetail.OrderItemDishOptions.Add(firstOrderDetailOption);
-            return secondOrderDetail;
-        }
 
         #endregion
 

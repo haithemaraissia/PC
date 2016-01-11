@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Data.Entity;
-using DAL.Data.Generic;
+using DAL.Generic.Repository.Base;
 using Model;
 
 namespace DAL.Generic.UnitofWork
 {
-    public partial class UnitofWork : IGenericUnitofWork
+    public class UnitofWork : IGenericUnitofWork
     {
         public  DbContext Context;
 
@@ -43,14 +43,6 @@ namespace DAL.Generic.UnitofWork
         {
             get { return  _clientAddressRepository ?? ( _clientAddressRepository = new GenericRepository<ClientAddress>(Context)); }
             set {  _clientAddressRepository = value; }
-        }
-    
-
-        private IGenericRepository<ClientAddress1> _clientAddress1Repository;
-        public IGenericRepository<ClientAddress1> ClientAddress1Repository
-        {
-            get { return  _clientAddress1Repository ?? ( _clientAddress1Repository = new GenericRepository<ClientAddress1>(Context)); }
-            set {  _clientAddress1Repository = value; }
         }
     
 

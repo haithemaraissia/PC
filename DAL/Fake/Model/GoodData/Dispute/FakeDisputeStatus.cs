@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using DAL.Fake.Model.LookUp.Dispute;
-using DAL.Fake.Model.Util;
 using Model;
 
 namespace DAL.Fake.Model.GoodData.Dispute

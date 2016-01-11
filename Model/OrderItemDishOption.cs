@@ -7,11 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+
 namespace Model
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class OrderItemDishOption
     {
         public int OrderItemDishOptionId { get; set; }

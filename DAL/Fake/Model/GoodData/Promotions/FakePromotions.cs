@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using DAL.Fake.Model.LookUp.Discount;
-using DAL.Fake.Model.Util;
 using Model;
 
 namespace DAL.Fake.Model.GoodData.Promotions
 {
     public class FakePromotions
     {
-        public List<global::Model.Promotion> MyPromotions;
+        public List<Promotion> MyPromotions;
 
         public FakePromotions()
         {
@@ -16,16 +15,16 @@ namespace DAL.Fake.Model.GoodData.Promotions
 
         public void InitializePromotionList()
         {
-            MyPromotions = new List<global::Model.Promotion> {
+            MyPromotions = new List<Promotion> {
                 FirstPromotion(), 
                 SecondPromotion(),
                 ThirdPromotion()
             };
         }
 
-        public global::Model.Promotion FirstPromotion()
+        public Promotion FirstPromotion()
         {
-            var firstPromotion = new global::Model.Promotion
+            var firstPromotion = new Promotion
             {
                 PromotionId = 1,
                 PromotionTypeId = (int)DisountType.Values.PercentageOff,
@@ -39,9 +38,9 @@ namespace DAL.Fake.Model.GoodData.Promotions
             return firstPromotion;
         }
 
-        public global::Model.Promotion SecondPromotion()
+        public Promotion SecondPromotion()
         {
-            var secondPromotion = new global::Model.Promotion
+            var secondPromotion = new Promotion
             {
                 PromotionId = 2,
                 PromotionTypeId = (int)DisountType.Values.AmountOff,
@@ -55,9 +54,9 @@ namespace DAL.Fake.Model.GoodData.Promotions
             return secondPromotion;
         }
 
-        public global::Model.Promotion ThirdPromotion()
+        public Promotion ThirdPromotion()
         {
-            var thirdPromotion = new global::Model.Promotion
+            var thirdPromotion = new Promotion
             {
                 PromotionId = 3,
                 PromotionTypeId = (int)DisountType.Values.FixedAmount,

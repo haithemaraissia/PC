@@ -9,9 +9,6 @@
 
 namespace Model
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class OrderStatu
     {
         public int OrderStatusId { get; set; }

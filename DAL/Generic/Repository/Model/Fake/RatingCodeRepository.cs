@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.RatingCodes;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class RatingCodeRepository : FakeGenericRepository<RatingCode>, IRatingCodeRepository
+    public class FakeRatingCodeRepository : FakeGenericRepository<RatingCode>, IRatingCodeRepository
     {
-	    public RatingCodeRepository(): base(new FakeRatingCodes().MyRatingCodes)
+	    public FakeRatingCodeRepository(): base(new FakeRatingCode().MyRatingCodes)
         {
         }
 
-        public RatingCodeRepository(List<RatingCode> myRatingCodes): base(myRatingCodes)
+        public FakeRatingCodeRepository(List<RatingCode> myRatingCodes)
+            : base(myRatingCodes)
         {
         }
     }

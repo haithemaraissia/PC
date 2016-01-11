@@ -3,7 +3,7 @@ using Model;
 
 namespace DAL.Generic.Repository.Model
 {
-    public partial class UserTypeRepository : GenericRepository<UserType>, IUserTypeRepository
+    public class UserTypeRepository : GenericRepository<UserType>, IUserTypeRepository
     {
 
     }

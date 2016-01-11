@@ -9,9 +9,6 @@
 
 namespace Model
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class CookerCuisine
     {
         public int CookerCuisineId { get; set; }

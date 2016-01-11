@@ -3,7 +3,7 @@ using Model;
 
 namespace DAL.Generic.Repository.Model
 {
-    public partial class CuisineTypeRepository : GenericRepository<CuisineType>, ICuisineTypeRepository
+    public class CuisineTypeRepository : GenericRepository<CuisineType>, ICuisineTypeRepository
     {
 
     }

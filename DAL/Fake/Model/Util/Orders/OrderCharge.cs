@@ -4,7 +4,7 @@ using System.Linq;
 using DAL.Fake.Model.GoodData.Cookers;
 using DAL.Fake.Model.GoodData.Coupons;
 using DAL.Fake.Model.GoodData.DeliveryZones;
-using DAL.Fake.Model.GoodData.Orders.Clients;
+using DAL.Fake.Model.GoodData.OrderItems;
 using DAL.Fake.Model.GoodData.Promotions;
 using DAL.Fake.Model.KMLHelper;
 using DAL.Fake.Model.LookUp.Discount;

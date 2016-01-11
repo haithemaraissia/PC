@@ -7,11 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+
 namespace Model
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class Refund
     {
         public int RefundId { get; set; }
@@ -20,7 +19,7 @@ namespace Model
         public int OrderModelTypeId { get; set; }
         public int ClientId { get; set; }
         public int CookerId { get; set; }
-        public System.DateTime RefundDate { get; set; }
+        public DateTime RefundDate { get; set; }
         public decimal RefundAmount { get; set; }
         public int StatusId { get; set; }
         public int ReasonId { get; set; }

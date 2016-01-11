@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Cookers;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class CookerPaymentMethodRepository : FakeGenericRepository<CookerPaymentMethod>, ICookerPaymentMethodRepository
+    public class FakeCookerPaymentMethodRepository : FakeGenericRepository<CookerPaymentMethod>, ICookerPaymentMethodRepository
     {
-	    public CookerPaymentMethodRepository(): base(new FakeCookerPaymentMethods().MyCookerPaymentMethods)
+	    public FakeCookerPaymentMethodRepository(): base(new FakeCookerPaymentMethods().MyCookerPaymentMethods)
         {
         }
 
-        public CookerPaymentMethodRepository(List<CookerPaymentMethod> myCookerPaymentMethods): base(myCookerPaymentMethods)
+        public FakeCookerPaymentMethodRepository(List<CookerPaymentMethod> myCookerPaymentMethods)
+            : base(myCookerPaymentMethods)
         {
         }
     }

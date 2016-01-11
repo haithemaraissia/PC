@@ -3,7 +3,7 @@ using Model;
 
 namespace DAL.Generic.Repository.Model
 {
-    public partial class PromotionTypeRepository : GenericRepository<PromotionType>, IPromotionTypeRepository
+    public class PromotionTypeRepository : GenericRepository<PromotionType>, IPromotionTypeRepository
     {
 
     }

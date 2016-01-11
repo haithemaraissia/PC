@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders.SubscriptionOrderItems;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class OrderSubscriptionItemRepository : FakeGenericRepository<OrderSubscriptionItem>, IOrderSubscriptionItemRepository
+    public class FakeOrderSubscriptionItemRepository : FakeGenericRepository<OrderSubscriptionItem>, IOrderSubscriptionItemRepository
     {
-	    public OrderSubscriptionItemRepository(): base(new FakeOrderSubscriptionItems().MyOrderSubscriptionItems)
+        public FakeOrderSubscriptionItemRepository() : base(new FakeOrderSubscriptionItems().MySubscriptionsOrderItems)
         {
         }
 
-        public OrderSubscriptionItemRepository(List<OrderSubscriptionItem> myOrderSubscriptionItems): base(myOrderSubscriptionItems)
+        public FakeOrderSubscriptionItemRepository(List<OrderSubscriptionItem> myOrderSubscriptionItems)
+            : base(myOrderSubscriptionItems)
         {
         }
     }

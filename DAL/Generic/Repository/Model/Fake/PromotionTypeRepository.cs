@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Promotions;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class PromotionTypeRepository : FakeGenericRepository<PromotionType>, IPromotionTypeRepository
+    public class FakePromotionTypeRepository : FakeGenericRepository<PromotionType>, IPromotionTypeRepository
     {
-	    public PromotionTypeRepository(): base(new FakePromotionTypes().MyPromotionTypes)
+	    public FakePromotionTypeRepository(): base(new FakePromotionTypes().MyPromotionType)
         {
         }
 
-        public PromotionTypeRepository(List<PromotionType> myPromotionTypes): base(myPromotionTypes)
+        public FakePromotionTypeRepository(List<PromotionType> myPromotionTypes)
+            : base(myPromotionTypes)
         {
         }
     }

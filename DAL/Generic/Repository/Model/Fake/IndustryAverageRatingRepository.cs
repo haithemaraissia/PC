@@ -1,16 +1,19 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Reviews.Industry;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class IndustryAverageRatingRepository : FakeGenericRepository<IndustryAverageRating>, IIndustryAverageRatingRepository
+    public class FakeIndustryAverageRatingRepository : FakeGenericRepository<IndustryAverageRating>, IIndustryAverageRatingRepository
     {
-	    public IndustryAverageRatingRepository(): base(new FakeIndustryAverageRatings().MyIndustryAverageRatings)
+        public FakeIndustryAverageRatingRepository()
+            : base(new FakeIndustryAverageRatings().MyIndustryAverageRatings)
         {
         }
 
-        public IndustryAverageRatingRepository(List<IndustryAverageRating> myIndustryAverageRatings): base(myIndustryAverageRatings)
+        public FakeIndustryAverageRatingRepository(List<IndustryAverageRating> myIndustryAverageRatings)
+            : base(myIndustryAverageRatings)
         {
         }
     }

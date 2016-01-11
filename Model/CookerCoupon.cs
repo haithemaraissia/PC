@@ -7,16 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+
 namespace Model
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class CookerCoupon
     {
         public int CookerCouponId { get; set; }
         public int CookerId { get; set; }
         public int CouponId { get; set; }
-        public System.DateTime CouponDate { get; set; }
+        public DateTime CouponDate { get; set; }
     }
 }

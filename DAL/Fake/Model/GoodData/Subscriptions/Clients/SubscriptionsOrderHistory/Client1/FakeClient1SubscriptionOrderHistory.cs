@@ -2,12 +2,11 @@
 using System.Diagnostics;
 using System.Linq;
 using DAL.Fake.Model.GoodData.Invoices.Client.Client1;
-using DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders;
+using DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders.Client1;
 using DAL.Fake.Model.LookUp.OrderStatu;
-using DAL.Fake.Model.Util;
 using Model;
 
-namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrderHistory
+namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrderHistory.Client1
 {
     public class FakeClient1SubscriptionOrderHistory
     {

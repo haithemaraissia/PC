@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.PaymentMethods;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class PaymentMethodRepository : FakeGenericRepository<PaymentMethod>, IPaymentMethodRepository
+    public class FakePaymentMethodRepository : FakeGenericRepository<PaymentMethod>, IPaymentMethodRepository
     {
-	    public PaymentMethodRepository(): base(new FakePaymentMethods().MyPaymentMethods)
+	    public FakePaymentMethodRepository(): base(new FakePaymentMethods().MyPaymentMethods)
         {
         }
 
-        public PaymentMethodRepository(List<PaymentMethod> myPaymentMethods): base(myPaymentMethods)
+        public FakePaymentMethodRepository(List<PaymentMethod> myPaymentMethods)
+            : base(myPaymentMethods)
         {
         }
     }

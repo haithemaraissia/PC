@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Refunds;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class RefundRepository : FakeGenericRepository<Refund>, IRefundRepository
+    public class FakeRefundRepository : FakeGenericRepository<Refund>, IRefundRepository
     {
-	    public RefundRepository(): base(new FakeRefunds().MyRefunds)
+	    public FakeRefundRepository(): base(new FakeRefunds().MyRefunds)
         {
         }
 
-        public RefundRepository(List<Refund> myRefunds): base(myRefunds)
+        public FakeRefundRepository(List<Refund> myRefunds)
+            : base(myRefunds)
         {
         }
     }

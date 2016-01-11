@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DAL.Fake.Model.GoodData.Clients;
 using DAL.Fake.Model.GoodData.Payments.Clients.Client1;
 using DAL.Fake.Model.LookUp.PaymentStatus;
 using Model;

@@ -3,7 +3,7 @@ using Model;
 
 namespace DAL.Generic.Repository.Model
 {
-    public partial class LanguageRepository : GenericRepository<Language>, ILanguageRepository
+    public class LanguageRepository : GenericRepository<Language>, ILanguageRepository
     {
 
     }

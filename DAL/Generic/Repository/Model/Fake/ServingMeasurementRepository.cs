@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Servings.Measurement;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class ServingMeasurementRepository : FakeGenericRepository<ServingMeasurement>, IServingMeasurementRepository
+    public class FakeServingMeasurementRepository : FakeGenericRepository<ServingMeasurement>, IServingMeasurementRepository
     {
-	    public ServingMeasurementRepository(): base(new FakeServingMeasurements().MyServingMeasurements)
+	    public FakeServingMeasurementRepository(): base(new FakeServingMeasurement().MyServingMeasurement)
         {
         }
 
-        public ServingMeasurementRepository(List<ServingMeasurement> myServingMeasurements): base(myServingMeasurements)
+        public FakeServingMeasurementRepository(List<ServingMeasurement> myServingMeasurements)
+            : base(myServingMeasurements)
         {
         }
     }

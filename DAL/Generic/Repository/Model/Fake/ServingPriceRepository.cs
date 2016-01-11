@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Subscriptions.Cookers;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class ServingPriceRepository : FakeGenericRepository<ServingPrice>, IServingPriceRepository
+    public class FakeServingPriceRepository : FakeGenericRepository<ServingPrice>, IServingPriceRepository
     {
-	    public ServingPriceRepository(): base(new FakeServingPrices().MyServingPrices)
+	    public FakeServingPriceRepository(): base(new FakeServingPrices().MyServingPricings)
         {
         }
 
-        public ServingPriceRepository(List<ServingPrice> myServingPrices): base(myServingPrices)
+        public FakeServingPriceRepository(List<ServingPrice> myServingPrices)
+            : base(myServingPrices)
         {
         }
     }

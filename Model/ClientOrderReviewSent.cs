@@ -7,11 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+
 namespace Model
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class ClientOrderReviewSent
     {
         public int ClientOrderReviewSentId { get; set; }
@@ -26,7 +25,7 @@ namespace Model
         public int OverallFeedBackRating { get; set; }
         public string Comment { get; set; }
         public string Photo { get; set; }
-        public System.DateTime OrderDate { get; set; }
+        public DateTime OrderDate { get; set; }
         public int OrderModelTypeId { get; set; }
     }
 }

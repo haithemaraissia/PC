@@ -3,7 +3,7 @@ using Model;
 
 namespace DAL.Generic.Repository.Model
 {
-    public partial class ServingPriceRepository : GenericRepository<ServingPrice>, IServingPriceRepository
+    public class ServingPriceRepository : GenericRepository<ServingPrice>, IServingPriceRepository
     {
 
     }

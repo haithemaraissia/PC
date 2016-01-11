@@ -7,11 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+
 namespace Model
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class Cooker
     {
         public int CookerId { get; set; }

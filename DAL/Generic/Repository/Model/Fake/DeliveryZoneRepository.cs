@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.DeliveryZones;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class DeliveryZoneRepository : FakeGenericRepository<DeliveryZone>, IDeliveryZoneRepository
+    public class FakeDeliveryZoneRepository : FakeGenericRepository<DeliveryZone>, IDeliveryZoneRepository
     {
-	    public DeliveryZoneRepository(): base(new FakeDeliveryZones().MyDeliveryZones)
+	    public FakeDeliveryZoneRepository(): base(new FakeDeliveryZone().MyDeliveryZones)
         {
         }
 
-        public DeliveryZoneRepository(List<DeliveryZone> myDeliveryZones): base(myDeliveryZones)
+        public FakeDeliveryZoneRepository(List<DeliveryZone> myDeliveryZones)
+            : base(myDeliveryZones)
         {
         }
     }

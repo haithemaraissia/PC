@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.MostPopularSubscription;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class MostPopularSubscriptionRepository : FakeGenericRepository<MostPopularSubscription>, IMostPopularSubscriptionRepository
+    public class FakeMostPopularSubscriptionRepository : FakeGenericRepository<MostPopularSubscription>, IMostPopularSubscriptionRepository
     {
-	    public MostPopularSubscriptionRepository(): base(new FakeMostPopularSubscriptions().MyMostPopularSubscriptions)
+	    public FakeMostPopularSubscriptionRepository(): base(new FakeMostPopularSubscriptions().MyMostPopularSubscriptions)
         {
         }
 
-        public MostPopularSubscriptionRepository(List<MostPopularSubscription> myMostPopularSubscriptions): base(myMostPopularSubscriptions)
+        public FakeMostPopularSubscriptionRepository(List<MostPopularSubscription> myMostPopularSubscriptions)
+            : base(myMostPopularSubscriptions)
         {
         }
     }

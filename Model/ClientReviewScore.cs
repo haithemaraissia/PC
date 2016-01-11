@@ -7,11 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+
 namespace Model
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class ClientReviewScore
     {
         public int ClientReviewScoreId { get; set; }
@@ -19,6 +18,6 @@ namespace Model
         public int PositiveReview { get; set; }
         public int NegativeReview { get; set; }
         public int NeutralReview { get; set; }
-        public System.DateTime OrderDate { get; set; }
+        public DateTime OrderDate { get; set; }
     }
 }

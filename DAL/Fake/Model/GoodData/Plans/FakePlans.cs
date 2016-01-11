@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using Model;
 
 namespace DAL.Fake.Model.GoodData.Plans
 {
     public class FakePlans
     {
-        public List<global::Model.Plan> MyPlans;
+        public List<Plan> MyPlans;
 
         public FakePlans()
         {
@@ -13,16 +14,16 @@ namespace DAL.Fake.Model.GoodData.Plans
 
         public void InitializePlanList()
         {
-            MyPlans = new List<global::Model.Plan> {
+            MyPlans = new List<Plan> {
                 FirstPlan(), 
                 SecondPlan(),
                 ThirdPlan()
             };
         }
 
-        public global::Model.Plan FirstPlan()
+        public Plan FirstPlan()
         {
-            var firstPlan = new global::Model.Plan
+            var firstPlan = new Plan
             {
                 PlanId = (int)LookUp.Plans.Plans.Types.ThreeMealsPerWeek,
                 ExternalId = "1",
@@ -32,9 +33,9 @@ namespace DAL.Fake.Model.GoodData.Plans
             return firstPlan;
         }
 
-        public global::Model.Plan SecondPlan()
+        public Plan SecondPlan()
         {
-            var secondPlan = new global::Model.Plan
+            var secondPlan = new Plan
             {
                 PlanId = (int)LookUp.Plans.Plans.Types.FiveMealsPerWeek,
                 ExternalId = "2",
@@ -44,9 +45,9 @@ namespace DAL.Fake.Model.GoodData.Plans
             return secondPlan;
         }
 
-        public global::Model.Plan ThirdPlan()
+        public Plan ThirdPlan()
         {
-            var thirdPlan = new global::Model.Plan
+            var thirdPlan = new Plan
             {
                 PlanId = (int)LookUp.Plans.Plans.Types.TenMealsPerWeek,
                 ExternalId = "3",

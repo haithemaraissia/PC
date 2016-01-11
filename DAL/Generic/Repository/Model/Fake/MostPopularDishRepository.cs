@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.MostPopularDish;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class MostPopularDishRepository : FakeGenericRepository<MostPopularDish>, IMostPopularDishRepository
+    public class FakeMostPopularDishRepository : FakeGenericRepository<MostPopularDish>, IMostPopularDishRepository
     {
-	    public MostPopularDishRepository(): base(new FakeMostPopularDishs().MyMostPopularDishs)
+	    public FakeMostPopularDishRepository(): base(new FakeMostPopularDishes().MyMostPopularDishes)
         {
         }
 
-        public MostPopularDishRepository(List<MostPopularDish> myMostPopularDishs): base(myMostPopularDishs)
+        public FakeMostPopularDishRepository(List<MostPopularDish> myMostPopularDishs)
+            : base(myMostPopularDishs)
         {
         }
     }

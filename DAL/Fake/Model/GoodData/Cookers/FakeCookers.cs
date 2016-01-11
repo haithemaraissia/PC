@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using Model;
 
 namespace DAL.Fake.Model.GoodData.Cookers
 {
     public class FakeCookers
     {
-        public List<global::Model.Cooker> MyCookers;
+        public List<Cooker> MyCookers;
 
         public FakeCookers()
         {
@@ -13,16 +14,16 @@ namespace DAL.Fake.Model.GoodData.Cookers
 
         public void InitializeCookerList()
         {
-            MyCookers = new List<global::Model.Cooker> {
+            MyCookers = new List<Cooker> {
                 FirstCooker(), 
                 SecondCooker(),
                 ThirdCooker()
             };
         }
 
-        public global::Model.Cooker FirstCooker()
+        public Cooker FirstCooker()
         {
-            var firstCooker = new global::Model.Cooker
+            var firstCooker = new Cooker
             {
                 CookerId = 1,
                 UserId = 1,
@@ -43,9 +44,9 @@ namespace DAL.Fake.Model.GoodData.Cookers
             return firstCooker;
         }
 
-        public global::Model.Cooker SecondCooker()
+        public Cooker SecondCooker()
         {
-            var secondCooker = new global::Model.Cooker
+            var secondCooker = new Cooker
             {
                 CookerId = 1,
                 UserId = 2,
@@ -65,9 +66,9 @@ namespace DAL.Fake.Model.GoodData.Cookers
             return secondCooker;
         }
 
-        public global::Model.Cooker ThirdCooker()
+        public Cooker ThirdCooker()
         {
-            var thirdCooker = new global::Model.Cooker
+            var thirdCooker = new Cooker
             {
                 CookerId = 1,
                 UserId = 5,

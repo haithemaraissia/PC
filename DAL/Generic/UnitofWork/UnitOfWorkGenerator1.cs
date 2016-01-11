@@ -1,5 +1,5 @@
 ﻿using System;
-using DAL.Data.Generic;
+using DAL.Generic.Repository.Base;
 using Model;
 
 namespace DAL.Generic.UnitofWork
@@ -10,7 +10,6 @@ namespace DAL.Generic.UnitofWork
      IGenericRepository<AddressType> AddressTypeRepository {get;}
     IGenericRepository<Client> ClientRepository {get;}
     IGenericRepository<ClientAddress> ClientAddressRepository {get;}
-    IGenericRepository<ClientAddress1> ClientAddress1Repository {get;}
     IGenericRepository<ClientFeedBack> ClientFeedBackRepository {get;}
     IGenericRepository<ClientOrderReviewReceived> ClientOrderReviewReceivedRepository {get;}
     IGenericRepository<ClientOrderReviewSent> ClientOrderReviewSentRepository {get;}

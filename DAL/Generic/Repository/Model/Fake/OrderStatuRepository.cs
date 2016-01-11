@@ -1,16 +1,19 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using DAL.Fake.Generic;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class OrderStatuRepository : FakeGenericRepository<OrderStatu>, IOrderStatuRepository
+    public class FakeOrderStatuRepository : FakeGenericRepository<OrderStatu>, IOrderStatuRepository
     {
-	    public OrderStatuRepository(): base(new FakeOrderStatus().MyOrderStatus)
+        public FakeOrderStatuRepository():base(Enum.GetValues(typeof(OrderStatu)).Cast<OrderStatu>().ToList())
         {
         }
 
-        public OrderStatuRepository(List<OrderStatu> myOrderStatus): base(myOrderStatus)
+        public FakeOrderStatuRepository(List<OrderStatu> myOrderStatus)
+            : base(myOrderStatus)
         {
         }
     }

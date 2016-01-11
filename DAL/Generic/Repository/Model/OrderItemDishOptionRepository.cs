@@ -3,7 +3,7 @@ using Model;
 
 namespace DAL.Generic.Repository.Model
 {
-    public partial class OrderItemDishOptionRepository : GenericRepository<OrderItemDishOption>, IOrderItemDishOptionRepository
+    public class OrderItemDishOptionRepository : GenericRepository<OrderItemDishOption>, IOrderItemDishOptionRepository
     {
 
     }

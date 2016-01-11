@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Reviews.Clients;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class ClientFeedBackRepository : FakeGenericRepository<ClientFeedBack>, IClientFeedBackRepository
+    public class FakeClientFeedBackRepository : FakeGenericRepository<ClientFeedBack>, IClientFeedBackRepository
     {
-	    public ClientFeedBackRepository(): base(new FakeClientFeedBacks().MyClientFeedBacks)
+	    public FakeClientFeedBackRepository(): base(new FakeClientFeedbacks().MyClientsFakeClientFeedbacks)
         {
         }
 
-        public ClientFeedBackRepository(List<ClientFeedBack> myClientFeedBacks): base(myClientFeedBacks)
+        public FakeClientFeedBackRepository(List<ClientFeedBack> myClientFeedBacks)
+            : base(myClientFeedBacks)
         {
         }
     }

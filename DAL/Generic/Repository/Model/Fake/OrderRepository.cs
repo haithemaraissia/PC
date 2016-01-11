@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Orders;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class OrderRepository : FakeGenericRepository<Order>, IOrderRepository
+    public class FakeOrderRepository : FakeGenericRepository<Order>, IOrderRepository
     {
-	    public OrderRepository(): base(new FakeOrders().MyOrders)
+	    public FakeOrderRepository(): base(new FakeOrders().MyOrders)
         {
         }
 
-        public OrderRepository(List<Order> myOrders): base(myOrders)
+        public FakeOrderRepository(List<Order> myOrders)
+            : base(myOrders)
         {
         }
     }

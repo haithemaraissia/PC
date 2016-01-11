@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Cookers;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class CookerMenuRepository : FakeGenericRepository<CookerMenu>, ICookerMenuRepository
+    public class FakeCookerMenuRepository : FakeGenericRepository<CookerMenu>, ICookerMenuRepository
     {
-	    public CookerMenuRepository(): base(new FakeCookerMenus().MyCookerMenus)
+	    public FakeCookerMenuRepository(): base(new FakeCookerMenus().MyFakeCookerMenus)
         {
         }
 
-        public CookerMenuRepository(List<CookerMenu> myCookerMenus): base(myCookerMenus)
+        public FakeCookerMenuRepository(List<CookerMenu> myCookerMenus)
+            : base(myCookerMenus)
         {
         }
     }

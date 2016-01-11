@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders;
+using DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders.Client1;
 using DAL.Fake.Model.Util.Subscriptions;
 using Model;
 

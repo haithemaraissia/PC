@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using DAL.Fake.Model.LookUp.RatingCodes;
+using Model;
 
 namespace DAL.Fake.Model.GoodData.RatingCodes
 {
     public class FakeRatingCode
     {
-        public List<global::Model.RatingCode> MyRatingCodes;
+        public List<RatingCode> MyRatingCodes;
 
         public FakeRatingCode()
         {
@@ -14,16 +15,16 @@ namespace DAL.Fake.Model.GoodData.RatingCodes
 
         public void InitializeRatingCodeList()
         {
-            MyRatingCodes = new List<global::Model.RatingCode> {
+            MyRatingCodes = new List<RatingCode> {
                 FirstRatingCode(), 
                 SecondRatingCode(),
                 ThirdRatingCode()
             };
         }
 
-        public global::Model.RatingCode FirstRatingCode()
+        public RatingCode FirstRatingCode()
         {
-            var firstRatingCode = new global::Model.RatingCode
+            var firstRatingCode = new RatingCode
             {
                 RatingCodeId = (int)RatingCodeType.Values.Positive,
                 RatingCodeValue = RatingCodeType.Values.Positive.ToString()
@@ -31,9 +32,9 @@ namespace DAL.Fake.Model.GoodData.RatingCodes
             return firstRatingCode;
         }
 
-        public global::Model.RatingCode SecondRatingCode()
+        public RatingCode SecondRatingCode()
         {
-            var secondRatingCode = new global::Model.RatingCode
+            var secondRatingCode = new RatingCode
             {
                 RatingCodeId = (int)RatingCodeType.Values.Negative,
                 RatingCodeValue = RatingCodeType.Values.Negative.ToString()
@@ -41,9 +42,9 @@ namespace DAL.Fake.Model.GoodData.RatingCodes
             return secondRatingCode;
         }
 
-        public global::Model.RatingCode ThirdRatingCode()
+        public RatingCode ThirdRatingCode()
         {
-            var thirdRatingCode = new global::Model.RatingCode
+            var thirdRatingCode = new RatingCode
             {
                 RatingCodeId = (int)RatingCodeType.Values.Neutral,
                 RatingCodeValue = RatingCodeType.Values.Neutral.ToString()

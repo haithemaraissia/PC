@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using DAL.Fake.Model.GoodData.Orders.Clients;
 using Model;
 
 namespace DAL.Fake.Model.GoodData.Reviews.Cookers

@@ -7,11 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+
 namespace Model
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class Dispute
     {
         public int DisputeId { get; set; }
@@ -19,7 +18,7 @@ namespace Model
         public int OrderModelTypeId { get; set; }
         public int ClientId { get; set; }
         public int CookerId { get; set; }
-        public System.DateTime DisputeDate { get; set; }
+        public DateTime DisputeDate { get; set; }
         public decimal DisputeAmount { get; set; }
         public int StatusId { get; set; }
         public int ReasonId { get; set; }

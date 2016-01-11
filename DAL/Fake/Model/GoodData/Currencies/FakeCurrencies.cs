@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using DAL.Fake.Model.LookUp.Currency;
+using Model;
 
 namespace DAL.Fake.Model.GoodData.Currencies
 {
     public class FakeCurrencies
     {
-        public List<global::Model.Currency> MyCurrencies;
+        public List<Currency> MyCurrencies;
 
         public FakeCurrencies()
         {
@@ -14,16 +15,16 @@ namespace DAL.Fake.Model.GoodData.Currencies
 
         public void InitializeCurrencyList()
         {
-            MyCurrencies = new List<global::Model.Currency> {
+            MyCurrencies = new List<Currency> {
                 FirstCurrency(), 
                 SecondCurrency(),
                 ThirdCurrency()
             };
         }
 
-        public global::Model.Currency FirstCurrency()
+        public Currency FirstCurrency()
         {
-            var firstCurrency = new global::Model.Currency
+            var firstCurrency = new Currency
             {
                 CurrencyId = (int)CurrencyType.Values.Usd,
                 CurrencyValue = CurrencyType.Values.Usd.ToString()
@@ -31,9 +32,9 @@ namespace DAL.Fake.Model.GoodData.Currencies
             return firstCurrency;
         }
 
-        public global::Model.Currency SecondCurrency()
+        public Currency SecondCurrency()
         {
-            var secondCurrency = new global::Model.Currency
+            var secondCurrency = new Currency
             {
                 CurrencyId = (int)CurrencyType.Values.Cad,
                 CurrencyValue = CurrencyType.Values.Cad.ToString()
@@ -41,9 +42,9 @@ namespace DAL.Fake.Model.GoodData.Currencies
             return secondCurrency;
         }
 
-        public global::Model.Currency ThirdCurrency()
+        public Currency ThirdCurrency()
         {
-            var thirdCurrency = new global::Model.Currency
+            var thirdCurrency = new Currency
             {
                 CurrencyId = (int)CurrencyType.Values.Eur,
                 CurrencyValue = CurrencyType.Values.Eur.ToString()

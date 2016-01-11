@@ -3,7 +3,7 @@ using Model;
 
 namespace DAL.Generic.Repository.Model
 {
-    public partial class CouponTypeRepository : GenericRepository<CouponType>, ICouponTypeRepository
+    public class CouponTypeRepository : GenericRepository<CouponType>, ICouponTypeRepository
     {
 
     }

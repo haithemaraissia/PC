@@ -7,14 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+
 namespace Model
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class Order
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Order()
         {
             this.OrderItems = new HashSet<OrderItem>();
@@ -22,8 +23,8 @@ namespace Model
     
         public int OrderId { get; set; }
         public int ClientId { get; set; }
-        public System.DateTime OrderDate { get; set; }
-        public Nullable<System.DateTime> DeliveryDate { get; set; }
+        public DateTime OrderDate { get; set; }
+        public Nullable<DateTime> DeliveryDate { get; set; }
         public int OrderTypeId { get; set; }
         public int PaymentMethodId { get; set; }
         public Nullable<int> PromotionId { get; set; }
@@ -33,7 +34,7 @@ namespace Model
         public int CurrencyId { get; set; }
         public int OrderStatusId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderItem> OrderItems { get; set; }
     }
 }

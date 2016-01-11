@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Clients.Address;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class ClientAddressRepository : FakeGenericRepository<ClientAddress>, IClientAddressRepository
+    public class FakeClientAddressRepository : FakeGenericRepository<ClientAddress>, IClientAddressRepository
     {
-	    public ClientAddressRepository(): base(new FakeClientAddresss().MyClientAddresss)
+	    public FakeClientAddressRepository(): base(new FakeClientAddress().MyClientAddress)
         {
         }
 
-        public ClientAddressRepository(List<ClientAddress> myClientAddresss): base(myClientAddresss)
+        public FakeClientAddressRepository(List<ClientAddress> myClientAddresss)
+            : base(myClientAddresss)
         {
         }
     }

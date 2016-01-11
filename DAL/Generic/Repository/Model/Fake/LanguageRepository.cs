@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Languages;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class LanguageRepository : FakeGenericRepository<Language>, ILanguageRepository
+    public class FakeLanguageRepository : FakeGenericRepository<Language>, ILanguageRepository
     {
-	    public LanguageRepository(): base(new FakeLanguages().MyLanguages)
+	    public FakeLanguageRepository(): base(new FakeLanguage().MyLanguages)
         {
         }
 
-        public LanguageRepository(List<Language> myLanguages): base(myLanguages)
+        public FakeLanguageRepository(List<Language> myLanguages)
+            : base(myLanguages)
         {
         }
     }

@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using DAL.Fake.Model.LookUp.Discount;
+using Model;
 
 namespace DAL.Fake.Model.GoodData.Coupons
 {
     public class FakeCoupons
     {
-        public List<global::Model.Coupon> MyCoupons;
+        public List<Coupon> MyCoupons;
 
         public FakeCoupons()
         {
@@ -14,7 +15,7 @@ namespace DAL.Fake.Model.GoodData.Coupons
 
         public void InitializeCouponList()
         {
-            MyCoupons = new List<global::Model.Coupon> {
+            MyCoupons = new List<Coupon> {
                 FirstCoupon(), 
                 SecondCoupon(),
                 ThirdCoupon()
@@ -23,9 +24,9 @@ namespace DAL.Fake.Model.GoodData.Coupons
 
         #region Cooker1Coupon
         
-        public global::Model.Coupon FirstCoupon()
+        public Coupon FirstCoupon()
         {
-            var firstCoupon = new global::Model.Coupon
+            var firstCoupon = new Coupon
             {
                 CouponId = 1,
                 CouponTypeId = (int)DisountType.Values.AmountOff,
@@ -39,9 +40,9 @@ namespace DAL.Fake.Model.GoodData.Coupons
             return firstCoupon;
         }
 
-        public global::Model.Coupon SecondCoupon()
+        public Coupon SecondCoupon()
         {
-            var secondCoupon = new global::Model.Coupon
+            var secondCoupon = new Coupon
             {
                 CouponId = 2,
                 CouponTypeId = (int)DisountType.Values.PercentageOff,
@@ -59,9 +60,9 @@ namespace DAL.Fake.Model.GoodData.Coupons
 
         #region Cooker2Coupon
 
-        public global::Model.Coupon ThirdCoupon()
+        public Coupon ThirdCoupon()
         {
-            var thirdCoupon = new global::Model.Coupon
+            var thirdCoupon = new Coupon
             {
                 CouponId = 3,
                 CouponTypeId = (int)DisountType.Values.FixedAmount,

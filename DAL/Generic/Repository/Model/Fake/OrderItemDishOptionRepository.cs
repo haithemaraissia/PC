@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.OrderItemDishes;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class OrderItemDishOptionRepository : FakeGenericRepository<OrderItemDishOption>, IOrderItemDishOptionRepository
+    public class FakeOrderItemDishOptionRepository : FakeGenericRepository<OrderItemDishOption>, IOrderItemDishOptionRepository
     {
-	    public OrderItemDishOptionRepository(): base(new FakeOrderItemDishOptions().MyOrderItemDishOptions)
+	    public FakeOrderItemDishOptionRepository(): base(new FakeOrderItemDishOptions().MyOrderItemDishOptions)
         {
         }
 
-        public OrderItemDishOptionRepository(List<OrderItemDishOption> myOrderItemDishOptions): base(myOrderItemDishOptions)
+        public FakeOrderItemDishOptionRepository(List<OrderItemDishOption> myOrderItemDishOptions)
+            : base(myOrderItemDishOptions)
         {
         }
     }

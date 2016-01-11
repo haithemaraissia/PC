@@ -9,9 +9,6 @@
 
 namespace Model
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class CouponType
     {
         public int CouponTypeId { get; set; }

@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Reviews.Clients;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class ClientReviewScoreRepository : FakeGenericRepository<ClientReviewScore>, IClientReviewScoreRepository
+    public class FakeClientReviewScoreRepository : FakeGenericRepository<ClientReviewScore>, IClientReviewScoreRepository
     {
-	    public ClientReviewScoreRepository(): base(new FakeClientReviewScores().MyClientReviewScores)
+	    public FakeClientReviewScoreRepository(): base(new FakeClientReviewScore().MyClientReviewScore)
         {
         }
 
-        public ClientReviewScoreRepository(List<ClientReviewScore> myClientReviewScores): base(myClientReviewScores)
+        public FakeClientReviewScoreRepository(List<ClientReviewScore> myClientReviewScores)
+            : base(myClientReviewScores)
         {
         }
     }

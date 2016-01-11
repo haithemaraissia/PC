@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Dispute;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class DisputeStatuRepository : FakeGenericRepository<DisputeStatu>, IDisputeStatuRepository
+    public class FakeDisputeStatuRepository : FakeGenericRepository<DisputeStatu>, IDisputeStatuRepository
     {
-	    public DisputeStatuRepository(): base(new FakeDisputeStatus().MyDisputeStatus)
+	    public FakeDisputeStatuRepository(): base(new FakeDisputeStatus().MyDisputeStatus)
         {
         }
 
-        public DisputeStatuRepository(List<DisputeStatu> myDisputeStatus): base(myDisputeStatus)
+        public FakeDisputeStatuRepository(List<DisputeStatu> myDisputeStatus)
+            : base(myDisputeStatus)
         {
         }
     }

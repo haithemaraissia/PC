@@ -3,39 +3,32 @@ using DAL.Fake.Model.GoodData.PaymentsHistory.Client1;
 
 namespace DAL.Fake.Model.GoodData.PaymentsHistory
 {
-    public class FakeClientPaymentsHistory
+    public class FakePaymentsHistory
     {
-        public List<global::Model.PaymentsHistory> MyClientPaymentsHistory;
+        public List<global::Model.PaymentsHistory> MyPaymentsHistory;
 
-        public FakeClientPaymentsHistory()
+        public FakePaymentsHistory()
         {
-            InitializeClientPaymentsHistoryList();
+            InitializePaymentsHistoryList();
         }
 
-        public void InitializeClientPaymentsHistoryList()
+        public void InitializePaymentsHistoryList()
         {
-            MyClientPaymentsHistory = new List<global::Model.PaymentsHistory>();
-            var client1PaymentsHistory = new FakeClients1PaymentsHistory().MyClients1PaymentsHistory;
-            foreach (var payment in client1PaymentsHistory)
+            MyPaymentsHistory = new List<global::Model.PaymentsHistory>();
+            var clientPaymentsHistory = new FakeClients1PaymentsHistory().MyClients1PaymentsHistory;
+            foreach (var payment in clientPaymentsHistory)
             {
-                MyClientPaymentsHistory.Add(payment);
+                MyPaymentsHistory.Add(payment);
             }
-            //var client2PaymentsHistory = new FakeClients2PaymentsHistory().MyClients2PaymentsHistory;
-            //foreach (var payment in client2PaymentsHistory)
-            //{
-            //    MyClientPaymentsHistory.Add(payment);
-            //}
-            //var client3PaymentsHistory = new FakeClients3PaymentsHistory().MyClients3PaymentsHistory;
-            //foreach (var payment in client3PaymentsHistory)
-            //{
-            //    MyClientPaymentsHistory.Add(payment);
-            //}
+            //Same for Cooker
 
         }
 
-        ~FakeClientPaymentsHistory()
+        ~FakePaymentsHistory()
         {
-            MyClientPaymentsHistory = null;
+            MyPaymentsHistory = null;
         }
     }
 }
+
+

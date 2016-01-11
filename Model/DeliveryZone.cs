@@ -9,9 +9,6 @@
 
 namespace Model
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class DeliveryZone
     {
         public int DeliveryId { get; set; }

@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using DAL.Fake.Model.LookUp.Langauges;
+using Model;
 
 namespace DAL.Fake.Model.GoodData.Languages
 {
     public class FakeLanguage
     {
-        public List<global::Model.Language> MyLanguages;
+        public List<Language> MyLanguages;
 
         public FakeLanguage()
         {
@@ -14,16 +15,16 @@ namespace DAL.Fake.Model.GoodData.Languages
 
         public void InitializeLanguageList()
         {
-            MyLanguages = new List<global::Model.Language> {
+            MyLanguages = new List<Language> {
                 FirstLanguage(), 
                 SecondLanguage(),
                 ThirdLanguage()
             };
         }
 
-        public global::Model.Language FirstLanguage()
+        public Language FirstLanguage()
         {
-            var firstLanguage = new global::Model.Language
+            var firstLanguage = new Language
             {
                 LanguageId = (int)LanguageType.Values.EN,
                 LanguageValue = LanguageType.Values.EN.ToString()
@@ -31,9 +32,9 @@ namespace DAL.Fake.Model.GoodData.Languages
             return firstLanguage;
         }
 
-        public global::Model.Language SecondLanguage()
+        public Language SecondLanguage()
         {
-            var secondLanguage = new global::Model.Language
+            var secondLanguage = new Language
             {
                 LanguageId = (int)LanguageType.Values.SP,
                 LanguageValue = LanguageType.Values.SP.ToString()
@@ -41,9 +42,9 @@ namespace DAL.Fake.Model.GoodData.Languages
             return secondLanguage;
         }
 
-        public global::Model.Language ThirdLanguage()
+        public Language ThirdLanguage()
         {
-            var thirdLanguage = new global::Model.Language
+            var thirdLanguage = new Language
             {
                 LanguageId = (int)LanguageType.Values.FR,
                 LanguageValue = LanguageType.Values.FR.ToString()

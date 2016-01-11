@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Model;
 
 namespace DAL.Fake.Model.GoodData.OrderModelType
 {

@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders.SubscriptionOrderItems.SubscriptionOrderItemDishOptions;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class OrderSubscriptionItemDishOptionRepository : FakeGenericRepository<OrderSubscriptionItemDishOption>, IOrderSubscriptionItemDishOptionRepository
+    public class FakeOrderSubscriptionItemDishOptionRepository : FakeGenericRepository<OrderSubscriptionItemDishOption>, IOrderSubscriptionItemDishOptionRepository
     {
-	    public OrderSubscriptionItemDishOptionRepository(): base(new FakeOrderSubscriptionItemDishOptions().MyOrderSubscriptionItemDishOptions)
+        public FakeOrderSubscriptionItemDishOptionRepository(): base(new FakeSubscriptionOrderItemDishOptions().MySubscriptionOrderItemDishOptions)
         {
         }
 
-        public OrderSubscriptionItemDishOptionRepository(List<OrderSubscriptionItemDishOption> myOrderSubscriptionItemDishOptions): base(myOrderSubscriptionItemDishOptions)
+        public FakeOrderSubscriptionItemDishOptionRepository(List<OrderSubscriptionItemDishOption> myOrderSubscriptionItemDishOptions)
+            : base(myOrderSubscriptionItemDishOptions)
         {
         }
     }

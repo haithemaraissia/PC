@@ -7,14 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+
 namespace Model
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class OrderSubscriptionItem
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public OrderSubscriptionItem()
         {
             this.OrderSubscriptionItemDishOptions = new HashSet<OrderSubscriptionItemDishOption>();
@@ -30,10 +31,10 @@ namespace Model
         public int OrderSubscriptionId { get; set; }
         public int ClientOrderReviewSentClientOrderReviewSentId { get; set; }
         public int WeekId { get; set; }
-        public System.DateTime ScheduledDate { get; set; }
+        public DateTime ScheduledDate { get; set; }
     
         public virtual OrderSubscription OrderSubscription { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderSubscriptionItemDishOption> OrderSubscriptionItemDishOptions { get; set; }
     }
 }

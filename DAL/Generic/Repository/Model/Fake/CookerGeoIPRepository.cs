@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Cookers;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class CookerGeoIPRepository : FakeGenericRepository<CookerGeoIP>, ICookerGeoIPRepository
+    public class FakeCookerGeoIpRepository : FakeGenericRepository<CookerGeoIP>, ICookerGeoIPRepository
     {
-	    public CookerGeoIPRepository(): base(new FakeCookerGeoIPs().MyCookerGeoIPs)
+	    public FakeCookerGeoIpRepository(): base(new FakeCookersGeoIps().MyCookersGeoIps)
         {
         }
 
-        public CookerGeoIPRepository(List<CookerGeoIP> myCookerGeoIPs): base(myCookerGeoIPs)
+        public FakeCookerGeoIpRepository(List<CookerGeoIP> myCookerGeoIPs)
+            : base(myCookerGeoIPs)
         {
         }
     }

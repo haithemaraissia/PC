@@ -5,7 +5,7 @@ namespace DAL.Fake.Model.GoodData.Reviews.Industry
 {
     public class FakeIndustryAverageRatings
     {
-        public List<IndustryAverageRating> MyClients;
+        public List<IndustryAverageRating> MyIndustryAverageRatings;
 
         public FakeIndustryAverageRatings()
         {
@@ -14,7 +14,7 @@ namespace DAL.Fake.Model.GoodData.Reviews.Industry
 
         public void InitializeClientList()
         {
-            MyClients = new List<IndustryAverageRating> {
+            MyIndustryAverageRatings = new List<IndustryAverageRating> {
                 FirstIndustryAverageRating()
             };
         }
@@ -34,7 +34,7 @@ namespace DAL.Fake.Model.GoodData.Reviews.Industry
 
         ~FakeIndustryAverageRatings()
         {
-            MyClients = null;
+            MyIndustryAverageRatings = null;
         }
     }
 }

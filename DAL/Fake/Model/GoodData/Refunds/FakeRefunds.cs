@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using DAL.Fake.Model.LookUp.Dispute;
+using Model;
+using DisputeReason = DAL.Fake.Model.LookUp.Dispute.DisputeReason;
 
 namespace DAL.Fake.Model.GoodData.Refunds
 {
     public class FakeRefunds
     {
-        public List<global::Model.Refund> MyRefunds;
+        public List<Refund> MyRefunds;
 
         public FakeRefunds()
         {
@@ -15,16 +17,16 @@ namespace DAL.Fake.Model.GoodData.Refunds
 
         public void InitializeRefundList()
         {
-            MyRefunds = new List<global::Model.Refund> {
+            MyRefunds = new List<Refund> {
                 FirstRefund(), 
                 SecondRefund(),
                 ThirdRefund()
             };
         }
 
-        public global::Model.Refund FirstRefund()
+        public Refund FirstRefund()
         {
-            var firstRefund = new global::Model.Refund
+            var firstRefund = new Refund
             {
                 RefundId =  1,
                 TransactionID = "GROC#43",
@@ -42,9 +44,9 @@ namespace DAL.Fake.Model.GoodData.Refunds
             return firstRefund;
         }
 
-        public global::Model.Refund SecondRefund()
+        public Refund SecondRefund()
         {
-            var secondRefund = new global::Model.Refund
+            var secondRefund = new Refund
             {
                 RefundId = 2,
                 TransactionID = "LOLE9843",
@@ -62,9 +64,9 @@ namespace DAL.Fake.Model.GoodData.Refunds
             return secondRefund;
         }
 
-        public global::Model.Refund ThirdRefund()
+        public Refund ThirdRefund()
         {
-            var thirdRefund = new global::Model.Refund
+            var thirdRefund = new Refund
             {
                 RefundId = 3,
                 TransactionID = "FERO#23",

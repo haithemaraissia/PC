@@ -9,9 +9,6 @@
 
 namespace Model
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class PaymentMethod
     {
         public int PaymentMethodId { get; set; }

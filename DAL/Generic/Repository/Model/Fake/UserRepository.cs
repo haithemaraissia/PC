@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Users;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class UserRepository : FakeGenericRepository<User>, IUserRepository
+    public class FakeUserRepository : FakeGenericRepository<User>, IUserRepository
     {
-	    public UserRepository(): base(new FakeUsers().MyUsers)
+	    public FakeUserRepository(): base(new FakeUsers().MyUsers)
         {
         }
 
-        public UserRepository(List<User> myUsers): base(myUsers)
+        public FakeUserRepository(List<User> myUsers)
+            : base(myUsers)
         {
         }
     }

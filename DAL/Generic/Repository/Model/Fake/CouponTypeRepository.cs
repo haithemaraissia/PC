@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Coupons;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class CouponTypeRepository : FakeGenericRepository<CouponType>, ICouponTypeRepository
+    public class FakeCouponTypeRepository : FakeGenericRepository<CouponType>, ICouponTypeRepository
     {
-	    public CouponTypeRepository(): base(new FakeCouponTypes().MyCouponTypes)
+	    public FakeCouponTypeRepository(): base(new FakeCouponTypes().MyCouponType)
         {
         }
 
-        public CouponTypeRepository(List<CouponType> myCouponTypes): base(myCouponTypes)
+        public FakeCouponTypeRepository(List<CouponType> myCouponTypes)
+            : base(myCouponTypes)
         {
         }
     }

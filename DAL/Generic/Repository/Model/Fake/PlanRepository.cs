@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Plans;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class PlanRepository : FakeGenericRepository<Plan>, IPlanRepository
+    public class FakePlanRepository : FakeGenericRepository<Plan>, IPlanRepository
     {
-	    public PlanRepository(): base(new FakePlans().MyPlans)
+	    public FakePlanRepository(): base(new FakePlans().MyPlans)
         {
         }
 
-        public PlanRepository(List<Plan> myPlans): base(myPlans)
+        public FakePlanRepository(List<Plan> myPlans)
+            : base(myPlans)
         {
         }
     }

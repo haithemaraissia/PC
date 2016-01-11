@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Invoices;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class InvoiceRepository : FakeGenericRepository<Invoice>, IInvoiceRepository
+    public class FakeInvoiceRepository : FakeGenericRepository<Invoice>, IInvoiceRepository
     {
-	    public InvoiceRepository(): base(new FakeInvoices().MyInvoices)
+	    public FakeInvoiceRepository(): base(new FakeInvoices().MyInvoices)
         {
         }
 
-        public InvoiceRepository(List<Invoice> myInvoices): base(myInvoices)
+        public FakeInvoiceRepository(List<Invoice> myInvoices): base(myInvoices)
         {
         }
     }

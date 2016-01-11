@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Currencies;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class CurrencyRepository : FakeGenericRepository<Currency>, ICurrencyRepository
+    public class FakeCurrencyRepository : FakeGenericRepository<Currency>, ICurrencyRepository
     {
-	    public CurrencyRepository(): base(new FakeCurrencys().MyCurrencys)
+	    public FakeCurrencyRepository(): base(new FakeCurrencies().MyCurrencies)
         {
         }
 
-        public CurrencyRepository(List<Currency> myCurrencys): base(myCurrencys)
+        public FakeCurrencyRepository(List<Currency> myCurrencys)
+            : base(myCurrencys)
         {
         }
     }

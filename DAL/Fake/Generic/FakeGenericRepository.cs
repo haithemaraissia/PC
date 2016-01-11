@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using DAL.Data.Generic;
+using DAL.Generic.Repository.Base;
 
 namespace DAL.Fake.Generic
 {
@@ -15,6 +15,7 @@ namespace DAL.Fake.Generic
         {
             MyList = list;
         }
+
 
         public IQueryable<T> All
         {

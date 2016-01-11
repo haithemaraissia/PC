@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Reviews.Cookers;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class CookerOrderToReviewRepository : FakeGenericRepository<CookerOrderToReview>, ICookerOrderToReviewRepository
+    public class FakeCookerOrderToReviewRepository : FakeGenericRepository<CookerOrderToReview>, ICookerOrderToReviewRepository
     {
-	    public CookerOrderToReviewRepository(): base(new FakeCookerOrderToReviews().MyCookerOrderToReviews)
+	    public FakeCookerOrderToReviewRepository(): base(new FakeCookerOrderToReview().MyCookerOrderToReview)
         {
         }
 
-        public CookerOrderToReviewRepository(List<CookerOrderToReview> myCookerOrderToReviews): base(myCookerOrderToReviews)
+        public FakeCookerOrderToReviewRepository(List<CookerOrderToReview> myCookerOrderToReviews)
+            : base(myCookerOrderToReviews)
         {
         }
     }

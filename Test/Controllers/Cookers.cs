@@ -1,5 +1,5 @@
-﻿using DAL.Data.UnitofWork;
-using DAL.Generic.Repository.Model;
+﻿using DAL.Generic.Repository.Model.Fake;
+using DAL.Generic.UnitofWork;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Test

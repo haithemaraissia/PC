@@ -3,7 +3,7 @@ using Model;
 
 namespace DAL.Generic.Repository.Model
 {
-    public partial class PaymentMethodRepository : GenericRepository<PaymentMethod>, IPaymentMethodRepository
+    public class PaymentMethodRepository : GenericRepository<PaymentMethod>, IPaymentMethodRepository
     {
 
     }

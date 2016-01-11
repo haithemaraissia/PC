@@ -3,7 +3,7 @@ using Model;
 
 namespace DAL.Generic.Repository.Model
 {
-    public partial class AddressTypeRepository : GenericRepository<AddressType>, IAddressTypeRepository
+    public class AddressTypeRepository : GenericRepository<AddressType>, IAddressTypeRepository
     {
 
     }

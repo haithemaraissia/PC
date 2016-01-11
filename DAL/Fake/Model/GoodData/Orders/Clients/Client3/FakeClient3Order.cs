@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DAL.Fake.Model.GoodData.OrderItems;
 using DAL.Fake.Model.LookUp.PaymentMethod;
 using Model;
 using OrderType = DAL.Fake.Model.LookUp.OrderType.OrderType;

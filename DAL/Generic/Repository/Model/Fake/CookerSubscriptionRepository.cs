@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using DAL.Fake.Generic;
+using DAL.Fake.Model.GoodData.Subscriptions.Cookers;
 using Model;
 
-namespace DAL.Generic.Repository.Model
+namespace DAL.Generic.Repository.Model.Fake
 {
-    public partial class CookerSubscriptionRepository : FakeGenericRepository<CookerSubscription>, ICookerSubscriptionRepository
+    public class FakeCookerSubscriptionRepository : FakeGenericRepository<CookerSubscription>, ICookerSubscriptionRepository
     {
-	    public CookerSubscriptionRepository(): base(new FakeCookerSubscriptions().MyCookerSubscriptions)
+	    public FakeCookerSubscriptionRepository(): base(new FakeCookerSubscriptions().MyCookerSubscriptions)
         {
         }
 
-        public CookerSubscriptionRepository(List<CookerSubscription> myCookerSubscriptions): base(myCookerSubscriptions)
+        public FakeCookerSubscriptionRepository(List<CookerSubscription> myCookerSubscriptions)
+            : base(myCookerSubscriptions)
         {
         }
     }

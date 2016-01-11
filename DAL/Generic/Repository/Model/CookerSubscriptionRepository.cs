@@ -3,7 +3,7 @@ using Model;
 
 namespace DAL.Generic.Repository.Model
 {
-    public partial class CookerSubscriptionRepository : GenericRepository<CookerSubscription>, ICookerSubscriptionRepository
+    public class CookerSubscriptionRepository : GenericRepository<CookerSubscription>, ICookerSubscriptionRepository
     {
 
     }
