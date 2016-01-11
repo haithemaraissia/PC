@@ -8,26 +8,26 @@ namespace DAL.Fake.Model.GoodData.OrdersHistory.Clients.Client2
     {
         public List<OrderHistroy> MyClient2OrdersHistory;
 
-        public FakeClient2OrderHistory()
-        {
-            InitializeClient2OrderHistoryList();
-        }
+        //public FakeClient2OrderHistory()
+        //{
+        //    InitializeClient2OrderHistoryList();
+        //}
 
-        private void InitializeClient2OrderHistoryList()
-        {
-            MyClient2OrdersHistory = new List<OrderHistroy> {
-                FirstOrderHistory()
-            };
-        }
+        //private void InitializeClient2OrderHistoryList()
+        //{
+        //    MyClient2OrdersHistory = new List<OrderHistroy> {
+        //        FirstOrderHistory()
+        //    };
+        //}
 
-        private OrderHistroy FirstOrderHistory()
-        {
-            throw new NotImplementedException();
-        }
+        //private OrderHistroy FirstOrderHistory()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
-        ~FakeClient2OrderHistory()
-        {
-            MyClient2OrdersHistory = null;
-        }
+        //~FakeClient2OrderHistory()
+        //{
+        //    MyClient2OrdersHistory = null;
+        //}
     }
 }

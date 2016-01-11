@@ -49,10 +49,14 @@ namespace DAL.Fake.Model.Util.Orders
         public OrderChargeModel Calculate(Order order)
         {
             var orderItems = (from c in _orderItem where c.OrderId == order.OrderId select c).ToList();
-            _orderCharge.CookerId = orderItems.First().CookerId;
-            var taxPercent = new Common.Util().GetTaxPercent(_orderCharge.CookerId);
-            _orderCharge.OrderTypeValue = Enum.GetName(typeof(OrderModelType), order.OrderTypeId);
-            _orderCharge.PaymentMethodValue = Enum.GetName(typeof(PaymentMethodType), order.PaymentMethodId);
+            if (orderItems.Any())
+            {
+                _orderCharge = new OrderChargeModel();
+                var firstOrderItem = orderItems.FirstOrDefault();
+                if (firstOrderItem != null) _orderCharge.CookerId = firstOrderItem.CookerId;
+                var taxPercent = new Common.Util().GetTaxPercent(_orderCharge.CookerId);
+            _orderCharge.OrderTypeValue = Enum.GetName(typeof(OrderModelType.Values), order.OrderTypeId);
+            _orderCharge.PaymentMethodValue = Enum.GetName(typeof(PaymentMethodType.Values), order.PaymentMethodId);
   
             #region PickUpOrderCharge
 
@@ -90,7 +94,9 @@ namespace DAL.Fake.Model.Util.Orders
 
             _orderCharge.SalesTaxes = CalculateSalesTax(_orderCharge.TotalCharges, taxPercent);
             _orderCharge.PlanTitle = null;
-            return _orderCharge;
+            return _orderCharge;  
+            }
+            return null;
         }
 
         #region Order Charges

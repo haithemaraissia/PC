@@ -23,16 +23,16 @@ namespace DAL.Fake.Model.GoodData.OrdersHistory.Clients
             {
                 MyOrdersHistory.Add(orderHistory);
             }
-            var client2OrdersHistory = new FakeClient2OrderHistory().MyClient2OrdersHistory;
-            foreach (var orderHistory in client2OrdersHistory)
-            {
-                MyOrdersHistory.Add(orderHistory);
-            }
-            var client3OrdersHistory = new FakeClient3OrderHistory().MyClient3OrdersHistory;
-            foreach (var orderHistory in client1OrdersHistory)
-            {
-                MyOrdersHistory.Add(orderHistory);
-            }
+            //var client2OrdersHistory = new FakeClient2OrderHistory().MyClient2OrdersHistory;
+            //foreach (var orderHistory in client2OrdersHistory)
+            //{
+            //    MyOrdersHistory.Add(orderHistory);
+            //}
+            //var client3OrdersHistory = new FakeClient3OrderHistory().MyClient3OrdersHistory;
+            //foreach (var orderHistory in client1OrdersHistory)
+            //{
+            //    MyOrdersHistory.Add(orderHistory);
+            //}
 
         }
         ~FakeClientsOrdersHistory()

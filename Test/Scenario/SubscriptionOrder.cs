@@ -1,12 +1,16 @@
-﻿using DAL.Generic.Repository.Model.Fake;
+﻿using System;
+using System.Linq;
+using DAL.Generic.Repository.Model.Fake;
 using DAL.Generic.UnitofWork;
+using DAL.Generic.UnitofWork.Helper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using DAL.Fake.Model.LookUp.OrderModel;
 
 namespace Test.Scenario
 {
     /// <summary>
     /// Scenario:
-    ///     Client subscribe to a cooker subscrption
+    ///     Client subscribe to a cooker subscription
     ///     Client check the subscipriont detail
     ///     An Invoice is genereated
     ///     A payment is made
@@ -28,23 +32,25 @@ namespace Test.Scenario
         public void Initialize()
         {
             // Arrange
-            //var clientRepo = new FakeClientRepository();
-            var cookerRepo = new FakeCookerRepository();
             //var cookerRepo = new FakeCookerRepository();
-            //var cookerRepo = new FakeCookerRepository();
-            //var cookerRepo = new FakeCookerRepository();
-            //var cookerRepo = new FakeCookerRepository();
-            //var cookerRepo = new FakeCookerRepository();
-            //var cookerRepo = new FakeCookerRepository();
-            var uow = new UnitofWork { CookerRepository = cookerRepo };
+           // var uow = new UnitofWorkHelper().GetAllRepository();
             // Controller = new OwnersController(uow);//
+        }
+
+
+        [TestMethod]
+        public void Test()
+        {
+            //  Client subscribe to a cooker subscription
+           var uow = new UnitofWorkHelper().GetAllRepository();
+            var cookerSubscrption = uow.CookerSubscriptionRepository.All.Count();
+            Assert.AreEqual(cookerSubscrption, 1);
         }
 
 
 
 
-
-
+        #region Prototype
         [TestMethod]
         //public void IndexShouldListAllOwners()
         //{
@@ -57,6 +63,7 @@ namespace Test.Scenario
         //    var data = viewResult.ViewData.Model as IList<Owner>;
         //    if (data != null) Assert.AreEqual(3, data.Count);
         //}
+        #endregion
 
         [TestCleanup]
         public void CleanUp()

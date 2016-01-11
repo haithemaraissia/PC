@@ -29,6 +29,7 @@ namespace DAL.Fake.Model.GoodData.OrderItems
         {
             var firstOrderDetail = new OrderItem
             {
+                OrderId = 1,
                 CookerId = 1,
                 Description = "Chicken sauteed with roasted red peppers in our marinara sauce with provolone cheese. Served on fresh white Italian braided rolls topped with sesame seeds.",
                 DishId = 1,
@@ -47,6 +48,7 @@ namespace DAL.Fake.Model.GoodData.OrderItems
         {
             var secondOrderDetail = new OrderItem
             {
+                OrderId = 1,
                 CookerId = 1,
                 Description = "Home made pasta, ground beef, tomato sauce, bechamel sauce and parmesan.",
                 DishId = 3,
@@ -68,6 +70,7 @@ namespace DAL.Fake.Model.GoodData.OrderItems
         {
             var firstOrderDetail = new OrderItem
             {
+                OrderId = 2,
                 CookerId = 1,
                 Description = "Includes six pieces.",
                 DishId = 4,
@@ -89,6 +92,7 @@ namespace DAL.Fake.Model.GoodData.OrderItems
         {
             var firstOrderDetail = new OrderItem
             {
+                OrderId = 2,
                 CookerId = 3,
                 Description = "Saag Pea Soup",
                 DishId = 32,
