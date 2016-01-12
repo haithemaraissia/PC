@@ -23,7 +23,7 @@ namespace DAL.Fake.Model.Util.Common
         public string GetPlanTitle(int? planId)
         {
             if (planId == null) { planId = 1; }
-            return Enum.GetName(typeof(Plans), planId);
+            return Enum.GetName(typeof(Plans.Types), planId);
         }
     }
 }

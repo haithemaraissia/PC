@@ -9,7 +9,13 @@ namespace DAL.Generic.Repository.Model.Fake
 {
     public class FakeOrderStatuRepository : FakeGenericRepository<OrderStatu>, IOrderStatuRepository
     {
-        public FakeOrderStatuRepository():base(Enum.GetValues(typeof(OrderStatus.Values)).Cast<OrderStatu>().ToList())
+        public FakeOrderStatuRepository() : base(
+            Enum.GetValues(typeof(OrderStatus.Values)).Cast<OrderStatus.Values>().
+                Select(v => new OrderStatu
+                {
+                    OrderStatusId = (int)v,
+                    OrderStatusValue = v.ToString()
+                }).ToList())
         {
         }
 

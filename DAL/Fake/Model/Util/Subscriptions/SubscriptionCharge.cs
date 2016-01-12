@@ -43,8 +43,8 @@ namespace DAL.Fake.Model.Util.Subscriptions
         {
             _orderCharge.CookerId = _subscriptionHelper.GetCookerServingPriceModel(clientSubscriptionId).CookerId;
             var taxPercent = _subscriptionHelper.GetTaxPercent(_subscriptionHelper.GetCookerServingPriceModel(clientSubscriptionId).CookerId);
-            _orderCharge.OrderTypeValue = Enum.GetName(typeof(OrderModelType), orderSubscription.OrderTypeId);
-            _orderCharge.PaymentMethodValue = Enum.GetName(typeof(PaymentMethodType), orderSubscription.PaymentMethodId);
+            _orderCharge.OrderTypeValue = Enum.GetName(typeof(OrderModelType.Values), orderSubscription.OrderTypeId);
+            _orderCharge.PaymentMethodValue = Enum.GetName(typeof(PaymentMethodType.Values), orderSubscription.PaymentMethodId);
    
             #region PickUpOrderCharge
 

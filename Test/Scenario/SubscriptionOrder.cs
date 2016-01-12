@@ -43,8 +43,8 @@ namespace Test.Scenario
         {
             //  Client subscribe to a cooker subscription
            var uow = new UnitofWorkHelper().GetAllRepository();
-            var cookerSubscrption = uow.CookerSubscriptionRepository.All.Count();
-            Assert.AreEqual(cookerSubscrption, 1);
+            var cookerSubscriptionCount = uow.CookerSubscriptionRepository.All.Count();
+            Assert.AreEqual(cookerSubscriptionCount, 3);
         }
 
 

@@ -127,8 +127,8 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders.Clie
                 Quantity = 1,
                 Description = selectedDish.Description,
                 Instructions = "Put Extra French Fries",
-                OrderSubscriptionId = MyOrders.Max(x => x.OrderSubscriptionId) + 1,
-                ClientOrderReviewSentClientOrderReviewSentId = new SubscriptionHelper().CreateOrderReview(selectedDish, MyOrders.Max(x => x.OrderSubscriptionId) + 1).ClientOrderToReviewId,
+                OrderSubscriptionId = GetFakeOrderSubscriptionId(),
+                ClientOrderReviewSentClientOrderReviewSentId = new SubscriptionHelper().CreateOrderReview(selectedDish, GetFakeOrderSubscriptionId()).ClientOrderToReviewId,
                 WeekId = weekId,
                 ScheduledDate = DateTime.Today.Date
             };
@@ -172,8 +172,8 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders.Clie
                 Quantity = 1,
                 Description = selectedDish.Description,
                 Instructions = "Put Extra Spices",
-                OrderSubscriptionId = MyOrders.Max(x => x.OrderSubscriptionId) + 1,
-                ClientOrderReviewSentClientOrderReviewSentId = new SubscriptionHelper().CreateOrderReview(selectedDish, MyOrders.Max(x => x.OrderSubscriptionId) + 1).ClientOrderToReviewId,
+                OrderSubscriptionId = GetFakeOrderSubscriptionId(),
+                ClientOrderReviewSentClientOrderReviewSentId = new SubscriptionHelper().CreateOrderReview(selectedDish, GetFakeOrderSubscriptionId()).ClientOrderToReviewId,
                 WeekId = weekId,
                 ScheduledDate = DateTime.Today.Date.AddDays(2)
             };
@@ -204,8 +204,8 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders.Clie
                 Quantity = 1,
                 Description = selectedDish.Description,
                 Instructions = null,
-                OrderSubscriptionId = MyOrders.Max(x => x.OrderSubscriptionId) + 1,
-                ClientOrderReviewSentClientOrderReviewSentId = new SubscriptionHelper().CreateOrderReview(selectedDish, MyOrders.Max(x => x.OrderSubscriptionId) + 1).ClientOrderToReviewId,
+                OrderSubscriptionId = GetFakeOrderSubscriptionId(),
+                ClientOrderReviewSentClientOrderReviewSentId = new SubscriptionHelper().CreateOrderReview(selectedDish, GetFakeOrderSubscriptionId()).ClientOrderToReviewId,
                 WeekId = weekId,
                 ScheduledDate = DateTime.Today.Date.AddDays(4)
             };
@@ -224,14 +224,22 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders.Clie
                 Quantity = 1,
                 Description = selectedDish.Description,
                 Instructions = null,
-                OrderSubscriptionId = MyOrders.Max(x => x.OrderSubscriptionId) + 1,
-                ClientOrderReviewSentClientOrderReviewSentId =  new SubscriptionHelper().CreateOrderReview(selectedDish, MyOrders.Max(x => x.OrderSubscriptionId) + 1).ClientOrderToReviewId,
+                OrderSubscriptionId = GetFakeOrderSubscriptionId(),
+                ClientOrderReviewSentClientOrderReviewSentId = new SubscriptionHelper().CreateOrderReview(selectedDish, GetFakeOrderSubscriptionId()).ClientOrderToReviewId,
                 WeekId = weekId,
                 ScheduledDate = DateTime.Today.Date.AddDays(1)
             };
             return fourthSubscriptionOrderItemDetail;
         }
 
+        private int GetFakeOrderSubscriptionId()
+        {
+            if (MyOrders == null)
+            {
+                return 1;
+            }
+            return MyOrders.Max(x => x.OrderSubscriptionId) + 1;
+        }
         #endregion
 
 

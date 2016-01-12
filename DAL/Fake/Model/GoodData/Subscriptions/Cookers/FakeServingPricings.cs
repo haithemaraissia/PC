@@ -58,7 +58,7 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Cookers
         {
             var thirdServingPricing = new ServingPrice
             {
-                ServicePriceId = (int)ServingPriceModel.Values.Ninteen_Dollars_NintyNine,
+                ServicePriceId = (int)ServingPriceModel.Values.Nine_DollarsNintyNine,
                 ServingMeasurementId = (int)ServingMeasurementType.Values.LunchPlate9Inches,
                 PLanId = (int)LookUp.Plans.Plans.Types.TenMealsPerWeek,
                 Price = (decimal)(new ServingPriceModel().GetPrice(ServingPriceModel.Values.Nine_DollarsNintyNine)),
