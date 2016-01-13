@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Linq;
 using DAL.Fake.Model.GoodData.Cookers.Dishes.Cooker;
-using DAL.Fake.Model.GoodData.OrderModelType;
 using DAL.Fake.Model.LookUp.Currency;
 using DAL.Fake.Model.LookUp.OrderStatu;
 using DAL.Fake.Model.LookUp.PaymentMethod;
@@ -14,6 +13,7 @@ using DAL.Generic.UnitofWork;
 using DAL.Generic.UnitofWork.Helper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Model;
+using OrderModelType = DAL.Fake.Model.LookUp.OrderModel.OrderModelType;
 using OrderType = DAL.Fake.Model.LookUp.OrderType.OrderType;
 
 namespace Test.Scenario
@@ -32,9 +32,9 @@ namespace Test.Scenario
 
     ///     STEP 3
     ///         Cooker Update First Subscription Item Dish ToReady
-    ///         Client submit a review for the first dish in the subscription for week 1
-    ///         Cooker Submit review for the first dish in the subscription for week 1
-    ///         Cooker review is calculated for subscriptions based on dish1 of week1 
+    ///         Client submit and receive a review for the first dish in the subscription for week 1
+    ///         Cooker Submit and receive a review for the first dish in the subscription for week 1
+    ///         Cooker and Client reviews is calculated for subscriptions based on dish1 of week1 
     /// </summary>
 
 
@@ -58,7 +58,7 @@ namespace Test.Scenario
         [TestMethod]
         public void Steps()
         {
-            #region Step1
+            #region STEP1
             var newClientSubscription = ClientSubscribeToCookerSubscription();
             ChecktheSubscriptionDetail();
             var subscriptionInvoice = GenerateInvoiceForSubscription(newClientSubscription);
@@ -66,24 +66,21 @@ namespace Test.Scenario
             ClientPaySubscriptionInvoice(subscriptionInvoice);
             #endregion
 
-            #region Step2
+            #region STEP2
             CookerUpdateSubscriptionOrderstatusToIncoming(subscriptionInvoice.OrderId);
             CookerUpdateSubscriptionOrderstatusToDone(subscriptionInvoice.OrderId);
             #endregion
 
-            #region Step3
-
+            #region STEP3
             CookerUpdateFirstSubscriptionItemDishToReady(subscriptionInvoice.OrderId);
-            ClientSubmitReviewForFirstDishInSubscriptionForWeek1(subscriptionInvoice.OrderId);
-
-
+            ClientReviewForFirstDishInSubscriptionForWeek1(subscriptionInvoice.OrderId);
+            CookerReviewForFirstDishInSubscriptionForWeek1(subscriptionInvoice.OrderId);
             #endregion
-
 
         }
 
 
-        #region Step1 
+        #region Step1
 
         #region ClientSubscribeToCookerSubscription
 
@@ -159,7 +156,7 @@ namespace Test.Scenario
             Assert.AreEqual(robertSubscriptionCount + 1, _uow.ClientSubscriptionRepository.Count(x => x.ClientId == 2));
             return newClientSubscription;
         }
-        
+
         #endregion
 
         #region ChecktheSubscriptionDetail
@@ -233,6 +230,8 @@ namespace Test.Scenario
 
             #endregion
 
+            _uow.OrderSubscriptionRepository.Add(subscriptionOrder);
+            _uow.Save();
             return subscriptionOrder;
 
 
@@ -255,7 +254,7 @@ namespace Test.Scenario
                 WeekId = weekId,
                 ScheduledDate = DateTime.Today.Date,
                 OrderStatusId = (int)OrderStatus.Values.Scheduled
-               
+
             };
             return subscriptionOrderItemDetail;
         }
@@ -323,7 +322,7 @@ namespace Test.Scenario
             };
             return subscriptionOrderInvoice;
         }
-       
+
         #endregion
 
         #endregion
@@ -355,9 +354,9 @@ namespace Test.Scenario
                     ClientId = subscriptionInvoice.ClientId,
                     CookerId = subscriptionInvoice.CookerId,
                     TransactionId = new Guid().ToString(),
-                    OrderModelTypeId = (int)DAL.Fake.Model.LookUp.OrderModel.OrderModelType.Values.Transaction,
+                    OrderModelTypeId = (int)OrderModelType.Values.Transaction,
                     PaymentStatusId = (int)PaymentStatusType.Values.Pending
-                    
+
                 };
             _uow.PaymentRepository.Add(clientSubscriptionPayment);
             _uow.Save();
@@ -378,7 +377,7 @@ namespace Test.Scenario
             Assert.AreEqual((int)OrderStatus.Values.InProgress, currentSubscription.OrderStatusId);
 
             //Update Order Status to Incoming
-            currentSubscription.OrderStatusId = (int) OrderStatus.Values.Incoming;
+            currentSubscription.OrderStatusId = (int)OrderStatus.Values.Incoming;
             Assert.AreEqual((int)OrderStatus.Values.Incoming, currentSubscription.OrderStatusId);
 
         }
@@ -393,25 +392,64 @@ namespace Test.Scenario
             currentSubscription.OrderStatusId = (int)OrderStatus.Values.Active;
             Assert.AreEqual((int)OrderStatus.Values.Active, currentSubscription.OrderStatusId);
         }
+
         #endregion
 
         #region Step3
 
         private void CookerUpdateFirstSubscriptionItemDishToReady(int? subscriptionOrderId)
         {
-            var firstsubscriptionItemForWeek1 = _uow.OrderSubscriptionItemRepository.FindBy(x => x.OrderSubscriptionId == subscriptionOrderId && x.WeekId == (int)WeekType.Values.Week1).First();
+            var firstsubscriptionItemForWeek1 = FirstsubscriptionItemForWeek1(subscriptionOrderId);
             Assert.AreEqual((int)OrderStatus.Values.Scheduled, firstsubscriptionItemForWeek1.OrderStatusId);
             Assert.AreEqual(1, firstsubscriptionItemForWeek1.DishId);
+            firstsubscriptionItemForWeek1.OrderStatusId = (int)OrderStatus.Values.Ready;
+            _uow.Save();
+            Assert.AreEqual((int)OrderStatus.Values.Ready, firstsubscriptionItemForWeek1.OrderStatusId);
         }
 
-        private void ClientSubmitReviewForFirstDishInSubscriptionForWeek1(int? subscriptionOrderId)
+        private OrderSubscriptionItem FirstsubscriptionItemForWeek1(int? subscriptionOrderId)
         {
-            var firstsubscriptionItemForWeek1 = _uow.OrderSubscriptionItemRepository.FindBy(x => x.OrderSubscriptionId == subscriptionOrderId && x.WeekId == (int)WeekType.Values.Week1).First();
-         
+            Debug.Assert(_uow.OrderSubscriptionRepository != null, "_uow.OrderSubscriptionRepository != null");
+            var subscriptionsOrderItems =
+                _uow.OrderSubscriptionRepository.FirstOrDefault(x => x.OrderSubscriptionId == subscriptionOrderId)
+                    .OrderSubscriptionItems;
+
+            var firstsubscriptionItemForWeek1 = subscriptionsOrderItems.First(x => x.WeekId == (int)WeekType.Values.Week1);
+            return firstsubscriptionItemForWeek1;
+        }
+
+        private void ClientReviewForFirstDishInSubscriptionForWeek1(int? subscriptionOrderId)
+        {
+            var firstsubscriptionItemForWeek1 = FirstsubscriptionItemForWeek1(subscriptionOrderId);
+
+            var clientOrderToReview = CreateClientOrdertoReview(firstsubscriptionItemForWeek1);
+            CreateClientOrderReviewSentToCooker(firstsubscriptionItemForWeek1);
+            var cookerOrderReviewReceived = CookerOrderReviewReceived(firstsubscriptionItemForWeek1);
+            DeleteClientOrderToReview(clientOrderToReview);
+
+            UpdateCookerFeedBack_And_ReviewScore_And_ServiceDetail(cookerOrderReviewReceived);
+        }
+
+        private void CookerReviewForFirstDishInSubscriptionForWeek1(int? subscriptionOrderId)
+        {
+            var firstsubscriptionItemForWeek1 = FirstsubscriptionItemForWeek1(subscriptionOrderId);
+            var cookerOrderToReview = CreateCookerOrderToReview(firstsubscriptionItemForWeek1);
+            CreateCookerOrderReviewSentToClient(firstsubscriptionItemForWeek1);
+            var clientOrderReviewReceived = ClientOrderReviewReceived(firstsubscriptionItemForWeek1);
+            DeleteCookerOrderToReview(cookerOrderToReview);
+
+            UpdateClientFeedBack_And_ReviewScore(clientOrderReviewReceived);
+        }
+
+        #region Client Review
+
+        private ClientOrderToReview CreateClientOrdertoReview(OrderSubscriptionItem firstsubscriptionItemForWeek1)
+        {
+            Assert.AreEqual(0, _uow.ClientOrderToReviewRepository.FindBy(x => x.OrderId == firstsubscriptionItemForWeek1.OrderSubscriptionId).Count());
             // Client Order to Review
             var clientOrderToReview = new ClientOrderToReview
             {
-                ClientOrderToReviewId =  _uow.ClientOrderToReviewRepository.All.ToList().Max(x => x.ClientOrderToReviewId) + 1,
+                ClientOrderToReviewId = _uow.ClientOrderToReviewRepository.All.ToList().Max(x => x.ClientOrderToReviewId) + 1,
                 ClientId = 2,
                 CookerId = firstsubscriptionItemForWeek1.CookerId,
                 MenuId = firstsubscriptionItemForWeek1.MenuId,
@@ -423,15 +461,21 @@ namespace Test.Scenario
                 Comment = null,
                 Photo = null,
                 OrderDate = DateTime.Today.Date,
-                OrderModelTypeId = (int)DAL.Fake.Model.LookUp.OrderModel.OrderModelType.Values.Subscription
+                OrderModelTypeId = (int)OrderModelType.Values.Subscription
             };
             _uow.ClientOrderToReviewRepository.Add(clientOrderToReview);
             _uow.Save();
+            Assert.AreEqual(1, _uow.ClientOrderToReviewRepository.FindBy(x => x.OrderId == firstsubscriptionItemForWeek1.OrderSubscriptionId).Count());
+            return clientOrderToReview;
+        }
 
-            //Client Review Order
-             var clientOrderReviewSent = new ClientOrderReviewSent
+        private void CreateClientOrderReviewSentToCooker(OrderSubscriptionItem firstsubscriptionItemForWeek1)
+        {
+            Assert.AreEqual(0, _uow.ClientOrderReviewSentRepository.FindBy(x => x.OrderId == firstsubscriptionItemForWeek1.OrderSubscriptionId).Count());
+            var clientOrderReviewSent = new ClientOrderReviewSent
             {
-                ClientOrderReviewSentId =  _uow.ClientOrderReviewSentRepository.All.ToList().Max(x => x.ClientOrderReviewSentId) + 1,
+                ClientOrderReviewSentId =
+                    _uow.ClientOrderReviewSentRepository.All.ToList().Max(x => x.ClientOrderReviewSentId) + 1,
                 ClientId = 2,
                 CookerId = firstsubscriptionItemForWeek1.CookerId,
                 MenuId = firstsubscriptionItemForWeek1.MenuId,
@@ -443,20 +487,25 @@ namespace Test.Scenario
                 Comment = null,
                 Photo = null,
                 OrderDate = DateTime.Today.Date,
-                OrderModelTypeId = (int)DAL.Fake.Model.LookUp.OrderModel.OrderModelType.Values.Subscription
+                OrderModelTypeId = (int)OrderModelType.Values.Subscription
             };
             _uow.ClientOrderReviewSentRepository.Add(clientOrderReviewSent);
             _uow.Save();
-            
+            Assert.AreEqual(1, _uow.ClientOrderReviewSentRepository.FindBy(x => x.OrderId == firstsubscriptionItemForWeek1.OrderSubscriptionId).Count());
+        }
 
+        private CookerOrderReviewReceived CookerOrderReviewReceived(OrderSubscriptionItem firstsubscriptionItemForWeek1)
+        {
+            Assert.AreEqual(0, _uow.CookerOrderReviewReceivedRepository.FindBy(x => x.OrderId == firstsubscriptionItemForWeek1.OrderSubscriptionId).Count());
             //Cooker Review Received
             var cookerOrderReviewReceived = new CookerOrderReviewReceived
             {
-                CookerOrderReviewReceivedId = _uow.CookerOrderReviewReceivedRepository.All.ToList().Max(x => x.CookerOrderReviewReceivedId) + 1,
-                CookerId = 1,
+                CookerOrderReviewReceivedId =
+                    _uow.CookerOrderReviewReceivedRepository.All.ToList().Max(x => x.CookerOrderReviewReceivedId) + 1,
+                CookerId = firstsubscriptionItemForWeek1.CookerId,
                 ClientId = 1,
-                MenuId = 1,
-                OrderId = 1,
+                MenuId = firstsubscriptionItemForWeek1.MenuId,
+                OrderId = firstsubscriptionItemForWeek1.OrderSubscriptionId,
                 OverallFeedBackRating = (int)RatingCodeType.Values.Positive,
                 ItemAccuracyRating = 4,
                 CommunicationRating = 3,
@@ -467,29 +516,56 @@ namespace Test.Scenario
             };
             _uow.CookerOrderReviewReceivedRepository.Add(cookerOrderReviewReceived);
             _uow.Save();
+            Assert.AreEqual(1, _uow.CookerOrderReviewReceivedRepository.FindBy(x => x.OrderId == firstsubscriptionItemForWeek1.OrderSubscriptionId).Count());
+            return cookerOrderReviewReceived;
+        }
 
-
+        private void DeleteClientOrderToReview(ClientOrderToReview clientOrderToReview)
+        {
             //Delete Client Order to Review 
+            Assert.AreEqual(1, _uow.ClientOrderToReviewRepository.FindBy(x => x.ClientOrderToReviewId == clientOrderToReview.ClientOrderToReviewId).Count());
             _uow.ClientOrderToReviewRepository.Delete(clientOrderToReview);
+            _uow.Save();
+            Assert.AreEqual(0, _uow.ClientOrderToReviewRepository.FindBy(x => x.ClientOrderToReviewId == clientOrderToReview.ClientOrderToReviewId).Count());
+        }
 
+        private void UpdateCookerFeedBack_And_ReviewScore_And_ServiceDetail(CookerOrderReviewReceived cookerOrderReviewReceived)
+        {
+            #region UpdateCookerFeedback
 
             //Update CookerFeedback
             var cookerFeedback = _uow.CookerFeedBackRepository.FindBy(x => x.CookerId == 1).FirstOrDefault();
             Debug.Assert(cookerFeedback != null, "cookerFeedback != null");
+
+            Assert.AreEqual(2, cookerFeedback.TransactionsCount);
+            Assert.AreEqual(5, cookerFeedback.ReviewScore);
+            Assert.AreEqual((decimal)0.5, cookerFeedback.PositiveReview);
+
             cookerFeedback.TransactionsCount += 1;
             cookerFeedback.ReviewScore = cookerFeedback.ReviewScore + cookerOrderReviewReceived.ItemAccuracyRating +
                                          cookerOrderReviewReceived.CommunicationRating +
                                          cookerOrderReviewReceived.DeliveryTimeRating;
 
-            if (cookerOrderReviewReceived.OverallFeedBackRating == (int) RatingCodeType.Values.Positive)
+            if (cookerOrderReviewReceived.OverallFeedBackRating == (int)RatingCodeType.Values.Positive)
             {
-                cookerFeedback.ReviewScore = cookerFeedback.ReviewScore + (int)RatingCodeType.Values.Positive;
+                cookerFeedback.PositiveReview = cookerFeedback.PositiveReview + (int)RatingCodeType.Values.Positive;
             }
 
+            Assert.AreEqual(3, cookerFeedback.TransactionsCount);
+            Assert.AreEqual(14, cookerFeedback.ReviewScore);
+            Assert.AreEqual((decimal)1.5, cookerFeedback.PositiveReview);
 
+            #endregion
+
+            #region UpdateCookerReviewScore
             //Update CookerReviewScore
             var cookerReviewScore = _uow.CookerReviewScoreRepository.FindBy(x => x.CookerId == 1).FirstOrDefault();
             Debug.Assert(cookerReviewScore != null, "cookerReviewScore != null");
+
+            Assert.AreEqual(1, cookerReviewScore.PositiveReview);
+            Assert.AreEqual(0, cookerReviewScore.NegativeReview);
+            Assert.AreEqual(0, cookerReviewScore.NeutralReview);
+
             if (cookerOrderReviewReceived.OverallFeedBackRating == (int)RatingCodeType.Values.Positive)
             {
                 cookerReviewScore.PositiveReview = cookerReviewScore.PositiveReview + 1;
@@ -503,24 +579,60 @@ namespace Test.Scenario
                 cookerReviewScore.NeutralReview = cookerReviewScore.NeutralReview + 1;
             }
 
+            Assert.AreEqual(2, cookerReviewScore.PositiveReview);
+            Assert.AreEqual(0, cookerReviewScore.NegativeReview);
+            Assert.AreEqual(0, cookerReviewScore.NeutralReview);
+
+            #endregion
+
+            #region UpdateCookerServiceDetail
             //UpdateCookerServiceDetail
-            var cookerReviewServiceDetail = _uow.CookerReviewServiceDetailRepository.FindBy(x => x.CookerId == 1).FirstOrDefault();
+
+            var cookerReviewServiceDetail =
+                _uow.CookerReviewServiceDetailRepository.FindBy(x => x.CookerId == 1).FirstOrDefault();
             Debug.Assert(cookerReviewServiceDetail != null, "CookerReviewServiceDetail != null");
-            cookerReviewServiceDetail.ItemAccuracyRating = (cookerReviewServiceDetail.ItemAccuracyRating * cookerReviewServiceDetail.NumberofRatings + cookerOrderReviewReceived.ItemAccuracyRating)/(cookerReviewServiceDetail.NumberofRatings + 1);
-            cookerReviewServiceDetail.CommunicationRating = (cookerReviewServiceDetail.CommunicationRating * cookerReviewServiceDetail.NumberofRatings + cookerOrderReviewReceived.CommunicationRating) / (cookerReviewServiceDetail.CommunicationRating + 1);
-            cookerReviewServiceDetail.ItemAccuracyRating = (cookerReviewServiceDetail.DeliveryTimeRating * cookerReviewServiceDetail.NumberofRatings + cookerOrderReviewReceived.DeliveryTimeRating) / (cookerReviewServiceDetail.NumberofRatings + 1);
-            cookerReviewServiceDetail.OverallFeedBackRating = (cookerReviewServiceDetail.OverallFeedBackRating * cookerReviewServiceDetail.NumberofRatings + cookerOrderReviewReceived.OverallFeedBackRating) / (cookerReviewServiceDetail.NumberofRatings + 1);
+
+            Assert.AreEqual(1, cookerReviewServiceDetail.ItemAccuracyRating);
+            Assert.AreEqual(4, cookerReviewServiceDetail.CommunicationRating);
+            Assert.AreEqual(1, cookerReviewServiceDetail.ItemAccuracyRating);
+            Assert.AreEqual(2, cookerReviewServiceDetail.OverallFeedBackRating);
+            Assert.AreEqual(7, cookerReviewServiceDetail.NumberofRatings);
+
+            cookerReviewServiceDetail.ItemAccuracyRating = (cookerReviewServiceDetail.ItemAccuracyRating *
+                                                            cookerReviewServiceDetail.NumberofRatings +
+                                                            cookerOrderReviewReceived.ItemAccuracyRating) /
+                                                           (cookerReviewServiceDetail.NumberofRatings + 1);
+            cookerReviewServiceDetail.CommunicationRating = (cookerReviewServiceDetail.CommunicationRating *
+                                                             cookerReviewServiceDetail.NumberofRatings +
+                                                             cookerOrderReviewReceived.CommunicationRating) /
+                                                            (cookerReviewServiceDetail.CommunicationRating + 1);
+            cookerReviewServiceDetail.ItemAccuracyRating = (cookerReviewServiceDetail.DeliveryTimeRating *
+                                                            cookerReviewServiceDetail.NumberofRatings +
+                                                            cookerOrderReviewReceived.DeliveryTimeRating) /
+                                                           (cookerReviewServiceDetail.NumberofRatings + 1);
+            cookerReviewServiceDetail.OverallFeedBackRating = (cookerReviewServiceDetail.OverallFeedBackRating *
+                                                               cookerReviewServiceDetail.NumberofRatings +
+                                                               cookerOrderReviewReceived.OverallFeedBackRating) /
+                                                              (cookerReviewServiceDetail.NumberofRatings + 1);
             cookerReviewServiceDetail.NumberofRatings += 1;
+
+            Assert.AreEqual(4, cookerReviewServiceDetail.ItemAccuracyRating);
+            Assert.AreEqual(6, cookerReviewServiceDetail.CommunicationRating);
+            Assert.AreEqual(4, cookerReviewServiceDetail.ItemAccuracyRating);
+            Assert.AreEqual(1, cookerReviewServiceDetail.OverallFeedBackRating);
+            Assert.AreEqual(8, cookerReviewServiceDetail.NumberofRatings);
+
+            #endregion
 
         }
 
+        #endregion
 
+        #region Cooker Review
 
-
-        private void CookerSubmitReviewForFirstDishInSubscriptionForWeek1(int? subscriptionOrderId)
+        private CookerOrderToReview CreateCookerOrderToReview(OrderSubscriptionItem firstsubscriptionItemForWeek1)
         {
-            var firstsubscriptionItemForWeek1 = _uow.OrderSubscriptionItemRepository.FindBy(x => x.OrderSubscriptionId == subscriptionOrderId && x.WeekId == (int)WeekType.Values.Week1).First();
-
+            Assert.AreEqual(0, _uow.CookerOrderToReviewRepository.FindBy(x => x.OrderId == firstsubscriptionItemForWeek1.OrderSubscriptionId).Count());
             // Cooker Order to Review
             var cookerOrderToReview = new CookerOrderToReview
             {
@@ -536,15 +648,22 @@ namespace Test.Scenario
                 Comment = null,
                 Photo = null,
                 OrderDate = DateTime.Today.Date,
-                OrderModelTypeId = (int)DAL.Fake.Model.LookUp.OrderModel.OrderModelType.Values.Subscription
+                OrderModelTypeId = (int)OrderModelType.Values.Subscription
             };
             _uow.CookerOrderToReviewRepository.Add(cookerOrderToReview);
             _uow.Save();
+            Assert.AreEqual(1, _uow.CookerOrderToReviewRepository.FindBy(x => x.OrderId == firstsubscriptionItemForWeek1.OrderSubscriptionId).Count());
+            return cookerOrderToReview;
+        }
 
+        private void CreateCookerOrderReviewSentToClient(OrderSubscriptionItem firstsubscriptionItemForWeek1)
+        {
+            Assert.AreEqual(0, _uow.CookerOrderReviewSentRepository.FindBy(x => x.OrderId == firstsubscriptionItemForWeek1.OrderSubscriptionId).Count());
             //Cooker Review Order
             var cookerOrderReviewSent = new CookerOrderReviewSent
             {
-                CookerOrderReviewSentId = _uow.CookerOrderReviewSentRepository.All.ToList().Max(x => x.CookerOrderReviewSentId) + 1,
+                CookerOrderReviewSentId =
+                    _uow.CookerOrderReviewSentRepository.All.ToList().Max(x => x.CookerOrderReviewSentId) + 1,
                 ClientId = 2,
                 CookerId = firstsubscriptionItemForWeek1.CookerId,
                 MenuId = firstsubscriptionItemForWeek1.MenuId,
@@ -556,20 +675,23 @@ namespace Test.Scenario
                 Comment = null,
                 Photo = null,
                 OrderDate = DateTime.Today.Date,
-                OrderModelTypeId = (int)DAL.Fake.Model.LookUp.OrderModel.OrderModelType.Values.Subscription
+                OrderModelTypeId = (int)OrderModelType.Values.Subscription
             };
             _uow.CookerOrderReviewSentRepository.Add(cookerOrderReviewSent);
             _uow.Save();
+            Assert.AreEqual(1, _uow.CookerOrderReviewSentRepository.FindBy(x => x.OrderId == firstsubscriptionItemForWeek1.OrderSubscriptionId).Count());
+        }
 
-
-            //Client Review Received
+        private ClientOrderReviewReceived ClientOrderReviewReceived(OrderSubscriptionItem firstsubscriptionItemForWeek1)
+        {
+            Assert.AreEqual(0, _uow.ClientOrderReviewReceivedRepository.FindBy(x => x.OrderId == firstsubscriptionItemForWeek1.OrderSubscriptionId).Count());
             var clientOrderReviewReceived = new ClientOrderReviewReceived
             {
                 ClientOrderReviewReceivedId = _uow.ClientOrderReviewReceivedRepository.All.ToList().Max(x => x.ClientOrderReviewReceivedId) + 1,
-                CookerId = 1,
-                ClientId = 1,
-                MenuId = 1,
-                OrderId = 1,
+                CookerId = firstsubscriptionItemForWeek1.CookerId,
+                ClientId = 2,
+                MenuId = firstsubscriptionItemForWeek1.MenuId,
+                OrderId = firstsubscriptionItemForWeek1.OrderSubscriptionId,
                 OverallFeedBackRating = (int)RatingCodeType.Values.Positive,
                 ItemAccuracyRating = 4,
                 CommunicationRating = 3,
@@ -580,15 +702,29 @@ namespace Test.Scenario
             };
             _uow.ClientOrderReviewReceivedRepository.Add(clientOrderReviewReceived);
             _uow.Save();
+            Assert.AreEqual(1, _uow.ClientOrderReviewReceivedRepository.FindBy(x => x.OrderId == firstsubscriptionItemForWeek1.OrderSubscriptionId).Count());
+            return clientOrderReviewReceived;
+        }
 
-
-            //Delete Cooker Order to Review 
+        private void DeleteCookerOrderToReview(CookerOrderToReview cookerOrderToReview)
+        {
+            Assert.AreEqual(1, _uow.CookerOrderToReviewRepository.FindBy(x => x.CookerOrderToReviewId == cookerOrderToReview.CookerOrderToReviewId).Count());
             _uow.CookerOrderToReviewRepository.Delete(cookerOrderToReview);
+            _uow.Save();
+            Assert.AreEqual(0, _uow.CookerOrderToReviewRepository.FindBy(x => x.CookerOrderToReviewId == cookerOrderToReview.CookerOrderToReviewId).Count());
+        }
 
-
+        private void UpdateClientFeedBack_And_ReviewScore(ClientOrderReviewReceived clientOrderReviewReceived)
+        {
+            #region UpdateClientFeedBack
             //Update ClientFeedback
             var clientFeedback = _uow.ClientFeedBackRepository.FindBy(x => x.ClientId == 1).FirstOrDefault();
             Debug.Assert(clientFeedback != null, "clientFeedback != null");
+
+            Assert.AreEqual(1, clientFeedback.TransactionsCount);
+            Assert.AreEqual(3, clientFeedback.ReviewScore);
+            Assert.AreEqual((decimal)0.2, clientFeedback.PositiveReview);
+
             clientFeedback.TransactionsCount += 1;
             clientFeedback.ReviewScore = clientFeedback.ReviewScore + clientOrderReviewReceived.ItemAccuracyRating +
                                          clientOrderReviewReceived.CommunicationRating +
@@ -596,13 +732,23 @@ namespace Test.Scenario
 
             if (clientOrderReviewReceived.OverallFeedBackRating == (int)RatingCodeType.Values.Positive)
             {
-                clientFeedback.ReviewScore = clientFeedback.ReviewScore + (int)RatingCodeType.Values.Positive;
+                clientFeedback.PositiveReview = clientFeedback.PositiveReview + (int)RatingCodeType.Values.Positive;
             }
+            Assert.AreEqual(2, clientFeedback.TransactionsCount);
+            Assert.AreEqual(12, clientFeedback.ReviewScore);
+            Assert.AreEqual((decimal)1.2, clientFeedback.PositiveReview);
 
+            #endregion
 
+            #region UpdateClientReviewScore
             //Update ClientReviewScore
             var clientReviewScore = _uow.ClientReviewScoreRepository.FindBy(x => x.ClientId == 1).FirstOrDefault();
             Debug.Assert(clientReviewScore != null, "clientReviewScore != null");
+
+            Assert.AreEqual(1, clientReviewScore.PositiveReview);
+            Assert.AreEqual(0, clientReviewScore.NegativeReview);
+            Assert.AreEqual(0, clientReviewScore.NeutralReview);
+
             if (clientOrderReviewReceived.OverallFeedBackRating == (int)RatingCodeType.Values.Positive)
             {
                 clientReviewScore.PositiveReview = clientReviewScore.PositiveReview + 1;
@@ -616,25 +762,15 @@ namespace Test.Scenario
                 clientReviewScore.NeutralReview = clientReviewScore.NeutralReview + 1;
             }
 
+            Assert.AreEqual(2, clientReviewScore.PositiveReview);
+            Assert.AreEqual(0, clientReviewScore.NegativeReview);
+            Assert.AreEqual(0, clientReviewScore.NeutralReview);
+
+            #endregion
         }
-        
-        
+
         #endregion
 
-
-        #region Prototype
-        [TestMethod]
-        //public void IndexShouldListAllOwners()
-        //{
-        //    // Act
-        //    var actual = Controller.Index();
-
-        //    // Assert
-        //    var viewResult = actual as ViewResult;
-        //    if (viewResult == null) return;
-        //    var data = viewResult.ViewData.Model as IList<Owner>;
-        //    if (data != null) Assert.AreEqual(3, data.Count);
-        //}
         #endregion
 
         [TestCleanup]
