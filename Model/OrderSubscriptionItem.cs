@@ -7,20 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class OrderSubscriptionItem
     {
-        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public OrderSubscriptionItem()
         {
             this.OrderSubscriptionItemDishOptions = new HashSet<OrderSubscriptionItemDishOption>();
         }
-    
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderSubscriptionItemId { get; set; }
         public int DishId { get; set; }
         public int CookerId { get; set; }
@@ -31,10 +35,11 @@ namespace Model
         public int OrderSubscriptionId { get; set; }
         public int ClientOrderReviewSentClientOrderReviewSentId { get; set; }
         public int WeekId { get; set; }
-        public DateTime ScheduledDate { get; set; }
+        public System.DateTime ScheduledDate { get; set; }
+        public int OrderStatusId { get; set; }
     
         public virtual OrderSubscription OrderSubscription { get; set; }
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderSubscriptionItemDishOption> OrderSubscriptionItemDishOptions { get; set; }
     }
 }

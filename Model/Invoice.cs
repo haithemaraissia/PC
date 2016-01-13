@@ -7,18 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class Invoice
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int InvoiceId { get; set; }
         public Nullable<int> OrderId { get; set; }
         public int ClientId { get; set; }
         public int CookerId { get; set; }
-        public Nullable<DateTime> OrderDate { get; set; }
-        public Nullable<DateTime> DeliveryDate { get; set; }
+        public Nullable<System.DateTime> OrderDate { get; set; }
+        public Nullable<System.DateTime> DeliveryDate { get; set; }
         public string OrderTypeValue { get; set; }
         public string PaymentMethodValue { get; set; }
         public string PromotionTitle { get; set; }
@@ -38,8 +44,8 @@ namespace Model
         public Nullable<int> ServingPriceId { get; set; }
         public Nullable<int> PlanId { get; set; }
         public Nullable<int> ClientSubscriptionId { get; set; }
-        public Nullable<DateTime> SubscriptionStartDate { get; set; }
-        public Nullable<DateTime> SubscriptionEndDate { get; set; }
-        public Nullable<DateTime> SubscriptionInvoiceDate { get; set; }
+        public Nullable<System.DateTime> SubscriptionStartDate { get; set; }
+        public Nullable<System.DateTime> SubscriptionEndDate { get; set; }
+        public Nullable<System.DateTime> SubscriptionInvoiceDate { get; set; }
     }
 }

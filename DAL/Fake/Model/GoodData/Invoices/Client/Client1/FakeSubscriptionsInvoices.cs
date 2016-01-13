@@ -38,7 +38,7 @@ namespace DAL.Fake.Model.GoodData.Invoices.Client.Client1
             var firstSubscriptionOrder = MySubscriptionsOrders.FirstOrDefault();
             if (firstSubscriptionOrder == null) return null;
             var subscriptionHelper = new SubscriptionHelper();
-            var firstSubscriptionOrderCharge = new SubscriptionCharge().Calculate(firstSubscriptionOrder.OrderSubscriptionId, firstSubscriptionOrder);
+            var firstSubscriptionOrderCharge = new SubscriptionCharge().Calculate(firstSubscriptionOrder.ClientId, firstSubscriptionOrder);
                
             var firstSubscriptionOrderInvoice = new Invoice
             {

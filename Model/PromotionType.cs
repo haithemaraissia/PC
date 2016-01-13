@@ -7,10 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Model
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class PromotionType
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PromotionTypeId { get; set; }
         public string PromotionTypeValue { get; set; }
     }

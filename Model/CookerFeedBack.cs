@@ -7,10 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Model
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class CookerFeedBack
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CookerFeedBackId { get; set; }
         public int CookerId { get; set; }
         public string CookerRestaurantName { get; set; }

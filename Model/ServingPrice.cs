@@ -7,10 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Model
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class ServingPrice
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ServicePriceId { get; set; }
         public int PLanId { get; set; }
         public int ServingMeasurementId { get; set; }

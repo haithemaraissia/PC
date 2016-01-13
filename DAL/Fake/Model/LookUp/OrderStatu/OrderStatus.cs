@@ -21,6 +21,10 @@ namespace DAL.Fake.Model.LookUp.OrderStatu
             History = 4,
             #endregion
 
+            #region Subscription
+            Active = 6
+            #endregion
+
         }
 
     }

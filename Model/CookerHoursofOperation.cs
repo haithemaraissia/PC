@@ -7,21 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class CookerHoursofOperation
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CookerId { get; set; }
-        public Nullable<TimeSpan> OpeningHours { get; set; }
-        public Nullable<TimeSpan> ClosingHours { get; set; }
+        public Nullable<System.TimeSpan> OpeningHours { get; set; }
+        public Nullable<System.TimeSpan> ClosingHours { get; set; }
         public string OpeningDays { get; set; }
-        public Nullable<TimeSpan> DeliveryHours { get; set; }
-        public Nullable<TimeSpan> ClosingDeliveryHours { get; set; }
+        public Nullable<System.TimeSpan> DeliveryHours { get; set; }
+        public Nullable<System.TimeSpan> ClosingDeliveryHours { get; set; }
         public string DeliveryDays { get; set; }
-        public Nullable<TimeSpan> PickUpHours { get; set; }
-        public Nullable<TimeSpan> ClosingPickUpHours { get; set; }
+        public Nullable<System.TimeSpan> PickUpHours { get; set; }
+        public Nullable<System.TimeSpan> ClosingPickUpHours { get; set; }
         public string PickUpDays { get; set; }
     }
 }

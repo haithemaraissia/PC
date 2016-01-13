@@ -7,10 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Model
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class CookerSpokenLanguage
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int LanguageId { get; set; }
         public string LanguageValue { get; set; }
         public int CookerId { get; set; }

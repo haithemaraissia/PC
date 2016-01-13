@@ -7,19 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class Refund
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RefundId { get; set; }
         public string TransactionID { get; set; }
         public int OrderId { get; set; }
         public int OrderModelTypeId { get; set; }
         public int ClientId { get; set; }
         public int CookerId { get; set; }
-        public DateTime RefundDate { get; set; }
+        public System.DateTime RefundDate { get; set; }
         public decimal RefundAmount { get; set; }
         public int StatusId { get; set; }
         public int ReasonId { get; set; }

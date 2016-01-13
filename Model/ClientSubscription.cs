@@ -7,17 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class ClientSubscription
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ClientSubscriptionId { get; set; }
         public int ClientId { get; set; }
         public int CookerSubscriptionId { get; set; }
         public bool Active { get; set; }
-        public DateTime ValidUntil { get; set; }
+        public System.DateTime ValidUntil { get; set; }
         public bool Recurring { get; set; }
     }
 }

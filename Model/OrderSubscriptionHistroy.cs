@@ -7,12 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class OrderSubscriptionHistroy
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderSubscriptionHistoryId { get; set; }
         public int OrderSubscriptionId { get; set; }
         public int ClientId { get; set; }

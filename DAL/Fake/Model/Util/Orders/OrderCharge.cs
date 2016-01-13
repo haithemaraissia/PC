@@ -9,6 +9,7 @@ using DAL.Fake.Model.GoodData.Promotions;
 using DAL.Fake.Model.KMLHelper;
 using DAL.Fake.Model.LookUp.Discount;
 using DAL.Fake.Model.LookUp.PaymentMethod;
+using DAL.Fake.Model.Util.Common;
 using DAL.Fake.Model.Util.Helper;
 using Model;
 using OrderModelType = DAL.Fake.Model.LookUp.OrderModel.OrderModelType;
@@ -92,7 +93,7 @@ namespace DAL.Fake.Model.Util.Orders
 
             #endregion
 
-            _orderCharge.SalesTaxes = CalculateSalesTax(_orderCharge.TotalCharges, taxPercent);
+            _orderCharge.SalesTaxes = new Money().RoundTo2Decimal(CalculateSalesTax(_orderCharge.TotalCharges, taxPercent));
             _orderCharge.PlanTitle = null;
             return _orderCharge;  
             }
@@ -110,9 +111,9 @@ namespace DAL.Fake.Model.Util.Orders
             return new OrderChargeModel
             {
                 DeliveryFee = 0,
-                SalesTaxes = (decimal) (order.SubTotal * taxPercent),
+                SalesTaxes = new Money().RoundTo2Decimal((decimal)(order.SubTotal * taxPercent) / 100),
                 Subtotal = order.SubTotal,
-                TotalCharges = CalculateCharges(order,(decimal) (order.SubTotal * taxPercent)+ order.SubTotal)
+                TotalCharges = new Money().RoundTo2Decimal(CalculateCharges(order, (decimal)(order.SubTotal * taxPercent) / 100 + order.SubTotal))
             };
         }
 
@@ -125,9 +126,9 @@ namespace DAL.Fake.Model.Util.Orders
             return new OrderChargeModel
             {
                 DeliveryFee = deliveryFee,
-                SalesTaxes = (decimal) ((order.SubTotal + deliveryFee) * taxPercent),
+                SalesTaxes = new Money().RoundTo2Decimal((decimal)((order.SubTotal + deliveryFee) * taxPercent) / 100),
                 Subtotal = order.SubTotal,
-                TotalCharges = CalculateCharges(order,(decimal)(deliveryFee + (order.SubTotal + deliveryFee) * taxPercent) + order.SubTotal)
+                TotalCharges = new Money().RoundTo2Decimal(CalculateCharges(order, (decimal)(deliveryFee + (order.SubTotal + deliveryFee) * taxPercent) / 100 + order.SubTotal))
             };
         }
 

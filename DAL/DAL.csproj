@@ -76,7 +76,7 @@
     <Compile Include="Fake\Model\GoodData\OrderItemDishes\FakeOrderItemDishOptions.cs" />
     <Compile Include="Fake\Model\GoodData\OrderModelType\FakeOrderModelTypes.cs" />
     <Compile Include="Fake\Model\GoodData\OrdersHistory\Clients\Client1\FakeClient1OrderHistory.cs" />
-    <Compile Include="Fake\Model\GoodData\OrdersHistory\Clients\Client2\FakeClient2OrderHistory.cs" />
+    <Compile Include="Fake\Model\GoodData\OrdersHistory\Clients\FakeClient2OrderHistory.cs" />
     <Compile Include="Fake\Model\GoodData\OrdersHistory\Clients\Client3\FakeClient3OrderHistory.cs" />
     <Compile Include="Fake\Model\GoodData\OrdersHistory\Clients\FakeClientsOrdersHistory.cs" />
     <Compile Include="Fake\Model\GoodData\OrdersHistory\FakeOrderHistory.cs" />
@@ -173,6 +173,7 @@
     <Compile Include="Fake\Model\LookUp\OrderStatu\OrderStatus.cs" />
     <Compile Include="Fake\Model\LookUp\PaymentStatus\PaymentStatusType.cs" />
     <Compile Include="Fake\Model\LookUp\Week\WeekType.cs" />
+    <Compile Include="Fake\Model\Util\Common\Money.cs" />
     <Compile Include="Fake\Model\Util\Common\Util.cs" />
     <Compile Include="Fake\Model\Util\Helper\OrderChargeModel.cs" />
     <Compile Include="Fake\Model\Util\Orders\OrderCharge.cs" />
@@ -739,6 +740,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MultipleOutputHelper.ttinclude.tt</DependentUpon>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Fake\Model\GoodData\OrdersHistory\Clients\Client2\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

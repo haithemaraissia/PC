@@ -7,19 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class OrderItem
     {
-        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public OrderItem()
         {
             this.OrderItemDishOptions = new HashSet<OrderItemDishOption>();
         }
-    
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderItemId { get; set; }
         public int DishId { get; set; }
         public int CookerId { get; set; }
@@ -30,7 +35,7 @@ namespace Model
         public int OrderId { get; set; }
         public int ClientOrderReviewSentClientOrderReviewSentId { get; set; }
     
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderItemDishOption> OrderItemDishOptions { get; set; }
         public virtual Order Order { get; set; }
     }

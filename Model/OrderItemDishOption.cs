@@ -7,12 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class OrderItemDishOption
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderItemDishOptionId { get; set; }
         public int DishOptionChoiceId { get; set; }
         public string DishOptionChoiceValue { get; set; }

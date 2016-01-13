@@ -5,7 +5,9 @@ using DAL.Fake.Model.GoodData.Coupons;
 using DAL.Fake.Model.GoodData.Promotions;
 using DAL.Fake.Model.LookUp.Discount;
 using DAL.Fake.Model.LookUp.PaymentMethod;
+using DAL.Fake.Model.Util.Common;
 using DAL.Fake.Model.Util.Helper;
+using DAL.Generic.UnitofWork;
 using Model;
 using OrderModelType = DAL.Fake.Model.LookUp.OrderModel.OrderModelType;
 
@@ -22,16 +24,17 @@ namespace DAL.Fake.Model.Util.Subscriptions
         #endregion
 
         #region ModelandHelper
-        private readonly OrderChargeModel _orderCharge;
+        private OrderChargeModel _orderCharge;
         private readonly SubscriptionHelper _subscriptionHelper;
         #endregion
 
 
         #endregion
 
-        public SubscriptionCharge(ClientAddress deliveryAddress = null)
+        public SubscriptionCharge(ClientAddress deliveryAddress = null, UnitofWork uow = null)
         {
-            _subscriptionHelper = new SubscriptionHelper();
+            _subscriptionHelper = uow == null ? new SubscriptionHelper() : new SubscriptionHelper(uow);
+
             _orderCharge= new OrderChargeModel();
             if (deliveryAddress != null)
             {
@@ -41,7 +44,10 @@ namespace DAL.Fake.Model.Util.Subscriptions
 
         public OrderChargeModel Calculate(int clientSubscriptionId, OrderSubscription orderSubscription)
         {
-            _orderCharge.CookerId = _subscriptionHelper.GetCookerServingPriceModel(clientSubscriptionId).CookerId;
+            _orderCharge = new OrderChargeModel
+            {
+                CookerId = _subscriptionHelper.GetCookerServingPriceModel(clientSubscriptionId).CookerId
+            };
             var taxPercent = _subscriptionHelper.GetTaxPercent(_subscriptionHelper.GetCookerServingPriceModel(clientSubscriptionId).CookerId);
             _orderCharge.OrderTypeValue = Enum.GetName(typeof(OrderModelType.Values), orderSubscription.OrderTypeId);
             _orderCharge.PaymentMethodValue = Enum.GetName(typeof(PaymentMethodType.Values), orderSubscription.PaymentMethodId);
@@ -80,7 +86,9 @@ namespace DAL.Fake.Model.Util.Subscriptions
 
             #endregion
 
-           _orderCharge.SalesTaxes = CalculateSalesTax(_orderCharge.TotalCharges, taxPercent);
+            #region Neutral
+            _orderCharge = Netural(orderSubscription, taxPercent);
+            #endregion
    
             return _orderCharge;
         }
@@ -96,9 +104,9 @@ namespace DAL.Fake.Model.Util.Subscriptions
             return new OrderChargeModel
             {
                 DeliveryFee = 0,
-                SalesTaxes = (decimal)(order.SubTotal * taxPercent),
+                SalesTaxes = new Money().RoundTo2Decimal((decimal)(order.SubTotal * taxPercent) / 100),
                 Subtotal = order.SubTotal,
-                TotalCharges = CalculateCharges(order, (decimal)(order.SubTotal * taxPercent) + order.SubTotal)
+                TotalCharges = new Money().RoundTo2Decimal(CalculateCharges(order, (decimal)(order.SubTotal * taxPercent) / 100 + order.SubTotal))
             };
         }
 
@@ -111,9 +119,24 @@ namespace DAL.Fake.Model.Util.Subscriptions
             return new OrderChargeModel
             {
                 DeliveryFee = deliveryFee,
-                SalesTaxes = (decimal)((order.SubTotal + deliveryFee) * taxPercent),
+                SalesTaxes = new Money().RoundTo2Decimal((decimal)((order.SubTotal + deliveryFee) * taxPercent)/100),
                 Subtotal = order.SubTotal,
-                TotalCharges = CalculateCharges(order, (decimal)(deliveryFee + (order.SubTotal + deliveryFee) * taxPercent) + order.SubTotal)
+                TotalCharges = new Money().RoundTo2Decimal(CalculateCharges(order, (decimal)(deliveryFee + (order.SubTotal + deliveryFee) * taxPercent) / 100 + order.SubTotal))
+            };
+        }
+
+        private OrderChargeModel Netural(OrderSubscription order, decimal? taxPercent)
+        {
+            if (taxPercent == null)
+            {
+                taxPercent = 1;
+            }
+            return new OrderChargeModel
+            {
+                DeliveryFee = 0,
+                SalesTaxes = new Money().RoundTo2Decimal((decimal)(order.SubTotal * taxPercent)/100),
+                Subtotal = order.SubTotal,
+                TotalCharges = new Money().RoundTo2Decimal(CalculateCharges(order, (decimal)(order.SubTotal * taxPercent) / 100 + order.SubTotal))
             };
         }
 
@@ -137,7 +160,7 @@ namespace DAL.Fake.Model.Util.Subscriptions
             {
                 return 0;
             }
-            var salesTaxCharges = charges * taxes;
+            var salesTaxCharges = (charges * taxes)/100;
             return salesTaxCharges ?? 0;
         }
 

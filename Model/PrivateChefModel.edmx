@@ -12,20 +12,9 @@
           <Property Name="AddressTypeId" Type="int" Nullable="false" />
           <Property Name="AddressTypeValue" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ClientAddress">
           <Key>
             <PropertyRef Name="AddressId" />
-            <PropertyRef Name="ClientId" />
-            <PropertyRef Name="Address" />
-            <PropertyRef Name="Apt/suite" />
-            <PropertyRef Name="CityId" />
-            <PropertyRef Name="RegionId" />
-            <PropertyRef Name="CountryId" />
-            <PropertyRef Name="ZipCode" />
-            <PropertyRef Name="Instructions" />
-            <PropertyRef Name="AddressTypeId" />
           </Key>
           <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ClientId" Type="int" Nullable="false" />
@@ -37,32 +26,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="ZipCode" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" />
           <Property Name="Cross Stree" Type="nvarchar" MaxLength="100" />
-          <Property Name="Instructions" Type="nvarchar" MaxLength="300" Nullable="false" />
-          <Property Name="AddressTypeId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ClientAddresses">
-          <Key>
-            <PropertyRef Name="AddressId" />
-            <PropertyRef Name="ClientId" />
-            <PropertyRef Name="Address" />
-            <PropertyRef Name="Apt_suite" />
-            <PropertyRef Name="CityId" />
-            <PropertyRef Name="RegionId" />
-            <PropertyRef Name="CountryId" />
-            <PropertyRef Name="ZipCode" />
-            <PropertyRef Name="Instructions" />
-            <PropertyRef Name="AddressTypeId" />
-          </Key>
-          <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ClientId" Type="int" Nullable="false" />
-          <Property Name="Address" Type="nvarchar" MaxLength="300" Nullable="false" />
-          <Property Name="Apt_suite" Type="nvarchar" MaxLength="300" Nullable="false" />
-          <Property Name="CityId" Type="int" Nullable="false" />
-          <Property Name="RegionId" Type="int" Nullable="false" />
-          <Property Name="CountryId" Type="int" Nullable="false" />
-          <Property Name="ZipCode" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="20" />
-          <Property Name="Cross_Stree" Type="nvarchar" MaxLength="100" />
           <Property Name="Instructions" Type="nvarchar" MaxLength="300" Nullable="false" />
           <Property Name="AddressTypeId" Type="int" Nullable="false" />
         </EntityType>
@@ -700,6 +663,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="ClientOrderReviewSentClientOrderReviewSentId" Type="int" Nullable="false" />
           <Property Name="WeekId" Type="int" Nullable="false" />
           <Property Name="ScheduledDate" Type="smalldatetime" Nullable="false" />
+          <Property Name="OrderStatusId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderSubscriptions">
           <Key>
@@ -889,7 +853,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
         </Association>
         <EntityContainer Name="PrivateChefModelStoreContainer">
           <EntitySet Name="AddressTypes" EntityType="Self.AddressTypes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ClientAddresses" EntityType="Self.ClientAddresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientAddress" EntityType="Self.ClientAddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClientFeedBacks" EntityType="Self.ClientFeedBacks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClientOrderReviewReceiveds" EntityType="Self.ClientOrderReviewReceiveds" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClientOrderReviewSents" EntityType="Self.ClientOrderReviewSents" Schema="dbo" store:Type="Tables" />
@@ -955,22 +919,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="ServingPrices" EntityType="Self.ServingPrices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserTypes" EntityType="Self.UserTypes" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ClientAddress" EntityType="Self.ClientAddress" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ClientAddress].[AddressId] AS [AddressId], 
-    [ClientAddress].[ClientId] AS [ClientId], 
-    [ClientAddress].[Address] AS [Address], 
-    [ClientAddress].[Apt/suite] AS [Apt/suite], 
-    [ClientAddress].[CityId] AS [CityId], 
-    [ClientAddress].[RegionId] AS [RegionId], 
-    [ClientAddress].[CountryId] AS [CountryId], 
-    [ClientAddress].[ZipCode] AS [ZipCode], 
-    [ClientAddress].[PhoneNumber] AS [PhoneNumber], 
-    [ClientAddress].[Cross Stree] AS [Cross Stree], 
-    [ClientAddress].[Instructions] AS [Instructions], 
-    [ClientAddress].[AddressTypeId] AS [AddressTypeId]
-    FROM [dbo].[ClientAddress] AS [ClientAddress]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_OrderItemOrderItemDishOption" Association="Self.FK_OrderItemOrderItemDishOption">
             <End Role="OrderItems" EntitySet="OrderItems" />
             <End Role="OrderItemDishOptions" EntitySet="OrderItemDishOptions" />
@@ -986,7 +934,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="PrivateChefModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="PrivateChefContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AddressTypes" EntityType="PrivateChefModel.AddressType" />
-          <EntitySet Name="ClientAddresses" EntityType="PrivateChefModel.ClientAddress" />
           <EntitySet Name="ClientFeedBacks" EntityType="PrivateChefModel.ClientFeedBack" />
           <EntitySet Name="ClientOrderReviewReceiveds" EntityType="PrivateChefModel.ClientOrderReviewReceived" />
           <EntitySet Name="ClientOrderToReviews" EntityType="PrivateChefModel.ClientOrderToReview" />
@@ -1041,7 +988,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
             <End Role="Order" EntitySet="Orders" />
             <End Role="OrderItem" EntitySet="OrderItems" />
           </AssociationSet>
-          <EntitySet Name="ClientAddresses1" EntityType="PrivateChefModel.ClientAddress1" />
           <EntitySet Name="ClientOrderReviewSents" EntityType="PrivateChefModel.ClientOrderReviewSent" />
           <EntitySet Name="DisputeReasons" EntityType="PrivateChefModel.DisputeReason" />
           <EntitySet Name="DisputeStatus" EntityType="PrivateChefModel.DisputeStatu" />
@@ -1069,6 +1015,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySet Name="MostPopularSubscriptions" EntityType="PrivateChefModel.MostPopularSubscription" />
           <EntitySet Name="Cookers" EntityType="PrivateChefModel.Cooker" />
           <EntitySet Name="CookerHoursofOperations" EntityType="PrivateChefModel.CookerHoursofOperation" />
+          <EntitySet Name="ClientAddresses" EntityType="PrivateChefModel.ClientAddress" />
         </EntityContainer>
         <EntityType Name="AddressType">
           <Key>
@@ -1076,32 +1023,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           </Key>
           <Property Name="AddressTypeId" Type="Int32" Nullable="false" />
           <Property Name="AddressTypeValue" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="ClientAddress">
-          <Key>
-            <PropertyRef Name="AddressId" />
-            <PropertyRef Name="ClientId" />
-            <PropertyRef Name="Address" />
-            <PropertyRef Name="Apt_suite" />
-            <PropertyRef Name="CityId" />
-            <PropertyRef Name="RegionId" />
-            <PropertyRef Name="CountryId" />
-            <PropertyRef Name="ZipCode" />
-            <PropertyRef Name="Instructions" />
-            <PropertyRef Name="AddressTypeId" />
-          </Key>
-          <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ClientId" Type="Int32" Nullable="false" />
-          <Property Name="Address" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Apt_suite" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="CityId" Type="Int32" Nullable="false" />
-          <Property Name="RegionId" Type="Int32" Nullable="false" />
-          <Property Name="CountryId" Type="Int32" Nullable="false" />
-          <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Cross_Stree" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Instructions" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="AddressTypeId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ClientFeedBack">
           <Key>
@@ -1679,32 +1600,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="ClientAddress1">
-          <Key>
-            <PropertyRef Name="AddressId" />
-            <PropertyRef Name="ClientId" />
-            <PropertyRef Name="Address" />
-            <PropertyRef Name="Apt_suite" />
-            <PropertyRef Name="CityId" />
-            <PropertyRef Name="RegionId" />
-            <PropertyRef Name="CountryId" />
-            <PropertyRef Name="ZipCode" />
-            <PropertyRef Name="Instructions" />
-            <PropertyRef Name="AddressTypeId" />
-          </Key>
-          <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ClientId" Type="Int32" Nullable="false" />
-          <Property Name="Address" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Apt_suite" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="CityId" Type="Int32" Nullable="false" />
-          <Property Name="RegionId" Type="Int32" Nullable="false" />
-          <Property Name="CountryId" Type="Int32" Nullable="false" />
-          <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Cross_Stree" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Instructions" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="AddressTypeId" Type="Int32" Nullable="false" />
-        </EntityType>
         <EntityType Name="ClientOrderReviewSent">
           <Key>
             <PropertyRef Name="ClientOrderReviewSentId" />
@@ -1872,6 +1767,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="ScheduledDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="OrderSubscription" Relationship="PrivateChefModel.FK_OrderSubscriptionOrderSubscriptionItem" FromRole="OrderSubscriptionItem" ToRole="OrderSubscription" />
           <NavigationProperty Name="OrderSubscriptionItemDishOptions" Relationship="PrivateChefModel.OrderSubscriptionItemOrderSubscriptionItemDishOption" FromRole="OrderSubscriptionItem" ToRole="OrderSubscriptionItemDishOption" />
+          <Property Name="OrderStatusId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderSubscription">
           <Key>
@@ -1982,6 +1878,23 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <Property Name="ClosingPickUpHours" Type="Time" Precision="0" />
           <Property Name="PickUpDays" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="ClientAddress">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Apt_suite" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="RegionId" Type="Int32" Nullable="false" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Cross_Stree" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Instructions" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="AddressTypeId" Type="Int32" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1993,24 +1906,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
               <MappingFragment StoreEntitySet="AddressTypes">
                 <ScalarProperty Name="AddressTypeValue" ColumnName="AddressTypeValue" />
                 <ScalarProperty Name="AddressTypeId" ColumnName="AddressTypeId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ClientAddresses">
-            <EntityTypeMapping TypeName="PrivateChefModel.ClientAddress">
-              <MappingFragment StoreEntitySet="ClientAddresses">
-                <ScalarProperty Name="AddressTypeId" ColumnName="AddressTypeId" />
-                <ScalarProperty Name="Instructions" ColumnName="Instructions" />
-                <ScalarProperty Name="Cross_Stree" ColumnName="Cross_Stree" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
-                <ScalarProperty Name="CityId" ColumnName="CityId" />
-                <ScalarProperty Name="Apt_suite" ColumnName="Apt_suite" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2608,24 +2503,6 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ClientAddresses1">
-            <EntityTypeMapping TypeName="PrivateChefModel.ClientAddress1">
-              <MappingFragment StoreEntitySet="ClientAddress">
-                <ScalarProperty Name="AddressTypeId" ColumnName="AddressTypeId" />
-                <ScalarProperty Name="Instructions" ColumnName="Instructions" />
-                <ScalarProperty Name="Cross_Stree" ColumnName="Cross Stree" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
-                <ScalarProperty Name="CityId" ColumnName="CityId" />
-                <ScalarProperty Name="Apt_suite" ColumnName="Apt/suite" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ClientOrderReviewSents">
             <EntityTypeMapping TypeName="PrivateChefModel.ClientOrderReviewSent">
               <MappingFragment StoreEntitySet="ClientOrderReviewSents">
@@ -2790,6 +2667,7 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
           <EntitySetMapping Name="OrderSubscriptionItems">
             <EntityTypeMapping TypeName="PrivateChefModel.OrderSubscriptionItem">
               <MappingFragment StoreEntitySet="OrderSubscriptionItems">
+                <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
                 <ScalarProperty Name="ScheduledDate" ColumnName="ScheduledDate" />
                 <ScalarProperty Name="WeekId" ColumnName="WeekId" />
                 <ScalarProperty Name="ClientOrderReviewSentClientOrderReviewSentId" ColumnName="ClientOrderReviewSentClientOrderReviewSentId" />
@@ -2891,6 +2769,24 @@ warning 6002: The table/view 'DB_33736_privatechef.dbo.ClientAddress' does not h
                 <ScalarProperty Name="ClosingHours" ColumnName="ClosingHours" />
                 <ScalarProperty Name="OpeningHours" ColumnName="OpeningHours" />
                 <ScalarProperty Name="CookerId" ColumnName="CookerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientAddresses">
+            <EntityTypeMapping TypeName="PrivateChefModel.ClientAddress">
+              <MappingFragment StoreEntitySet="ClientAddress">
+                <ScalarProperty Name="AddressTypeId" ColumnName="AddressTypeId" />
+                <ScalarProperty Name="Instructions" ColumnName="Instructions" />
+                <ScalarProperty Name="Cross_Stree" ColumnName="Cross Stree" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="RegionId" ColumnName="RegionId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Apt_suite" ColumnName="Apt/suite" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

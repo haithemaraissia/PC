@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="cb5ce0f467e34d5988e19d4b9205299b" Name="Diagram1" ZoomLevel="124" >
         <EntityTypeShape EntityType="PrivateChefModel.AddressType" Width="1.5" PointX="0.75" PointY="9.125" />
-        <EntityTypeShape EntityType="PrivateChefModel.ClientAddress" Width="1.5" PointX="2.75" PointY="9.125" />
         <EntityTypeShape EntityType="PrivateChefModel.ClientFeedBack" Width="1.5" PointX="4.75" PointY="9.125" />
         <EntityTypeShape EntityType="PrivateChefModel.ClientOrderReviewReceived" Width="1.5" PointX="6.75" PointY="9.125" />
         <EntityTypeShape EntityType="PrivateChefModel.ClientOrderToReview" Width="1.5" PointX="8.75" PointY="9.125" />
@@ -55,7 +54,6 @@
         <EntityTypeShape EntityType="PrivateChefModel.UserType" Width="1.5" PointX="20.75" PointY="26.125" />
         <AssociationConnector Association="PrivateChefModel.FK_OrderItemOrderItemDishOption" />
         <AssociationConnector Association="PrivateChefModel.FK_OrderOrderItem" />
-        <EntityTypeShape EntityType="PrivateChefModel.ClientAddress1" Width="1.5" PointX="11.375" PointY="27.125" />
         <EntityTypeShape EntityType="PrivateChefModel.ClientOrderReviewSent" Width="1.5" PointX="13.375" PointY="27.125" />
         <EntityTypeShape EntityType="PrivateChefModel.DisputeReason" Width="1.5" PointX="22.375" PointY="0.875" />
         <EntityTypeShape EntityType="PrivateChefModel.DisputeStatu" Width="1.5" PointX="5.375" PointY="26.125" />
@@ -77,6 +75,7 @@
         <EntityTypeShape EntityType="PrivateChefModel.MostPopularSubscription" Width="1.5" PointX="16.375" PointY="6.75" />
         <EntityTypeShape EntityType="PrivateChefModel.Cooker" Width="1.5" PointX="18.375" PointY="3.75" />
         <EntityTypeShape EntityType="PrivateChefModel.CookerHoursofOperation" Width="1.5" PointX="20.375" PointY="3.75" />
+        <EntityTypeShape EntityType="PrivateChefModel.ClientAddress" Width="1.5" PointX="22.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

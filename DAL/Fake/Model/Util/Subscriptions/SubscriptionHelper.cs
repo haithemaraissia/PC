@@ -5,6 +5,7 @@ using DAL.Fake.Model.GoodData.Cookers;
 using DAL.Fake.Model.GoodData.Reviews.Clients;
 using DAL.Fake.Model.GoodData.Subscriptions.Clients;
 using DAL.Fake.Model.GoodData.Subscriptions.Cookers;
+using DAL.Generic.UnitofWork;
 using Model;
 using OrderModelType = DAL.Fake.Model.LookUp.OrderModel.OrderModelType;
 
@@ -26,6 +27,16 @@ namespace DAL.Fake.Model.Util.Subscriptions
             _myClientOrdersToReview = new FakeClientOrderToReview().MyClientOrderToReview;
             _myCookerSubscriptions = new FakeCookerSubscriptions().MyCookerSubscriptions;
             _myCookerServingsPrice = new FakeServingPrices().MyServingPricings;
+            _cookers = new FakeCookers().MyCookers;
+        }
+
+        public SubscriptionHelper(UnitofWork uow)
+        {
+            _myClientSubscriptions = uow.ClientSubscriptionRepository.All.ToList();
+
+            _myClientOrdersToReview = uow.ClientOrderToReviewRepository.All.ToList();
+            _myCookerSubscriptions = uow.CookerSubscriptionRepository.All.ToList();
+            _myCookerServingsPrice = uow.ServingPriceRepository.All.ToList();
             _cookers = new FakeCookers().MyCookers;
         }
 

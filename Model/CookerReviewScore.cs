@@ -7,17 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class CookerReviewScore
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CookerReviewScoreId { get; set; }
         public int CookerId { get; set; }
         public int PositiveReview { get; set; }
         public int NegativeReview { get; set; }
         public int NeutralReview { get; set; }
-        public DateTime OrderDate { get; set; }
+        public System.DateTime OrderDate { get; set; }
     }
 }

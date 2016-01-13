@@ -7,19 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class PaymentsHistory
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PaymentHistoryId { get; set; }
         public int InvoiceId { get; set; }
         public int OrderId { get; set; }
         public int ClientId { get; set; }
         public int CookerId { get; set; }
         public string TransactionId { get; set; }
-        public DateTime PaymentDate { get; set; }
+        public System.DateTime PaymentDate { get; set; }
         public decimal PaymentAmount { get; set; }
         public int OrderModelTypeId { get; set; }
         public int PaymentStatusId { get; set; }

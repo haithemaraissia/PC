@@ -7,12 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class ClientOrderReviewReceived
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ClientOrderReviewReceivedId { get; set; }
         public int ClientId { get; set; }
         public int CookerId { get; set; }
@@ -25,7 +31,7 @@ namespace Model
         public int OverallFeedBackRating { get; set; }
         public string Comment { get; set; }
         public string Photo { get; set; }
-        public DateTime OrderDate { get; set; }
+        public System.DateTime OrderDate { get; set; }
         public int OrderModelTypeId { get; set; }
     }
 }

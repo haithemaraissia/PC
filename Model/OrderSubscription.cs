@@ -7,24 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Model
 {
+    using System;
+    using System.Collections.Generic;
+    
     public partial class OrderSubscription
     {
-        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public OrderSubscription()
         {
             this.OrderSubscriptionItems = new HashSet<OrderSubscriptionItem>();
         }
-    
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderSubscriptionId { get; set; }
         public int ClientId { get; set; }
-        public DateTime OrderDate { get; set; }
-        public Nullable<DateTime> DeliveryDate { get; set; }
+        public System.DateTime OrderDate { get; set; }
+        public Nullable<System.DateTime> DeliveryDate { get; set; }
         public int OrderTypeId { get; set; }
         public int PaymentMethodId { get; set; }
         public Nullable<int> PromotionId { get; set; }
@@ -37,7 +41,7 @@ namespace Model
         public int NumberofServingTotal { get; set; }
         public int ClientSubscriptionId { get; set; }
     
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderSubscriptionItem> OrderSubscriptionItems { get; set; }
     }
 }

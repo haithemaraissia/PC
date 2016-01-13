@@ -7,11 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-
 namespace Model
 {
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    
     public partial class PrivateChefContext : DbContext
     {
         public PrivateChefContext()
@@ -25,7 +26,6 @@ namespace Model
         }
     
         public virtual DbSet<AddressType> AddressTypes { get; set; }
-        public virtual DbSet<ClientAddress> ClientAddresses { get; set; }
         public virtual DbSet<ClientFeedBack> ClientFeedBacks { get; set; }
         public virtual DbSet<ClientOrderReviewReceived> ClientOrderReviewReceiveds { get; set; }
         public virtual DbSet<ClientOrderToReview> ClientOrderToReviews { get; set; }
@@ -91,5 +91,6 @@ namespace Model
         public virtual DbSet<MostPopularSubscription> MostPopularSubscriptions { get; set; }
         public virtual DbSet<Cooker> Cookers { get; set; }
         public virtual DbSet<CookerHoursofOperation> CookerHoursofOperations { get; set; }
+        public virtual DbSet<ClientAddress> ClientAddresses { get; set; }
     }
 }
