@@ -23,7 +23,7 @@ namespace DAL.Fake.Model.GoodData.Reviews.Industry
         {
             var firstIndustryAverageRating  = new IndustryAverageRating
             {
-                IndustryAverageRatingId = 1,
+            IndustryAverageRatingId = 1,
             ItemAccuracyIndustryAverageRating = (decimal) 4.8,
             CommunicationIndustryAverageRating  = (decimal) 4.7,
             DeliveryTimeIndustryAverageRating  = (decimal) 4.9,

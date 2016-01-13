@@ -22,9 +22,14 @@ namespace DAL.Fake.Model.LookUp.OrderStatu
             #endregion
 
             #region Subscription
-            Active = 6
+            Active = 6,
             #endregion
 
+
+            #region SubscriptionItem
+            Ready = 7,
+            Scheduled = 8
+            #endregion
         }
 
     }

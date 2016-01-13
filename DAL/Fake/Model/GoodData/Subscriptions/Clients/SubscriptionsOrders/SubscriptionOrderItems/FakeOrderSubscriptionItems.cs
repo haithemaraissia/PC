@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DAL.Fake.Model.GoodData.Cookers.Dishes.Cooker;
 using DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders.SubscriptionOrderItems.SubscriptionOrderItemDishOptions;
+using DAL.Fake.Model.LookUp.OrderStatu;
 using DAL.Fake.Model.Util.Subscriptions;
 using Model;
 
@@ -45,7 +46,8 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders.Subs
                 OrderSubscriptionId = 1,
                 ClientOrderReviewSentClientOrderReviewSentId = new SubscriptionHelper().CreateOrderReview(selectedDish, _myOrders.Max(x => x.OrderSubscriptionId) + 1).ClientOrderToReviewId,
                 WeekId = 1,
-                ScheduledDate = DateTime.Today.Date
+                ScheduledDate = DateTime.Today.Date,
+                OrderStatusId = (int)OrderStatus.Values.Scheduled
             };
 
 
@@ -70,7 +72,8 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders.Subs
                 OrderSubscriptionId = 1,
                 ClientOrderReviewSentClientOrderReviewSentId = new SubscriptionHelper().CreateOrderReview(selectedDish, _myOrders.Max(x => x.OrderSubscriptionId) + 1).ClientOrderToReviewId,
                 WeekId = 2,
-                ScheduledDate = DateTime.Today.Date.AddDays(2)
+                ScheduledDate = DateTime.Today.Date.AddDays(2),
+                OrderStatusId = (int)OrderStatus.Values.Scheduled
             };
             secondSubscriptionOrderItemDetail.OrderSubscriptionItemDishOptions.Add(new FakeSubscriptionOrderItemDishOptions().ThirdSubscriptionOrderItemDishOption());
             return secondSubscriptionOrderItemDetail;
@@ -91,7 +94,8 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders.Subs
                 OrderSubscriptionId = 1,
                 ClientOrderReviewSentClientOrderReviewSentId = new SubscriptionHelper().CreateOrderReview(selectedDish, _myOrders.Max(x => x.OrderSubscriptionId) + 1).ClientOrderToReviewId,
                 WeekId = 3,
-                ScheduledDate = DateTime.Today.Date.AddDays(4)
+                ScheduledDate = DateTime.Today.Date.AddDays(4),
+                OrderStatusId = (int)OrderStatus.Values.Scheduled
             };
             return thirdSubscriptionOrderItemDetail;
         }
@@ -111,7 +115,8 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders.Subs
                 OrderSubscriptionId = 1,
                 ClientOrderReviewSentClientOrderReviewSentId = new SubscriptionHelper().CreateOrderReview(selectedDish, _myOrders.Max(x => x.OrderSubscriptionId) + 1).ClientOrderToReviewId,
                 WeekId = 4,
-                ScheduledDate = DateTime.Today.Date.AddDays(1)
+                ScheduledDate = DateTime.Today.Date.AddDays(1),
+                OrderStatusId = (int)OrderStatus.Values.Scheduled
             };
             return fourthSubscriptionOrderItemDetail;
         }

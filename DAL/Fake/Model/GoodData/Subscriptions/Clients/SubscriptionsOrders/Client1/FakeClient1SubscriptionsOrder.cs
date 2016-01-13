@@ -130,7 +130,8 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders.Clie
                 OrderSubscriptionId = GetFakeOrderSubscriptionId(),
                 ClientOrderReviewSentClientOrderReviewSentId = new SubscriptionHelper().CreateOrderReview(selectedDish, GetFakeOrderSubscriptionId()).ClientOrderToReviewId,
                 WeekId = weekId,
-                ScheduledDate = DateTime.Today.Date
+                ScheduledDate = DateTime.Today.Date,
+                OrderStatusId = (int)OrderStatus.Values.Scheduled
             };
 
             //Required Side
@@ -175,7 +176,8 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders.Clie
                 OrderSubscriptionId = GetFakeOrderSubscriptionId(),
                 ClientOrderReviewSentClientOrderReviewSentId = new SubscriptionHelper().CreateOrderReview(selectedDish, GetFakeOrderSubscriptionId()).ClientOrderToReviewId,
                 WeekId = weekId,
-                ScheduledDate = DateTime.Today.Date.AddDays(2)
+                ScheduledDate = DateTime.Today.Date.AddDays(2),
+                OrderStatusId = (int)OrderStatus.Values.Scheduled
             };
 
             //Required Side
@@ -207,7 +209,8 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders.Clie
                 OrderSubscriptionId = GetFakeOrderSubscriptionId(),
                 ClientOrderReviewSentClientOrderReviewSentId = new SubscriptionHelper().CreateOrderReview(selectedDish, GetFakeOrderSubscriptionId()).ClientOrderToReviewId,
                 WeekId = weekId,
-                ScheduledDate = DateTime.Today.Date.AddDays(4)
+                ScheduledDate = DateTime.Today.Date.AddDays(4),
+                OrderStatusId = (int)OrderStatus.Values.Scheduled
             };
             return thirdSubscriptionOrderItemDetail;
         }
@@ -227,7 +230,8 @@ namespace DAL.Fake.Model.GoodData.Subscriptions.Clients.SubscriptionsOrders.Clie
                 OrderSubscriptionId = GetFakeOrderSubscriptionId(),
                 ClientOrderReviewSentClientOrderReviewSentId = new SubscriptionHelper().CreateOrderReview(selectedDish, GetFakeOrderSubscriptionId()).ClientOrderToReviewId,
                 WeekId = weekId,
-                ScheduledDate = DateTime.Today.Date.AddDays(1)
+                ScheduledDate = DateTime.Today.Date.AddDays(1),
+                OrderStatusId = (int)OrderStatus.Values.Scheduled
             };
             return fourthSubscriptionOrderItemDetail;
         }
