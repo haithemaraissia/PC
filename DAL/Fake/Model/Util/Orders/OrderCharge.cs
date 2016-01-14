@@ -11,6 +11,7 @@ using DAL.Fake.Model.LookUp.Discount;
 using DAL.Fake.Model.LookUp.PaymentMethod;
 using DAL.Fake.Model.Util.Common;
 using DAL.Fake.Model.Util.Helper;
+using DAL.Generic.UnitofWork;
 using Model;
 using OrderModelType = DAL.Fake.Model.LookUp.OrderModel.OrderModelType;
 using OrderType = DAL.Fake.Model.LookUp.OrderType.OrderType;
@@ -25,6 +26,9 @@ namespace DAL.Fake.Model.Util.Orders
         private readonly List<DeliveryZone> _deliveryZones;
         private readonly List<CookerDeliveryZone> _cookerDeliveryZones;
         private readonly ClientAddress _deliveryAddress;
+
+        private readonly List<Promotion> _promotions;
+        private readonly List<Coupon> _coupons;
         #endregion
 
         #region Model
@@ -34,12 +38,25 @@ namespace DAL.Fake.Model.Util.Orders
 
         #endregion
 
-        public OrderCharge(ClientAddress deliveryAddress = null)
+        public OrderCharge(ClientAddress deliveryAddress = null, UnitofWork uow = null)
         {
+            if (uow == null)
+            {
+                _orderItem = new FakeOrderItems().MyOrderItems;
+                _deliveryZones = new FakeDeliveryZone().MyDeliveryZones;
+                _cookerDeliveryZones = new FakeCookerDeliveryZone().MyCookerDeliveryZones;
+                _promotions = new FakePromotions().MyPromotions;
+                _coupons = new FakeCoupons().MyCoupons;
+            }
+            else
+            {
+                _orderItem = uow.OrderItemRepository.All.ToList();
+                _deliveryZones = uow.DeliveryZoneRepository.All.ToList();
+                _cookerDeliveryZones = uow.CookerDeliveryZoneRepository.All.ToList();
+                _promotions = uow.PromotionRepository.All.ToList();
+                _coupons = uow.CouponRepository.All.ToList();
+            }
 
-            _orderItem = new FakeOrderItems().MyOrderItems;
-            _deliveryZones = new FakeDeliveryZone().MyDeliveryZones;
-            _cookerDeliveryZones = new FakeCookerDeliveryZone().MyCookerDeliveryZones;
 
             if (deliveryAddress != null)
             {
@@ -56,46 +73,46 @@ namespace DAL.Fake.Model.Util.Orders
                 var firstOrderItem = orderItems.FirstOrDefault();
                 if (firstOrderItem != null) _orderCharge.CookerId = firstOrderItem.CookerId;
                 var taxPercent = new Common.Util().GetTaxPercent(_orderCharge.CookerId);
-            _orderCharge.OrderTypeValue = Enum.GetName(typeof(OrderModelType.Values), order.OrderTypeId);
-            _orderCharge.PaymentMethodValue = Enum.GetName(typeof(PaymentMethodType.Values), order.PaymentMethodId);
-  
-            #region PickUpOrderCharge
+                _orderCharge.OrderTypeValue = Enum.GetName(typeof(OrderModelType.Values), order.OrderTypeId);
+                _orderCharge.PaymentMethodValue = Enum.GetName(typeof(PaymentMethodType.Values), order.PaymentMethodId);
 
-            if (order.OrderTypeId == (int)OrderType.Values.PickUp)
-            {
-               _orderCharge = PickUpCharge(order, taxPercent);
-            }
+                #region PickUpOrderCharge
 
-            #endregion
- 
-            #region DeliveryOrderCharge
-
-            var cookerDelieryZonesId = (from c in _cookerDeliveryZones where c.CookerId == _orderCharge.CookerId select c.DeliveryId).ToList();
-
-            decimal deliveryFees = 0;
-            foreach (var deliveryZoneId in cookerDelieryZonesId)
-            {
-                //Custom KML Function to see if the item is in the zone
-                //Moq for now
-                var deliveryzone = _deliveryZones.FirstOrDefault(c => c.DeliveryId == deliveryZoneId);
-
-                //KML integration to see if deliveryaddress is Zone
-                if (_deliveryAddress.AddressTypeId == (int) AddressToDeliveryZone.Values.AddressInZone)
+                if (order.OrderTypeId == (int)OrderType.Values.PickUp)
                 {
-                    if (deliveryzone != null)
+                    _orderCharge = PickUpCharge(order, taxPercent);
+                }
+
+                #endregion
+
+                #region DeliveryOrderCharge
+
+                var cookerDelieryZonesId = (from c in _cookerDeliveryZones where c.CookerId == _orderCharge.CookerId select c.DeliveryId).ToList();
+
+                decimal deliveryFees = 0;
+                foreach (var deliveryZoneId in cookerDelieryZonesId)
+                {
+                    //Custom KML Function to see if the item is in the zone
+                    //Moq for now
+                    var deliveryzone = _deliveryZones.FirstOrDefault(c => c.DeliveryId == deliveryZoneId);
+
+                    //KML integration to see if deliveryaddress is Zone
+                    if (_deliveryAddress.AddressTypeId == (int)AddressToDeliveryZone.Values.AddressInZone)
                     {
-                        deliveryFees = deliveryzone.DeliveryFees;
+                        if (deliveryzone != null)
+                        {
+                            deliveryFees = deliveryzone.DeliveryFees;
+                        }
                     }
                 }
-            }
 
-            _orderCharge = DeliveryCharge(order, deliveryFees, taxPercent); 
+                _orderCharge = DeliveryCharge(order, deliveryFees, taxPercent);
 
-            #endregion
+                #endregion
 
-            _orderCharge.SalesTaxes = new Money().RoundTo2Decimal(CalculateSalesTax(_orderCharge.TotalCharges, taxPercent));
-            _orderCharge.PlanTitle = null;
-            return _orderCharge;  
+                _orderCharge.SalesTaxes = new Money().RoundTo2Decimal(CalculateSalesTax(_orderCharge.TotalCharges, taxPercent));
+                _orderCharge.PlanTitle = null;
+                return _orderCharge;
             }
             return null;
         }
@@ -142,7 +159,7 @@ namespace DAL.Fake.Model.Util.Orders
 
         }
 
-#endregion
+        #endregion
 
         #region Calculate Sales Tax
 
@@ -152,7 +169,7 @@ namespace DAL.Fake.Model.Util.Orders
             {
                 return 0;
             }
-            var salesTaxCharges = charges*taxes;
+            var salesTaxCharges = charges * taxes;
             return salesTaxCharges ?? 0;
         }
 
@@ -166,7 +183,7 @@ namespace DAL.Fake.Model.Util.Orders
             {
                 return charge;
             }
-            var promotion = new FakePromotions().MyPromotions.FirstOrDefault(x => x.PromotionId == promotionId);
+            var promotion = _promotions.FirstOrDefault(x => x.PromotionId == promotionId);
             if (promotion == null) return charge;
             var currentPromotionId = promotion.PromotionId;
 
@@ -202,7 +219,7 @@ namespace DAL.Fake.Model.Util.Orders
             {
                 return charge;
             }
-            var coupon = new FakeCoupons().MyCoupons.FirstOrDefault(x => x.CouponId == couponId);
+            var coupon = _coupons.FirstOrDefault(x => x.CouponId == couponId);
             if (coupon == null) return charge;
             var currentCouponId = coupon.CouponId;
 

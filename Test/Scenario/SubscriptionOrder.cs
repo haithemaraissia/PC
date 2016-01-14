@@ -47,10 +47,6 @@ namespace Test.Scenario
         [TestInitialize]
         public void Initialize()
         {
-            // Arrange
-            //var cookerRepo = new FakeCookerRepository();
-            // var uow = new UnitofWorkHelper().GetAllRepository();
-            // Controller = new OwnersController(uow);//
             _uow = new UnitofWorkHelper().GetAllRepository();
         }
 
@@ -776,7 +772,6 @@ namespace Test.Scenario
         [TestCleanup]
         public void CleanUp()
         {
-            //  Controller.Dispose()
         }
     }
 }
