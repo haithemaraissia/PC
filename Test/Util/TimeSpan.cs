@@ -6,15 +6,10 @@ namespace Test
     [TestClass]
     public class TimeSpanTest
     {
-        //   public OwnersController Controller;
 
         [TestInitialize]
         public void Initialize()
         {
-            // Arrange
-           //  var cookerRepo = new FakeCookerRepository();
-           //  var uow = new UnitofWork { CookerRepository = cookerRepo };
-           // Controller = new OwnersController(uow);
         }
 
         [TestMethod]
@@ -22,11 +17,11 @@ namespace Test
         {
             #region TimeSpan 
             var openingHours = new TimeSpan(0, 6, 0, 0);
-            var closingHours = new TimeSpan(0, 18, 0, 0);
+            var closingHours = new TimeSpan(0, 21, 0, 0);
             var openingHoursTimeDisplay = openingHours.ToString(@"hh\:mm");
             var closingHoursTimeDisplay = closingHours.ToString(@"hh\:mm");
             Assert.AreEqual("06:00", openingHoursTimeDisplay);
-            Assert.AreEqual("18:00", closingHoursTimeDisplay);
+            Assert.AreEqual("21:00", closingHoursTimeDisplay);
             #endregion
 
             #region TimeSpanWithAMPM
@@ -35,11 +30,12 @@ namespace Test
             DateTime closingHoursDatetime = DateTime.Today.Add(closingHours);
             var closingHoursTimeDisplayWithAmpm = closingHoursDatetime.ToString(@"hh\:mm tt");
             Assert.AreEqual("06:00 AM", openingHoursTimeDisplayWithAmpm);
-            Assert.AreEqual("06:00 PM", closingHoursTimeDisplayWithAmpm);
+            Assert.AreEqual("09:00 PM", closingHoursTimeDisplayWithAmpm);
             #endregion
 
             #region IsOpen or IsClose
-
+            //If all true, than it is open
+            //If all false, then it closed
             var now = DateTime.UtcNow.TimeOfDay;
             Assert.AreEqual(true, now >= openingHours);
             Assert.AreEqual(true, now >= openingHoursDatetime.TimeOfDay);
